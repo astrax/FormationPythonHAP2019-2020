@@ -2,7 +2,7 @@
 #
 # Compile a French document to PDF and HTML
 #
-name=HAM20192020
+name=HAP20192020
 
 options="--encoding=utf-8"
 opt2="--without_solutions --without_answers"
