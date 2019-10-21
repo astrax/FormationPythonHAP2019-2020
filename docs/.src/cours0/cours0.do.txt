@@ -1,4 +1,4 @@
-TITLE: Introduction
+TITLE: Introduction à Python I : Présentation & installation
 AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
 DATE: today
 
@@ -59,7 +59,7 @@ _Avantages_ :
 * De nombreuses bibliothèques standards, et de nombreux packages add-on.
 
 !split
-FIGURE: [images/python_easy.png, width=600 frac=0.6]
+FIGURE: [imgs/python_easy.png, width=600 frac=0.6]
 
 
 !split
@@ -84,13 +84,23 @@ Finalement, Anaconda propose un outil de gestion de packages appelé "conda": "h
 Nous demandons à tous les étudiants de télécharger Anaconda. Pour cela, il faut télécharger un installeur à partir de https://www.anaconda.com/download/, correspondant à votre système d’exploitation (Windows, Mac OS X, Linux). Il faut choisir entre 32 bits ou 64 bits (pour la version *Python 3*) selon que votre système d’exploitation est 32 bits ou 64 bits.
 !split
 
-FIGURE: [images/AnacondaNavigator, width=600 frac=0.7] Interface graphique du navigateur Anaconda sur Windows
+FIGURE: [imgs/AnacondaNavigator, width=600 frac=0.7] Interface graphique du navigateur Anaconda sur Windows
 
 !split
 !bnotice
 Anaconda installe plusieurs exécutables pour développer en Python dans le répertoire *anaconda/bin*, sans toujours créer des raccourcis sur le bureau ou dans un menu. Nous nous occuperons au tout début de la formation de créer des raccourcis pour pouvoir lancer l'application web *Jupyter notebook*. Vous pouvez lancer le notebook depuis le navigateur Anaconda.
 !enotice
 
+===== Spyder =====
+Pour le développement de programmes en langage Python, des applications spéciales appelées IDE (Integrated Development Environment) peuvent être utilisées. Les IDE les plus avancés ont des éditeurs, des consoles, des outils pour organiser des suites de programmes et de bibliothèques, un correcteur orthographique (spell-checking) et une complétion automatiques (auto-completion) pour les scripts partiellement écrits (ces outils connaissent la syntaxe du langage de programmation) et des outils de débogage.
+
+Utiliser un bon éditeur pour programmer en Python est bon. Utiliser un vrai IDE est encore plus confortable et puissant. _Spyder_ (Scientific PYthon Development EnviRonment) semble actuellement très répandu pour l’utilisation scientifique de Python.
+
+Spyder est un environnement de développement interactif gratuit inclus avec Anaconda. Il comprend des fonctionnalités d'édition, de test interactif, de débogage et d'introspection.
+
+Après avoir installé Anaconda, vous pouvez démarrer Spyder sur macOS, Linux ou Windows en ouvrant une fenêtre de terminal (Ubuntu/macOS) ou d'invite de commande (Windows) et en exécutant la commande `spyder`.
+
+FIGURE: [imgs/SpyderIDE.png, width=600 frac=0.7] Spyder sous Windows.
 
 !split
 ===== Installation sur smartphone =====
@@ -121,7 +131,7 @@ _Phase installation:_
 
 3. Dans "QUICK INSTALL", installer les packages *Jupyter* , *numpy* et *matplotlib*.
 
-FIGURE: [images/pydroid3_1, width=600 frac=0.7] Pydroid 3: Phase installation
+FIGURE: [imgs/pydroid3_1, width=600 frac=0.7] Pydroid 3: Phase installation
 
 !split
 _Phase utilisation:_
@@ -138,4 +148,4 @@ jupyter notebook
 
 7. Amusez-vous à travailler sur le notebook: créez du contenu, lancez et modifiez des exemples
 
-FIGURE: [images/pydroid3_2, width=600 frac=0.7] Pydroid 3: Phase utilisation
+FIGURE: [imgs/pydroid3_2, width=600 frac=0.7] Pydroid 3: Phase utilisation

@@ -11,7 +11,7 @@
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % draft: marks overfull hboxes, figures with paths
-10pt,french]{article}
+10pt]{article}
 
 \listfiles               %  print all files needed to compile this document
 
@@ -331,7 +331,7 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-Introduction
+Introduction à Python I : Présentation {\&} installation
 \end{spacing}
 }
 \end{center}
@@ -351,7 +351,7 @@ Introduction
 
 % --- begin date ---
 \begin{center}
-Oct 21, 2019
+Oct 22, 2019
 \end{center}
 % --- end date ---
 
@@ -480,7 +480,7 @@ Une bonne présentation des résultats obtenus via de bons rapports scientifique
 \vspace{6mm}
 
 % inline figure
-\centerline{\includegraphics[width=0.6\linewidth]{images/python_easy.png}}
+\centerline{\includegraphics[width=0.6\linewidth]{imgs/python_easy.png}}
 
 \vspace{6mm}
 
@@ -509,7 +509,7 @@ Nous demandons à tous les étudiants de télécharger Anaconda. Pour cela, il f
 
 
 \begin{figure}[!ht]  % 
-  \centerline{\includegraphics[width=0.7\linewidth]{images/AnacondaNavigator.png}}
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/AnacondaNavigator.png}}
   \caption{
   Interface graphique du navigateur Anaconda sur Windows
   }
@@ -524,6 +524,24 @@ Anaconda installe plusieurs exécutables pour développer en Python dans le rép
 \end{notice_grayiconadmon} % title: Note
 
 
+
+\subsection{Spyder}
+Pour le développement de programmes en langage Python, des applications spéciales appelées IDE (Integrated Development Environment) peuvent être utilisées. Les IDE les plus avancés ont des éditeurs, des consoles, des outils pour organiser des suites de programmes et de bibliothèques, un correcteur orthographique (spell-checking) et une complétion automatiques (auto-completion) pour les scripts partiellement écrits (ces outils connaissent la syntaxe du langage de programmation) et des outils de débogage.
+
+Utiliser un bon éditeur pour programmer en Python est bon. Utiliser un vrai IDE est encore plus confortable et puissant. \textbf{Spyder} (Scientific PYthon Development EnviRonment) semble actuellement très répandu pour l’utilisation scientifique de Python.
+
+Spyder est un environnement de développement interactif gratuit inclus avec Anaconda. Il comprend des fonctionnalités d'édition, de test interactif, de débogage et d'introspection.
+
+Après avoir installé Anaconda, vous pouvez démarrer Spyder sur macOS, Linux ou Windows en ouvrant une fenêtre de terminal (Ubuntu/macOS) ou d'invite de commande (Windows) et en exécutant la commande \texttt{spyder}.
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/SpyderIDE.png}}
+  \caption{
+  Spyder sous Windows.
+  }
+\end{figure}
+%\clearpage % flush figures 
 
 
 % !split
@@ -561,7 +579,7 @@ Les étapes suivantes, dans les figures ci-dessous, vous permettent d’utiliser
 
 
 \begin{figure}[!ht]  % 
-  \centerline{\includegraphics[width=0.7\linewidth]{images/pydroid3_1.png}}
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/pydroid3_1.png}}
   \caption{
   Pydroid 3: Phase installation
   }
@@ -588,7 +606,7 @@ jupyter notebook
 
 
 \begin{figure}[!ht]  % 
-  \centerline{\includegraphics[width=0.7\linewidth]{images/pydroid3_2.png}}
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/pydroid3_2.png}}
   \caption{
   Pydroid 3: Phase utilisation
   }

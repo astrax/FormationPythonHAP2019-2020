@@ -14,6 +14,14 @@ DATE: today
 ======= Documents =======
 !split
 ===== Introduction à Python I : Présentation & installation =====
+* Notebook:
+  * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours0/cours0.ipynb"
+  * "Les figures" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours0/ipynb-cours0-src.tar.gz"
+* PDF
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours0/cours0.pdf"
+
+* HTML:
+  * "html simple" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours0/cours0-bs.html"
 
 !split
 ===== Introduction à Python II : syntaxe & variables =====

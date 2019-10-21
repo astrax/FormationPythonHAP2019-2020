@@ -7,12 +7,12 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Introduction">
+<meta name="description" content="Introduction à Python I : Présentation & installation">
 
-<title>Introduction</title>
+<title>Introduction à Python I : Présentation & installation</title>
 
-<!-- Bootstrap style: bootswatch_cerulean -->
-<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/cerulean/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
@@ -31,9 +31,11 @@ Automatically generated HTML file from DocOnce source
 .anchor::before {
   content:"";
   display:block;
-  height:50px;      /* fixed header height for style bootswatch_cerulean */
-  margin:-50px 0 0; /* negative fixed header height */
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
 }
+
+body { font-size:20px;line-height:1.5; }
 </style>
 
 
@@ -61,8 +63,9 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec6'),
-              ('Installation sur smartphone', 2, None, '___sec7'),
-              ('Pydroid 3 - IDE éducatif pour Python 3', 3, None, '___sec8')]}
+              ('Spyder', 2, None, '___sec7'),
+              ('Installation sur smartphone', 2, None, '___sec8'),
+              ('Pydroid 3 - IDE éducatif pour Python 3', 3, None, '___sec9')]}
 end of tocinfo -->
 
 <body>
@@ -76,13 +79,13 @@ end of tocinfo -->
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="cours0.html">Introduction</a>
+    <a class="navbar-brand" href="cours0-bs.html">Introduction à Python I : Présentation & installation</a>
   </div>
 
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Objectifs généraux en premier</b></a></li>
@@ -92,8 +95,9 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation sur ordinateur</a></li>
      <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qu’est ce que Anaconda ?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Préparer la formation: téléchargement d’Anaconda</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation sur smartphone</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pydroid 3 - IDE éducatif pour Python 3</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation sur smartphone</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pydroid 3 - IDE éducatif pour Python 3</a></li>
 
         </ul>
       </li>
@@ -111,7 +115,7 @@ end of tocinfo -->
 
 
 <div class="jumbotron">
-<center><h1>Introduction</h1></center>  <!-- document title -->
+<center><h1>Introduction &#224; Python I : Pr&#233;sentation &amp; installation</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Ahmed Ammar -->
@@ -126,7 +130,7 @@ end of tocinfo -->
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Oct 21, 2019</h4></center> <!-- date -->
+<center><h4>Oct 22, 2019</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -139,7 +143,8 @@ end of tocinfo -->
 <a href="#___sec2"> Langage Python </a><br>
 <a href="#___sec3"> Installation d'un environnement Python scientifique </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Installation sur ordinateur </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Installation sur smartphone </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Spyder </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Installation sur smartphone </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -239,7 +244,7 @@ Une bonne pr&#233;sentation des r&#233;sultats obtenus via de bons rapports scie
 </ul>
 
 <!-- !split -->
-<br /><br /><center><p><img src="images/python_easy.png" align="bottom" width=600></p></center><br /><br />
+<br /><br /><center><p><img src="imgs/python_easy.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- !split -->
@@ -276,22 +281,47 @@ Nous demandons &#224; tous les &#233;tudiants de t&#233;l&#233;charger Anaconda.
 <center>  <!-- FIGURE -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  Interface graphique du navigateur Anaconda sur Windows </p></center>
-<p><img src="images/AnacondaNavigator.png" align="bottom" width=600></p>
+<p><img src="imgs/AnacondaNavigator.png" align="bottom" width=600></p>
 </center>
 
 <p>
 <!-- !split -->
-<div class="alert alert-block alert-success alert-text-normal"><b>Note.</b>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
 Anaconda installe plusieurs ex&#233;cutables pour d&#233;velopper en Python dans le r&#233;pertoire <em>anaconda/bin</em>, sans toujours cr&#233;er des raccourcis sur le bureau ou dans un menu. Nous nous occuperons au tout d&#233;but de la formation de cr&#233;er des raccourcis pour pouvoir lancer l'application web <em>Jupyter notebook</em>. Vous pouvez lancer le notebook depuis le navigateur Anaconda.
 </div>
+</div>
 
+
+<h2 id="___sec7" class="anchor">Spyder </h2>
+Pour le d&#233;veloppement de programmes en langage Python, des applications sp&#233;ciales appel&#233;es IDE (Integrated Development Environment) peuvent &#234;tre utilis&#233;es. Les IDE les plus avanc&#233;s ont des &#233;diteurs, des consoles, des outils pour organiser des suites de programmes et de biblioth&#232;ques, un correcteur orthographique (spell-checking) et une compl&#233;tion automatiques (auto-completion) pour les scripts partiellement &#233;crits (ces outils connaissent la syntaxe du langage de programmation) et des outils de d&#233;bogage.
+
+<p>
+Utiliser un bon &#233;diteur pour programmer en Python est bon. Utiliser un vrai IDE est encore plus confortable et puissant. <b>Spyder</b> (Scientific PYthon Development EnviRonment) semble actuellement tr&#232;s r&#233;pandu pour l&#8217;utilisation scientifique de Python.
+
+<p>
+Spyder est un environnement de d&#233;veloppement interactif gratuit inclus avec Anaconda. Il comprend des fonctionnalit&#233;s d'&#233;dition, de test interactif, de d&#233;bogage et d'introspection.
+
+<p>
+Apr&#232;s avoir install&#233; Anaconda, vous pouvez d&#233;marrer Spyder sur macOS, Linux ou Windows en ouvrant une fen&#234;tre de terminal (Ubuntu/macOS) ou d'invite de commande (Windows) et en ex&#233;cutant la commande <code>spyder</code>.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Spyder sous Windows. </p></center>
+<p><img src="imgs/SpyderIDE.png" align="bottom" width=600></p>
+</center>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec7" class="anchor">Installation sur smartphone </h2>
+<h2 id="___sec8" class="anchor">Installation sur smartphone </h2>
 
-<h3 id="___sec8" class="anchor">Pydroid 3 - IDE &#233;ducatif pour Python 3 </h3>
+<h3 id="___sec9" class="anchor">Pydroid 3 - IDE &#233;ducatif pour Python 3 </h3>
 
 <p>
 Pydroid 3 est l'IDE &#233;ducatif Python 3 le plus simple et le plus puissant &#224; utiliser pour Android.
@@ -330,8 +360,8 @@ Les &#233;tapes suivantes, dans les figures ci-dessous, vous permettent d&#8217;
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  Pydroid 3: Phase installation </p></center>
-<p><img src="images/pydroid3_1.png" align="bottom" width=600></p>
+<center><p class="caption">Figure 3:  Pydroid 3: Phase installation </p></center>
+<p><img src="imgs/pydroid3_1.png" align="bottom" width=600></p>
 </center>
 
 <p>
@@ -358,8 +388,8 @@ Les &#233;tapes suivantes, dans les figures ci-dessous, vous permettent d&#8217;
 <p>
 <center>  <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  Pydroid 3: Phase utilisation </p></center>
-<p><img src="images/pydroid3_2.png" align="bottom" width=600></p>
+<center><p class="caption">Figure 4:  Pydroid 3: Phase utilisation </p></center>
+<p><img src="imgs/pydroid3_2.png" align="bottom" width=600></p>
 </center>
 
 <!-- ------------------- end of main content --------------- -->

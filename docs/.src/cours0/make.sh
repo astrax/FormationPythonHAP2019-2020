@@ -48,16 +48,20 @@ doconce replace '\eqref{mysec:eq:Dudt}' '(ref{mysec:eq:Dudt})' $1
 }
 
 doconce pygmentize $name.do.txt perldoc
-system doconce format pdflatex $name --latex_code_style=pyg-gray $options $opt2 --latex_admon=grayicon --latex_admon_title_no_period --latex_copyright=titlepages
+system doconce format pdflatex $name --latex_code_style=pyg-gray $options --latex_admon=grayicon --latex_admon_title_no_period --latex_style=std --latex_copyright=titlepages
 # Tips: http://folk.uio.no/tobiasvl/latex.html
 system common_replacements $name.tex
 # Auto edits
+# With t4/svmono linewidth has some too large value before \mymainmatter
+# is called, so the box width as linewidth+2mm is wrong, it must be
+# explicitly set to 120mm.
+doconce replace '\setlength{\lstboxwidth}{\linewidth+2mm}' '\setlength{\lstboxwidth}{120mm}' $name.tex # lst
 system doconce replace 'linecolor=black,' 'linecolor=darkblue,' $name.tex
 system doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' $name.tex
 system doconce replace '\maketitle' '\subtitle{Modeling, Algorithms, Analysis, Programming, and Verification}\maketitle' $name.te
 doconce replace 'texttt{>>>}' 'Verb!>>>!' $name.tex # require fix for latex
 
-doconce replace '10pt]{' '10pt,french]{' $name.tex
+doconce replace '11pt]{' '11pt,french]{' $name.tex
 # package [norsk]{label} requires texlive-lang-norwegian package
 doconce subst '% insert custom LaTeX commands...' '\usepackage[french]{babel}\n\n% insert custom LaTeX commands...' $name.tex
 system pdflatex -shell-escape $name
@@ -66,7 +70,7 @@ system makeindex $name
 pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
-# LaTeX Beamer slides
+# # LaTeX Beamer slides
 # beamertheme=red_shadow
 # system doconce format pdflatex $name --latex_title_layout=beamer --latex_admon_title_no_period -DBEAMER
 # editfix ${name}.p.tex
@@ -76,7 +80,7 @@ pdflatex -shell-escape $name
 # system common_replacements ${name}-beamer.tex
 # system pdflatex -shell-escape ${name}-beamer
 # system pdflatex -shell-escape ${name}-beamer
-#
+
 # rawgit="--html_raw_github_url=raw.github"
 # ## deck
 # html=${name}-deck
@@ -85,14 +89,27 @@ pdflatex -shell-escape $name
 # system doconce slides_html $html deck --html_slide_theme=sandstone.default --copyright=everypage
 # editfix $html.html
 
+# Plain HTML documents
+# html=${name}-solarized
+# system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $options
+# system doconce split_html $html.html --method=space10
+# common_replacements $html.html
 
-# HTML PLAIN
-system doconce format html $name --without_solutions --html_style=bootswatch_cerulean $options
-common_replacements $name.html
+# HTML bootstrap
+html=${name}-bs
+system doconce format html $name --html_style=bootswatch_journal "--html_body_style=font-size:20px;line-height:1.5" --pygments_html_style=default --html_admon=bootstrap_panel --html_output=$html $options
+common_replacements $html.html
+#system doconce split_html $html.html --pagination
+
+
+# Jupyter notebook
+doconce format ipynb $name
 
 # Publish
 dest=../../pub/$name
 if [ ! -d $dest ]; then
 mkdir $dest
 fi
-cp -r *.pdf *.html $dest
+cp -r imgs scripts *.pdf *.html *.ipynb *.tar.gz $dest
+
+#./clean.sh

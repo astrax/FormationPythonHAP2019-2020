@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Introduction">
+
+<title>Introduction</title>
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+<h2 style="text-align: center;">Introduction</h2>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b style="font-weight: bold">Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b style="font-weight: bold">Universit&#233; de Tunis El Manar.</b></center>
+<br>
+<p>
+<center><b style="font-weight: bold">Mercredi, 10 octobre 2018</b></center> <!-- date -->
+<br>
+
+<h1 id="table_of_contents">Table of contents</h2>
+
+<p>
+<a href="#___sec0"> Objectifs g&#233;n&#233;raux en premier </a><br>
+<a href="#___sec1"> Situation standard que nous rencontrons quotidiennement </a><br>
+<a href="#___sec2"> Langage Python </a><br>
+<a href="#___sec3"> Installation d'un environnement Python scientifique </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Installation sur ordinateur </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Installation sur smartphone </a><br>
+</p>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+</section>
+
+
+<section class="slide">
+<div class="alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold">Notice.</b>
+<p>
+Toutes les notes de cours et les TP sont accessibles &#224; partir de la page Web: <a href="https://codetunisia.github.io/CoursSimNum/" target="_blank"><tt>https://codetunisia.github.io/CoursSimNum/</tt></a>
+<br /><br /><center><p><img src="images/logo.png" align="bottom" width=100></p></center><br /><br />
+</div>
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec0">Objectifs g&#233;n&#233;raux en premier </h1>
+
+<p>
+Une partie essentielle de ce cours est de vous permettre de faire de la science par des exp&#233;riences num&#233;riques et de d&#233;velopper des projets qui vous permettent d'&#233;tudier des syst&#232;mes complexes. Le but est d'am&#233;liorer ce que nous appelons la pens&#233;e algorithmique.
+
+<p>
+<b style="font-weight: bold">Algorithme</b>
+Un ensemble fini d'instructions non ambigu&#235;s qui, &#233;tant donn&#233; un ensemble de conditions initiales, peuvent &#234;tre effectu&#233;es dans une s&#233;quence prescrite pour atteindre un certain but.
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec1">Situation standard que nous rencontrons quotidiennement </h1>
+
+<p>
+La situation standard que nous rencontrons presque tous les s&#233;ances de cours:
+
+<ul>
+<p><li> Th&#233;orie + exp&#233;rience + simulation est presque la norme dans la recherche et l'industrie.</li>
+<p><li> &#202;tre capable de mod&#233;liser des syst&#232;mes complexes. R&#233;soudre de vrais probl&#232;mes.</li>
+<p><li> Accent la compr&#233;hension des principes fondamentaux et des lois dans les sciences.</li>
+<p><li> &#202;tre capable de visualiser, pr&#233;senter, discuter, interpr&#233;ter et venir avec une analyse critique des r&#233;sultats, et d&#233;velopper une attitude &#233;thique saine pour son propre travail.</li>
+<p><li> Am&#233;liorer le raisonnement sur la m&#233;thode scientifique.</li>
+</ul>
+<p>
+
+Une bonne pr&#233;sentation des r&#233;sultats obtenus via de bons rapports scientifiques, aide &#224; inclure tous les aspects ci-dessus.
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec2">Langage Python </h1>
+
+<p>
+<a href="http://www.python.org/" target="_blank">Python</a> est un langage de programmation moderne de haut niveau, orient&#233; objet et d'usage g&#233;n&#233;ral.
+
+<p>
+<b style="font-weight: bold">Caract&#233;ristiques g&#233;n&#233;rales de Python</b> :
+
+<ul>
+<p><li> Langage simple:</li>
+
+<ul>
+
+<p><li> facile &#224; lire et &#224; apprendre avec une syntaxe minimaliste.</li>
+</ul>
+<p><li> Langage concis et expressif:</li>
+
+<ul>
+
+<p><li> moins de lignes de code</li>
+
+<p><li> moins de bugs</li>
+
+<p><li> plus facile &#224; maintenir.</li>
+</ul>
+<p>
+</ul>
+</section>
+
+
+<section class="slide">
+<b style="font-weight: bold">D&#233;tails techniques</b> :
+
+<ul>
+<p><li> Typ&#233; dynamiquement:</li>
+
+<ul>
+
+<p><li> Pas besoin de d&#233;finir le type des variables, les arguments ou le type des fonctions.</li>
+</ul>
+<p><li> La gestion automatique de la m&#233;moire:</li>
+
+<ul>
+
+<p><li> Aucune n&#233;cessit&#233; d'allouer explicitement et d&#233;sallouer la m&#233;moire pour les variables et les tableaux de donn&#233;es. Aucun bug de fuite de m&#233;moire.</li>
+</ul>
+<p><li> Interpr&#233;t&#233;:</li>
+
+<ul>
+
+<p><li> Pas besoin de compiler le code. L'interpr&#233;teur Python lit et ex&#233;cute le code python directement.</li>
+</ul>
+<p>
+</ul>
+</section>
+
+
+<section class="slide">
+<b style="font-weight: bold">Avantages</b> :
+
+<ul>
+<p><li> Le principal avantage est la facilit&#233; de programmation, qui minimise le temps n&#233;cessaire pour d&#233;velopper, d&#233;boguer et maintenir le code.</li>
+<p><li> Langage bien con&#231;u qui encourage les bonnes pratiques de programmation:</li>
+
+<ul>
+
+<p><li> Modulaire et orient&#233;e objet, permet l'encapsulation  et la r&#233;utilisation de code. Il en r&#233;sulte souvent un code plus transparent, plus facile &#224; am&#233;liorer et sans bug.</li>
+
+<p><li> Documentation int&#233;gr&#233; avec le code.</li>
+</ul>
+<p><li> De nombreuses biblioth&#232;ques standards, et de nombreux packages add-on.</li>
+</ul>
+</section>
+
+
+<section class="slide">
+<br /><br /><center><p><img src="images/python_easy.png" align="bottom" width=600></p></center><br /><br />
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec3">Installation d'un environnement Python scientifique </h1>
+
+<h2 id="___sec4">Installation sur ordinateur </h2>
+
+<h3 id="___sec5">Qu&#8217;est ce que Anaconda ? </h3>
+
+<p>
+L&#8217;installation d&#8217;un environnement Python complet peut-&#234;tre une vraie gal&#232;re. D&#233;j&#224;, il faut t&#233;l&#233;charger Python et l&#8217;installer. Par la suite, t&#233;l&#233;charger un &#224; un les packages dont on a besoin. Parfois, le nombre de ces librairies peut-&#234;tre grand.
+
+<p>
+Par ailleurs, il faut s&#8217;assurer de la compatibilit&#233; entre les versions des diff&#233;rentes packages qu&#8217;on a &#224; t&#233;l&#233;charger. Bref, ce n&#8217;est pas amusant.
+</section>
+
+
+<section class="slide">
+<a href="https://www.anaconda.com/download/" target="_blank">Anaconda</a> est  une distribution Python. A son installation, Anaconda installera Python ainsi qu'une multitude de packages (voir <a href="https://docs.anaconda.com/anaconda/packages/pkg-docs#python-3-6" target="_blank">liste de packages anaconda</a>).  Cela nous &#233;vite de nous ruer dans les probl&#232;mes d&#8217;incompatibilit&#233;s entre les diff&#233;rents packages.
+
+<p>
+Finalement, Anaconda propose un outil de gestion de packages appel&#233; <a href="https://conda.io/docs/" target="_blank">conda</a>. Ce dernier permettra de mettre &#224; jour et installer facilement les librairies dont on aura besoin pour nos d&#233;veloppements.
+</section>
+
+
+<section class="slide">
+
+<h3 id="___sec6">Pr&#233;parer la formation: t&#233;l&#233;chargement d&#8217;Anaconda </h3>
+
+<p>
+Nous demandons &#224; tous les &#233;tudiants de t&#233;l&#233;charger Anaconda. Pour cela, il faut t&#233;l&#233;charger un installeur &#224; partir de <a href="https://www.anaconda.com/download/" target="_blank"><tt>https://www.anaconda.com/download/</tt></a>, correspondant &#224; votre syst&#232;me d&#8217;exploitation (Windows, Mac OS X, Linux). Il faut choisir entre 32 bits ou 64 bits (pour la version <em>Python 3</em>) selon que votre syst&#232;me d&#8217;exploitation est 32 bits ou 64 bits.
+</section>
+
+
+<section class="slide">
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Interface graphique du navigateur Anaconda sur Windows </p></center>
+<p><img src="images/AnacondaNavigator.png" align="bottom" width=600></p>
+</center>
+</section>
+
+
+<section class="slide">
+<div class="alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold">Notice.</b>
+<p>
+Anaconda installe plusieurs ex&#233;cutables pour d&#233;velopper en Python dans le r&#233;pertoire <em>anaconda/bin</em>, sans toujours cr&#233;er des raccourcis sur le bureau ou dans un menu. Nous nous occuperons au tout d&#233;but de la formation de cr&#233;er des raccourcis pour pouvoir lancer l'application web <em>Jupyter notebook</em>. Vous pouvez lancer le notebook depuis le navigateur Anaconda.
+</div>
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec7">Installation sur smartphone </h2>
+
+<h3 id="___sec8">Pydroid 3 - IDE &#233;ducatif pour Python 3 </h3>
+
+<p>
+Pydroid 3 est l'IDE &#233;ducatif Python 3 le plus simple et le plus puissant &#224; utiliser pour Android.
+
+<p>
+Pydroid 3 fournit:
+
+<ul>
+<p><li> Interpr&#233;teur Python 3.6 hors connexion: Internet n'est pas n&#233;cessaire pour ex&#233;cuter des programmes Python.</li>
+<p><li> Pip package manager et un r&#233;f&#233;rentiel personnalis&#233; pour les packages de roues pr&#233;d&#233;finis pour les biblioth&#232;ques scientifiques am&#233;lior&#233;es, tels que numpy, scipy, matplotlib, scikit-learn et jupyter.</li>
+<p><li> ...</li>
+</ul>
+</section>
+
+
+<section class="slide">
+<b style="font-weight: bold">Installer et utiliser Pydroid 3 sur son smartphone:</b>
+
+<p>
+Pydroid est une application Android que vous pouvez obtenir sur Google Play: <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank"><tt>https://play.google.com/store/apps/details?id=ru.iiec.pydroid3</tt></a>
+
+<p>
+Les &#233;tapes suivantes, dans les figures ci-dessous, vous permettent d&#8217;utiliser le cahier Jupyter sur votre t&#233;l&#233;phone portable n&#8217;importe o&#249; et &#224; tout moment pour vous entra&#238;ner au maximum et vous familiariser avec tous les exemples de programmation de ce cours.
+</section>
+
+
+<section class="slide">
+<b style="font-weight: bold">Phase installation:</b>
+
+<p>
+1. Installer Pydroid 3 depuis Google Play: <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank"><tt>https://play.google.com/store/apps/details?id=ru.iiec.pydroid3</tt></a>
+
+<p>
+2. Ouvrez l'application, sur le menu cliquez sur pip et allez &#224; l'onglet "QUICK INSTALL" pour obtenir les biblioth&#232;ques scientifiques n&#233;cessaires &#224; ce cours.
+
+<p>
+3. Dans "QUICK INSTALL", installer les packages <em>Jupyter</em> , <em>numpy</em> et <em>matplotlib</em>.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Pydroid 3: Phase installation </p></center>
+<p><img src="images/pydroid3_1.png" align="bottom" width=600></p>
+</center>
+</section>
+
+
+<section class="slide">
+<b style="font-weight: bold">Phase utilisation:</b>
+
+<p>
+4. Retournez au menu et ouvrez le <b style="font-weight: bold">terminal</b>.
+
+<p>
+5. Sur le terminal, entrez la commande suivante:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>jupyter notebook
+</pre></div>
+<p>
+6. Jupyter s'ex&#233;cutera sur votre navigateur Web. Acc&#233;dez au r&#233;pertoire dans lequel vous avez des notebooks &#224; ouvrir, &#224; t&#233;l&#233;charger (bouton <em>upload</em>) ou &#224; cr&#233;er (bouton <em>New</em>).
+
+<p>
+7. Amusez-vous &#224; travailler sur le notebook: cr&#233;ez du contenu, lancez et modifiez des exemples
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Pydroid 3: Phase utilisation </p></center>
+<p><img src="images/pydroid3_2.png" align="bottom" width=600></p>
+</center>
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>

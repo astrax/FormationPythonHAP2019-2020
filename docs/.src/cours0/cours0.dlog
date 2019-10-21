@@ -310,3 +310,36 @@ figure file images/pydroid3_1:
 figure file images/pydroid3_2:
     can use images/pydroid3_2.png for format html
 output in cours0.html
+translating doconce text in cours0.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__Algorithme__
+figure file imgs/pydroid3_2:
+    can use imgs/pydroid3_2.png for format pdflatex
+figure file imgs/AnacondaNavigator:
+    can use imgs/AnacondaNavigator.png for format pdflatex
+figure file imgs/pydroid3_1:
+    can use imgs/pydroid3_1.png for format pdflatex
+output in cours0.tex
+translating doconce text in cours0.do.txt to html
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__Algorithme__
+figure file imgs/AnacondaNavigator:
+    can use imgs/AnacondaNavigator.png for format html
+figure file imgs/pydroid3_2:
+    can use imgs/pydroid3_2.png for format html
+figure file imgs/pydroid3_1:
+    can use imgs/pydroid3_1.png for format html
+output in cours0-bs.html
+translating doconce text in cours0.do.txt to ipynb
+*** warning: missing . , : ) or ? after paragraph heading:
+__Algorithme__
+figure file imgs/pydroid3_1:
+    can use imgs/pydroid3_1.png for format ipynb
+figure file imgs/AnacondaNavigator:
+    can use imgs/AnacondaNavigator.png for format ipynb
+figure file imgs/pydroid3_2:
+    can use imgs/pydroid3_2.png for format ipynb
+collected all required additional files in ipynb-cours0-src.tar.gz which must be distributed with the notebook
+output in cours0.ipynb

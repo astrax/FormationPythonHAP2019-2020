@@ -1,12 +1,13 @@
 \babel@toc {french}{}
 \contentsline {section}{\numberline {1}Objectifs g\IeC {\'e}n\IeC {\'e}raux en premier}{1}{section.1}
 \contentsline {paragraph}{Algorithme}{1}{section*.2}
-\contentsline {section}{\numberline {2}Situation standard que nous rencontrons quotidiennement}{1}{section.2}
+\contentsline {section}{\numberline {2}Situation standard que nous rencontrons quotidiennement}{2}{section.2}
 \contentsline {section}{\numberline {3}Langage Python}{2}{section.3}
 \contentsline {section}{\numberline {4}Installation d'un environnement Python scientifique}{3}{section.4}
 \contentsline {subsection}{\numberline {4.1}Installation sur ordinateur}{3}{subsection.4.1}
 \contentsline {paragraph}{Qu\IeC {\textquoteright }est ce que Anaconda ?}{3}{section*.3}
-\contentsline {paragraph}{Pr\IeC {\'e}parer la formation: t\IeC {\'e}l\IeC {\'e}chargement d\IeC {\textquoteright }Anaconda.}{3}{section*.4}
-\contentsline {subsection}{\numberline {4.2}Installation sur smartphone}{4}{subsection.4.2}
-\contentsline {paragraph}{Pydroid 3 - IDE \IeC {\'e}ducatif pour Python 3.}{4}{section*.5}
-\contentsline {paragraph}{Installer et utiliser Pydroid 3 sur son smartphone:}{4}{section*.6}
+\contentsline {paragraph}{Pr\IeC {\'e}parer la formation: t\IeC {\'e}l\IeC {\'e}chargement d\IeC {\textquoteright }Anaconda.}{4}{section*.4}
+\contentsline {subsection}{\numberline {4.2}Spyder}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Installation sur smartphone}{5}{subsection.4.3}
+\contentsline {paragraph}{Pydroid 3 - IDE \IeC {\'e}ducatif pour Python 3.}{5}{section*.5}
+\contentsline {paragraph}{Installer et utiliser Pydroid 3 sur son smartphone:}{5}{section*.6}
