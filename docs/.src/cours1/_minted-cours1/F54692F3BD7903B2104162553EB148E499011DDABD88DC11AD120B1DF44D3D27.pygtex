@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{30}\PYG{p}{]:} \PYG{n}{chaine} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Bonsoir\PYGZsq{}}
+    \PYG{o}{...}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{}la sous\PYGZhy{}chaîne \PYGZsq{}soir\PYGZsq{} fait\PYGZhy{}elle partie de la chaîne \PYGZsq{}Bonsoir\PYGZsq{} ?}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{31}\PYG{p}{]:} \PYG{n}{resultat} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}soir\PYGZsq{}} \PYG{o+ow}{in} \PYG{n}{chaine}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{resultat}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{31}\PYG{p}{]:} \PYG{n+nb+bp}{True}
+\end{Verbatim}

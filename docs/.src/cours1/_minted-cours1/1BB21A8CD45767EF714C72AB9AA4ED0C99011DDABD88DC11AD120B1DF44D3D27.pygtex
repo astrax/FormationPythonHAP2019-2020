@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{42}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{+} \PYG{n}{b}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{42}\PYG{p}{]:} \PYG{p}{(}\PYG{l+m+mi}{3}\PYG{o}{+}\PYG{l+m+mi}{4j}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{16}\PYG{p}{]:} \PYG{k}{print}\PYG{p}{(}\PYG{n}{largeur}\PYG{p}{)}
+\PYG{l+m+mi}{25}
+\end{Verbatim}

@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{43}\PYG{p}{]:} \PYG{n}{nom} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Tounsi\PYGZsq{}} \PYG{c+c1}{\PYGZsh{} entre apostrophes}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{nom}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{43}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}Tounsi\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{44}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{nom}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{44}\PYG{p}{]:} \PYG{n+nb}{str}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{45}\PYG{p}{]:} \PYG{n}{prenom} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}Ali\PYGZdq{}}  \PYG{c+c1}{\PYGZsh{} on peut aussi utiliser les guillemets}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{prenom}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{45}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}Ali\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{46}\PYG{p}{]:} \PYG{k}{print}\PYG{p}{(}\PYG{n}{nom}\PYG{p}{,} \PYG{n}{prenom}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} ne pas oublier la virgule}
+\PYG{n}{Tounsi} \PYG{n}{Ali}
+\end{Verbatim}

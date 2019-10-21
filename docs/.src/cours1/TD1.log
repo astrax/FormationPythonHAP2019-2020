@@ -1,0 +1,1285 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.8.29)  22 OCT 2019 01:14
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**TD1
+(./TD1.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen112
+\extrarowheight=\dimen113
+\NC@list=\toks19
+\extratabsurround=\skip46
+\backup@length=\skip47
+)
+\everycr=\toks20
+\minrowclearance=\skip48
+)
+LaTeX Info: Redefining \color on input line 709.
+\rownum=\count99
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ltablex/ltablex.sty
+Package: ltablex 2014/08/13 v1.1 Modified tabularx
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip49
+\LTright=\skip50
+\LTpre=\skip51
+\LTpost=\skip52
+\LTchunksize=\count100
+\LTcapwidth=\dimen114
+\LT@head=\box28
+\LT@firsthead=\box29
+\LT@foot=\box30
+\LT@lastfoot=\box31
+\LT@cols=\count101
+\LT@rows=\count102
+\c@LT@tables=\count103
+\c@LT@chunks=\count104
+\LT@p@ftn=\toks21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
+\TX@col@width=\dimen115
+\TX@old@table=\dimen116
+\TX@old@col=\dimen117
+\TX@target=\dimen118
+\TX@delta=\dimen119
+\TX@cols=\count105
+\TX@ftn=\toks22
+))
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+\MT@toks=\toks24
+\MT@count=\count106
+LaTeX Info: Redefining \textls on input line 793.
+\MT@outer@kern=\dimen120
+LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
+\MT@listname@count=\count107
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2018/01/14 v2.7a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 913.
+LaTeX Info: Redefining \lslig on input line 913.
+\MT@outer@space=\skip53
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count108
+\FV@InFile=\read1
+\FV@TabBox=\box32
+\c@FancyVerbLine=\count109
+\FV@StepNumber=\count110
+\FV@OutFile=\write3
+) (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip54
+\fb@frw=\dimen123
+\fb@frh=\dimen124
+\FrameRule=\dimen125
+\FrameSep=\dimen126
+) (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+Package: moreverb 2008/06/03 v2.3a `more' verbatim facilities
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks25
+\verbatim@line=\toks26
+\verbatim@in@stream=\read2
+)
+\tab@position=\count111
+\tab@size=\count112
+\listing@line=\count113
+)
+(/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2017/07/19 v2.5 Yet another Pygments shim for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2017/07/08 v1.3.1 fvextra - extensions and patches for fancyvr
+b
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count114
+)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count115
+\output=\toks27
+\linenoprevgraf=\count116
+\linenumbersep=\dimen127
+\linenumberwidth=\dimen128
+\c@linenumber=\count117
+\c@pagewiselinenumber=\count118
+\c@LN@truepage=\count119
+\c@internallinenumber=\count120
+\c@internallinenumbers=\count121
+\quotelinenumbersep=\dimen129
+\bframerule=\dimen130
+\bframesep=\dimen131
+\bframebox=\box33
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\c@FV@TrueTabGroupLevel=\count122
+\c@FV@TrueTabCounter=\count123
+\FV@TabBox@Group=\box34
+\FV@TmpLength=\skip55
+\c@FV@HighlightLinesStart=\count124
+\c@FV@HighlightLinesStop=\count125
+\FV@LoopCount=\count126
+\FV@NCharsBox=\box35
+\FV@BreakIndent=\dimen132
+\FV@BreakIndentNChars=\count127
+\FV@BreakSymbolSepLeft=\dimen133
+\FV@BreakSymbolSepLeftNChars=\count128
+\FV@BreakSymbolSepRight=\dimen134
+\FV@BreakSymbolSepRightNChars=\count129
+\FV@BreakSymbolIndentLeft=\dimen135
+\FV@BreakSymbolIndentLeftNChars=\count130
+\FV@BreakSymbolIndentRight=\dimen136
+\FV@BreakSymbolIndentRightNChars=\count131
+\c@FancyVerbLineBreakLast=\count132
+\FV@LineBox=\box36
+\FV@LineIndentBox=\box37
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count133
+\calc@Bcount=\count134
+\calc@Adimen=\dimen137
+\calc@Bdimen=\dimen138
+\calc@Askip=\skip56
+\calc@Bskip=\skip57
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count135
+\calc@Cskip=\skip58
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 67.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+)
+runsystem(uname -s > "TD1.w18")...executed.
+
+ (./TD1.w18)
+runsystem(rm -- "TD1.w18")...executed.
+
+) (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write4
+\integerpart=\count136
+\decimalpart=\count137
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count138
+\float@exts=\toks28
+\float@box=\box38
+\@float@everytoks=\toks29
+\@floatcapt=\box39
+)
+\minted@appexistsfile=\read3
+\minted@bgbox=\box40
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count139
+\c@minted@pygmentizecounter=\count140
+\@float@every@listing=\toks30
+\c@listing=\count141
+)
+runsystem(mkdir -p _minted-TD1)...executed.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count142
+\uc@combtoks=\toks31
+\uc@combtoksb=\toks32
+\uc@temptokena=\toks33
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks34
+\inpenc@posthook=\toks35
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathpazo.sty
+Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup9
+)
+(/usr/share/texmf/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/pplx/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/zplm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/zplm/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/zplm/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/pplx/b/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/zplm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/zplm/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/zplm/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/zplm/b/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/pplx/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/zplm/b/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/pplx/b/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen139
+\Hy@linkcounter=\count143
+\Hy@pagecounter=\count144
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count145
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `final' set `true' on input line 4383.
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing OFF on input line 4529.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4762.
+\c@Hy@tempcnt=\count146
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5115.
+\XeTeXLinkMargin=\dimen140
+\Fld@menulength=\count147
+\Field@Width=\dimen141
+\Fld@charsize=\dimen142
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing OFF on input line 6384.
+Package hyperref Info: Link coloring OFF on input line 6389.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count148
+\c@Item=\count149
+\c@Hfootnote=\count150
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count151
+\c@bookmark@seq@number=\count152
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip59
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 152.
+Package hyperref Info: Option `colorlinks' set `true' on input line 152.
+Package hyperref Info: Option `pdfmenubar' set `true' on input line 152.
+Package hyperref Info: Option `pdftoolbar' set `true' on input line 152.
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip60
+\f@nch@O@elh=\skip61
+\f@nch@O@erh=\skip62
+\f@nch@O@olh=\skip63
+\f@nch@O@orh=\skip64
+\f@nch@O@elf=\skip65
+\f@nch@O@erf=\skip66
+\f@nch@O@olf=\skip67
+\f@nch@O@orf=\skip68
+)
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 164.
+
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 165.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen143
+\WF@size=\dimen144
+\c@WF@wrappedlines=\count153
+\WF@box=\box41
+\WF@everypar=\toks36
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box42
+\beforetitleunit=\skip69
+\aftertitleunit=\skip70
+\ttl@plus=\dimen145
+\ttl@minus=\dimen146
+\ttl@toksa=\toks37
+\titlewidth=\dimen147
+\titlewidthlast=\dimen148
+\titlewidthfirst=\dimen149
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/ttlkeys.def
+File: ttlkeys.def 2016/03/15
+)
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 317.
+
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 318.
+
+\c@doconceexercisecounter=\count154
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/02/14 3.18 The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2018/02/04 v3.4b French support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/02/14 3.18 Babel common definitions
+\babel@savecnt=\count155
+\U@D=\dimen150
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count156
+)
+\l@acadian = a dialect from \language\l@french 
+\FB@nonchar=\count157
+Package babel Info: Making : an active character on input line 411.
+Package babel Info: Making ; an active character on input line 412.
+Package babel Info: Making ! an active character on input line 413.
+Package babel Info: Making ? an active character on input line 414.
+\FBguill@level=\count158
+\FB@everypar=\toks38
+\FB@Mht=\dimen151
+\mc@charclass=\count159
+\mc@charfam=\count160
+\mc@charslot=\count161
+\std@mcc=\count162
+\dec@mcc=\count163
+\c@FBcaption@count=\count164
+\listindentFB=\skip71
+\descindentFB=\skip72
+\labelwidthFB=\skip73
+\leftmarginFB=\skip74
+\parindentFFN=\dimen152
+\FBfnindent=\skip75
+))
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+\@indexfile=\write6
+\openout6 = `TD1.idx'.
+
+
+Writing index file TD1.idx
+(/usr/share/texlive/texmf-dist/tex/latex/idxlayout/idxlayout.sty
+Package: idxlayout 2012/03/30 v0.4d Configurable index layout
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
+\c@tracingmulticols=\count165
+\mult@box=\box43
+\multicol@leftmargin=\dimen153
+\c@unbalance=\count166
+\c@collectmore=\count167
+\doublecol@number=\count168
+\multicoltolerance=\count169
+\multicolpretolerance=\count170
+\full@width=\dimen154
+\page@free=\dimen155
+\premulticols=\dimen156
+\postmulticols=\dimen157
+\multicolsep=\skip76
+\multicolbaselineskip=\skip77
+\partial@page=\box44
+\last@line=\box45
+\maxbalancingoverflow=\dimen158
+\mult@rightbox=\box46
+\mult@grightbox=\box47
+\mult@gfirstbox=\box48
+\mult@firstbox=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\c@columnbadness=\count171
+\c@finalcolumnbadness=\count172
+\last@try=\dimen159
+\multicolovershoot=\dimen160
+\multicolundershoot=\dimen161
+\mult@nat@firstbox=\box67
+\colbreak@box=\box68
+\mc@col@check@num=\count173
+)
+\c@idxcols=\count174
+\indexcolsep=\skip78
+\indexrule=\skip79
+\ila@indentunit=\skip80
+\ila@initsep=\skip81
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+runsystem(which pygmentize && touch TD1.aex)...executed.
+
+runsystem(rm TD1.aex)...executed.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip82
+\RaggedLeftLeftskip=\skip83
+\RaggedRightLeftskip=\skip84
+\CenteringRightskip=\skip85
+\RaggedLeftRightskip=\skip86
+\RaggedRightRightskip=\skip87
+\CenteringParfillskip=\skip88
+\RaggedLeftParfillskip=\skip89
+\RaggedRightParfillskip=\skip90
+\JustifyingParfillskip=\skip91
+\CenteringParindent=\skip92
+\RaggedLeftParindent=\skip93
+\RaggedRightParindent=\skip94
+\JustifyingParindent=\skip95
+) (./TD1.aux)
+\openout1 = `TD1.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 350.
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 350.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 350.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 350.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 350.
+
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count175
+\scratchdimen=\dimen162
+\scratchbox=\box69
+\nofMPsegments=\count176
+\nofMParguments=\count177
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count178
+\MPscratchDim=\dimen163
+\MPnumerator=\count179
+\makeMPintoPDFobject=\count180
+\everyMPtoPDFconversion=\toks40
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Info: Redefining \microtypecontext on input line 350.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+\AtBeginShipoutBox=\box70
+Package hyperref Info: Link coloring ON on input line 350.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count181
+)
+LaTeX Info: Redefining \ref on input line 350.
+LaTeX Info: Redefining \pageref on input line 350.
+LaTeX Info: Redefining \nameref on input line 350.
+
+(./TD1.out) (./TD1.out)
+\@outlinefile=\write7
+\openout7 = `TD1.out'.
+
+LaTeX Info: Redefining \degres on input line 350.
+LaTeX Info: Redefining \dots on input line 350.
+LaTeX Info: Redefining \up on input line 350.
+ ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 350.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 374.
+
+
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 374.
+
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 374.
+
+
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 374
+.
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 374
+.
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 374.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 374.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 374.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 12.50409pt on input line 374.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 374.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 374.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 12.50409pt on input line 374.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 374.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 374.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 374
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `zplm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 374.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 374.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 374.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 374.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 374.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 374.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 374.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 374.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 374.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 374.
+
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+\openout3 = `TD1.pyg'.
+
+
+(./_minted-TD1/default-pyg-prefix.pygstyle) (./_minted-TD1/default.pygstyle)
+(./_minted-TD1/00271165EC1C801192DE7D09EB917B19947EFABDBAF6142F99C556CE9D8CD352
+.pygtex
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 5.
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 413.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7.6> on input line 413.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 413.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 413.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 413.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 413.
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 429.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+\openout3 = `TD1.pyg'.
+
+
+(./_minted-TD1/80400D4ECE99C025083DC40CCB184516947EFABDBAF6142F99C556CE9D8CD352
+.pygtex
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 2.
+ (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package microtype Info: Character `texttrademark ' is missing
+(microtype)             in font `TS1/lmtt/m/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+)
+\openout3 = `TD1.pyg'.
+
+
+(./_minted-TD1/D49613DDC4FC8B0AD3A156B3F532382A947EFABDBAF6142F99C556CE9D8CD352
+.pygtex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 518.
+ [2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 518.
+ (./TD1.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 518.
+
+
+ *File List*
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2016/01/02 v1.6 sample color configuration
+  pdftex.def    2018/01/08 v1.0l Graphics/color driver for pdftex
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2017/09/02 v2.17a AMS math features
+ amstext.sty    2000/06/29 v2.01 AMS text
+  amsgen.sty    1999/11/30 v2.0 generic functions
+  amsbsy.sty    1999/11/29 v1.2d Bold Symbols
+  amsopn.sty    2016/03/08 v2.02 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2016/05/11 v2.12 LaTeX color extensions (UK)
+   color.cfg    2016/01/02 v1.6 sample color configuration
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2016/10/06 v2.4d Tabular extension package (FMi)
+      bm.sty    2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+ ltablex.sty    2014/08/13 v1.1 Modified tabularx
+longtable.sty    2014/10/28 v4.11 Multi-page Table package (DPC)
+tabularx.sty    2016/02/03 v2.11 `tabularx' package (DPC)
+microtype.sty    2018/01/14 v2.7a Micro-typographical refinements (RS)
+  keyval.sty    2014/10/28 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2018/01/14 v2.7a Definitions specific to pdftex (RS)
+microtype.cfg    2018/01/14 v2.7a microtype main configuration file (RS)
+graphicx.sty    2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    2016/01/03 v1.10 sin cos tan (DPC)
+graphics.cfg    2016/06/04 v1.11 sample graphics configuration
+fancyvrb.sty    2008/02/07
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+  minted.sty    2017/07/19 v2.5 Yet another Pygments shim for LaTeX
+kvoptions.sty    2016/05/16 v3.12 Key value format for package options (HO)
+ ltxcmds.sty    2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+kvsetkeys.sty    2016/05/16 v1.17 Key value parser (HO)
+infwarerr.sty    2016/05/16 v1.4 Providing info/warning/error messages (HO)
+etexcmds.sty    2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2016/05/16 v1.4 Provides the ifluatex switch (HO)
+ fvextra.sty    2017/07/08 v1.3.1 fvextra - extensions and patches for fancyvrb
+
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+etoolbox.sty    2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+ upquote.sty    2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbat
+im
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+shellesc.sty    2016/06/07 v0.02a unified shell escape interface for LaTeX
+ifplatform.sty    2017/10/13 v0.4a Testing for the operating system
+pdftexcmds.sty    2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO)
+   ifpdf.sty    2017/03/15 v3.2 Provides the ifpdf switch
+catchfile.sty    2016/05/16 v1.7 Catch the contents of a file (HO)
+     TD1.w18
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+   float.sty    2001/11/08 v1.3d Float enhancements (AL)
+ fontenc.sty
+   t1enc.def    2017/04/05 v2.0i Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2015/03/17 v1.2c Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2018/02/06 v6.86b Hypertext links for LaTeX
+hobsub-hyperref.sty    2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2016/05/16 v1.14 Construct package bundles (HO)
+  ifvtex.sty    2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+ intcalc.sty    2016/05/16 v1.2 Expandable calculations with integers (HO)
+kvdefinekeys.sty    2016/05/16 v1.4 Define keys (HO)
+pdfescape.sty    2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2016/05/16 v1.4 Expandable calculations on big integers (HO)
+  bitset.sty    2016/05/16 v1.2 Handle bit-vector datatype (HO)
+uniquecounter.sty    2016/05/16 v1.3 Provide unlimited unique counter (HO)
+letltxmacro.sty    2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2016/05/16 v1.3 Wrapper for package hooks (HO)
+xcolor-patch.sty    2016/05/16 xcolor patch
+atveryend.sty    2016/05/16 v1.9 Hooks at the very end of document (HO)
+atbegshi.sty    2016/06/09 v1.18 At begin shipout hook (HO)
+refcount.sty    2016/05/16 v3.5 Data extraction from label references (HO)
+ hycolor.sty    2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2016/05/16 v1.4 Hooks for auxiliary files (HO)
+  pd1enc.def    2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2018/02/06 v6.86b Hyperref driver for pdfTeX
+rerunfilecheck.sty    2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    2017/06/30 v3.9a Extensive control of page headers and footers
+ wrapfig.sty    2003/01/31  v 3.6
+titlesec.sty    2016/03/21 v2.10.2 Sectioning titles
+ ttlkeys.def    2016/03/15
+   babel.sty    2018/02/14 3.18 The Babel package
+  french.ldf    2018/02/04 v3.4b French support from the babel system
+scalefnt.sty    
+idxlayout.sty    2012/03/30 v0.4d Configurable index layout
+multicol.sty    2017/04/11 v1.8q multicolumn formatting (FMi)
+tocbibind.sty    2010/10/13 v1.5k extra ToC listings
+textcomp.sty    2017/04/05 v2.0i Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+ragged2e.sty    2009/05/21 v2.1 ragged2e Package (MS)
+everysel.sty    2011/10/28 v1.2 EverySelectfont Package (MS)
+  ts1cmr.fd    2014/09/29 v2.5h Standard LaTeX font definitions
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2016/05/15 v2.6 Base part for package epstopdf
+  grfext.sty    2016/05/16 v1.2 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2016/05/21 v2.44 Cross-referencing by name of section
+gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
+     TD1.out
+     TD1.out
+   uni-0.def    2013/05/13 UCS: Unicode data U+0000..U+00FF
+  ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  uni-32.def    2013/05/13 UCS: Unicode data U+2000..U+20FF
+_minted-TD1/default-pyg-prefix.pygstyle
+_minted-TD1/default.pygstyle
+_minted-TD1/00271165EC1C801192DE7D09EB917B19947EFABDBAF6142F99C556CE9D8CD352.py
+gtex
+_minted-TD1/80400D4ECE99C025083DC40CCB184516947EFABDBAF6142F99C556CE9D8CD352.py
+gtex
+ ts1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+_minted-TD1/D49613DDC4FC8B0AD3A156B3F532382A947EFABDBAF6142F99C556CE9D8CD352.py
+gtex
+ ***********
+
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 518.
+Package rerunfilecheck Info: File `TD1.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+runsystem(rm TD1.pyg)...executed.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 15541 strings out of 492982
+ 246378 string characters out of 6134896
+ 421699 words of memory out of 5000000
+ 18665 multiletter control sequences out of 15000+600000
+ 77048 words of font info for 128 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,12n,60p,838b,615s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/shar
+e/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
+thsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on TD1.pdf (2 pages, 276335 bytes).
+PDF statistics:
+ 112 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
+ 13 named destinations out of 1000 (max. 500000)
+ 33281 words of extra memory for PDF output out of 35830 (max. 10000000)
+

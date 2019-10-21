@@ -1,0 +1,142 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Introduction</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Objectifs généraux en premier =======</span>
+
+Une partie essentielle de ce cours est de vous permettre de faire de la science par des expériences numériques et de développer des projets qui vous permettent d&#39;étudier des systèmes complexes. Le but est d&#39;améliorer ce que nous appelons la pensée algorithmique.
+
+<span style="color: #800080; font-weight: bold">__Algorithme__</span>
+Un ensemble fini d&#39;instructions non ambiguës qui, étant donné un ensemble de conditions initiales, peuvent être effectuées dans une séquence prescrite pour atteindre un certain but.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Situation standard que nous rencontrons quotidiennement =======</span>
+
+La situation standard que nous rencontrons presque tous les séances de cours:
+
+* Théorie + expérience + simulation est presque la norme dans la recherche et l&#39;industrie.
+* Être capable de modéliser des systèmes complexes. Résoudre de vrais problèmes.
+* Accent la compréhension des principes fondamentaux et des lois dans les sciences.
+* Être capable de visualiser, présenter, discuter, interpréter et venir avec une analyse critique des résultats, et développer une attitude éthique saine pour son propre travail.
+* Améliorer le raisonnement sur la méthode scientifique.
+
+Une bonne présentation des résultats obtenus via de bons rapports scientifiques, aide à inclure tous les aspects ci-dessus.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Langage Python =======</span>
+
+<span style="color: #CD5555">&quot;Python&quot;</span>: &quot;http://www.python.org/&quot; est un langage de programmation moderne de haut niveau, orienté objet et d&#39;usage général.
+
+_Caractéristiques générales de Python_ :
+
+* Langage simple:
+  * facile à lire et à apprendre avec une syntaxe minimaliste.
+* Langage concis et expressif:
+  * moins de lignes de code
+  * moins de bugs
+  * plus facile à maintenir.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+_Détails techniques_ :
+
+* Typé dynamiquement:
+  * Pas besoin de définir le type des variables, les arguments ou le type des fonctions.
+* La gestion automatique de la mémoire:
+  * Aucune nécessité d&#39;allouer explicitement et désallouer la mémoire pour les variables et les tableaux de données. Aucun bug de fuite de mémoire.
+* Interprété:
+  * Pas besoin de compiler le code. L&#39;interpréteur Python lit et exécute le code python directement.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+_Avantages_ :
+
+* Le principal avantage est la facilité de programmation, qui minimise le temps nécessaire pour développer, déboguer et maintenir le code.
+* Langage bien conçu qui encourage les bonnes pratiques de programmation:
+  * Modulaire et orientée objet, permet l&#39;encapsulation  et la réutilisation de code. Il en résulte souvent un code plus transparent, plus facile à améliorer et sans bug.
+  * Documentation intégré avec le code.
+* De nombreuses bibliothèques standards, et de nombreux packages add-on.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #658b00">FIGURE: [images/python_easy.png, width=600 frac=0.6]</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Installation d&#39;un environnement Python scientifique =======</span>
+
+<span style="color: #000080; font-weight: bold">===== Installation sur ordinateur =====</span>
+
+<span style="color: #000080; font-weight: bold">=== Qu’est ce que Anaconda ? ===</span>
+
+L’installation d’un environnement Python complet peut-être une vraie galère. Déjà, il faut télécharger Python et l’installer. Par la suite, télécharger un à un les packages dont on a besoin. Parfois, le nombre de ces librairies peut-être grand.
+
+Par ailleurs, il faut s’assurer de la compatibilité entre les versions des différentes packages qu’on a à télécharger. Bref, ce n’est pas amusant.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #CD5555">&quot;Anaconda&quot;</span>: &quot;https://www.anaconda.com/download/&quot; est  une distribution Python. A son installation, Anaconda installera Python ainsi qu&#39;une multitude de packages (voir &quot;liste de packages anaconda&quot;: &quot;https://docs.anaconda.com/anaconda/packages/pkg-docs#python-3-6&quot;).  Cela nous évite de nous ruer dans les problèmes d’incompatibilités entre les différents packages.
+
+Finalement, Anaconda propose un outil de gestion de packages appelé &quot;conda&quot;: &quot;https://conda.io/docs/&quot;. Ce dernier permettra de mettre à jour et installer facilement les librairies dont on aura besoin pour nos développements.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">=== Préparer la formation: téléchargement d’Anaconda ===</span>
+
+Nous demandons à tous les étudiants de télécharger Anaconda. Pour cela, il faut télécharger un installeur à partir de https://www.anaconda.com/download/, correspondant à votre système d’exploitation (Windows, Mac OS X, Linux). Il faut choisir entre 32 bits ou 64 bits (pour la version *Python 3*) selon que votre système d’exploitation est 32 bits ou 64 bits.
+<span style="color: #8B008B; font-weight: bold">!split</span>
+
+<span style="color: #658b00">FIGURE: [images/AnacondaNavigator, width=600 frac=0.7] Interface graphique du navigateur Anaconda sur Windows</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Anaconda installe plusieurs exécutables pour développer en Python dans le répertoire *anaconda/bin*, sans toujours créer des raccourcis sur le bureau ou dans un menu. Nous nous occuperons au tout début de la formation de créer des raccourcis pour pouvoir lancer l&#39;application web *Jupyter notebook*. Vous pouvez lancer le notebook depuis le navigateur Anaconda.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Installation sur smartphone =====</span>
+
+<span style="color: #000080; font-weight: bold">=== Pydroid 3 - IDE éducatif pour Python 3 ===</span>
+
+Pydroid 3 est l&#39;IDE éducatif Python 3 le plus simple et le plus puissant à utiliser pour Android.
+
+Pydroid 3 fournit:
+
+* Interpréteur Python 3.6 hors connexion: Internet n&#39;est pas nécessaire pour exécuter des programmes Python.
+* Pip package manager et un référentiel personnalisé pour les packages de roues prédéfinis pour les bibliothèques scientifiques améliorées, tels que numpy, scipy, matplotlib, scikit-learn et jupyter.
+* ...
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #800080; font-weight: bold">__Installer et utiliser Pydroid 3 sur son smartphone:__</span>
+
+Pydroid est une application Android que vous pouvez obtenir sur Google Play: URL: &quot;https://play.google.com/store/apps/details?id=ru.iiec.pydroid3&quot;
+
+Les étapes suivantes, dans les figures ci-dessous, vous permettent d’utiliser le cahier Jupyter sur votre téléphone portable n’importe où et à tout moment pour vous entraîner au maximum et vous familiariser avec tous les exemples de programmation de ce cours.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+_Phase installation:_
+
+1. Installer Pydroid 3 depuis Google Play: URL:&quot;https://play.google.com/store/apps/details?id=ru.iiec.pydroid3&quot;
+
+2. Ouvrez l&#39;application, sur le menu cliquez sur pip et allez à l&#39;onglet &quot;QUICK INSTALL&quot; pour obtenir les bibliothèques scientifiques nécessaires à ce cours.
+
+3. Dans &quot;QUICK INSTALL&quot;, installer les packages *Jupyter* , *numpy* et *matplotlib*.
+
+<span style="color: #658b00">FIGURE: [images/pydroid3_1, width=600 frac=0.7] Pydroid 3: Phase installation</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+_Phase utilisation:_
+
+4. Retournez au menu et ouvrez le _terminal_.
+
+5. Sur le terminal, entrez la commande suivante:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> sys
+jupyter notebook
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+6. Jupyter s&#39;exécutera sur votre navigateur Web. Accédez au répertoire dans lequel vous avez des notebooks à ouvrir, à télécharger (bouton *upload*) ou à créer (bouton *New*).
+
+7. Amusez-vous à travailler sur le notebook: créez du contenu, lancez et modifiez des exemples
+
+<span style="color: #658b00">FIGURE: [images/pydroid3_2, width=600 frac=0.7] Pydroid 3: Phase utilisation</span>
+</pre></div>

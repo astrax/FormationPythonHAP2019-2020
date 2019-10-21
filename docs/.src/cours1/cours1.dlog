@@ -1,0 +1,98 @@
+running preprocess -DFORMAT=html -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to html
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+output in cours1-bs.html
+running preprocess -DFORMAT=ipynb -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to ipynb
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+output in cours1.ipynb
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+*** made directory latex_figs for admon figures
+output in cours1.tex
+running preprocess -DFORMAT=html -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to html
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+output in cours1-bs.html
+running preprocess -DFORMAT=ipynb -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to ipynb
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+output in cours1.ipynb
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+output in cours1.tex
+running preprocess -DFORMAT=html -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to html
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+output in cours1-bs.html
+running preprocess -DFORMAT=ipynb -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to ipynb
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+output in cours1.ipynb
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+output in cours1.tex
+running preprocess -DFORMAT=html -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to html
+open file with encoding utf-8
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install:
+    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install
+no lexer for alias 'ipy' found
+output in cours1-bs.html
+running preprocess -DFORMAT=ipynb -DDEVICE=screen  cours1.do.txt > tmp_preprocess__cours1.do.txt
+translating doconce text in tmp_preprocess__cours1.do.txt to ipynb
+*** warning: missing . , : ) or ? after paragraph heading:
+__ Formatage des chaînes__
+output in cours1.ipynb

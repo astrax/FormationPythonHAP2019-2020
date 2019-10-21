@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{63}\PYG{p}{]:} \PYG{n}{chaine} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}22\PYGZsq{}}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{annee\PYGZus{}naissance} \PYG{o}{=} \PYG{l+m+mi}{2018} \PYG{o}{\PYGZhy{}} \PYG{n}{chaine}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n+ne}{TypeError}                  \PYG{n}{Traceback} \PYG{p}{(}\PYG{n}{most} \PYG{n}{recent} \PYG{n}{call} \PYG{n}{last}\PYG{p}{)}
+\PYG{o}{\PYGZlt{}}\PYG{n}{ipython}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{input}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{63}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8607078}\PYG{n}{f78d2}\PYG{o}{\PYGZgt{}} \PYG{o+ow}{in} \PYG{o}{\PYGZlt{}}\PYG{n}{module}\PYG{o}{\PYGZgt{}}\PYG{p}{()}
+      \PYG{l+m+mi}{1} \PYG{n}{chaine} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}22\PYGZsq{}}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{l+m+mi}{2} \PYG{n}{annee\PYGZus{}naissance} \PYG{o}{=} \PYG{l+m+mi}{2018} \PYG{o}{\PYGZhy{}} \PYG{n}{chaine}
+
+\PYG{n+ne}{TypeError}\PYG{p}{:} \PYG{n}{unsupported} \PYG{n}{operand} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{k}{for} \PYG{o}{\PYGZhy{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}int\PYGZsq{}} \PYG{o+ow}{and} \PYG{l+s+s1}{\PYGZsq{}str\PYGZsq{}}
+\end{Verbatim}

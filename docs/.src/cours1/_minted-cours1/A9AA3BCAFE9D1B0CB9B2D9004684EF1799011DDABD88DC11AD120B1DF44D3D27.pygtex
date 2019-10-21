@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{32}\PYG{p}{]:} \PYG{n}{maliste} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{]}
+    \PYG{o}{...}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{}le nombre entier 9 est\PYGZhy{}il dans la liste ?}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]:} \PYG{l+m+mi}{9} \PYG{o+ow}{in} \PYG{n}{maliste}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]:} \PYG{n+nb+bp}{False}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{34}\PYG{p}{]:} \PYG{l+m+mi}{8} \PYG{o+ow}{in} \PYG{n}{maliste}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{34}\PYG{p}{]:} \PYG{n+nb+bp}{True}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{35}\PYG{p}{]:} \PYG{l+m+mi}{14} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n}{maliste}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{35}\PYG{p}{]:} \PYG{n+nb+bp}{True}
+\end{Verbatim}

@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{55}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{} premier caractère (indice 0)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{55}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}T\PYGZsq{}}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{56}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[:]} \PYG{c+c1}{\PYGZsh{} toute la chaine}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{56}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}Tounsi\PYGZsq{}}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{57}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} deuxième caractère (indice 1)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{57}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}o\PYGZsq{}}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{58}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{4}\PYG{p}{]}   \PYG{c+c1}{\PYGZsh{} slicing}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{58}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}oun\PYGZsq{}}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{59}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{:]}  \PYG{c+c1}{\PYGZsh{} slicing}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{59}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}unsi\PYGZsq{}}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{60}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}   \PYG{c+c1}{\PYGZsh{} dernier caractère (indice \PYGZhy{}1)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{60}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}i\PYGZsq{}}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{61}\PYG{p}{]:} \PYG{n}{nom}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{:]}    \PYG{c+c1}{\PYGZsh{} slicing}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{61}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}nsi\PYGZsq{}}
+\end{Verbatim}

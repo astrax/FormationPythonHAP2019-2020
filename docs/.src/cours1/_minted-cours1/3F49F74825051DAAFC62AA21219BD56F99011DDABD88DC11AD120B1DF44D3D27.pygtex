@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{age}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{25}\PYG{p}{]:} \PYG{n+nb}{int}
+\end{Verbatim}

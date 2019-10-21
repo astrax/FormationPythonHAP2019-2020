@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{37}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{2} \PYG{o}{+} \PYG{l+m+mi}{3j}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{37}\PYG{p}{]:} \PYG{n+nb}{complex}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{38}\PYG{p}{]:} \PYG{n}{a}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{38}\PYG{p}{]:} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{l+m+mi}{3j}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{info}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}Tunisie\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Afrique\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{3000}\PYG{p}{,} \PYG{l+m+mf}{36.8}\PYG{p}{,} \PYG{l+m+mf}{10.08}\PYG{p}{]}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Pays : \PYGZsq{}}\PYG{p}{,} \PYG{n}{info}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}    \PYG{c+c1}{\PYGZsh{} premier élément (indice 0)}
+\PYG{n}{Pays} \PYG{p}{:}  \PYG{n}{Tunisie}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]:} \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Age : \PYGZsq{}}\PYG{p}{,} \PYG{n}{info}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{])}     \PYG{c+c1}{\PYGZsh{} le troisième élément a l\PYGZsq{}indice 2}
+\PYG{n}{Age} \PYG{p}{:}  \PYG{l+m+mi}{3000}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:} \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Latitude : \PYGZsq{}}\PYG{p}{,} \PYG{n}{info}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{])} \PYG{c+c1}{\PYGZsh{} le quatrième élément a l\PYGZsq{}indice 3}
+\PYG{n}{Latitude} \PYG{p}{:}  \PYG{l+m+mf}{36.8}
+\end{Verbatim}

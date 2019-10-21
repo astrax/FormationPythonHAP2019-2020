@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{48}\PYG{p}{]:} \PYG{n}{chaine} \PYG{o}{=} \PYG{n}{prenom} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}} \PYG{o}{+} \PYG{n}{nom}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{chaine} \PYG{c+c1}{\PYGZsh{} et voila}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{48}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}Ali Tounsi\PYGZsq{}}
+\end{Verbatim}

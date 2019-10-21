@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{65}\PYG{p}{]:} \PYG{n}{annee\PYGZus{}naissance} \PYG{o}{=} \PYG{l+m+mi}{2018} \PYG{o}{\PYGZhy{}} \PYG{n}{nombre}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{annee\PYGZus{}naissance}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{65}\PYG{p}{]:} \PYG{l+m+mi}{1996}
+\end{Verbatim}

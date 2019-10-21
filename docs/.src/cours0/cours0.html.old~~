@@ -1,0 +1,387 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Introduction">
+
+<title>Introduction</title>
+
+<!-- Bootstrap style: bootswatch_cerulean -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/cerulean/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootswatch_cerulean */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Table des matières',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Objectifs généraux en premier', 1, None, '___sec0'),
+              ('Situation standard que nous rencontrons quotidiennement',
+               1,
+               None,
+               '___sec1'),
+              ('Langage Python', 1, None, '___sec2'),
+              ("Installation d'un environnement Python scientifique",
+               1,
+               None,
+               '___sec3'),
+              ('Installation sur ordinateur', 2, None, '___sec4'),
+              ('Qu’est ce que Anaconda ?', 3, None, '___sec5'),
+              ('Préparer la formation: téléchargement d’Anaconda',
+               3,
+               None,
+               '___sec6'),
+              ('Installation sur smartphone', 2, None, '___sec7'),
+              ('Pydroid 3 - IDE éducatif pour Python 3', 3, None, '___sec8')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours0.html">Introduction</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Objectifs généraux en premier</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Situation standard que nous rencontrons quotidiennement</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Langage Python</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Installation d'un environnement Python scientifique</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation sur ordinateur</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qu’est ce que Anaconda ?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Préparer la formation: téléchargement d’Anaconda</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation sur smartphone</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pydroid 3 - IDE éducatif pour Python 3</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Introduction</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Oct 21, 2019</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Objectifs g&#233;n&#233;raux en premier </a><br>
+<a href="#___sec1"> Situation standard que nous rencontrons quotidiennement </a><br>
+<a href="#___sec2"> Langage Python </a><br>
+<a href="#___sec3"> Installation d'un environnement Python scientifique </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Installation sur ordinateur </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Installation sur smartphone </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<h1 id="___sec0" class="anchor">Objectifs g&#233;n&#233;raux en premier </h1>
+
+<p>
+Une partie essentielle de ce cours est de vous permettre de faire de la science par des exp&#233;riences num&#233;riques et de d&#233;velopper des projets qui vous permettent d'&#233;tudier des syst&#232;mes complexes. Le but est d'am&#233;liorer ce que nous appelons la pens&#233;e algorithmique.
+
+<p>
+<b>Algorithme</b>
+Un ensemble fini d'instructions non ambigu&#235;s qui, &#233;tant donn&#233; un ensemble de conditions initiales, peuvent &#234;tre effectu&#233;es dans une s&#233;quence prescrite pour atteindre un certain but.
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec1" class="anchor">Situation standard que nous rencontrons quotidiennement </h1>
+
+<p>
+La situation standard que nous rencontrons presque tous les s&#233;ances de cours:
+
+<ul>
+<li> Th&#233;orie + exp&#233;rience + simulation est presque la norme dans la recherche et l'industrie.</li>
+<li> &#202;tre capable de mod&#233;liser des syst&#232;mes complexes. R&#233;soudre de vrais probl&#232;mes.</li>
+<li> Accent la compr&#233;hension des principes fondamentaux et des lois dans les sciences.</li>
+<li> &#202;tre capable de visualiser, pr&#233;senter, discuter, interpr&#233;ter et venir avec une analyse critique des r&#233;sultats, et d&#233;velopper une attitude &#233;thique saine pour son propre travail.</li>
+<li> Am&#233;liorer le raisonnement sur la m&#233;thode scientifique.</li>
+</ul>
+
+Une bonne pr&#233;sentation des r&#233;sultats obtenus via de bons rapports scientifiques, aide &#224; inclure tous les aspects ci-dessus.
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec2" class="anchor">Langage Python </h1>
+
+<p>
+<a href="http://www.python.org/" target="_self">Python</a> est un langage de programmation moderne de haut niveau, orient&#233; objet et d'usage g&#233;n&#233;ral.
+
+<p>
+<b>Caract&#233;ristiques g&#233;n&#233;rales de Python</b> :
+
+<ul>
+<li> Langage simple:</li>
+
+<ul>
+  <li> facile &#224; lire et &#224; apprendre avec une syntaxe minimaliste.</li>
+</ul>
+
+<li> Langage concis et expressif:</li>
+
+<ul>
+  <li> moins de lignes de code</li>
+  <li> moins de bugs</li>
+  <li> plus facile &#224; maintenir.</li>
+</ul>
+
+</ul>
+
+<!-- !split -->
+<b>D&#233;tails techniques</b> :
+
+<ul>
+<li> Typ&#233; dynamiquement:</li>
+
+<ul>
+  <li> Pas besoin de d&#233;finir le type des variables, les arguments ou le type des fonctions.</li>
+</ul>
+
+<li> La gestion automatique de la m&#233;moire:</li>
+
+<ul>
+  <li> Aucune n&#233;cessit&#233; d'allouer explicitement et d&#233;sallouer la m&#233;moire pour les variables et les tableaux de donn&#233;es. Aucun bug de fuite de m&#233;moire.</li>
+</ul>
+
+<li> Interpr&#233;t&#233;:</li>
+
+<ul>
+  <li> Pas besoin de compiler le code. L'interpr&#233;teur Python lit et ex&#233;cute le code python directement.</li>
+</ul>
+
+</ul>
+
+<!-- !split -->
+<b>Avantages</b> :
+
+<ul>
+<li> Le principal avantage est la facilit&#233; de programmation, qui minimise le temps n&#233;cessaire pour d&#233;velopper, d&#233;boguer et maintenir le code.</li>
+<li> Langage bien con&#231;u qui encourage les bonnes pratiques de programmation:</li>
+
+<ul>
+  <li> Modulaire et orient&#233;e objet, permet l'encapsulation  et la r&#233;utilisation de code. Il en r&#233;sulte souvent un code plus transparent, plus facile &#224; am&#233;liorer et sans bug.</li>
+  <li> Documentation int&#233;gr&#233; avec le code.</li>
+</ul>
+
+<li> De nombreuses biblioth&#232;ques standards, et de nombreux packages add-on.</li>
+</ul>
+
+<!-- !split -->
+<br /><br /><center><p><img src="images/python_easy.png" align="bottom" width=600></p></center><br /><br />
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec3" class="anchor">Installation d'un environnement Python scientifique </h1>
+
+<h2 id="___sec4" class="anchor">Installation sur ordinateur </h2>
+
+<h3 id="___sec5" class="anchor">Qu&#8217;est ce que Anaconda ? </h3>
+
+<p>
+L&#8217;installation d&#8217;un environnement Python complet peut-&#234;tre une vraie gal&#232;re. D&#233;j&#224;, il faut t&#233;l&#233;charger Python et l&#8217;installer. Par la suite, t&#233;l&#233;charger un &#224; un les packages dont on a besoin. Parfois, le nombre de ces librairies peut-&#234;tre grand.
+
+<p>
+Par ailleurs, il faut s&#8217;assurer de la compatibilit&#233; entre les versions des diff&#233;rentes packages qu&#8217;on a &#224; t&#233;l&#233;charger. Bref, ce n&#8217;est pas amusant.
+
+<p>
+<!-- !split -->
+<a href="https://www.anaconda.com/download/" target="_self">Anaconda</a> est  une distribution Python. A son installation, Anaconda installera Python ainsi qu'une multitude de packages (voir <a href="https://docs.anaconda.com/anaconda/packages/pkg-docs#python-3-6" target="_self">liste de packages anaconda</a>).  Cela nous &#233;vite de nous ruer dans les probl&#232;mes d&#8217;incompatibilit&#233;s entre les diff&#233;rents packages.
+
+<p>
+Finalement, Anaconda propose un outil de gestion de packages appel&#233; <a href="https://conda.io/docs/" target="_self">conda</a>. Ce dernier permettra de mettre &#224; jour et installer facilement les librairies dont on aura besoin pour nos d&#233;veloppements.
+
+<p>
+<!-- !split -->
+
+<h3 id="___sec6" class="anchor">Pr&#233;parer la formation: t&#233;l&#233;chargement d&#8217;Anaconda </h3>
+
+<p>
+Nous demandons &#224; tous les &#233;tudiants de t&#233;l&#233;charger Anaconda. Pour cela, il faut t&#233;l&#233;charger un installeur &#224; partir de <a href="https://www.anaconda.com/download/" target="_self"><tt>https://www.anaconda.com/download/</tt></a>, correspondant &#224; votre syst&#232;me d&#8217;exploitation (Windows, Mac OS X, Linux). Il faut choisir entre 32 bits ou 64 bits (pour la version <em>Python 3</em>) selon que votre syst&#232;me d&#8217;exploitation est 32 bits ou 64 bits.
+<!-- !split -->
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Interface graphique du navigateur Anaconda sur Windows </p></center>
+<p><img src="images/AnacondaNavigator.png" align="bottom" width=600></p>
+</center>
+
+<p>
+<!-- !split -->
+<div class="alert alert-block alert-success alert-text-normal"><b>Note.</b>
+Anaconda installe plusieurs ex&#233;cutables pour d&#233;velopper en Python dans le r&#233;pertoire <em>anaconda/bin</em>, sans toujours cr&#233;er des raccourcis sur le bureau ou dans un menu. Nous nous occuperons au tout d&#233;but de la formation de cr&#233;er des raccourcis pour pouvoir lancer l'application web <em>Jupyter notebook</em>. Vous pouvez lancer le notebook depuis le navigateur Anaconda.
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec7" class="anchor">Installation sur smartphone </h2>
+
+<h3 id="___sec8" class="anchor">Pydroid 3 - IDE &#233;ducatif pour Python 3 </h3>
+
+<p>
+Pydroid 3 est l'IDE &#233;ducatif Python 3 le plus simple et le plus puissant &#224; utiliser pour Android.
+
+<p>
+Pydroid 3 fournit:
+
+<ul>
+<li> Interpr&#233;teur Python 3.6 hors connexion: Internet n'est pas n&#233;cessaire pour ex&#233;cuter des programmes Python.</li>
+<li> Pip package manager et un r&#233;f&#233;rentiel personnalis&#233; pour les packages de roues pr&#233;d&#233;finis pour les biblioth&#232;ques scientifiques am&#233;lior&#233;es, tels que numpy, scipy, matplotlib, scikit-learn et jupyter.</li>
+<li> ...</li>
+</ul>
+
+<!-- !split -->
+<b>Installer et utiliser Pydroid 3 sur son smartphone:</b>
+
+<p>
+Pydroid est une application Android que vous pouvez obtenir sur Google Play: <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_self"><tt>https://play.google.com/store/apps/details?id=ru.iiec.pydroid3</tt></a>
+
+<p>
+Les &#233;tapes suivantes, dans les figures ci-dessous, vous permettent d&#8217;utiliser le cahier Jupyter sur votre t&#233;l&#233;phone portable n&#8217;importe o&#249; et &#224; tout moment pour vous entra&#238;ner au maximum et vous familiariser avec tous les exemples de programmation de ce cours.
+
+<p>
+<!-- !split -->
+<b>Phase installation:</b>
+
+<p>
+1. Installer Pydroid 3 depuis Google Play: <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_self"><tt>https://play.google.com/store/apps/details?id=ru.iiec.pydroid3</tt></a>
+
+<p>
+2. Ouvrez l'application, sur le menu cliquez sur pip et allez &#224; l'onglet "QUICK INSTALL" pour obtenir les biblioth&#232;ques scientifiques n&#233;cessaires &#224; ce cours.
+
+<p>
+3. Dans "QUICK INSTALL", installer les packages <em>Jupyter</em> , <em>numpy</em> et <em>matplotlib</em>.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Pydroid 3: Phase installation </p></center>
+<p><img src="images/pydroid3_1.png" align="bottom" width=600></p>
+</center>
+
+<p>
+<!-- !split -->
+<b>Phase utilisation:</b>
+
+<p>
+4. Retournez au menu et ouvrez le <b>terminal</b>.
+
+<p>
+5. Sur le terminal, entrez la commande suivante:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>jupyter notebook
+</pre></div>
+<p>
+6. Jupyter s'ex&#233;cutera sur votre navigateur Web. Acc&#233;dez au r&#233;pertoire dans lequel vous avez des notebooks &#224; ouvrir, &#224; t&#233;l&#233;charger (bouton <em>upload</em>) ou &#224; cr&#233;er (bouton <em>New</em>).
+
+<p>
+7. Amusez-vous &#224; travailler sur le notebook: cr&#233;ez du contenu, lancez et modifiez des exemples
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Pydroid 3: Phase utilisation </p></center>
+<p><img src="images/pydroid3_2.png" align="bottom" width=600></p>
+</center>
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

@@ -1,0 +1,921 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Introduction à Python II : syntaxe et variables">
+
+<title>Introduction à Python II : syntaxe et variables</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Table des matières',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Introduction: "Hello World!"', 1, None, '___sec0'),
+              ('Commentaires', 1, None, '___sec1'),
+              ('Nombres', 1, None, '___sec2'),
+              ('Affectations (ou assignation)', 1, None, '___sec3'),
+              ('variables', 2, None, '___sec4'),
+              ('Noms de variables réservés (keywords)', 2, None, '___sec5'),
+              ('Les types', 2, None, '___sec6'),
+              ('Le type int (integer : nombres entiers)', 3, None, '___sec7'),
+              ('Le type float (nombres en virgule flottante)',
+               3,
+               None,
+               '___sec8'),
+              ('Les fonctions mathématiques', 3, None, '___sec9'),
+              ('Le type complexe', 3, None, '___sec10'),
+              ('Le type str (string : chaîne de caractères)',
+               3,
+               None,
+               '___sec11'),
+              ('Le type bool (booléen)', 3, None, '___sec12'),
+              ('Lectures complémentaires', 1, None, '___sec13')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours1-bs.html">Introduction à Python II : syntaxe et variables</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction: "Hello World!"</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Commentaires</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Nombres</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Affectations (ou assignation)</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;variables</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Noms de variables réservés (keywords)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Les types</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le type int (integer : nombres entiers)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le type float (nombres en virgule flottante)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Les fonctions mathématiques</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le type complexe</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le type str (string : chaîne de caractères)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le type bool (booléen)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;"><b>Lectures complémentaires</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Introduction &#224; Python II : syntaxe et variables</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Oct 22, 2019</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Introduction: "Hello World!" </a><br>
+<a href="#___sec1"> Commentaires </a><br>
+<a href="#___sec2"> Nombres </a><br>
+<a href="#___sec3"> Affectations (ou assignation) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Noms de variables r&#233;serv&#233;s (keywords) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Les types </a><br>
+<a href="#___sec13"> Lectures compl&#233;mentaires </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<h1 id="___sec0" class="anchor">Introduction: "Hello World!" </h1>
+C'est devenu une tradition que lorsque vous apprenez un nouveau langage de programmation, vous d&#233;marrez avec un programme permettant &#224; l'ordinateur d'imprimer le message <em>"Hello World!"</em>.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Hello World!&quot;</span>)
+Hello World!
+</pre></div>
+<p>
+F&#233;licitation! tout &#224; l'heure vous avez fait votre ordinateur saluer le monde en anglais! La fonction <code>print()</code> est utilis&#233;e pour imprimer l&#8217;instruction entre les parenth&#232;ses. De plus, l'utilisation de guillemets simples <code>print('Hello World!')</code> affichera le m&#234;me r&#233;sultat. Le d&#233;limiteur de d&#233;but et de fin doit &#234;tre le m&#234;me.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">2</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Hello World!&#39;</span>)
+Hello World!
+</pre></div>
+
+<h1 id="___sec1" class="anchor">Commentaires </h1>
+
+<p>
+Au fur et &#224; mesure que vos programmes deviennent plus grands et plus compliqu&#233;s, ils deviennent plus difficiles &#224; lire et &#224; regarder un morceau de code et &#224; comprendre ce qu'il fait ou pourquoi. Pour cette raison, il est conseill&#233; d&#8217;ajouter des notes &#224; vos programmes pour expliquer en langage naturel ce qu&#8217;il fait. Ces notes s'appellent des commentaires et commencent par le symbole <code>#</code>.
+
+<p>
+Voyez ce qui se passe lorsque nous ajoutons un commentaire au code pr&#233;c&#233;dent:
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">3</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Hello World!&#39;</span>) <span style="color: #408080; font-style: italic"># Ceci est mon premier commentaire</span>
+Hello World!
+</pre></div>
+<p>
+Rien ne change dans la sortie? Oui, et c&#8217;est tr&#232;s normal, l&#8217;interpr&#232;te Python ignore cette ligne et ne renvoie rien. La raison en est que les commentaires sont &#233;crits pour les humains, pour comprendre leurs codes, et non pour les machines.
+
+<h1 id="___sec2" class="anchor">Nombres </h1>
+
+<p>
+L'interpr&#233;teur Python agit comme une simple calculatrice: vous pouvez y taper une expression et l'interpr&#233;teur restituera la valeur. La syntaxe d'expression est simple: les op&#233;rateurs +, -, * et / fonctionnent comme dans la plupart des autres langages (par exemple, Pascal ou C); les parenth&#232;ses (<code>()</code>) peuvent &#234;tre utilis&#233;es pour le regroupement. Par exemple:
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">4</span>]: <span style="color: #666666">5+3</span>
+Out[<span style="color: #666666">4</span>]: <span style="color: #666666">8</span>
+In [<span style="color: #666666">5</span>]: <span style="color: #666666">2</span> <span style="color: #666666">-</span> <span style="color: #666666">9</span>      <span style="color: #408080; font-style: italic"># les espaces sont optionnels</span>
+Out[<span style="color: #666666">5</span>]: <span style="color: #666666">-7</span>
+In [<span style="color: #666666">6</span>]: <span style="color: #666666">7</span> <span style="color: #666666">+</span> <span style="color: #666666">3</span> <span style="color: #666666">*</span> <span style="color: #666666">4</span>  <span style="color: #408080; font-style: italic">#la hiérarchie des opérations mathématique</span>
+Out[<span style="color: #666666">6</span>]: <span style="color: #666666">19</span>
+In [<span style="color: #666666">7</span>]: (<span style="color: #666666">7</span> <span style="color: #666666">+</span> <span style="color: #666666">3</span>) <span style="color: #666666">*</span> <span style="color: #666666">4</span>  <span style="color: #408080; font-style: italic"># est-elle respectées?</span>
+Out[<span style="color: #666666">7</span>]: <span style="color: #666666">40</span>
+<span style="color: #408080; font-style: italic"># en python3 la division retourne toujours un nombre en virgule flottante</span>
+In [<span style="color: #666666">8</span>]: <span style="color: #666666">20</span> <span style="color: #666666">/</span> <span style="color: #666666">3</span>
+Out[<span style="color: #666666">8</span>]: <span style="color: #666666">6.666666666666667</span>
+In [<span style="color: #666666">9</span>]: <span style="color: #666666">7</span> <span style="color: #666666">//</span> <span style="color: #666666">2</span>      <span style="color: #408080; font-style: italic"># une division entière</span>
+Out[<span style="color: #666666">9</span>]: <span style="color: #666666">3</span>
+</pre></div>
+<p>
+On peut noter l&#8217;existence de l&#8217;op&#233;rateur <code>%</code> (appel&#233; op&#233;rateur modulo). Cet op&#233;rateur fournit le reste de la division enti&#232;re d&#8217;un nombre par un autre. Par exemple :
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">10</span>]: <span style="color: #666666">7</span> <span style="color: #666666">%</span> <span style="color: #666666">2</span>       <span style="color: #408080; font-style: italic"># donne le reste de la division</span>
+Out[<span style="color: #666666">10</span>]: <span style="color: #666666">1</span>
+In [<span style="color: #666666">11</span>]: <span style="color: #666666">6</span> <span style="color: #666666">%</span> <span style="color: #666666">2</span>
+Out[<span style="color: #666666">11</span>]: <span style="color: #666666">0</span>
+</pre></div>
+<p>
+Les exposants peuvent &#234;tre calcul&#233;s &#224; l'aide de doubles ast&#233;risques <code>**</code>.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">12</span>]: <span style="color: #666666">3**2</span>
+Out[<span style="color: #666666">12</span>]: <span style="color: #666666">9</span>
+</pre></div>
+<p>
+Les puissances de dix peuvent &#234;tre calcul&#233;es comme suit:
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">13</span>]: <span style="color: #666666">3</span> <span style="color: #666666">*</span> <span style="color: #666666">2e3</span>   <span style="color: #408080; font-style: italic"># vaut 3 * 2000</span>
+Out[<span style="color: #666666">13</span>]: <span style="color: #666666">6000.0</span>
+</pre></div>
+
+<h1 id="___sec3" class="anchor">Affectations (ou assignation) </h1>
+
+<h2 id="___sec4" class="anchor">variables </h2>
+Dans presque tous les programmes Python que vous allez &#233;crire, vous aurez des variables. Les variables agissent comme des espaces r&#233;serv&#233;s pour les donn&#233;es. Ils peuvent aider &#224; court terme, ainsi qu&#8217;&#224; la logique, les variables pouvant changer, d&#8217;o&#249; leur nom. C&#8217;est beaucoup plus facile en Python car aucune d&#233;claration de variables n&#8217;est requise. Les noms de variable (ou tout autre objet Python tel que fonction, classe, module, etc.) commencent par une lettre majuscule ou minuscule (A-Z ou a-z). Ils sont sensibles &#224; la casse (<code>VAR1</code> et <code>var1</code> sont deux variables distinctes). Depuis Python, vous pouvez utiliser n&#8217;importe quel caract&#232;re Unicode, il est pr&#233;f&#233;rable d&#8217;ignorer les caract&#232;res ASCII (donc pas de caract&#232;res accentu&#233;s).
+
+<p>
+Si une variable est n&#233;cessaire, pensez &#224; un nom et commencez &#224; l'utiliser comme une variable, comme dans l'exemple ci-dessous:
+
+<p>
+Pour calculer l'aire d'un rectangle par exemple: <code>largeur</code> x <code>hauteur</code>:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">15</span>]: largeur <span style="color: #666666">=</span> <span style="color: #666666">25</span>
+    <span style="color: #666666">...</span>: hauteur <span style="color: #666666">=</span> <span style="color: #666666">40</span>
+    <span style="color: #666666">...</span>: largeur    <span style="color: #408080; font-style: italic"># essayer d&#39;accéder à la valeur de la variable largeur</span>
+Out[<span style="color: #666666">15</span>]: <span style="color: #666666">25</span>
+</pre></div>
+<p>
+on peut &#233;galement utiliser la fonction <code>print()</code> pour afficher la valeur de la variable <code>largeur</code>
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">16</span>]: <span style="color: #008000; font-weight: bold">print</span>(largeur)
+<span style="color: #666666">25</span>
+</pre></div>
+<p>
+Le produit de ces deux variables donne l'aire du rectangle:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">17</span>]: largeur <span style="color: #666666">*</span> hauteur  <span style="color: #408080; font-style: italic"># donne l&#39;aire du rectangle</span>
+Out[<span style="color: #666666">17</span>]: <span style="color: #666666">1000</span>
+</pre></div>
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Notez ici que le signe &#233;gal (<code>=</code>) dans l'affectation ne doit pas &#234;tre consid&#233;r&#233; comme <b>"est &#233;gal &#224;"</b>. Il doit &#234;tre <b>"lu"</b> ou interpr&#233;t&#233; comme <b>"est d&#233;finie par"</b>, ce qui signifie dans notre exemple:
+<blockquote>
+    La variable <code>largeur</code> est d&#233;finie par la valeur 25 et la variable <code>hauteur</code> est d&#233;finie par la valeur 40.
+</blockquote>
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Avertissement</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Si une variable n'est pas <em>d&#233;finie</em> (assign&#233;e &#224; une valeur), son utilisation vous donnera une erreur:
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">18</span>]: aire     <span style="color: #408080; font-style: italic"># essayer d&#39;accéder à une variable non définie</span>
+<span style="color: #666666">-----------------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>                            Traceback (most recent call last)
+<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #008000">input</span><span style="color: #666666">-18-1</span>b03529c1ce5<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
+<span style="color: #666666">----&gt;</span> <span style="color: #666666">1</span> aire     <span style="color: #408080; font-style: italic"># essayer d&#39;accéder à une variable non définie</span>
+
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;aire&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<p>
+Laissez-nous r&#233;soudre ce probl&#232;me informatique (ou <b>bug</b> tout simplement)!. En d'autres termes, assignons la variable <code>aire</code> &#224; sa valeur.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">19</span>]: aire <span style="color: #666666">=</span> largeur <span style="color: #666666">*</span> hauteur
+    <span style="color: #666666">...</span>: aire  <span style="color: #408080; font-style: italic"># et voila!</span>
+Out[<span style="color: #666666">19</span>]: <span style="color: #666666">1000</span>
+</pre></div>
+
+<h2 id="___sec5" class="anchor">Noms de variables r&#233;serv&#233;s (keywords) </h2>
+Certains noms de variables ne sont pas disponibles, ils sont r&#233;serv&#233;s &#224; python lui-m&#234;me. Les mots-cl&#233;s suivants (que vous pouvez afficher dans l'interpr&#233;teur avec la commande <code>help(&quot;keywords&quot;)</code>) sont r&#233;serv&#233;s et ne peuvent pas &#234;tre utilis&#233;s pour d&#233;finir vos propres identifiants (variables, noms de fonctions, classes, etc.).
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">20</span>]: help(<span style="color: #BA2121">&quot;keywords&quot;</span>)
+
+Here <span style="color: #AA22FF; font-weight: bold">is</span> a <span style="color: #008000">list</span> of the Python keywords<span style="color: #666666">.</span>  Enter <span style="color: #008000">any</span> keyword to get more help<span style="color: #666666">.</span>
+
+<span style="color: #008000">False</span>               <span style="color: #008000; font-weight: bold">def</span>                 <span style="color: #0000FF">if</span>                  <span style="color: #008000; font-weight: bold">raise</span>
+<span style="color: #008000">None</span>                <span style="color: #008000; font-weight: bold">del</span>                 <span style="color: #008000; font-weight: bold">import</span>              <span style="color: #0000FF; font-weight: bold">return</span>
+<span style="color: #008000">True</span>                <span style="color: #008000; font-weight: bold">elif</span>                <span style="color: #AA22FF; font-weight: bold">in</span>                  <span style="color: #008000; font-weight: bold">try</span>
+<span style="color: #AA22FF; font-weight: bold">and</span>                 <span style="color: #008000; font-weight: bold">else</span>                <span style="color: #AA22FF; font-weight: bold">is</span>                  <span style="color: #008000; font-weight: bold">while</span>
+<span style="color: #008000; font-weight: bold">as</span>                  <span style="color: #008000; font-weight: bold">except</span>              <span style="color: #008000; font-weight: bold">lambda</span>              <span style="color: #008000; font-weight: bold">with</span>
+<span style="color: #008000; font-weight: bold">assert</span>              <span style="color: #008000; font-weight: bold">finally</span>             nonlocal            <span style="color: #008000; font-weight: bold">yield</span>
+<span style="color: #008000; font-weight: bold">break</span>               <span style="color: #008000; font-weight: bold">for</span>                 <span style="color: #AA22FF; font-weight: bold">not</span>
+<span style="color: #008000; font-weight: bold">class</span>               <span style="color: #0000FF; font-weight: bold">from</span>                <span style="color: #AA22FF; font-weight: bold">or</span>
+<span style="color: #008000; font-weight: bold">continue</span>            <span style="color: #008000; font-weight: bold">global</span>              <span style="color: #008000; font-weight: bold">pass</span>
+
+<span style="color: #408080; font-style: italic"># par exemple pour éviter d&#39;écraser le nom réservé lambda</span>
+In [<span style="color: #666666">22</span>]: lambda_ <span style="color: #666666">=</span> <span style="color: #666666">630e-9</span>
+    <span style="color: #666666">...</span>: lambda_
+Out[<span style="color: #666666">22</span>]: <span style="color: #666666">6.3e-07</span>
+</pre></div>
+
+<h2 id="___sec6" class="anchor">Les types </h2>
+Les types utilis&#233;s dans Python sont: integers, long integers, floats (double prec.), complexes, strings, booleans. La fonction <code>type()</code> donne le type de son argument
+
+<h3 id="___sec7" class="anchor">Le type int (integer : nombres entiers) </h3>
+
+Pour affecter (on peut dire aussi assigner) la valeur 20 &#224; la variable nomm&#233;e <code>age</code> :
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>age <span style="color: #666666">=</span> <span style="color: #666666">20</span>
+</pre></div>
+<p>
+La fonction <code>print()</code> affiche la valeur de la variable :
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">24</span>]: <span style="color: #008000; font-weight: bold">print</span>(age)
+<span style="color: #666666">20</span>
+</pre></div>
+<p>
+La fonction <code>type()</code> retourne le type de la variable :
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000">type</span>(age)
+Out[<span style="color: #666666">25</span>]: <span style="color: #008000">int</span>
+</pre></div>
+
+<h3 id="___sec8" class="anchor">Le type float (nombres en virgule flottante) </h3>
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>b <span style="color: #666666">=</span> <span style="color: #666666">17.0</span>  <span style="color: #408080; font-style: italic"># le séparateur décimal est un point (et non une virgule)</span>
+b
+Out[<span style="color: #666666">26</span>]: <span style="color: #666666">17.0</span>
+In [<span style="color: #666666">27</span>]: <span style="color: #008000">type</span>(b)
+Out[<span style="color: #666666">27</span>]: <span style="color: #008000">float</span>
+In [<span style="color: #666666">28</span>]: c <span style="color: #666666">=</span> <span style="color: #666666">14.0/3.0</span>
+    <span style="color: #666666">...</span>: c
+Out[<span style="color: #666666">28</span>]: <span style="color: #666666">4.666666666666667</span>
+</pre></div>
+<p>
+Notation scientifique :
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">29</span>]: a <span style="color: #666666">=</span> <span style="color: #666666">-1.784892e4</span>
+    <span style="color: #666666">...</span>: a
+Out[<span style="color: #666666">29</span>]: <span style="color: #666666">-17848.92</span>
+</pre></div>
+
+<h3 id="___sec9" class="anchor">Les fonctions math&#233;matiques </h3>
+
+<p>
+Pour utiliser les fonctions math&#233;matiques, il faut commencer par importer le module <code>math</code> :
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">math</span>
+</pre></div>
+<p>
+La fonction <code>help()</code> retourne la liste des fonctions et donn&#233;es d'un module.
+
+<p>
+Soit par exemple: <code>help('math')</code>
+
+<p>
+Pour appeler une fonction d'un module, la syntaxe est la suivante : <code>module.fonction(arguments)</code>
+
+<p>
+Pour acc&#233;der &#224; une donn&#233;e d'un module : <code>module.data</code>
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span> <span style="color: #408080; font-style: italic"># donnée pi du module math (nombre pi)</span>
+In [<span style="color: #666666">32</span>]: math<span style="color: #666666">.</span>pi
+Out[<span style="color: #666666">32</span>]: <span style="color: #666666">3.141592653589793</span>
+<span style="color: #408080; font-style: italic"># fonction sin() du module math (sinus)</span>
+In [<span style="color: #666666">33</span>]: math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>pi<span style="color: #666666">/4.0</span>)
+Out[<span style="color: #666666">33</span>]: <span style="color: #666666">0.7071067811865475</span>
+<span style="color: #408080; font-style: italic"># fonction sqrt() du module math (racine carrée)</span>
+In [<span style="color: #666666">34</span>]: math<span style="color: #666666">.</span>sqrt(<span style="color: #666666">2.0</span>)
+Out[<span style="color: #666666">34</span>]: <span style="color: #666666">1.4142135623730951</span>
+<span style="color: #408080; font-style: italic"># fonction exp() du module math (exponentielle)</span>
+In [<span style="color: #666666">35</span>]: math<span style="color: #666666">.</span>exp(<span style="color: #666666">-3.0</span>)
+Out[<span style="color: #666666">35</span>]: <span style="color: #666666">0.049787068367863944</span>
+<span style="color: #408080; font-style: italic"># fonction log() du module math (logarithme népérien)</span>
+In [<span style="color: #666666">36</span>]: math<span style="color: #666666">.</span>log(math<span style="color: #666666">.</span>e)
+Out[<span style="color: #666666">36</span>]: <span style="color: #666666">1.0</span>
+</pre></div>
+
+<h3 id="___sec10" class="anchor">Le type complexe </h3>
+
+Python poss&#232;de par d&#233;faut un type pour manipuler les nombres complexes. La partie imaginaire est indiqu&#233;e gr&#226;ce &#224; la lettre &#171; <code>j</code> &#187; ou &#171; <code>J</code> &#187;. La lettre math&#233;matique utilis&#233;e habituellement, le &#171; <code>i</code> &#187;, n&#8217;est pas utilis&#233;e en Python car la variable i est souvent utilis&#233;e dans les boucles.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">37</span>]: a <span style="color: #666666">=</span> <span style="color: #666666">2</span> <span style="color: #666666">+</span> <span style="color: #666666">3j</span>
+    <span style="color: #666666">...</span>: <span style="color: #008000">type</span>(a)
+Out[<span style="color: #666666">37</span>]: <span style="color: #008000">complex</span>
+In [<span style="color: #666666">38</span>]: a
+Out[<span style="color: #666666">38</span>]: (<span style="color: #666666">2+3j</span>)
+</pre></div>
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Avertissement</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">39</span>]: b <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">+</span> j
+<span style="color: #666666">--------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>                      Traceback (most recent call last)
+<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #008000">input</span><span style="color: #666666">-39-0</span>f22d953f29e<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
+<span style="color: #666666">----&gt;</span> <span style="color: #666666">1</span> b <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">+</span> j
+
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;j&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
+</pre></div>
+<p>
+Dans ce cas, on doit &#233;crire la variable <code>b</code> comme suit:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">41</span>]: b <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">+</span> <span style="color: #666666">1j</span>
+    <span style="color: #666666">...</span>: b
+Out[<span style="color: #666666">41</span>]: (<span style="color: #666666">1+1j</span>)
+</pre></div>
+<p>
+sinon Python va consid&#233;rer <code>j</code> comme variable non d&#233;finie.
+</div>
+</div>
+
+On peut faire l'addition des variables complexes:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">42</span>]: a <span style="color: #666666">+</span> b
+Out[<span style="color: #666666">42</span>]: (<span style="color: #666666">3+4j</span>)
+</pre></div>
+
+<h3 id="___sec11" class="anchor">Le type str (string : cha&#238;ne de caract&#232;res) </h3>
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">43</span>]: nom <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Tounsi&#39;</span> <span style="color: #408080; font-style: italic"># entre apostrophes</span>
+    <span style="color: #666666">...</span>: nom
+Out[<span style="color: #666666">43</span>]: <span style="color: #BA2121">&#39;Tounsi&#39;</span>
+In [<span style="color: #666666">44</span>]: <span style="color: #008000">type</span>(nom)
+Out[<span style="color: #666666">44</span>]: <span style="color: #008000">str</span>
+In [<span style="color: #666666">45</span>]: prenom <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Ali&quot;</span>  <span style="color: #408080; font-style: italic"># on peut aussi utiliser les guillemets</span>
+    <span style="color: #666666">...</span>: prenom
+Out[<span style="color: #666666">45</span>]: <span style="color: #BA2121">&#39;Ali&#39;</span>
+In [<span style="color: #666666">46</span>]: <span style="color: #008000; font-weight: bold">print</span>(nom, prenom)  <span style="color: #408080; font-style: italic"># ne pas oublier la virgule</span>
+Tounsi Ali
+</pre></div>
+<p>
+La concat&#233;nation d&#233;signe la mise bout &#224; bout de plusieurs cha&#238;nes de caract&#232;res.
+La concat&#233;nation utilise l'op&#233;rateur <code>+</code>:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">47</span>]: chaine <span style="color: #666666">=</span> nom <span style="color: #666666">+</span> prenom  <span style="color: #408080; font-style: italic"># concaténation de deux chaînes de caractères</span>
+    <span style="color: #666666">...</span>: chaine
+Out[<span style="color: #666666">47</span>]: <span style="color: #BA2121">&#39;TounsiAli&#39;</span>
+</pre></div>
+<p>
+Vous voyez dans cet exemple que le nom et le pr&#233;nom sont coll&#233;. Pour ajouter une espace entre ces deux cha&#238;nes de caract&#232;res:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">48</span>]: chaine <span style="color: #666666">=</span> prenom <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; &#39;</span> <span style="color: #666666">+</span> nom
+    <span style="color: #666666">...</span>: chaine <span style="color: #408080; font-style: italic"># et voila</span>
+Out[<span style="color: #666666">48</span>]: <span style="color: #BA2121">&#39;Ali Tounsi&#39;</span>
+</pre></div>
+<p>
+On peut modifier/ajouter une nouvelle cha&#238;ne &#224; notre variable <code>chaine</code> par:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">49</span>]: chaine <span style="color: #666666">=</span> chaine <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; 22 ans&#39;</span>  <span style="color: #408080; font-style: italic"># en plus court : chaine += &#39; 22 ans&#39;</span>
+    <span style="color: #666666">...</span>: chaine
+Out[<span style="color: #666666">49</span>]: <span style="color: #BA2121">&#39;Ali Tounsi 22 ans&#39;</span>
+</pre></div>
+<p>
+La fonction <code>len()</code> renvoie la longueur (<em>length</em>) de la cha&#238;ne de caract&#232;res :
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">53</span>]: <span style="color: #008000; font-weight: bold">print</span>(nom)
+    <span style="color: #666666">...</span>: <span style="color: #008000">len</span>(nom)
+Tounsi
+Out[<span style="color: #666666">53</span>]: <span style="color: #666666">6</span>
+</pre></div>
+<p>
+<b>Indexage et slicing :</b>
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span> +---+---+---+---+---+---+
+|------------------------|
+ | T | o | u | n | s | i |
+ +---+---+---+---+---+---+
+ |------------------------|
+ 0   1   2   3   4   5   6
+ ---&gt;
+-6  -5  -4  -3  -2  -1
+                   &lt;----
+</pre></div>
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">55</span>]: nom[<span style="color: #666666">0</span>]  <span style="color: #408080; font-style: italic"># premier caractère (indice 0)</span>
+Out[<span style="color: #666666">55</span>]: <span style="color: #BA2121">&#39;T&#39;</span>
+
+In [<span style="color: #666666">56</span>]: nom[:] <span style="color: #408080; font-style: italic"># toute la chaine</span>
+Out[<span style="color: #666666">56</span>]: <span style="color: #BA2121">&#39;Tounsi&#39;</span>
+
+In [<span style="color: #666666">57</span>]: nom[<span style="color: #666666">1</span>] <span style="color: #408080; font-style: italic"># deuxième caractère (indice 1)</span>
+Out[<span style="color: #666666">57</span>]: <span style="color: #BA2121">&#39;o&#39;</span>
+
+In [<span style="color: #666666">58</span>]: nom[<span style="color: #666666">1</span>:<span style="color: #666666">4</span>]   <span style="color: #408080; font-style: italic"># slicing</span>
+Out[<span style="color: #666666">58</span>]: <span style="color: #BA2121">&#39;oun&#39;</span>
+
+In [<span style="color: #666666">59</span>]: nom[<span style="color: #666666">2</span>:]  <span style="color: #408080; font-style: italic"># slicing</span>
+Out[<span style="color: #666666">59</span>]: <span style="color: #BA2121">&#39;unsi&#39;</span>
+
+In [<span style="color: #666666">60</span>]: nom[<span style="color: #666666">-1</span>]   <span style="color: #408080; font-style: italic"># dernier caractère (indice -1)</span>
+Out[<span style="color: #666666">60</span>]: <span style="color: #BA2121">&#39;i&#39;</span>
+
+In [<span style="color: #666666">61</span>]: nom[<span style="color: #666666">-3</span>:]    <span style="color: #408080; font-style: italic"># slicing</span>
+Out[<span style="color: #666666">61</span>]: <span style="color: #BA2121">&#39;nsi&#39;</span>
+</pre></div>
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Avertissement</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+On ne peut pas m&#233;langer le type <code>str</code> et type <code>int</code>.
+
+<p>
+Soit par exemple:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">63</span>]: chaine <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;22&#39;</span>
+    <span style="color: #666666">...</span>: annee_naissance <span style="color: #666666">=</span> <span style="color: #666666">2018</span> <span style="color: #666666">-</span> chaine
+<span style="color: #666666">----------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">TypeError</span>                  Traceback (most recent call last)
+<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #008000">input</span><span style="color: #666666">-63-8607078</span>f78d2<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
+      <span style="color: #666666">1</span> chaine <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;22&#39;</span>
+<span style="color: #666666">----&gt;</span> <span style="color: #666666">2</span> annee_naissance <span style="color: #666666">=</span> <span style="color: #666666">2018</span> <span style="color: #666666">-</span> chaine
+
+<span style="color: #D2413A; font-weight: bold">TypeError</span>: unsupported operand <span style="color: #008000">type</span>(s) <span style="color: #008000; font-weight: bold">for</span> <span style="color: #666666">-</span>: <span style="color: #BA2121">&#39;int&#39;</span> <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #BA2121">&#39;str&#39;</span>
+</pre></div>
+<p>
+Pour corriger cette erreur, la fonction <code>int()</code> permet de convertir un type <code>str</code> en type <code>int</code>:
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">64</span>]: nombre <span style="color: #666666">=</span> <span style="color: #008000">int</span>(chaine)
+    <span style="color: #666666">...</span>: <span style="color: #008000">type</span>(nombre) <span style="color: #408080; font-style: italic"># et voila!</span>
+Out[<span style="color: #666666">64</span>]: <span style="color: #008000">int</span>
+</pre></div>
+<p>
+Maintenant on peut trouver <code>annee_naissance</code> sans aucun probl&#232;me:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">65</span>]: annee_naissance <span style="color: #666666">=</span> <span style="color: #666666">2018</span> <span style="color: #666666">-</span> nombre
+    <span style="color: #666666">...</span>: annee_naissance
+Out[<span style="color: #666666">65</span>]: <span style="color: #666666">1996</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<p>
+<b>Interaction avec l'utilisateur (la fonction <code>input()</code>)</b>
+
+<p>
+La fonction <code>input()</code> lance une case pour saisir une cha&#238;ne de caract&#232;res.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">66</span>]: prenom <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;Entrez votre prénom : &#39;</span>)
+    <span style="color: #666666">...</span>: age <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;Entrez votre age : &#39;</span>)
+
+Entrez votre prénom : Foulen
+
+Entrez votre age : <span style="color: #666666">25</span>
+</pre></div>
+<p>
+<b> Formatage des cha&#238;nes</b>
+
+<p>
+Un probl&#232;me qui se retrouve souvent, c&#8217;est le besoin d&#8217;afficher un message qui contient des valeurs de variables.
+
+<p>
+Soit le message: Bonjour Mr/Mme <code>prenom</code>, votre age est <code>age</code>.
+
+<p>
+La solution est d'utiliser la m&#233;thode <code>format()</code> de l'objet cha&#238;ne <code>str()</code> et le <code>{}</code> pour d&#233;finir la valeur &#224; afficher.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot; Bonjour Mr/Mme {}, votre age est {}.&quot;</span><span style="color: #666666">.</span>format(prenom, age))
+</pre></div>
+<p>
+<b>Le type list (liste)</b>
+
+<p>
+Une liste est une structure de donn&#233;es.
+
+<p>
+Le premier &#233;l&#233;ment d'une liste poss&#232;de l'indice (l'index) 0.
+
+<p>
+Dans une liste, on peut avoir des &#233;l&#233;ments de plusieurs types.
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">1</span>]: info <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Tunisie&#39;</span>, <span style="color: #BA2121">&#39;Afrique&#39;</span>, <span style="color: #666666">3000</span>, <span style="color: #666666">36.8</span>, <span style="color: #666666">10.08</span>]
+
+In [<span style="color: #666666">2</span>]: <span style="color: #008000">type</span>(info)
+Out[<span style="color: #666666">2</span>]: <span style="color: #008000">list</span>
+</pre></div>
+<p>
+La liste info contient 5 &#233;l&#233;ments de types str, str, int, float et float
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">3</span>]: info
+Out[<span style="color: #666666">3</span>]: [<span style="color: #BA2121">&#39;Tunisie&#39;</span>, <span style="color: #BA2121">&#39;Afrique&#39;</span>, <span style="color: #666666">3000</span>, <span style="color: #666666">36.8</span>, <span style="color: #666666">10.08</span>]
+
+In [<span style="color: #666666">4</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Pays : &#39;</span>, info[<span style="color: #666666">0</span>])    <span style="color: #408080; font-style: italic"># premier élément (indice 0)</span>
+Pays :  Tunisie
+
+In [<span style="color: #666666">5</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Age : &#39;</span>, info[<span style="color: #666666">2</span>])     <span style="color: #408080; font-style: italic"># le troisième élément a l&#39;indice 2</span>
+Age :  <span style="color: #666666">3000</span>
+
+In [<span style="color: #666666">6</span>]: <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Latitude : &#39;</span>, info[<span style="color: #666666">3</span>]) <span style="color: #408080; font-style: italic"># le quatrième élément a l&#39;indice 3</span>
+Latitude :  <span style="color: #666666">36.8</span>
+</pre></div>
+<p>
+La fonction <code>range()</code> cr&#233;e une liste d'entiers r&#233;guli&#232;rement espac&#233;s :
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">7</span>]: maliste <span style="color: #666666">=</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>) <span style="color: #408080; font-style: italic"># équivalent à range(0,10,1)</span>
+   <span style="color: #666666">...</span>: <span style="color: #008000">type</span>(maliste)
+Out[<span style="color: #666666">7</span>]: <span style="color: #008000">range</span>
+</pre></div>
+<p>
+Pour convertir une range en une liste, on applique la fonction <code>list()</code> &#224; notre variable:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">8</span>]: <span style="color: #008000">list</span>(maliste)   <span style="color: #408080; font-style: italic"># pour convertir range en une liste</span>
+Out[<span style="color: #666666">8</span>]: [<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>, <span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>, <span style="color: #666666">7</span>, <span style="color: #666666">8</span>, <span style="color: #666666">9</span>]
+</pre></div>
+<p>
+On peut sp&#233;cifier le d&#233;but, la fin et l'intervalle d'une range:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">9</span>]: maliste <span style="color: #666666">=</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,<span style="color: #666666">10</span>,<span style="color: #666666">2</span>)   <span style="color: #408080; font-style: italic"># range(début,fin non comprise,intervalle)</span>
+   <span style="color: #666666">...</span>: <span style="color: #008000">list</span>(maliste)
+Out[<span style="color: #666666">9</span>]: [<span style="color: #666666">1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">5</span>, <span style="color: #666666">7</span>, <span style="color: #666666">9</span>]
+
+In [<span style="color: #666666">10</span>]: maliste[<span style="color: #666666">2</span>] <span style="color: #408080; font-style: italic"># le troisième élément a l&#39;indice 2</span>
+Out[<span style="color: #666666">10</span>]: <span style="color: #666666">5</span>
+</pre></div>
+<p>
+On peut cr&#233;er une liste de listes, qui s'apparente &#224; un tableau &#224; 2 dimensions (ligne, colonne) :
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>0   1   2
+10  11  12
+20  21  22
+</pre></div>
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">11</span>]: maliste <span style="color: #666666">=</span> [[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>], [<span style="color: #666666">10</span>, <span style="color: #666666">11</span>, <span style="color: #666666">12</span>], [<span style="color: #666666">20</span>, <span style="color: #666666">21</span>, <span style="color: #666666">22</span>]]
+    <span style="color: #666666">...</span>: maliste[<span style="color: #666666">0</span>]
+Out[<span style="color: #666666">11</span>]: [<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>]
+
+In [<span style="color: #666666">12</span>]: maliste[<span style="color: #666666">0</span>][<span style="color: #666666">0</span>]
+Out[<span style="color: #666666">12</span>]: <span style="color: #666666">0</span>
+
+In [<span style="color: #666666">13</span>]: maliste[<span style="color: #666666">2</span>][<span style="color: #666666">1</span>] <span style="color: #408080; font-style: italic"># élément à la troisième ligne et deuxième colonne</span>
+Out[<span style="color: #666666">13</span>]: <span style="color: #666666">21</span>
+
+In [<span style="color: #666666">14</span>]: maliste[<span style="color: #666666">2</span>][<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">78</span>   <span style="color: #408080; font-style: italic"># nouvelle affectation</span>
+
+In [<span style="color: #666666">15</span>]: maliste
+Out[<span style="color: #666666">15</span>]: [[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>], [<span style="color: #666666">10</span>, <span style="color: #666666">11</span>, <span style="color: #666666">12</span>], [<span style="color: #666666">20</span>, <span style="color: #666666">78</span>, <span style="color: #666666">22</span>]]
+</pre></div>
+
+<h3 id="___sec12" class="anchor">Le type bool (bool&#233;en) </h3>
+
+<p>
+Deux valeurs sont possibles : <code>True</code> et <code>False</code>
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">16</span>]: choix <span style="color: #666666">=</span> <span style="color: #008000">True</span> <span style="color: #408080; font-style: italic"># NOTE: &quot;True&quot; différent de &quot;true&quot;</span>
+    <span style="color: #666666">...</span>: <span style="color: #008000">type</span>(choix)
+Out[<span style="color: #666666">16</span>]: <span style="color: #008000">bool</span>
+</pre></div>
+<p>
+Les op&#233;rateurs de comparaison :
+
+<p>
+
+<div class="row">
+  <div class="col-xs-10">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center"><b>  Op&#233;rateur  </b></td> <td align="center"><b>       Signification       </b></td> <td align="center"><b>               Remarques               </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>&lt;</code>     </td> <td align="left">   strictement inf&#233;rieur     </td> <td align="left">                                              </td> </tr>
+<tr><td align="left">   <code>&lt;=</code>    </td> <td align="left">   inf&#233;rieur ou &#233;gal    </td> <td align="left">                                              </td> </tr>
+<tr><td align="left">   <code>&gt;</code>     </td> <td align="left">   strictement sup&#233;rieur     </td> <td align="left">                                              </td> </tr>
+<tr><td align="left">   <code>&gt;=</code>    </td> <td align="left">   sup&#233;rieur ou &#233;gal    </td> <td align="left">                                              </td> </tr>
+<tr><td align="left">   <code>==</code>       </td> <td align="left">   &#233;gal                      </td> <td align="left">   Attention : deux signes <code>==</code>    </td> </tr>
+<tr><td align="left">   <code>!=</code>       </td> <td align="left">   diff&#233;rent                 </td> <td align="left">                                              </td> </tr>
+</tbody>
+    </table>
+  </div> <!-- col-xs-10 -->
+</div> <!-- cell row -->
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">17</span>]: b <span style="color: #666666">=</span> <span style="color: #666666">10</span>
+    <span style="color: #666666">...</span>: b <span style="color: #666666">&gt;</span> <span style="color: #666666">8</span>
+Out[<span style="color: #666666">17</span>]: <span style="color: #008000">True</span>
+
+In [<span style="color: #666666">18</span>]: b <span style="color: #666666">==</span> <span style="color: #666666">5</span>
+Out[<span style="color: #666666">18</span>]: <span style="color: #008000">False</span>
+
+In [<span style="color: #666666">19</span>]: b <span style="color: #666666">!=</span> <span style="color: #666666">5</span>
+Out[<span style="color: #666666">19</span>]: <span style="color: #008000">True</span>
+
+In [<span style="color: #666666">20</span>]: <span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> b <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>
+Out[<span style="color: #666666">20</span>]: <span style="color: #008000">True</span>
+</pre></div>
+<p>
+Les op&#233;rateurs logiques : <code>and</code>, <code>or</code>, <code>not</code>
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">21</span>]: note <span style="color: #666666">=</span> <span style="color: #666666">13.0</span>
+
+In [<span style="color: #666666">22</span>]: mention_ab <span style="color: #666666">=</span> note <span style="color: #666666">&gt;=</span> <span style="color: #666666">12.0</span> <span style="color: #AA22FF; font-weight: bold">and</span> note <span style="color: #666666">&lt;</span> <span style="color: #666666">14.0</span>
+
+In [<span style="color: #666666">23</span>]: <span style="color: #408080; font-style: italic"># ou bien : mention_ab = 12.0 &lt;= note &lt; 14.0</span>
+
+In [<span style="color: #666666">24</span>]: mention_ab
+Out[<span style="color: #666666">24</span>]: <span style="color: #008000">True</span>
+</pre></div>
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">25</span>]: <span style="color: #AA22FF; font-weight: bold">not</span> mention_ab
+Out[<span style="color: #666666">25</span>]: <span style="color: #008000">False</span>
+
+In [<span style="color: #666666">26</span>]: note <span style="color: #666666">==</span> <span style="color: #666666">20.0</span> <span style="color: #AA22FF; font-weight: bold">or</span> note <span style="color: #666666">==</span> <span style="color: #666666">0.0</span>
+Out[<span style="color: #666666">26</span>]: <span style="color: #008000">False</span>
+</pre></div>
+<p>
+L'op&#233;rateur <code>in</code> s'utilise avec des cha&#238;nes (type <code>str</code>) ou des listes (type <code>list</code>).
+
+<p>
+Pour une cha&#238;nes:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">30</span>]: chaine <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Bonsoir&#39;</span>
+    <span style="color: #666666">...</span>: <span style="color: #408080; font-style: italic">#la sous-chaîne &#39;soir&#39; fait-elle partie de la chaîne &#39;Bonsoir&#39; ?</span>
+
+In [<span style="color: #666666">31</span>]: resultat <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;soir&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> chaine
+    <span style="color: #666666">...</span>: resultat
+Out[<span style="color: #666666">31</span>]: <span style="color: #008000">True</span>
+</pre></div>
+<p>
+Pour une liste:
+
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">32</span>]: maliste <span style="color: #666666">=</span> [<span style="color: #666666">4</span>, <span style="color: #666666">8</span>, <span style="color: #666666">15</span>]
+    <span style="color: #666666">...</span>: <span style="color: #408080; font-style: italic">#le nombre entier 9 est-il dans la liste ?</span>
+
+In [<span style="color: #666666">33</span>]: <span style="color: #666666">9</span> <span style="color: #AA22FF; font-weight: bold">in</span> maliste
+Out[<span style="color: #666666">33</span>]: <span style="color: #008000">False</span>
+
+In [<span style="color: #666666">34</span>]: <span style="color: #666666">8</span> <span style="color: #AA22FF; font-weight: bold">in</span> maliste
+Out[<span style="color: #666666">34</span>]: <span style="color: #008000">True</span>
+
+In [<span style="color: #666666">35</span>]: <span style="color: #666666">14</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #AA22FF; font-weight: bold">in</span> maliste
+Out[<span style="color: #666666">35</span>]: <span style="color: #008000">True</span>
+</pre></div>
+
+<h1 id="___sec13" class="anchor">Lectures compl&#233;mentaires </h1>
+
+<ul>
+<li> Documentation Python 3.6: <a href="https://docs.python.org/fr/3.6/tutorial/index.html" target="_self"><tt>https://docs.python.org/fr/3.6/tutorial/index.html</tt></a></li>
+<li> Apprendre &#224; programmer avec Python, par G&#233;rard Swinnen: <a href="http://inforef.be/swi/python.htm" target="_self"><tt>http://inforef.be/swi/python.htm</tt></a></li>
+<li> Think Python, par Allen B. Downey: <a href="https://greenteapress.com/wp/think-python/" target="_self"><tt>https://greenteapress.com/wp/think-python/</tt></a></li>
+</ul>
+
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

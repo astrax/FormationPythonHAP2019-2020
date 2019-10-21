@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{53}\PYG{p}{]:} \PYG{k}{print}\PYG{p}{(}\PYG{n}{nom}\PYG{p}{)}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{nom}\PYG{p}{)}
+\PYG{n}{Tounsi}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{53}\PYG{p}{]:} \PYG{l+m+mi}{6}
+\end{Verbatim}

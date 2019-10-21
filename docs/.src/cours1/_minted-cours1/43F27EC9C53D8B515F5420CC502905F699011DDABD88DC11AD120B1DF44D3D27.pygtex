@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+ \PYG{c+c1}{\PYGZsh{} donnée pi du module math (nombre pi)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{32}\PYG{p}{]:} \PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{32}\PYG{p}{]:} \PYG{l+m+mf}{3.141592653589793}
+\PYG{c+c1}{\PYGZsh{} fonction sin() du module math (sinus)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]:} \PYG{n}{math}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mf}{4.0}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]:} \PYG{l+m+mf}{0.7071067811865475}
+\PYG{c+c1}{\PYGZsh{} fonction sqrt() du module math (racine carrée)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{34}\PYG{p}{]:} \PYG{n}{math}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mf}{2.0}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{34}\PYG{p}{]:} \PYG{l+m+mf}{1.4142135623730951}
+\PYG{c+c1}{\PYGZsh{} fonction exp() du module math (exponentielle)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{35}\PYG{p}{]:} \PYG{n}{math}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.0}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{35}\PYG{p}{]:} \PYG{l+m+mf}{0.049787068367863944}
+\PYG{c+c1}{\PYGZsh{} fonction log() du module math (logarithme népérien)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{36}\PYG{p}{]:} \PYG{n}{math}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{math}\PYG{o}{.}\PYG{n}{e}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{36}\PYG{p}{]:} \PYG{l+m+mf}{1.0}
+\end{Verbatim}

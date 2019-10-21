@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{16}\PYG{p}{]:} \PYG{n}{choix} \PYG{o}{=} \PYG{n+nb+bp}{True} \PYG{c+c1}{\PYGZsh{} NOTE: \PYGZdq{}True\PYGZdq{} différent de \PYGZdq{}true\PYGZdq{}}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{choix}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{16}\PYG{p}{]:} \PYG{n+nb}{bool}
+\end{Verbatim}

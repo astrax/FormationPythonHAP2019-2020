@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{17}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{10}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{b} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{8}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{17}\PYG{p}{]:} \PYG{n+nb+bp}{True}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{5}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{]:} \PYG{n+nb+bp}{False}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{19}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{!=} \PYG{l+m+mi}{5}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{19}\PYG{p}{]:} \PYG{n+nb+bp}{True}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{]:} \PYG{l+m+mi}{0} \PYG{o}{\PYGZlt{}=} \PYG{n}{b} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{20}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{]:} \PYG{n+nb+bp}{True}
+\end{Verbatim}

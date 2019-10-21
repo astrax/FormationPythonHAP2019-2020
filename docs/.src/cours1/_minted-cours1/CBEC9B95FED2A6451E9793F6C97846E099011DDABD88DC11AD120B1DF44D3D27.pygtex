@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{l+m+mi}{1j}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{b}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{]:} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{l+m+mi}{1j}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]:} \PYG{n}{maliste} \PYG{o}{=} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} équivalent à range(0,10,1)}
+   \PYG{o}{...}\PYG{p}{:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{maliste}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]:} \PYG{n+nb}{range}
+\end{Verbatim}

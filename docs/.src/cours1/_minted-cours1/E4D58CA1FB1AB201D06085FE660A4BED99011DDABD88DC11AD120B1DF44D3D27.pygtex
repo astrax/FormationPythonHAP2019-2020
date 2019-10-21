@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{66}\PYG{p}{]:} \PYG{n}{prenom} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Entrez votre prénom : \PYGZsq{}}\PYG{p}{)}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{age} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Entrez votre age : \PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{Entrez} \PYG{n}{votre} \PYG{n}{pr}\PYG{err}{é}\PYG{n}{nom} \PYG{p}{:} \PYG{n}{Foulen}
+
+\PYG{n}{Entrez} \PYG{n}{votre} \PYG{n}{age} \PYG{p}{:} \PYG{l+m+mi}{25}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{49}\PYG{p}{]:} \PYG{n}{chaine} \PYG{o}{=} \PYG{n}{chaine} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} 22 ans\PYGZsq{}}  \PYG{c+c1}{\PYGZsh{} en plus court : chaine += \PYGZsq{} 22 ans\PYGZsq{}}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{chaine}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{49}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}Ali Tounsi 22 ans\PYGZsq{}}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{]:} \PYG{n}{nombre} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{chaine}\PYG{p}{)}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{nombre}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} et voila!}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{]:} \PYG{n+nb}{int}
+\end{Verbatim}

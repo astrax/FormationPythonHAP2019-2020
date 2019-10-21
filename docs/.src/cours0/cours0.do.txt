@@ -1,0 +1,141 @@
+TITLE: Introduction
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+DATE: today
+
+TOC: on
+
+!split
+======= Objectifs généraux en premier =======
+
+Une partie essentielle de ce cours est de vous permettre de faire de la science par des expériences numériques et de développer des projets qui vous permettent d'étudier des systèmes complexes. Le but est d'améliorer ce que nous appelons la pensée algorithmique.
+
+__Algorithme__
+Un ensemble fini d'instructions non ambiguës qui, étant donné un ensemble de conditions initiales, peuvent être effectuées dans une séquence prescrite pour atteindre un certain but.
+
+!split
+======= Situation standard que nous rencontrons quotidiennement =======
+
+La situation standard que nous rencontrons presque tous les séances de cours:
+
+* Théorie + expérience + simulation est presque la norme dans la recherche et l'industrie.
+* Être capable de modéliser des systèmes complexes. Résoudre de vrais problèmes.
+* Accent la compréhension des principes fondamentaux et des lois dans les sciences.
+* Être capable de visualiser, présenter, discuter, interpréter et venir avec une analyse critique des résultats, et développer une attitude éthique saine pour son propre travail.
+* Améliorer le raisonnement sur la méthode scientifique.
+
+Une bonne présentation des résultats obtenus via de bons rapports scientifiques, aide à inclure tous les aspects ci-dessus.
+
+!split
+======= Langage Python =======
+
+"Python": "http://www.python.org/" est un langage de programmation moderne de haut niveau, orienté objet et d'usage général.
+
+_Caractéristiques générales de Python_ :
+
+* Langage simple:
+  * facile à lire et à apprendre avec une syntaxe minimaliste.
+* Langage concis et expressif:
+  * moins de lignes de code
+  * moins de bugs
+  * plus facile à maintenir.
+
+!split
+_Détails techniques_ :
+
+* Typé dynamiquement:
+  * Pas besoin de définir le type des variables, les arguments ou le type des fonctions.
+* La gestion automatique de la mémoire:
+  * Aucune nécessité d'allouer explicitement et désallouer la mémoire pour les variables et les tableaux de données. Aucun bug de fuite de mémoire.
+* Interprété:
+  * Pas besoin de compiler le code. L'interpréteur Python lit et exécute le code python directement.
+
+!split
+_Avantages_ :
+
+* Le principal avantage est la facilité de programmation, qui minimise le temps nécessaire pour développer, déboguer et maintenir le code.
+* Langage bien conçu qui encourage les bonnes pratiques de programmation:
+  * Modulaire et orientée objet, permet l'encapsulation  et la réutilisation de code. Il en résulte souvent un code plus transparent, plus facile à améliorer et sans bug.
+  * Documentation intégré avec le code.
+* De nombreuses bibliothèques standards, et de nombreux packages add-on.
+
+!split
+FIGURE: [images/python_easy.png, width=600 frac=0.6]
+
+
+!split
+======= Installation d'un environnement Python scientifique =======
+
+===== Installation sur ordinateur =====
+
+=== Qu’est ce que Anaconda ? ===
+
+L’installation d’un environnement Python complet peut-être une vraie galère. Déjà, il faut télécharger Python et l’installer. Par la suite, télécharger un à un les packages dont on a besoin. Parfois, le nombre de ces librairies peut-être grand.
+
+Par ailleurs, il faut s’assurer de la compatibilité entre les versions des différentes packages qu’on a à télécharger. Bref, ce n’est pas amusant.
+
+!split
+"Anaconda": "https://www.anaconda.com/download/" est  une distribution Python. A son installation, Anaconda installera Python ainsi qu'une multitude de packages (voir "liste de packages anaconda": "https://docs.anaconda.com/anaconda/packages/pkg-docs#python-3-6").  Cela nous évite de nous ruer dans les problèmes d’incompatibilités entre les différents packages.
+
+Finalement, Anaconda propose un outil de gestion de packages appelé "conda": "https://conda.io/docs/". Ce dernier permettra de mettre à jour et installer facilement les librairies dont on aura besoin pour nos développements.
+
+!split
+=== Préparer la formation: téléchargement d’Anaconda ===
+
+Nous demandons à tous les étudiants de télécharger Anaconda. Pour cela, il faut télécharger un installeur à partir de https://www.anaconda.com/download/, correspondant à votre système d’exploitation (Windows, Mac OS X, Linux). Il faut choisir entre 32 bits ou 64 bits (pour la version *Python 3*) selon que votre système d’exploitation est 32 bits ou 64 bits.
+!split
+
+FIGURE: [images/AnacondaNavigator, width=600 frac=0.7] Interface graphique du navigateur Anaconda sur Windows
+
+!split
+!bnotice
+Anaconda installe plusieurs exécutables pour développer en Python dans le répertoire *anaconda/bin*, sans toujours créer des raccourcis sur le bureau ou dans un menu. Nous nous occuperons au tout début de la formation de créer des raccourcis pour pouvoir lancer l'application web *Jupyter notebook*. Vous pouvez lancer le notebook depuis le navigateur Anaconda.
+!enotice
+
+
+!split
+===== Installation sur smartphone =====
+
+=== Pydroid 3 - IDE éducatif pour Python 3 ===
+
+Pydroid 3 est l'IDE éducatif Python 3 le plus simple et le plus puissant à utiliser pour Android.
+
+Pydroid 3 fournit:
+
+* Interpréteur Python 3.6 hors connexion: Internet n'est pas nécessaire pour exécuter des programmes Python.
+* Pip package manager et un référentiel personnalisé pour les packages de roues prédéfinis pour les bibliothèques scientifiques améliorées, tels que numpy, scipy, matplotlib, scikit-learn et jupyter.
+* ...
+
+!split
+__Installer et utiliser Pydroid 3 sur son smartphone:__
+
+Pydroid est une application Android que vous pouvez obtenir sur Google Play: URL: "https://play.google.com/store/apps/details?id=ru.iiec.pydroid3"
+
+Les étapes suivantes, dans les figures ci-dessous, vous permettent d’utiliser le cahier Jupyter sur votre téléphone portable n’importe où et à tout moment pour vous entraîner au maximum et vous familiariser avec tous les exemples de programmation de ce cours.
+
+!split
+_Phase installation:_
+
+1. Installer Pydroid 3 depuis Google Play: URL:"https://play.google.com/store/apps/details?id=ru.iiec.pydroid3"
+
+2. Ouvrez l'application, sur le menu cliquez sur pip et allez à l'onglet "QUICK INSTALL" pour obtenir les bibliothèques scientifiques nécessaires à ce cours.
+
+3. Dans "QUICK INSTALL", installer les packages *Jupyter* , *numpy* et *matplotlib*.
+
+FIGURE: [images/pydroid3_1, width=600 frac=0.7] Pydroid 3: Phase installation
+
+!split
+_Phase utilisation:_
+
+4. Retournez au menu et ouvrez le _terminal_.
+
+5. Sur le terminal, entrez la commande suivante:
+
+!bc sys
+jupyter notebook
+!ec
+
+6. Jupyter s'exécutera sur votre navigateur Web. Accédez au répertoire dans lequel vous avez des notebooks à ouvrir, à télécharger (bouton *upload*) ou à créer (bouton *New*).
+
+7. Amusez-vous à travailler sur le notebook: créez du contenu, lancez et modifiez des exemples
+
+FIGURE: [images/pydroid3_2, width=600 frac=0.7] Pydroid 3: Phase utilisation

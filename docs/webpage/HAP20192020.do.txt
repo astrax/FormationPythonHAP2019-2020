@@ -1,5 +1,5 @@
 TITLE: Formation Python (HAP - 2019/2020)
-AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage..
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
 
 !bwarning
 Le matériel pédagogique est produit dans divers formats pour l’impression et la lecture à l’écran.
@@ -12,6 +12,17 @@ DATE: today
 
 !split
 ======= Documents =======
+!split
+===== Introduction à Python I : Présentation & installation =====
 
 !split
-===== Introduction à Python I : syntaxe & variables =====
+===== Introduction à Python II : syntaxe & variables =====
+* Notebook:
+  * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours1/cours1.ipynb"
+* PDF
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours1/cours1.pdf"
+  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD1/TD1.pdf"
+  * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD1/TD1_corr.pdf"
+
+* HTML:
+  * "html simple" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours1/cours1-bs.html"

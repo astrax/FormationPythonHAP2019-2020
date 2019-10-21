@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{b} \PYG{o}{=} \PYG{l+m+mf}{17.0}  \PYG{c+c1}{\PYGZsh{} le séparateur décimal est un point (et non une virgule)}
+\PYG{n}{b}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{26}\PYG{p}{]:} \PYG{l+m+mf}{17.0}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{27}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{27}\PYG{p}{]:} \PYG{n+nb}{float}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{28}\PYG{p}{]:} \PYG{n}{c} \PYG{o}{=} \PYG{l+m+mf}{14.0}\PYG{o}{/}\PYG{l+m+mf}{3.0}
+    \PYG{o}{...}\PYG{p}{:} \PYG{n}{c}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{28}\PYG{p}{]:} \PYG{l+m+mf}{4.666666666666667}
+\end{Verbatim}
