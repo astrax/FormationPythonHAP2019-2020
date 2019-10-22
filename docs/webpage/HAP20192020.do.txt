@@ -33,4 +33,5 @@ DATE: today
   * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD1/TD1_corr.pdf"
 
 * HTML:
-  * "html simple" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours1/cours1-bs.html"
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours1/cours1-bs.html"
+  * "TD" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD1/TD1-bs.html"
