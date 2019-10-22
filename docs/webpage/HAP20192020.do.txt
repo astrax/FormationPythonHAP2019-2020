@@ -35,3 +35,18 @@ DATE: today
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours1/cours1-bs.html"
   * "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD1/TD1.html"
+
+!split
+===== Introduction à Python III : Contrôle du flux d’instructions =====
+* Notebook:
+  * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours2/cours2.ipynb"
+* PDF
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours2/cours2.pdf"
+  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2.pdf"
+# * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2_corr.pdf"
+
+* HTML:
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours2/cours2-bs.html"
+  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2.html"
+
+  
