@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} \PYGZpc{}load solution/ex7}
+\PYG{n}{x} \PYG{o}{=} \PYG{p}{[]}
+\PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{):}
+    \PYG{n}{x}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{n}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}

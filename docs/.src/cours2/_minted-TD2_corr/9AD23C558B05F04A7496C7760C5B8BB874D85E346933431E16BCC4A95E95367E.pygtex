@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} \PYGZpc{}load solution/ex1}
+\PYG{n}{valeur1}\PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Valeur 1 : \PYGZdq{}}\PYG{p}{))}
+\PYG{n}{valeur2}\PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Valeur 2 : \PYGZdq{}}\PYG{p}{))}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{valeur1} \PYG{o}{\PYGZlt{}} \PYG{n}{valeur2} \PYG{p}{)} \PYG{p}{:}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Valeur la plus petite : \PYGZdq{}}\PYG{p}{,} \PYG{n}{valeur1}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Valeur la plus petite : \PYGZdq{}}\PYG{p}{,} \PYG{n}{valeur2}\PYG{p}{)}
+\end{Verbatim}

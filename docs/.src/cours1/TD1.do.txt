@@ -1,4 +1,4 @@
-TITLE: TD N°1: Syntaxe et Variables
+TITLE: TD N°1 : Syntaxe et Variables
 AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
 DATE: today
 

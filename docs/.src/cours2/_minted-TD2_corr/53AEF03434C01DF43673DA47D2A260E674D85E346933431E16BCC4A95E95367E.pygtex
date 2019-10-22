@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} \PYGZpc{}load racines.py}
+\PYG{k}{def} \PYG{n+nf}{EqSecondDegree}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Calcul des racines de l\PYGZsq{}equation du second degré:}
+\PYG{l+s+sd}{    a x\PYGZca{}2 + b x + c = 0}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k+kn}{from} \PYG{n+nn}{math} \PYG{k+kn}{import} \PYG{n}{sqrt}
+
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}L\PYGZsq{}équation a resoudre est: \PYGZob{}\PYGZcb{} x\PYGZca{}2 + \PYGZob{}\PYGZcb{} x + \PYGZob{}\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{))}
+
+    \PYG{n}{delta} \PYG{o}{=} \PYG{n}{b}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{a}\PYG{o}{*}\PYG{n}{c}  \PYG{c+c1}{\PYGZsh{}Calcul du discriminant:}
+
+    \PYG{c+c1}{\PYGZsh{}Resultats des racines suivant la valeur de delta:}
+    \PYG{k}{if} \PYG{n}{delta} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{x1} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{delta}\PYG{p}{))}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{p}{)}
+        \PYG{n}{x2} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b} \PYG{o}{+} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{delta}\PYG{p}{))}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Affichage des solutions trouvées}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Les solutions sont réelles: \PYGZdq{}}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}La premiere racine est x1= \PYGZdq{}}\PYG{p}{,}\PYG{n}{x1}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}La seconde racines est x2= \PYGZdq{}}\PYG{p}{,}\PYG{n}{x2}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{x1}\PYG{p}{,} \PYG{n}{x2}
+
+    \PYG{k}{elif} \PYG{n}{delta} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{x0} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Affichage de la solution trouvée}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Il y a une seule solution: \PYGZdq{}}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}La solution est\PYGZdq{}}\PYG{p}{,} \PYG{n}{x0}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{x0}
+
+    \PYG{k}{elif} \PYG{n}{delta}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{z1} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1j}\PYG{o}{*}\PYG{n}{sqrt}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{delta}\PYG{p}{))}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{p}{)}
+        \PYG{n}{z2} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b} \PYG{o}{+} \PYG{l+m+mi}{1j}\PYG{o}{*}\PYG{n}{sqrt}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{delta}\PYG{p}{))}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Affichage des solutions trouvées}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Les solutions sont complexes: \PYGZdq{}}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}La premiere racine est z1 = \PYGZdq{}}\PYG{p}{,} \PYG{n}{z1}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}La seconde racine est z2 = \PYGZdq{}}\PYG{p}{,} \PYG{n}{z2}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{z1}\PYG{p}{,} \PYG{n}{z2}
+\end{Verbatim}

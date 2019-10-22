@@ -1,0 +1,301 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: TD N°2 : Contrôle du flux d’instructions</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Comparer deux entiers =====</span>
+Écrivez un programme qui vous demande de saisir 2 nombres entiers et affiche la plus petite de ces valeurs.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load solution/ex1</span>
+valeur1= int(input(&quot;Valeur 1 : &quot;))
+valeur2= int(input(&quot;Valeur 2 : &quot;))
+if (valeur1 &lt; valeur2 ) :
+    print(&quot;Valeur la plus petite : &quot;, valeur1)
+else:
+    print(&quot;Valeur la plus petite : &quot;, valeur2)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Comparer deux chaînes =====</span>
+Écrivez un programme qui demande d&#39;entrer 2 chaînes et qui affiche la plus grande des 2 chaînes (celle qui contient le plus de caractères).
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load solution/ex2</span>
+chaine1= input(&quot;Chaîne 1 : &quot;)
+chaine2= input(&quot;Chaîne 2 : &quot;)
+
+if len(chaine2) &gt; len(chaine1) :
+    print (&quot;Chaîne la plus grande : &quot; , chaine2 )
+else:
+    print (&quot;Chaîne la plus grande : &quot; , chaine1 )
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Convertir Euro contre Dinar Tunisien | EUR TND =====</span>
+Écrivez un programme qui convertit l&#39;euro (EUR) en dinar tunisien (TND):
+
+* Le programme commence par demander à l&#39;utilisateur d&#39;indiquer par une chaîne de caractères &#39;EUR&#39; ou &#39;TND&#39; la devise du montant qu&#39;il entrera.
+* Ensuite, le programme exécute une action conditionnelle de la forme:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+if devise == &#39;EUR&#39; :
+    # Expression 1
+elif devise == &#39;TND&#39; :
+    # Expression 2
+else :
+   # affichage d&#39;un message d&#39;erreur
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load solution/ex3</span>
+devise = input(&quot;Devise : &quot;)
+montant = int(input (&quot;Montant : &quot;))
+<span style="color: #228B22"># 1 EUR = 3.30 TND</span>
+facteur_euro_dinar = 3.30
+if devise == &#39;EUR&#39; :
+    print (&quot;{} TND&quot;.format(montant * facteur_euro_dinar))
+
+elif devise == &#39;TND&#39; :
+    print (&quot;{} Euros&quot;.format(montant / facteur_euro_dinar))
+
+else :
+    print (&quot;Je n&#39;ai rien compris&quot;) # affichage d&#39;un message d&#39;erreur
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Résolution d’une équation du second degré =====</span>
+Soit l’équation du second degré $a x^2 + bx + c = 0$ où $a$, $b$ et $c$ sont des coefficients réels.
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Écrivez un programme qui  qui demande d&#39;entrer les coefficients et affiche les solutions de l&#39;équation.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+
+_Solutions analytiques_
+
+Des solutions sont recherchées dans le cas général, compte tenu du discriminant $\Delta = b^2 - 4ac$, l&#39;équation admet comme solutions analytiques:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[  \left\{
+<span style="color: #658b00">\begin{array}</span>{ll}
+\Delta &gt; 0 &amp; deux \ solutions \ réelles : \ x_1 = \frac{-b - \sqrt{\Delta}}{2a}; \quad x_2 =  \frac{-b + \sqrt{\Delta}}{2a}\\
+\Delta = 0 &amp; une \ solution \ double : \ x_0 = \frac{-b}{2a} \\
+\Delta &lt; 0 &amp; deux \ solutions \ complexes : \ z_1 = \frac{-b - i \sqrt{-\Delta}}{2a}; \quad z_2 = \frac{-b + i \sqrt{-\Delta}}{2a}
+<span style="color: #658b00">\end{array}</span>
+\right. \]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+_Algorithme_
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Définition
+ Ensemble de règles opératoires dont l&#39;application permet de résoudre un problème énoncé au moyen d&#39;un nombre fini d&#39;opérations. Un algorithme peut être traduit, grâce à un langage de programmation, en un programme exécutable par un ordinateur.
+<span style="color: #CD5555">&quot;Source: LAROUSSE&quot;</span>: &quot;https://www.larousse.fr/dictionnaires/francais/algorithme/2238&quot;
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+_Pseudo-code de l&#39;algorithme_
+
+ Présentons tout d&#39;abord un pseudo-code de l&#39;algorithme, c&#39;est-à-dire le détail des opérations à effectuer sans syntaxe propre du langage.
+<span style="color: #658b00">FIGURE:[imgs/algo1, width=500 frac=1.2]</span>
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load solution/ex4</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+Calcul des racines de l&#39;equation du second degré:
+a x^2 + b x + c = 0
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+from math import sqrt
+
+a = float(input(&quot;Valeur de a:&quot;))
+b = float(input(&quot;Valeur de b:&quot;))
+c = float(input(&quot;Valeur de c:&quot;))
+
+print(&quot;L&#39;équation a resoudre est: {} x^2 + {} x + {}&quot;.format(a,b,c))
+
+delta = b**2 - 4*a*c  #Calcul du discriminant:
+
+<span style="color: #228B22">#Resultats des racines suivant la valeur de delta:</span>
+if delta &gt; 0:
+    x1 = (-b - sqrt(delta))/(2*a)
+    x2 = (-b + sqrt(delta))/(2*a)
+    # Affichage des solutions trouvées
+    print(&quot;Les solutions sont réelles: &quot;)
+    print(&quot;La premiere racine est x1= &quot;,x1)
+    print(&quot;La seconde racines est x2= &quot;,x2)
+
+elif delta == 0:
+    x0 = -b/(2*a)
+    # Affichage de la solution trouvée
+    print(&quot;Il y a une seule solution: &quot;)
+    print(&quot;La solution est&quot;, x0)
+
+elif delta&lt;0:
+    z1 = (-b - 1j*sqrt(-delta))/(2*a)
+    z2 = (-b + 1j*sqrt(-delta))/(2*a)
+    # Affichage des solutions trouvées
+    print(&quot;Les solutions sont complexes: &quot;)
+    print(&quot;La premiere racine est z1 = &quot;, z1)
+    print(&quot;La seconde racine est z2 = &quot;, z2)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Soit la fonction $f(x) = 0.83 x^2 + 3.8 x + 2.48$. En utilisant le programme précédent, trouvez les solutions pour $f(x) = 0$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les solutions des $f(x) = 0$ sont réelles:
+$x_1 =$ et $x_2 =$
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+La représentation graphique de $f(x)$ est indiquée ci-dessous:
+
+<span style="color: #658b00">FIGURE: [imgs/ex_fonction1]</span>
+
+Nous allons utiliser une fonction `EqSecondDegree(a,b,c)` dans _TD N°3_ pour reproduire cette figure en utilisant les bibliothèques `numpy` et `matplotlib`.
+* Ecrivez la fonction `EqSecondDegree(a,b,c)` qui _renvoie_ les solutions de l&#39;équation $a x^2 + bx + c = 0$.
+* Enregistrez la fonction `EqSecondDegree(a,b,c)` dans un script Python `racines.py` puis l&#39;exécuter dans la cellule de code suivante:
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load racines.py</span>
+def EqSecondDegree(a,b,c):
+    &quot;&quot;&quot;
+    Calcul des racines de l&#39;equation du second degré:
+    a x^2 + b x + c = 0
+    &quot;&quot;&quot;
+    from math import sqrt
+
+    print(&quot;L&#39;équation a resoudre est: {} x^2 + {} x + {}&quot;.format(a,b,c))
+
+    delta = b**2 - 4*a*c  #Calcul du discriminant:
+
+    #Resultats des racines suivant la valeur de delta:
+    if delta &gt; 0:
+        x1 = (-b - sqrt(delta))/(2*a)
+        x2 = (-b + sqrt(delta))/(2*a)
+        # Affichage des solutions trouvées
+        print(&quot;Les solutions sont réelles: &quot;)
+        print(&quot;La premiere racine est x1= &quot;,x1)
+        print(&quot;La seconde racines est x2= &quot;,x2)
+        return x1, x2
+
+    elif delta == 0:
+        x0 = -b/(2*a)
+        # Affichage de la solution trouvée
+        print(&quot;Il y a une seule solution: &quot;)
+        print(&quot;La solution est&quot;, x0)
+        return x0
+
+    elif delta&lt;0:
+        z1 = (-b - 1j*sqrt(-delta))/(2*a)
+        z2 = (-b + 1j*sqrt(-delta))/(2*a)
+        # Affichage des solutions trouvées
+        print(&quot;Les solutions sont complexes: &quot;)
+        print(&quot;La premiere racine est z1 = &quot;, z1)
+        print(&quot;La seconde racine est z2 = &quot;, z2)
+        return z1, z2
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Exécutez le scripte racines.py</span>
+EqSecondDegree(a=0.83,b=3.8,c=2.48)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+En utilisant la fonction `EqSecondDegree(a,b,c)`, trouvez les solutions de $f(x) = 0$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from racines import EqSecondDegree
+x1, x2 = EqSecondDegree(0.83,3.8,2.48)
+print(&quot;x1 = {:.3f} et x2 = {:.3f}&quot;.format(x1, x2))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: programmez une boucle `while` =====</span>
+
+Définir une séquence de nombres: $$x_n = n^2 + 1$$
+
+pour les entiers n = 0,1,2,…, N. Écrivez un programme qui affiche $x_n$ pour n = 0,1,…, 20 en utilisant une boucle `while`.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme qui affiche $x_n$ pour n = 0,1,…, 20 en utilisant une boucle `while` s&#39;écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+n = 0
+while n &lt;= 20:
+    x_n = n**2 + 1
+    print(&#39;x{} = {}&#39;.format(n, x_n))
+    n = n + 1
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Créer une liste avec une boucle `while` =====</span>
+
+Stockez toutes les valeurs $x_n$ calculées dans l&#39;exercice 5 dans une liste (à l&#39;aide d&#39;une boucle `while`). Afficher la liste complète (en un seul objet).
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les valeurs $x_n$ sont stockés dans une liste `x` définie:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+n = 0
+x = []  # les x_n valeurs
+while n &lt;= 20:
+    x.append(n**2 + 1)
+    n = n + 1
+print(x)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Programmer une boucle `for` =====</span>
+Faites l&#39;exercice 6, mais utilisez une boucle `for`.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme avec une boucle `for` s&#39;écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load solution/ex7</span>
+x = []
+for n in range(21):
+    x.append(n**2 + 1)
+print(x)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+On peut également raccourcir le code en utilisant une liste de compréhension:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+print([n**2 +1 for n in range(21)])
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Ecrire une fonction Python =====</span>
+Écriez une fonction `x(n)` pour calculer un élément dans la séquence $x_n = n^2 + 1 $. Appelez la fonction pour n = 4 et écrivez le résultat.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction `x(n)` est définie:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def x(n):
+    return n**2 +1
+print(x(1))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Renvoyer trois valeurs d&#39;une fonction Python =====</span>
+
+Écrivez une fonction Python qui évalue les fonctions mathématiques $f(x) = cos(2x)$, $f&#39;(x) = -2sin(2x)$ et $f&quot;(x) = - 4 cos(2x)$. Retourner ces trois valeurs. Écrivez les résultats de ces valeurs pour $x = \pi$.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Soit une fonction `deriv2(x)` qui renvoie les valeurs de $f(x)$, $f&#39;(x)$ et $f&quot;(x)$:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from math import sin, cos, pi
+
+def deriv2(x):
+    return cos(2*x), -2*sin(2*x), -4*cos(2*x)
+
+f, df, d2f = deriv2(x=pi)
+
+print(&quot;f(pi) = {}; df(pi) = {}; d2f(pi) = {} &quot;.format(f, df, d2f))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+</pre></div>

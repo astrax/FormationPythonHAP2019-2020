@@ -1,0 +1,428 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TD N°2 : Contrôle du flux d’instructions">
+
+<title>TD N°2 : Contrôle du flux d’instructions</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Table des matières',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Exercise 1: Comparer deux entiers', 2, None, '___sec0'),
+              ('Exercise 2: Comparer deux chaînes', 2, None, '___sec1'),
+              ('Exercise 3: Convertir Euro contre Dinar Tunisien | EUR TND',
+               2,
+               None,
+               '___sec2'),
+              ('Exercise 4: Résolution d’une équation du second degré',
+               2,
+               None,
+               '___sec3'),
+              ('Exercise 5: programmez une boucle `while`', 2, None, '___sec4'),
+              ('Exercise 6: Créer une liste avec une boucle `while`',
+               2,
+               None,
+               '___sec5'),
+              ('Exercise 7: Programmer une boucle `for`', 2, None, '___sec6'),
+              ('Exercise 8: Ecrire une fonction Python', 2, None, '___sec7'),
+              ("Exercise 9: Renvoyer trois valeurs d'une fonction Python",
+               2,
+               None,
+               '___sec8')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="TD2.html">TD N°2 : Contrôle du flux d’instructions</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table des matières</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Exercise 1: Comparer deux entiers</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Exercise 2: Comparer deux chaînes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Exercise 3: Convertir Euro contre Dinar Tunisien | EUR TND</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Exercise 4: Résolution d’une équation du second degré</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">Exercise 5: programmez une boucle <code>while</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">Exercise 6: Créer une liste avec une boucle <code>while</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">Exercise 7: Programmer une boucle <code>for</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">Exercise 8: Ecrire une fonction Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">Exercise 9: Renvoyer trois valeurs d'une fonction Python</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>TD N&#176;2 : Contr&#244;le du flux d&#8217;instructions</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Oct 23, 2019</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Exercise 1: Comparer deux entiers </a><br>
+<a href="#___sec1"> Exercise 2: Comparer deux cha&#238;nes </a><br>
+<a href="#___sec2"> Exercise 3: Convertir Euro contre Dinar Tunisien | EUR TND </a><br>
+<a href="#___sec3"> Exercise 4: R&#233;solution d&#8217;une &#233;quation du second degr&#233; </a><br>
+<a href="#___sec4"> Exercise 5: programmez une boucle <code>while</code> </a><br>
+<a href="#___sec5"> Exercise 6: Cr&#233;er une liste avec une boucle <code>while</code> </a><br>
+<a href="#___sec6"> Exercise 7: Programmer une boucle <code>for</code> </a><br>
+<a href="#___sec7"> Exercise 8: Ecrire une fonction Python </a><br>
+<a href="#___sec8"> Exercise 9: Renvoyer trois valeurs d'une fonction Python </a><br>
+</p>
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec0" class="anchor">Exercise 1: Comparer deux entiers </h2>
+
+<p>
+&#201;crivez un programme qui vous demande de saisir 2 nombres entiers et affiche la plus petite de ces valeurs.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec1" class="anchor">Exercise 2: Comparer deux cha&#238;nes </h2>
+
+<p>
+&#201;crivez un programme qui demande d'entrer 2 cha&#238;nes et qui affiche la plus grande des 2 cha&#238;nes (celle qui contient le plus de caract&#232;res).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec2" class="anchor">Exercise 3: Convertir Euro contre Dinar Tunisien | EUR TND </h2>
+
+<p>
+&#201;crivez un programme qui convertit l'euro (EUR) en dinar tunisien (TND):
+
+<ul>
+<li> Le programme commence par demander &#224; l'utilisateur d'indiquer par une cha&#238;ne de caract&#232;res 'EUR' ou 'TND' la devise du montant qu'il entrera.</li>
+<li> Ensuite, le programme ex&#233;cute une action conditionnelle de la forme:</li>
+</ul>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> devise <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;EUR&#39;</span> :
+    <span style="color: #408080; font-style: italic"># Expression 1</span>
+<span style="color: #008000; font-weight: bold">elif</span> devise <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;TND&#39;</span> :
+    <span style="color: #408080; font-style: italic"># Expression 2</span>
+<span style="color: #008000; font-weight: bold">else</span> :
+   <span style="color: #408080; font-style: italic"># affichage d&#39;un message d&#39;erreur</span>
+</pre></div>
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec3" class="anchor">Exercise 4: R&#233;solution d&#8217;une &#233;quation du second degr&#233; </h2>
+
+<p>
+Soit l&#8217;&#233;quation du second degr&#233; \( a x^2 + bx + c = 0 \) o&#249; \( a \), \( b \) et \( c \) sont des coefficients r&#233;els.
+
+<p>
+<b>a)</b>
+&#201;crivez un programme qui  qui demande d'entrer les coefficients et affiche les solutions de l'&#233;quation.
+
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_1" style="font-size: 80%;"></a>
+<a href="#exer_4_1" data-toggle="collapse">
+<b>Indication.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_1">
+
+<p>
+<b>Solutions analytiques</b>
+
+<p>
+Des solutions sont recherch&#233;es dans le cas g&#233;n&#233;ral, compte tenu du discriminant \( \Delta = b^2 - 4ac \), l'&#233;quation admet comme solutions analytiques:
+$$  \left\{
+\begin{array}{ll}
+\Delta > 0 & deux \ solutions \ réelles : \ x_1 = \frac{-b - \sqrt{\Delta}}{2a}; \quad x_2 =  \frac{-b + \sqrt{\Delta}}{2a}\\
+\Delta = 0 & une \ solution \ double : \ x_0 = \frac{-b}{2a} \\
+\Delta < 0 & deux \ solutions \ complexes : \ z_1 = \frac{-b - i \sqrt{-\Delta}}{2a}; \quad z_2 = \frac{-b + i \sqrt{-\Delta}}{2a}
+\end{array}
+\right. $$
+
+<b>Algorithme</b>
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>D&#233;finition.</b>
+ Ensemble de r&#232;gles op&#233;ratoires dont l'application permet de r&#233;soudre un probl&#232;me &#233;nonc&#233; au moyen d'un nombre fini d'op&#233;rations. Un algorithme peut &#234;tre traduit, gr&#226;ce &#224; un langage de programmation, en un programme ex&#233;cutable par un ordinateur.
+<a href="https://www.larousse.fr/dictionnaires/francais/algorithme/2238" target="_self">Source: LAROUSSE</a>
+</div>
+
+
+<p>
+<b>Pseudo-code de l'algorithme</b>
+
+<p>
+ Pr&#233;sentons tout d'abord un pseudo-code de l'algorithme, c'est-&#224;-dire le d&#233;tail des op&#233;rations &#224; effectuer sans syntaxe propre du langage.
+<br /><br /><center><p><img src="imgs/algo1.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>b)</b>
+Soit la fonction \( f(x) = 0.83 x^2 + 3.8 x + 2.48 \). En utilisant le programme pr&#233;c&#233;dent, trouvez les solutions pour \( f(x) = 0 \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>c)</b>
+La repr&#233;sentation graphique de \( f(x) \) est indiqu&#233;e ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="imgs/ex_fonction1.png" align="bottom" ></p></center><br /><br />
+
+<p>
+Nous allons utiliser une fonction <code>EqSecondDegree(a,b,c)</code> dans <b>TD N&#176;3</b> pour reproduire cette figure en utilisant les biblioth&#232;ques <code>numpy</code> et <code>matplotlib</code>.
+
+<ul>
+<li> Ecrivez la fonction <code>EqSecondDegree(a,b,c)</code> qui <b>renvoie</b> les solutions de l'&#233;quation \( a x^2 + bx + c = 0 \).</li>
+<li> Enregistrez la fonction <code>EqSecondDegree(a,b,c)</code> dans un script Python <code>racines.py</code> puis l'ex&#233;cuter dans la cellule de code suivante:</li>
+</ul>
+
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>d)</b>
+En utilisant la fonction <code>EqSecondDegree(a,b,c)</code>, trouvez les solutions de \( f(x) = 0 \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec4" class="anchor">Exercise 5: programmez une boucle <code>while</code> </h2>
+
+<p>
+D&#233;finir une s&#233;quence de nombres: $$x_n = n^2 + 1$$
+
+<p>
+pour les entiers n = 0,1,2,&#8230;, N. &#201;crivez un programme qui affiche \( x_n \) pour n = 0,1,&#8230;, 20 en utilisant une boucle <code>while</code>.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec5" class="anchor">Exercise 6: Cr&#233;er une liste avec une boucle <code>while</code> </h2>
+
+<p>
+Stockez toutes les valeurs \( x_n \) calcul&#233;es dans l'exercice 5 dans une liste (&#224; l'aide d'une boucle <code>while</code>). Afficher la liste compl&#232;te (en un seul objet).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec6" class="anchor">Exercise 7: Programmer une boucle <code>for</code> </h2>
+
+<p>
+Faites l'exercice 6, mais utilisez une boucle <code>for</code>.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec7" class="anchor">Exercise 8: Ecrire une fonction Python </h2>
+
+<p>
+&#201;criez une fonction <code>x(n)</code> pour calculer un &#233;l&#233;ment dans la s&#233;quence \( x_n = n^2 + 1  \). Appelez la fonction pour n = 4 et &#233;crivez le r&#233;sultat.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec8" class="anchor">Exercise 9: Renvoyer trois valeurs d'une fonction Python </h2>
+
+<p>
+&#201;crivez une fonction Python qui &#233;value les fonctions math&#233;matiques \( f(x) = cos(2x) \), \( f'(x) = -2sin(2x) \) et \( f"(x) = - 4 cos(2x) \). Retourner ces trois valeurs. &#201;crivez les r&#233;sultats de ces valeurs pour \( x = \pi \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

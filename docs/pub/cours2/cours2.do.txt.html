@@ -1,0 +1,562 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Introduction à Python III : Contrôle du flux d’instructions</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Les conditions =======</span>
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction `if` =====</span>
+En programmation, nous avons toujours besoin de la notion de condition pour permettre à un programme de s&#39;adapter à différents cas de figure.
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Syntaxe
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+if expression: # ne pas oublier le signe de ponctuation &#39;:&#39;
+    &quot;bloc d&#39;instructions&quot; # attention à l&#39;indentation (1 Tab ou 4 * Espaces)
+<span style="color: #228B22"># suite du programme</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+* Si l&#39;expression est vraie (`True`) alors le bloc d&#39;instructions est exécuté.
+
+* Si l&#39;expression est fausse (`False`) on passe directement à la suite du programme.
+
+<span style="color: #000080; font-weight: bold">=== Exemple 1: Note sur 20 ===</span>
+Dans cet exemple nous allons tester si la note entrée par l&#39;utilisateur. Si la note est &gt; 10 on doit recevoir le message: &quot;J&#39;ai la moyenne&quot; sinon il va rien faire.
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+chaine = input(&quot;Note sur 20 : &quot;)
+note = float(chaine)
+if note &gt;= 10.0:
+    # ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est vraie
+    print(&quot;J&#39;ai la moyenne&quot;)
+
+<span style="color: #228B22"># suite du programme</span>
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+* Les blocs de code sont délimités par l&#39;indentation.
+* L&#39;indentation est obligatoire dans les scripts.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction `else` =====</span>
+
+Une instruction `else` est toujours associée à une instruction `if`.
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Syntaxe
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+if expression:
+    &quot;bloc d&#39;instructions 1&quot;    # attention à l&#39;indentation (1 Tab ou 4 * Espaces)
+else:                          # else est au même niveau que if
+    &quot;bloc d&#39;instructions 2&quot;    # attention à l&#39;indentation
+<span style="color: #228B22"># suite du programme</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+* Si l&#39;expression est vraie (`True`) alors le bloc d&#39;instructions 1 est exécuté.
+* Si l&#39;expression est fausse (`False`) alors c&#39;est le bloc d&#39;instructions 2 qui est exécuté.
+
+<span style="color: #000080; font-weight: bold">=== Exemple 2 : moyenne ===</span>
+Dans cet exemple nous allons tester si la note entrée par l&#39;utilisateur. Si la note est &gt; 10 on doit recevoir le message: &quot;J&#39;ai la moyenne&quot; sinon il va afficher &quot;C&#39;est en dessous de la moyenne&quot;.
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+chaine = input(&quot;Note sur 20 : &quot;)
+note = float(chaine)
+if note &gt;= 10.0:
+    # ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est vraie
+    print(&quot;J&#39;ai la moyenne&quot;)
+else:
+    # ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est fausse
+    print(&quot;C&#39;est en dessous de la moyenne&quot;)
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+Pour traiter le cas des notes invalides ($&lt;0$ ou $&gt;20$), on peut imbriquer des instructions conditionnelles :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+chaine = input(&quot;Note sur 20 : &quot;)
+note = float(chaine)
+if note &gt; 20.0 or note &lt; 0.0:
+    # ce bloc est exécuté si l&#39;expression (note &gt; 20.0 or note &lt; 0.0) est vraie
+    print(&quot;Note invalide !&quot;)
+else:
+    # ce bloc est exécuté si l&#39;expression (note &gt; 20.0 or note &lt; 0.0) est fausse
+    if note &gt;= 10.0:
+        # ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est vraie
+        print(&quot;J&#39;ai la moyenne&quot;)
+    else:
+        # ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est fausse
+        print(&quot;C&#39;est en dessous de la moyenne&quot;)
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Ou bien encore:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+chaine = input(&quot;Note sur 20 : &quot;)
+note = float(chaine)
+if note &gt; 20.0 or note &lt; 0.0:
+    print(&quot;Note invalide !&quot;)
+else:
+    if note &gt;= 10.0:
+        print(&quot;J&#39;ai la moyenne&quot;)
+        if note == 20.0:
+            # ce bloc est exécuté si l&#39;expression (note == 20.0) est vraie
+            print(&quot;C&#39;est même excellent !&quot;)
+    else:
+        print(&quot;C&#39;est en dessous de la moyenne&quot;)
+        if note == 0.0:
+            # ce bloc est exécuté si l&#39;expression (note == 0.0) est vraie
+            print(&quot;... lamentable !&quot;)
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction `elif` =====</span>
+Une instruction `elif` (contraction de _else if_) est toujours associée à une instruction `if`.
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Syntaxe
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+if expression 1:
+    &quot;bloc d&#39;instructions 1&quot;
+elif expression 2:
+    &quot;bloc d&#39;instructions 2&quot;
+elif expression 3:
+    &quot;bloc d&#39;instructions 3&quot;    # ici deux instructions elif, mais il n&#39;y a pas de limitation
+else:
+    &quot;bloc d&#39;instructions 4&quot;
+<span style="color: #228B22"># suite du programme</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+* Si l&#39;expression 1 est vraie alors le bloc d&#39;instructions 1 est exécuté, et on passe à la suite du programme.
+* Si l&#39;expression 1 est fausse alors on teste l&#39;expression 2 :
+
+* si l&#39;expression 2 est vraie on exécute le bloc d&#39;instructions 2, et on passe à la suite du programme.
+* si l&#39;expression 2 est fausse alors on teste l&#39;expression 3, etc.
+
+Le bloc d&#39;instructions 4 est donc exécuté si toutes les expressions sont fausses (c&#39;est le bloc &quot;par défaut&quot;).
+
+Parfois il n&#39;y a rien à faire. Dans ce cas, on peut omettre l&#39;instruction `else` :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+if expression 1:
+    &quot;bloc d&#39;instructions 1&quot;
+elif expression 2:
+    &quot;bloc d&#39;instructions 2&quot;
+elif expression 3:
+    &quot;bloc d&#39;instructions 3&quot;
+<span style="color: #228B22"># suite du programme</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+
+L&#39;instruction `elif` évite souvent l&#39;utilisation de conditions imbriquées (et souvent compliquées).
+
+<span style="color: #000080; font-weight: bold">=== Exemple 3 : moyenne-bis ===</span>
+On peut tester plusieurs possibilités avec une syntaxe beaucoup plus propre avec les instructions `if-elif-else`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+note = float(input(&quot;Note sur 20 : &quot;))
+if note == 0.0:
+    print(&quot;C&#39;est en dessous de la moyenne&quot;)
+    print(&quot;... lamentable!&quot;)
+elif note == 20.0:
+    print(&quot;J&#39;ai la moyenne&quot;)
+    print(&quot;C&#39;est même excellent !&quot;)
+elif 0 &lt; note &lt; 10:    # ou bien : elif 0.0 &lt; note &lt; 10.0:
+    print(&quot;C&#39;est en dessous de la moyenne&quot;)
+elif note &gt;= 10.0 and note &lt; 20.0:   # ou bien : elif 10.0 &lt;= note &lt; 20.0:
+    print(&quot;J&#39;ai la moyenne&quot;)
+else:
+    print(&quot;Note invalide !&quot;)
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Condition sur le jour de travail =====</span>
+
+Si aujourd&#39;hui est lundi alors je dois aller travailler, mais si c&#39;est dimanche alors je peux rester faire la grasse matinée. Pour pouvoir accomplir ce genre de choses en Python, on fait appel à des expressions booléennes qui ne peuvent revêtir que deux possibilités - ou bien l&#39;expression est vraie ou bien elle est fausse - et à la syntaxe if condition: qui permet de contrôler le flux du programme grâce à ces valeurs booléennes.
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+day_week = [&quot;Lundi&quot;, &quot;Mardi&quot;, &quot;Mercredi&quot;, &quot;Jeudi&quot;, &quot;Vendredi&quot;,
+            &quot;Samedi&quot;, &quot;Dimanche&quot;]
+today = input(&quot;Aujourd&#39;hui est: &quot;)
+
+if *condition vraie*:  # Quelle est la condition vraie dans ce cas?
+    print(&quot;Je dors le matin!&quot;)
+else:
+    print(&quot;Je travail le matin!&quot;)
+
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Dans la _condition vraie_, utilisez l&#39;opérateur logique `in` pour tester les éléments de la liste `day_week`.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+day_week = [&quot;Lundi&quot;, &quot;Mardi&quot;, &quot;Mercredi&quot;, &quot;Jeudi&quot;, &quot;Vendredi&quot;, &quot;Samedi&quot;, &quot;Dimanche&quot;]
+today = input(&quot;Aujourd&#39;hui est: &quot;)
+if today in day_week:
+    if today == day_week[-1]:  # Quelle est la condition vraie dans ce cas?
+        print(&quot;Je dors le matin!&quot;)
+    else:
+        print(&quot;Je travail le matin!&quot;)
+
+print(&quot;Fin du programme&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #000080; font-weight: bold">======= Les boucles =======</span>
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction `while` =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Syntaxe
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+while expression:           # ne pas oublier le signe de ponctuation &#39;:&#39;
+    &quot;bloc d&#39;instructions&quot;   # attention à l&#39;indentation (1 Tab ou 4 * Espaces)
+<span style="color: #228B22"># suite du programme</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+* Si l&#39;expression est vraie (`True`) le bloc d&#39;instructions est exécuté, puis l&#39;expression est à nouveau évaluée.
+* Le cycle continue jusqu&#39;à ce que l&#39;expression soit fausse (`False`) : on passe alors à la suite du programme.
+
+<span style="color: #000080; font-weight: bold">=== Exemple 1 : un script qui compte de 1 à 4 ===</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># initialisation de la variable de comptage</span>
+compteur = 0
+while compteur &lt; 5:
+    # ce bloc est exécuté tant que la condition (compteur &lt; 5) est vraie
+    print(compteur)
+    compteur = compteur + 1    # incrémentation du compteur,  compteur = compteur + 1
+print(compteur)
+print(&quot;Fin de la boucle&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">=== Exemple 2 : Table de multiplication par 8 ===</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+compteur = 1         # initialisation de la variable de comptage
+while compteur &lt;= 10:
+    # ce bloc est exécuté tant que la condition (compteur &lt;= 10) est vraie
+    print(compteur, &#39;* 8 =&#39;, compteur*8)
+    compteur += 1    # incrémentation du compteur, compteur = compteur + 1
+print(&quot;Et voilà !&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">=== Exemple 3 : Affichage de l&#39;heure courante ===</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import time     # importation du module time
+quitter = &#39;n&#39;   # initialisation
+while quitter != &#39;o&#39;:
+    # ce bloc est exécuté tant que la condition est vraie
+    # strftime() est une fonction du module time
+    print(&#39;Heure courante &#39;, time.strftime(&#39;%H:%M:%S&#39;))
+    quitter = input(&quot;Voulez-vous quitter le programme (o/n) ? &quot;)
+print(&quot;A bientôt&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction `for` =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Syntaxe
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+for élément in séquence :     # ne pas oublier le signe de ponctuation &#39;:&#39;
+    &quot;bloc d&#39;instructions&quot;     # attention à l&#39;indentation (1 Tab ou 4 * Espaces)
+<span style="color: #228B22"># suite du programme</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+Les éléments de la séquence sont issus d&#39;une chaîne de caractères ou bien d&#39;une liste.
+
+<span style="color: #000080; font-weight: bold">=== Exemple 1 : séquence de caractères ===</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+chaine = &#39;Bonsoir&#39;
+for lettre in chaine:  # lettre est la variable d&#39;itération
+    print(lettre)
+print(&quot;Fin de la boucle&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+La variable lettre est initialisée avec le premier élément de la séquence (&#39;B&#39;).
+Le bloc d&#39;instructions est alors exécuté.
+
+Puis la variable lettre est mise à jour avec le second élément de la séquence (&#39;o&#39;) et le bloc d&#39;instructions à nouveau exécuté...
+
+Le bloc d&#39;instructions est exécuté une dernière fois lorsqu&#39;on arrive au dernier élément de la séquence (&#39;r&#39;).
+
+<span style="color: #000080; font-weight: bold">=== Fonction `range()` ===</span>
+
+L&#39;association avec la fonction `range()` est très utile pour créer des séquences automatiques de nombres entiers :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+for i in range(1, 5):
+    print(i)
+print(&quot;Fin de la boucle&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">=== Exemple 2 : Table de multiplication ===</span>
+
+La création d&#39;une table de multiplication paraît plus simple avec une boucle `for` qu&#39;avec une boucle `while` :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+for compteur in range(1,11):
+    print(compteur, &#39;* 8 =&#39;, compteur*8)
+print(&quot;Et voilà !&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">=== Exemple 3 : calcul d&#39;une somme ===</span>
+
+Soit, par exemple, l&#39;expression de la somme suivante:
+$$s = \sum_{i = 0}^{100} \sqrt{ \frac{i \pi}{100}} sin(\frac{i \pi}{100})$$
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from math import sqrt, sin, pi
+s = 0.0 # # intialisation de s
+for i in range(101):
+    s+= sqrt(i * pi/100) * sin(i * pi/100)   # équivalent à s = s + sqrt(x) * sin(x)
+<span style="color: #228B22"># Affichage de la somme</span>
+print(s)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: produit de Wallis =====</span>
+
+Calculer $\pi$ avec le &quot;produit de Wallis&quot; : &quot;https://fr.wikipedia.org/wiki/Int%C3%A9grale_de_Wallis#Calcul_de_%CF%80&quot;
+
+$$ \frac{\pi}{2} = \prod_{i=1}^p\frac{4i^2}{4i^2-1}$$
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load wallis.py</span>
+from math import pi
+
+my_pi = 1.  # intialisation
+p = 100000
+for i in range(1, p):
+    my_pi *= 4 * i ** 2 / (4 * i ** 2 - 1.)  # implémentation de la formule de Wallis
+
+my_pi *= 2       # multiplication par 2 de la valeur trouvée
+
+print(&quot;La valeur de pi de la bibliothèque &#39;math&#39;: &quot;, pi)
+print(&quot;La valeur de pi calculer par la formule de Wallis: &quot;, my_pi)
+
+print(&quot;La différence entre les deux valeurs:&quot;, abs(pi - my_pi))
+<span style="color: #228B22"># la fonction abs() donne la valeur absolue</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Compréhensions de listes =====</span>
+
+Les compréhensions de listes fournissent un moyen de construire des listes de manière très concise. Une application classique est la construction de nouvelles listes où chaque élément est le résultat d’une opération appliquée à chaque élément d’une autre séquence ; ou de créer une sous-séquence des éléments satisfaisant une condition spécifique.
+
+Par exemple, supposons que l’on veuille créer une liste de carrés, comme :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+squares = []
+for x in range(10):
+    squares.append(x**2)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+squares
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Notez que cela crée (ou remplace) une variable nommée `x` qui existe toujours après l’exécution de la boucle. On peut calculer une liste de carrés sans effet de bord avec :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+squares = [x**2 for x in range(10)]
+squares
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+qui est plus court et lisible.
+
+Une compréhension de liste consiste à placer entre crochets une expression suivie par une clause `for` puis par zéro ou plus clauses `for` ou `if`. Le résultat est une nouvelle liste résultat de l’évaluation de l’expression dans le contexte des clauses `for` et `if` qui la suivent. Par exemple, cette compréhension de liste combine les éléments de deux listes s’ils ne sont pas égaux :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+combs = [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+combs
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+et c’est équivalent à :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+combs = []
+for x in [1,2,3]:
+    for y in [3,1,4]:
+        if x != y:
+            combs.append((x, y))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+combs
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Notez que l’ordre des instructions `for` et `if` est le même dans ces différents extraits de code.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction break =====</span>
+
+L&#39;instruction break provoque une sortie immédiate d&#39;une boucle `while` ou d&#39;une boucle `for`.
+
+Dans l&#39;exemple suivant, l&#39;expression `True` est toujours ... vraie : on a une boucle sans fin.
+
+L&#39;instruction `break` est donc le seul moyen de sortir de la boucle.
+
+<span style="color: #000080; font-weight: bold">=== Exemple : Affichage de l&#39;heure courante ===</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import time     # importation du module time
+while True:
+    # strftime() est une fonction du module time
+    print(&#39;Heure courante &#39;, time.strftime(&#39;%H:%M:%S&#39;))
+    quitter = input(&#39;Voulez-vous quitter le programme (o/n) ? &#39;)
+    if quitter == &#39;o&#39;:
+        break
+print(&quot;A bientôt&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Si vous connaissez le nombre de boucles à effectuer, utiliser une boucle `for`.
+Autrement, utiliser une boucle `while` (notamment pour faire des boucles sans fin).
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #000080; font-weight: bold">======= Les fonctions =======</span>
+
+Nous avons déjà vu beaucoup de fonctions : `print()`, `type()`, `len()`, `input()`, `range()`...
+
+Ce sont des fonctions pré-définies (&quot;Fonctions natives&quot;: &quot;https://docs.python.org/fr/3/library/functions.html&quot;).
+
+Nous avons aussi la possibilité de créer nos propres fonctions!
+
+<span style="color: #000080; font-weight: bold">===== Intérêt des fonctions =====</span>
+
+Une fonction est une portion de code que l&#39;on peut appeler au besoin (c&#39;est une sorte de sous-programme).
+
+L&#39;utilisation des fonctions évite des redondances dans le code : on obtient ainsi des programmes plus courts et plus lisibles.
+
+Par exemple, nous avons besoin de convertir à plusieurs reprises des degrés Celsius en degrés Fahrenheit :
+$$T_F = T_C \times 1,8 + 32 $$
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+print(100 * 1.8 + 32.0)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+print(37.0 * 1.8 + 32.0)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+print(233.0 * 1.8 + 32.0)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+La même chose en utilisant une fonction :
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def fahrenheit(degre_celsius):
+        &quot;&quot;&quot;
+        Conversion degré Celsius en degré Fahrenheit
+        &quot;&quot;&quot;
+        print(degre_celsius * 1.8 + 32.0)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+fahrenheit(100)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+fahrenheit(37)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+temperature = 220
+fahrenheit(temperature)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #000080; font-weight: bold">===== L&#39;instruction def =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Syntaxe
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+def nom_de_la_fonction(parametre1, parametre2, parametre3, ...):
+    &quot;&quot;&quot;
+    Documentation
+    qu&#39;on peut écrire
+    sur plusieurs lignes
+    &quot;&quot;&quot;     # docstring entouré de 3 guillemets (ou apostrophes)
+
+    &quot;bloc d&#39;instructions&quot;     # attention à l&#39;indentation
+
+    return resultat            # la fonction retourne le contenu de la variable resultat
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+<span style="color: #000080; font-weight: bold">=== Exemple : ma première fonction ===</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def mapremierefonction():         # cette fonction n&#39;a pas de paramètre
+    &quot;&quot;&quot;
+    Cette fonction affiche &#39;Bonjour&#39;
+    &quot;&quot;&quot;
+    print(&quot;Bonjour&quot;)
+    return                         # cette fonction ne retourne rien (&#39;None&#39;)
+    # l&#39;instruction return est ici facultative
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+mapremierefonction()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+help(mapremierefonction)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Les Scripts =======</span>
+
+Commençons par écrire un script, c’est-à-dire un fichier avec une séquence d’instructions à exécuter chaque fois que le script est appelé. Les instructions peuvent être, par exemple, copié-collé depuis une _cellule code_ dans votre notebook (mais veillez à respecter les règles d&#39;indentation!).
+
+L&#39;extension pour les fichiers Python est `.py`. Écrivez ou copiez et collez les lignes suivantes dans un fichier appelé `test.py`
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod-t
+chaine = &#39;Bonsoir&#39;
+for lettre in chaine:  # lettre est la variable d&#39;itération
+    print(lettre)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+Exécutons maintenant le script de manière interactive, à l&#39;intérieur de l&#39;interpréteur Ipython (cellule code du notebook). C&#39;est peut-être l&#39;utilisation la plus courante des scripts en calcul et simulation scientifique.
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Dans la cellule *code* (Ipython), la syntaxe permettant d&#39;exécuter un script est `%run script.py`. Par exemple:
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+%run test.py
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+chaine
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+La syntaxe permettant de charger le contunu d&#39;un script dans dans une cellule code est `%load script.py`. Par exemple:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># %load test.py</span>
+chaine = &#39;Bonsoir&#39;
+for lettre in chaine:  # lettre est la variable d&#39;itération
+    print(lettre)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #228B22"># !split</span>
+<span style="color: #228B22"># ======= Travaux dirigés =======</span>
+<span style="color: #228B22"># # #include &quot;TP2.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= Lectures complémentaires =======</span>
+
+* &quot;Documentation Python 3.6&quot;: &quot;https://docs.python.org/fr/3.6/tutorial/index.html&quot;
+* &quot;Apprendre à programmer avec Python, par Gérard Swinnen&quot;: &quot;http://inforef.be/swi/python.htm&quot;
+* &quot;Think Python, par Allen B. Downey&quot;: &quot;https://greenteapress.com/wp/think-python/&quot;
+</pre></div>

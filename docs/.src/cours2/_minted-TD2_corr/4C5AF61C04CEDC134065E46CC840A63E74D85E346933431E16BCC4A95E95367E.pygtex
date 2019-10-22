@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{k}{while} \PYG{n}{n} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{20}\PYG{p}{:}
+    \PYG{n}{x\PYGZus{}n} \PYG{o}{=} \PYG{n}{n}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{+} \PYG{l+m+mi}{1}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}x\PYGZob{}\PYGZcb{} = \PYGZob{}\PYGZcb{}\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{x\PYGZus{}n}\PYG{p}{))}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}
+\end{Verbatim}

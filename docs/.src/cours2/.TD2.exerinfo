@@ -1,0 +1,464 @@
+
+# Information about all exercises in the file TD2.do.txt.
+# The information can be loaded into a Python list of dicts by
+#
+# f = open('.TD2.exerinfo', 'r')
+# exer = eval(f.read())
+#
+[{'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 1,
+  'solution': '!bc pycod\n'
+              '# %load solution/ex1\n'
+              'valeur1= int(input("Valeur 1 : "))\n'
+              'valeur2= int(input("Valeur 2 : "))\n'
+              'if (valeur1 < valeur2 ) :\n'
+              '    print("Valeur la plus petite : ", valeur1)\n'
+              'else:\n'
+              '    print("Valeur la plus petite : ", valeur2)\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': 'Écrivez un programme qui vous demande de saisir 2 nombres entiers '
+          'et affiche la plus petite de ces valeurs.',
+  'title': 'Comparer deux entiers',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 2,
+  'solution': '!bc pycod\n'
+              '# %load solution/ex2\n'
+              'chaine1= input("Chaîne 1 : ")\n'
+              'chaine2= input("Chaîne 2 : ")\n'
+              '\n'
+              'if len(chaine2) > len(chaine1) :\n'
+              '    print ("Chaîne la plus grande : " , chaine2 )\n'
+              'else:\n'
+              '    print ("Chaîne la plus grande : " , chaine1 )\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': "Écrivez un programme qui demande d'entrer 2 chaînes et qui affiche "
+          'la plus grande des 2 chaînes (celle qui contient le plus de '
+          'caractères).',
+  'title': 'Comparer deux chaînes',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 3,
+  'solution': '!bc pycod\n'
+              '# %load solution/ex3\n'
+              'devise = input("Devise : ")\n'
+              'montant = int(input ("Montant : "))\n'
+              '# 1 EUR = 3.30 TND\n'
+              'facteur_euro_dinar = 3.30\n'
+              "if devise == 'EUR' :\n"
+              '    print ("{} TND".format(montant * facteur_euro_dinar))\n'
+              '\n'
+              "elif devise == 'TND' :\n"
+              '    print ("{} Euros".format(montant / facteur_euro_dinar))\n'
+              '\n'
+              'else :\n'
+              '    print ("Je n\'ai rien compris") # affichage d\'un message '
+              "d'erreur\n"
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': "Écrivez un programme qui convertit l'euro (EUR) en dinar tunisien "
+          '(TND):\n'
+          '\n'
+          "* Le programme commence par demander à l'utilisateur d'indiquer par "
+          "une chaîne de caractères 'EUR' ou 'TND' la devise du montant qu'il "
+          'entrera.\n'
+          '* Ensuite, le programme exécute une action conditionnelle de la '
+          'forme:\n'
+          '\n'
+          '!bc pycod\n'
+          "if devise == 'EUR' :\n"
+          '    # Expression 1\n'
+          "elif devise == 'TND' :\n"
+          '    # Expression 2\n'
+          'else :\n'
+          "   # affichage d'un message d'erreur\n"
+          '\n'
+          '!ec',
+  'title': 'Convertir Euro contre Dinar Tunisien | EUR TND',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 4,
+  'solution': '',
+  'solution_file': None,
+  'subex': [{'answer': '',
+             'file': None,
+             'hints': ['_Solutions analytiques_\n'
+                       '\n'
+                       'Des solutions sont recherchées dans le cas général, '
+                       'compte tenu du discriminant $\\Delta = b^2 - 4ac$, '
+                       "l'équation admet comme solutions analytiques:\n"
+                       '!bt\n'
+                       '\\[  \\left\\{\n'
+                       '\\begin{array}{ll}\n'
+                       '\\Delta > 0 & deux \\ solutions \\ réelles : \\ x_1 = '
+                       '\\frac{-b - \\sqrt{\\Delta}}{2a}; \\quad x_2 =  '
+                       '\\frac{-b + \\sqrt{\\Delta}}{2a}\\\\\n'
+                       '\\Delta = 0 & une \\ solution \\ double : \\ x_0 = '
+                       '\\frac{-b}{2a} \\\\\n'
+                       '\\Delta < 0 & deux \\ solutions \\ complexes : \\ z_1 '
+                       '= \\frac{-b - i \\sqrt{-\\Delta}}{2a}; \\quad z_2 = '
+                       '\\frac{-b + i \\sqrt{-\\Delta}}{2a}\n'
+                       '\\end{array}\n'
+                       '\\right. \\]\n'
+                       '\n'
+                       '!et\n'
+                       '_Algorithme_\n'
+                       '\n'
+                       '!bblock Définition\n'
+                       " Ensemble de règles opératoires dont l'application "
+                       "permet de résoudre un problème énoncé au moyen d'un "
+                       "nombre fini d'opérations. Un algorithme peut être "
+                       'traduit, grâce à un langage de programmation, en un '
+                       'programme exécutable par un ordinateur.\n'
+                       '"Source: LAROUSSE": '
+                       '"https://www.larousse.fr/dictionnaires/francais/algorithme/2238"\n'
+                       '!eblock\n'
+                       '\n'
+                       "_Pseudo-code de l'algorithme_\n"
+                       '\n'
+                       " Présentons tout d'abord un pseudo-code de "
+                       "l'algorithme, c'est-à-dire le détail des opérations à "
+                       'effectuer sans syntaxe propre du langage.\n'
+                       'FIGURE:[imgs/algo1, width=500 frac=1.2]'],
+             'solution': '!bc pycod\n'
+                         '# %load solution/ex4\n'
+                         '"""\n'
+                         "Calcul des racines de l'equation du second degré:\n"
+                         'a x^2 + b x + c = 0\n'
+                         '"""\n'
+                         'from math import sqrt\n'
+                         '\n'
+                         'a = float(input("Valeur de a:"))\n'
+                         'b = float(input("Valeur de b:"))\n'
+                         'c = float(input("Valeur de c:"))\n'
+                         '\n'
+                         'print("L\'équation a resoudre est: {} x^2 + {} x + '
+                         '{}".format(a,b,c))\n'
+                         '\n'
+                         'delta = b**2 - 4*a*c  #Calcul du discriminant:\n'
+                         '\n'
+                         '#Resultats des racines suivant la valeur de delta:\n'
+                         'if delta > 0:\n'
+                         '    x1 = (-b - sqrt(delta))/(2*a)\n'
+                         '    x2 = (-b + sqrt(delta))/(2*a)\n'
+                         '    # Affichage des solutions trouvées\n'
+                         '    print("Les solutions sont réelles: ")\n'
+                         '    print("La premiere racine est x1= ",x1)\n'
+                         '    print("La seconde racines est x2= ",x2)\n'
+                         '\n'
+                         'elif delta == 0:\n'
+                         '    x0 = -b/(2*a)\n'
+                         '    # Affichage de la solution trouvée\n'
+                         '    print("Il y a une seule solution: ")\n'
+                         '    print("La solution est", x0)\n'
+                         '\n'
+                         'elif delta<0:\n'
+                         '    z1 = (-b - 1j*sqrt(-delta))/(2*a)\n'
+                         '    z2 = (-b + 1j*sqrt(-delta))/(2*a)\n'
+                         '    # Affichage des solutions trouvées\n'
+                         '    print("Les solutions sont complexes: ")\n'
+                         '    print("La premiere racine est z1 = ", z1)\n'
+                         '    print("La seconde racine est z2 = ", z2)\n'
+                         '\n'
+                         '!ec',
+             'text': "Écrivez un programme qui  qui demande d'entrer les "
+                     "coefficients et affiche les solutions de l'équation."},
+            {'answer': '',
+             'file': None,
+             'hints': [],
+             'solution': 'Les solutions des $f(x) = 0$ sont réelles:\n'
+                         '$x_1 =$ et $x_2 =$',
+             'text': 'Soit la fonction $f(x) = 0.83 x^2 + 3.8 x + 2.48$. En '
+                     'utilisant le programme précédent, trouvez les solutions '
+                     'pour $f(x) = 0$.'},
+            {'answer': '',
+             'file': None,
+             'hints': [],
+             'solution': '!bc pycod\n'
+                         '# %load racines.py\n'
+                         'def EqSecondDegree(a,b,c):\n'
+                         '    """\n'
+                         "    Calcul des racines de l'equation du second "
+                         'degré:\n'
+                         '    a x^2 + b x + c = 0\n'
+                         '    """\n'
+                         '    from math import sqrt\n'
+                         '\n'
+                         '    print("L\'équation a resoudre est: {} x^2 + {} x '
+                         '+ {}".format(a,b,c))\n'
+                         '\n'
+                         '    delta = b**2 - 4*a*c  #Calcul du discriminant:\n'
+                         '\n'
+                         '    #Resultats des racines suivant la valeur de '
+                         'delta:\n'
+                         '    if delta > 0:\n'
+                         '        x1 = (-b - sqrt(delta))/(2*a)\n'
+                         '        x2 = (-b + sqrt(delta))/(2*a)\n'
+                         '        # Affichage des solutions trouvées\n'
+                         '        print("Les solutions sont réelles: ")\n'
+                         '        print("La premiere racine est x1= ",x1)\n'
+                         '        print("La seconde racines est x2= ",x2)\n'
+                         '        return x1, x2\n'
+                         '\n'
+                         '    elif delta == 0:\n'
+                         '        x0 = -b/(2*a)\n'
+                         '        # Affichage de la solution trouvée\n'
+                         '        print("Il y a une seule solution: ")\n'
+                         '        print("La solution est", x0)\n'
+                         '        return x0\n'
+                         '\n'
+                         '    elif delta<0:\n'
+                         '        z1 = (-b - 1j*sqrt(-delta))/(2*a)\n'
+                         '        z2 = (-b + 1j*sqrt(-delta))/(2*a)\n'
+                         '        # Affichage des solutions trouvées\n'
+                         '        print("Les solutions sont complexes: ")\n'
+                         '        print("La premiere racine est z1 = ", z1)\n'
+                         '        print("La seconde racine est z2 = ", z2)\n'
+                         '        return z1, z2\n'
+                         '\n'
+                         '!ec\n'
+                         '\n'
+                         '!bc pycod\n'
+                         '# Exécutez le scripte racines.py\n'
+                         'EqSecondDegree(a=0.83,b=3.8,c=2.48)\n'
+                         '\n'
+                         '!ec',
+             'text': 'La représentation graphique de $f(x)$ est indiquée '
+                     'ci-dessous:\n'
+                     '\n'
+                     'FIGURE: [imgs/ex_fonction1]\n'
+                     '\n'
+                     'Nous allons utiliser une fonction '
+                     '`EqSecondDegree(a,b,c)` dans _TD N°3_ pour reproduire '
+                     'cette figure en utilisant les bibliothèques `numpy` et '
+                     '`matplotlib`.\n'
+                     '* Ecrivez la fonction `EqSecondDegree(a,b,c)` qui '
+                     "_renvoie_ les solutions de l'équation $a x^2 + bx + c = "
+                     '0$.\n'
+                     '* Enregistrez la fonction `EqSecondDegree(a,b,c)` dans '
+                     "un script Python `racines.py` puis l'exécuter dans la "
+                     'cellule de code suivante:'},
+            {'answer': '',
+             'file': None,
+             'hints': [],
+             'solution': '!bc pycod\n'
+                         'from racines import EqSecondDegree\n'
+                         'x1, x2 = EqSecondDegree(0.83,3.8,2.48)\n'
+                         'print("x1 = {:.3f} et x2 = {:.3f}".format(x1, x2))\n'
+                         '\n'
+                         '!ec',
+             'text': 'En utilisant la fonction `EqSecondDegree(a,b,c)`, '
+                     'trouvez les solutions de $f(x) = 0$.'}],
+  'text': 'Soit l’équation du second degré $a x^2 + bx + c = 0$ où $a$, $b$ et '
+          '$c$ sont des coefficients réels.',
+  'title': 'Résolution d’une équation du second degré',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 5,
+  'solution': 'Le programme qui affiche $x_n$ pour n = 0,1,…, 20 en utilisant '
+              "une boucle `while` s'écrit:\n"
+              '!bc pycod\n'
+              'n = 0\n'
+              'while n <= 20:\n'
+              '    x_n = n**2 + 1\n'
+              "    print('x{} = {}'.format(n, x_n))\n"
+              '    n = n + 1\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': 'Définir une séquence de nombres: $$x_n = n^2 + 1$$\n'
+          '\n'
+          'pour les entiers n = 0,1,2,…, N. Écrivez un programme qui affiche '
+          '$x_n$ pour n = 0,1,…, 20 en utilisant une boucle `while`.',
+  'title': 'programmez une boucle `while`',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 6,
+  'solution': 'Les valeurs $x_n$ sont stockés dans une liste `x` définie:\n'
+              '!bc pycod\n'
+              'n = 0\n'
+              'x = []  # les x_n valeurs\n'
+              'while n <= 20:\n'
+              '    x.append(n**2 + 1)\n'
+              '    n = n + 1\n'
+              'print(x)\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': "Stockez toutes les valeurs $x_n$ calculées dans l'exercice 5 dans "
+          "une liste (à l'aide d'une boucle `while`). Afficher la liste "
+          'complète (en un seul objet).',
+  'title': 'Créer une liste avec une boucle `while`',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 7,
+  'solution': "Le programme avec une boucle `for` s'écrit:\n"
+              '!bc pycod\n'
+              '# %load solution/ex7\n'
+              'x = []\n'
+              'for n in range(21):\n'
+              '    x.append(n**2 + 1)\n'
+              'print(x)\n'
+              '\n'
+              '!ec\n'
+              'On peut également raccourcir le code en utilisant une liste de '
+              'compréhension:\n'
+              '\n'
+              '!bc pycod\n'
+              'print([n**2 +1 for n in range(21)])\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': "Faites l'exercice 6, mais utilisez une boucle `for`.",
+  'title': 'Programmer une boucle `for`',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 8,
+  'solution': 'La fonction `x(n)` est définie:\n'
+              '!bc pycod\n'
+              'def x(n):\n'
+              '    return n**2 +1\n'
+              'print(x(1))\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': 'Écriez une fonction `x(n)` pour calculer un élément dans la '
+          'séquence $x_n = n^2 + 1 $. Appelez la fonction pour n = 4 et '
+          'écrivez le résultat.',
+  'title': 'Ecrire une fonction Python',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 9,
+  'solution': 'Soit une fonction `deriv2(x)` qui renvoie les valeurs de '
+              '$f(x)$, $f\'(x)$ et $f"(x)$:\n'
+              '!bc pycod\n'
+              'from math import sin, cos, pi\n'
+              '\n'
+              'def deriv2(x):\n'
+              '    return cos(2*x), -2*sin(2*x), -4*cos(2*x)\n'
+              '\n'
+              'f, df, d2f = deriv2(x=pi)\n'
+              '\n'
+              'print("f(pi) = {}; df(pi) = {}; d2f(pi) = {} ".format(f, df, '
+              'd2f))\n'
+              '\n'
+              '!ec',
+  'solution_file': None,
+  'subex': [],
+  'text': 'Écrivez une fonction Python qui évalue les fonctions mathématiques '
+          '$f(x) = cos(2x)$, $f\'(x) = -2sin(2x)$ et $f"(x) = - 4 cos(2x)$. '
+          'Retourner ces trois valeurs. Écrivez les résultats de ces valeurs '
+          'pour $x = \\pi$.',
+  'title': "Renvoyer trois valeurs d'une fonction Python",
+  'type': 'Exercise',
+  'type_visible': True}]

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} Exécutez le scripte racines.py}
+\PYG{n}{EqSecondDegree}\PYG{p}{(}\PYG{n}{a}\PYG{o}{=}\PYG{l+m+mf}{0.83}\PYG{p}{,}\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mf}{3.8}\PYG{p}{,}\PYG{n}{c}\PYG{o}{=}\PYG{l+m+mf}{2.48}\PYG{p}{)}
+\end{Verbatim}

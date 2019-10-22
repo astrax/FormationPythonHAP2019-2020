@@ -1,0 +1,1050 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Introduction à Python III : Contrôle du flux d’instructions">
+
+<title>Introduction à Python III : Contrôle du flux d’instructions</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Table des matières',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Les conditions', 1, None, '___sec0'),
+              ("L'instruction `if`", 2, None, '___sec1'),
+              ('Exemple 1: Note sur 20', 3, None, '___sec2'),
+              ("L'instruction `else`", 2, None, '___sec3'),
+              ('Exemple 2 : moyenne', 3, None, '___sec4'),
+              ("L'instruction `elif`", 2, None, '___sec5'),
+              ('Exemple 3 : moyenne-bis', 3, None, '___sec6'),
+              ('Exercise 1: Condition sur le jour de travail',
+               2,
+               None,
+               '___sec7'),
+              ('Les boucles', 1, None, '___sec8'),
+              ("L'instruction `while`", 2, None, '___sec9'),
+              ('Exemple 1 : un script qui compte de 1 à 4',
+               3,
+               None,
+               '___sec10'),
+              ('Exemple 2 : Table de multiplication par 8',
+               3,
+               None,
+               '___sec11'),
+              ("Exemple 3 : Affichage de l'heure courante",
+               3,
+               None,
+               '___sec12'),
+              ("L'instruction `for`", 2, None, '___sec13'),
+              ('Exemple 1 : séquence de caractères', 3, None, '___sec14'),
+              ('Fonction `range()`', 3, None, '___sec15'),
+              ('Exemple 2 : Table de multiplication', 3, None, '___sec16'),
+              ("Exemple 3 : calcul d'une somme", 3, None, '___sec17'),
+              ('Exercise 2: produit de Wallis', 2, None, '___sec18'),
+              ('Compréhensions de listes', 2, None, '___sec19'),
+              ("L'instruction break", 2, None, '___sec20'),
+              ("Exemple : Affichage de l'heure courante", 3, None, '___sec21'),
+              ('Les fonctions', 1, None, '___sec22'),
+              ('Intérêt des fonctions', 2, None, '___sec23'),
+              ("L'instruction def", 2, None, '___sec24'),
+              ('Exemple : ma première fonction', 3, None, '___sec25'),
+              ('Les Scripts', 1, None, '___sec26'),
+              ('Lectures complémentaires', 1, None, '___sec27')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours2-bs.html">Introduction à Python III : Contrôle du flux d’instructions</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Les conditions</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction <code>if</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 1: Note sur 20</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction <code>else</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 2 : moyenne</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction <code>elif</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 3 : moyenne-bis</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 1: Condition sur le jour de travail</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>Les boucles</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction <code>while</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 1 : un script qui compte de 1 à 4</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 2 : Table de multiplication par 8</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 3 : Affichage de l'heure courante</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction <code>for</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 1 : séquence de caractères</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fonction <code>range()</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 2 : Table de multiplication</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple 3 : calcul d'une somme</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 2: produit de Wallis</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compréhensions de listes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction break</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple : Affichage de l'heure courante</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;"><b>Les fonctions</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Intérêt des fonctions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'instruction def</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple : ma première fonction</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;"><b>Les Scripts</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;"><b>Lectures complémentaires</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+<p>
+
+
+<div class="jumbotron">
+<center><h1>Introduction &#224; Python III : Contr&#244;le du flux d&#8217;instructions</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Oct 22, 2019</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Les conditions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> L'instruction <code>if</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> L'instruction <code>else</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> L'instruction <code>elif</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Exercise 1: Condition sur le jour de travail </a><br>
+<a href="#___sec8"> Les boucles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> L'instruction <code>while</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> L'instruction <code>for</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Exercise 2: produit de Wallis </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Compr&#233;hensions de listes </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> L'instruction break </a><br>
+<a href="#___sec22"> Les fonctions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Int&#233;r&#234;t des fonctions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> L'instruction def </a><br>
+<a href="#___sec26"> Les Scripts </a><br>
+<a href="#___sec27"> Lectures compl&#233;mentaires </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<h1 id="___sec0" class="anchor">Les conditions </h1>
+
+<h2 id="___sec1" class="anchor">L'instruction <code>if</code> </h2>
+En programmation, nous avons toujours besoin de la notion de condition pour permettre &#224; un programme de s'adapter &#224; diff&#233;rents cas de figure.
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> expression: <span style="color: #408080; font-style: italic"># ne pas oublier le signe de ponctuation &#39;:&#39;</span>
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions&quot;</span> <span style="color: #408080; font-style: italic"># attention à l&#39;indentation (1 Tab ou 4 * Espaces)</span>
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<ul>
+<li> Si l'expression est vraie (<code>True</code>) alors le bloc d'instructions est ex&#233;cut&#233;.</li>
+<li> Si l'expression est fausse (<code>False</code>) on passe directement &#224; la suite du programme.</li>
+</ul>
+
+<h3 id="___sec2" class="anchor">Exemple 1: Note sur 20 </h3>
+
+Dans cet exemple nous allons tester si la note entr&#233;e par l'utilisateur. Si la note est > 10 on doit recevoir le message: "J'ai la moyenne" sinon il va rien faire.
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Note sur 20 : &quot;</span>)
+note <span style="color: #666666">=</span> <span style="color: #008000">float</span>(chaine)
+<span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">&gt;=</span> <span style="color: #666666">10.0</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est vraie</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;J&#39;ai la moyenne&quot;</span>)
+
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<ul>
+<li> Les blocs de code sont d&#233;limit&#233;s par l'indentation.</li>
+<li> L'indentation est obligatoire dans les scripts.</li>
+</ul>
+</div>
+</div>
+
+
+<h2 id="___sec3" class="anchor">L'instruction <code>else</code> </h2>
+
+<p>
+Une instruction <code>else</code> est toujours associ&#233;e &#224; une instruction <code>if</code>.
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> expression:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 1&quot;</span>    <span style="color: #408080; font-style: italic"># attention à l&#39;indentation (1 Tab ou 4 * Espaces)</span>
+<span style="color: #008000; font-weight: bold">else</span>:                          <span style="color: #408080; font-style: italic"># else est au même niveau que if</span>
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 2&quot;</span>    <span style="color: #408080; font-style: italic"># attention à l&#39;indentation</span>
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<ul>
+<li> Si l'expression est vraie (<code>True</code>) alors le bloc d'instructions 1 est ex&#233;cut&#233;.</li>
+<li> Si l'expression est fausse (<code>False</code>) alors c'est le bloc d'instructions 2 qui est ex&#233;cut&#233;.</li>
+</ul>
+
+<h3 id="___sec4" class="anchor">Exemple 2 : moyenne </h3>
+
+Dans cet exemple nous allons tester si la note entr&#233;e par l'utilisateur. Si la note est > 10 on doit recevoir le message: "J'ai la moyenne" sinon il va afficher "C'est en dessous de la moyenne".
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Note sur 20 : &quot;</span>)
+note <span style="color: #666666">=</span> <span style="color: #008000">float</span>(chaine)
+<span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">&gt;=</span> <span style="color: #666666">10.0</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est vraie</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;J&#39;ai la moyenne&quot;</span>)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est fausse</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est en dessous de la moyenne&quot;</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+Pour traiter le cas des notes invalides (\( < 0 \) ou \( >20 \)), on peut imbriquer des instructions conditionnelles :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Note sur 20 : &quot;</span>)
+note <span style="color: #666666">=</span> <span style="color: #008000">float</span>(chaine)
+<span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">&gt;</span> <span style="color: #666666">20.0</span> <span style="color: #AA22FF; font-weight: bold">or</span> note <span style="color: #666666">&lt;</span> <span style="color: #666666">0.0</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt; 20.0 or note &lt; 0.0) est vraie</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Note invalide !&quot;</span>)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt; 20.0 or note &lt; 0.0) est fausse</span>
+    <span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">&gt;=</span> <span style="color: #666666">10.0</span>:
+        <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est vraie</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;J&#39;ai la moyenne&quot;</span>)
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note &gt;= 10.0) est fausse</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est en dessous de la moyenne&quot;</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+Ou bien encore:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Note sur 20 : &quot;</span>)
+note <span style="color: #666666">=</span> <span style="color: #008000">float</span>(chaine)
+<span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">&gt;</span> <span style="color: #666666">20.0</span> <span style="color: #AA22FF; font-weight: bold">or</span> note <span style="color: #666666">&lt;</span> <span style="color: #666666">0.0</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Note invalide !&quot;</span>)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">&gt;=</span> <span style="color: #666666">10.0</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;J&#39;ai la moyenne&quot;</span>)
+        <span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">==</span> <span style="color: #666666">20.0</span>:
+            <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note == 20.0) est vraie</span>
+            <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est même excellent !&quot;</span>)
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est en dessous de la moyenne&quot;</span>)
+        <span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">==</span> <span style="color: #666666">0.0</span>:
+            <span style="color: #408080; font-style: italic"># ce bloc est exécuté si l&#39;expression (note == 0.0) est vraie</span>
+            <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;... lamentable !&quot;</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+<!-- !split -->
+
+<h2 id="___sec5" class="anchor">L'instruction <code>elif</code> </h2>
+Une instruction <code>elif</code> (contraction de <b>else if</b>) est toujours associ&#233;e &#224; une instruction <code>if</code>.
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> expression <span style="color: #666666">1</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 1&quot;</span>
+<span style="color: #008000; font-weight: bold">elif</span> expression <span style="color: #666666">2</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 2&quot;</span>
+<span style="color: #008000; font-weight: bold">elif</span> expression <span style="color: #666666">3</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 3&quot;</span>    <span style="color: #408080; font-style: italic"># ici deux instructions elif, mais il n&#39;y a pas de limitation</span>
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 4&quot;</span>
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<ul>
+<li> Si l'expression 1 est vraie alors le bloc d'instructions 1 est ex&#233;cut&#233;, et on passe &#224; la suite du programme.</li>
+<li> Si l'expression 1 est fausse alors on teste l'expression 2 :</li>
+<li> si l'expression 2 est vraie on ex&#233;cute le bloc d'instructions 2, et on passe &#224; la suite du programme.</li>
+<li> si l'expression 2 est fausse alors on teste l'expression 3, etc.</li>
+</ul>
+
+Le bloc d'instructions 4 est donc ex&#233;cut&#233; si toutes les expressions sont fausses (c'est le bloc "par d&#233;faut").
+
+<p>
+Parfois il n'y a rien &#224; faire. Dans ce cas, on peut omettre l'instruction <code>else</code> :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> expression <span style="color: #666666">1</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 1&quot;</span>
+<span style="color: #008000; font-weight: bold">elif</span> expression <span style="color: #666666">2</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 2&quot;</span>
+<span style="color: #008000; font-weight: bold">elif</span> expression <span style="color: #666666">3</span>:
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions 3&quot;</span>
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+</pre></div>
+<p>
+L'instruction <code>elif</code> &#233;vite souvent l'utilisation de conditions imbriqu&#233;es (et souvent compliqu&#233;es).
+
+<h3 id="___sec6" class="anchor">Exemple 3 : moyenne-bis </h3>
+
+On peut tester plusieurs possibilit&#233;s avec une syntaxe beaucoup plus propre avec les instructions <code>if-elif-else</code>:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>note <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Note sur 20 : &quot;</span>))
+<span style="color: #008000; font-weight: bold">if</span> note <span style="color: #666666">==</span> <span style="color: #666666">0.0</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est en dessous de la moyenne&quot;</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;... lamentable!&quot;</span>)
+<span style="color: #008000; font-weight: bold">elif</span> note <span style="color: #666666">==</span> <span style="color: #666666">20.0</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;J&#39;ai la moyenne&quot;</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est même excellent !&quot;</span>)
+<span style="color: #008000; font-weight: bold">elif</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;</span> note <span style="color: #666666">&lt;</span> <span style="color: #666666">10</span>:    <span style="color: #408080; font-style: italic"># ou bien : elif 0.0 &lt; note &lt; 10.0:</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;C&#39;est en dessous de la moyenne&quot;</span>)
+<span style="color: #008000; font-weight: bold">elif</span> note <span style="color: #666666">&gt;=</span> <span style="color: #666666">10.0</span> <span style="color: #AA22FF; font-weight: bold">and</span> note <span style="color: #666666">&lt;</span> <span style="color: #666666">20.0</span>:   <span style="color: #408080; font-style: italic"># ou bien : elif 10.0 &lt;= note &lt; 20.0:</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;J&#39;ai la moyenne&quot;</span>)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Note invalide !&quot;</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec7" class="anchor">Exercise 1: Condition sur le jour de travail </h2>
+
+<p>
+Si aujourd'hui est lundi alors je dois aller travailler, mais si c'est dimanche alors je peux rester faire la grasse matin&#233;e. Pour pouvoir accomplir ce genre de choses en Python, on fait appel &#224; des expressions bool&#233;ennes qui ne peuvent rev&#234;tir que deux possibilit&#233;s - ou bien l'expression est vraie ou bien elle est fausse - et &#224; la syntaxe if condition: qui permet de contr&#244;ler le flux du programme gr&#226;ce &#224; ces valeurs bool&#233;ennes.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>day_week <span style="color: #666666">=</span> [<span style="color: #BA2121">&quot;Lundi&quot;</span>, <span style="color: #BA2121">&quot;Mardi&quot;</span>, <span style="color: #BA2121">&quot;Mercredi&quot;</span>, <span style="color: #BA2121">&quot;Jeudi&quot;</span>, <span style="color: #BA2121">&quot;Vendredi&quot;</span>,
+            <span style="color: #BA2121">&quot;Samedi&quot;</span>, <span style="color: #BA2121">&quot;Dimanche&quot;</span>]
+today <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Aujourd&#39;hui est: &quot;</span>)
+
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">*</span>condition vraie<span style="color: #666666">*</span>:  <span style="color: #408080; font-style: italic"># Quelle est la condition vraie dans ce cas?</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Je dors le matin!&quot;</span>)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Je travail le matin!&quot;</span>)
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_1" style="font-size: 80%;"></a>
+<a href="#exer_1_1" data-toggle="collapse">
+<b>Indication.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_1">
+
+<p>
+Dans la <b>condition vraie</b>, utilisez l'op&#233;rateur logique <code>in</code> pour tester les &#233;l&#233;ments de la liste <code>day_week</code>.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_2" style="font-size: 80%;"></a>
+<a href="#exer_1_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_2">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>day_week <span style="color: #666666">=</span> [<span style="color: #BA2121">&quot;Lundi&quot;</span>, <span style="color: #BA2121">&quot;Mardi&quot;</span>, <span style="color: #BA2121">&quot;Mercredi&quot;</span>, <span style="color: #BA2121">&quot;Jeudi&quot;</span>, <span style="color: #BA2121">&quot;Vendredi&quot;</span>, <span style="color: #BA2121">&quot;Samedi&quot;</span>, <span style="color: #BA2121">&quot;Dimanche&quot;</span>]
+today <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Aujourd&#39;hui est: &quot;</span>)
+<span style="color: #008000; font-weight: bold">if</span> today <span style="color: #AA22FF; font-weight: bold">in</span> day_week:
+    <span style="color: #008000; font-weight: bold">if</span> today <span style="color: #666666">==</span> day_week[<span style="color: #666666">-1</span>]:  <span style="color: #408080; font-style: italic"># Quelle est la condition vraie dans ce cas?</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Je dors le matin!&quot;</span>)
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Je travail le matin!&quot;</span>)
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin du programme&quot;</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<!-- --- end exercise --- -->
+
+<h1 id="___sec8" class="anchor">Les boucles </h1>
+
+<h2 id="___sec9" class="anchor">L'instruction <code>while</code> </h2>
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">while</span> expression:           <span style="color: #408080; font-style: italic"># ne pas oublier le signe de ponctuation &#39;:&#39;</span>
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions&quot;</span>   <span style="color: #408080; font-style: italic"># attention à l&#39;indentation (1 Tab ou 4 * Espaces)</span>
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<ul>
+<li> Si l'expression est vraie (<code>True</code>) le bloc d'instructions est ex&#233;cut&#233;, puis l'expression est &#224; nouveau &#233;valu&#233;e.</li>
+<li> Le cycle continue jusqu'&#224; ce que l'expression soit fausse (<code>False</code>) : on passe alors &#224; la suite du programme.</li>
+</ul>
+
+<h3 id="___sec10" class="anchor">Exemple 1 : un script qui compte de 1 &#224; 4 </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># initialisation de la variable de comptage</span>
+compteur <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">while</span> compteur <span style="color: #666666">&lt;</span> <span style="color: #666666">5</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté tant que la condition (compteur &lt; 5) est vraie</span>
+    <span style="color: #008000; font-weight: bold">print</span>(compteur)
+    compteur <span style="color: #666666">=</span> compteur <span style="color: #666666">+</span> <span style="color: #666666">1</span>    <span style="color: #408080; font-style: italic"># incrémentation du compteur,  compteur = compteur + 1</span>
+<span style="color: #008000; font-weight: bold">print</span>(compteur)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin de la boucle&quot;</span>)
+</pre></div>
+
+<h3 id="___sec11" class="anchor">Exemple 2 : Table de multiplication par 8 </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>compteur <span style="color: #666666">=</span> <span style="color: #666666">1</span>         <span style="color: #408080; font-style: italic"># initialisation de la variable de comptage</span>
+<span style="color: #008000; font-weight: bold">while</span> compteur <span style="color: #666666">&lt;=</span> <span style="color: #666666">10</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté tant que la condition (compteur &lt;= 10) est vraie</span>
+    <span style="color: #008000; font-weight: bold">print</span>(compteur, <span style="color: #BA2121">&#39;* 8 =&#39;</span>, compteur<span style="color: #666666">*8</span>)
+    compteur <span style="color: #666666">+=</span> <span style="color: #666666">1</span>    <span style="color: #408080; font-style: italic"># incrémentation du compteur, compteur = compteur + 1</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Et voilà !&quot;</span>)
+</pre></div>
+
+<h3 id="___sec12" class="anchor">Exemple 3 : Affichage de l'heure courante </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>     <span style="color: #408080; font-style: italic"># importation du module time</span>
+quitter <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;n&#39;</span>   <span style="color: #408080; font-style: italic"># initialisation</span>
+<span style="color: #008000; font-weight: bold">while</span> quitter <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;o&#39;</span>:
+    <span style="color: #408080; font-style: italic"># ce bloc est exécuté tant que la condition est vraie</span>
+    <span style="color: #408080; font-style: italic"># strftime() est une fonction du module time</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Heure courante &#39;</span>, time<span style="color: #666666">.</span>strftime(<span style="color: #BA2121">&#39;%H:%M:%S&#39;</span>))
+    quitter <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Voulez-vous quitter le programme (o/n) ? &quot;</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;A bientôt&quot;</span>)
+</pre></div>
+
+<h2 id="___sec13" class="anchor">L'instruction <code>for</code> </h2>
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> élément <span style="color: #AA22FF; font-weight: bold">in</span> séquence :     <span style="color: #408080; font-style: italic"># ne pas oublier le signe de ponctuation &#39;:&#39;</span>
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions&quot;</span>     <span style="color: #408080; font-style: italic"># attention à l&#39;indentation (1 Tab ou 4 * Espaces)</span>
+<span style="color: #408080; font-style: italic"># suite du programme</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<p>
+Les &#233;l&#233;ments de la s&#233;quence sont issus d'une cha&#238;ne de caract&#232;res ou bien d'une liste.
+
+<h3 id="___sec14" class="anchor">Exemple 1 : s&#233;quence de caract&#232;res </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Bonsoir&#39;</span>
+<span style="color: #008000; font-weight: bold">for</span> lettre <span style="color: #AA22FF; font-weight: bold">in</span> chaine:  <span style="color: #408080; font-style: italic"># lettre est la variable d&#39;itération</span>
+    <span style="color: #008000; font-weight: bold">print</span>(lettre)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin de la boucle&quot;</span>)
+</pre></div>
+<p>
+La variable lettre est initialis&#233;e avec le premier &#233;l&#233;ment de la s&#233;quence ('B').
+Le bloc d'instructions est alors ex&#233;cut&#233;.
+
+<p>
+Puis la variable lettre est mise &#224; jour avec le second &#233;l&#233;ment de la s&#233;quence ('o') et le bloc d'instructions &#224; nouveau ex&#233;cut&#233;...
+
+<p>
+Le bloc d'instructions est ex&#233;cut&#233; une derni&#232;re fois lorsqu'on arrive au dernier &#233;l&#233;ment de la s&#233;quence ('r').
+
+<h3 id="___sec15" class="anchor">Fonction <code>range()</code> </h3>
+
+<p>
+L'association avec la fonction <code>range()</code> est tr&#232;s utile pour cr&#233;er des s&#233;quences automatiques de nombres entiers :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, <span style="color: #666666">5</span>):
+    <span style="color: #008000; font-weight: bold">print</span>(i)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin de la boucle&quot;</span>)
+</pre></div>
+
+<h3 id="___sec16" class="anchor">Exemple 2 : Table de multiplication </h3>
+
+<p>
+La cr&#233;ation d'une table de multiplication para&#238;t plus simple avec une boucle <code>for</code> qu'avec une boucle <code>while</code> :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> compteur <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,<span style="color: #666666">11</span>):
+    <span style="color: #008000; font-weight: bold">print</span>(compteur, <span style="color: #BA2121">&#39;* 8 =&#39;</span>, compteur<span style="color: #666666">*8</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Et voilà !&quot;</span>)
+</pre></div>
+
+<h3 id="___sec17" class="anchor">Exemple 3 : calcul d'une somme </h3>
+
+<p>
+Soit, par exemple, l'expression de la somme suivante:
+$$s = \sum_{i = 0}^{100} \sqrt{ \frac{i \pi}{100}} sin(\frac{i \pi}{100})$$
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sqrt, sin, pi
+s <span style="color: #666666">=</span> <span style="color: #666666">0.0</span> <span style="color: #408080; font-style: italic"># # intialisation de s</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">101</span>):
+    s<span style="color: #666666">+=</span> sqrt(i <span style="color: #666666">*</span> pi<span style="color: #666666">/100</span>) <span style="color: #666666">*</span> sin(i <span style="color: #666666">*</span> pi<span style="color: #666666">/100</span>)   <span style="color: #408080; font-style: italic"># équivalent à s = s + sqrt(x) * sin(x)</span>
+<span style="color: #408080; font-style: italic"># Affichage de la somme</span>
+<span style="color: #008000; font-weight: bold">print</span>(s)
+</pre></div>
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec18" class="anchor">Exercise 2: produit de Wallis </h2>
+
+<p>
+Calculer \( \pi \) avec le <a href="https://fr.wikipedia.org/wiki/Int%C3%A9grale_de_Wallis#Calcul_de_%CF%80" target="_self">produit de Wallis</a>
+
+$$ \frac{\pi}{2} = \prod_{i=1}^p\frac{4i^2}{4i^2-1}$$
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<a href="#exer_2_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load wallis.py</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+
+my_pi <span style="color: #666666">=</span> <span style="color: #666666">1.</span>  <span style="color: #408080; font-style: italic"># intialisation</span>
+p <span style="color: #666666">=</span> <span style="color: #666666">100000</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, p):
+    my_pi <span style="color: #666666">*=</span> <span style="color: #666666">4</span> <span style="color: #666666">*</span> i <span style="color: #666666">**</span> <span style="color: #666666">2</span> <span style="color: #666666">/</span> (<span style="color: #666666">4</span> <span style="color: #666666">*</span> i <span style="color: #666666">**</span> <span style="color: #666666">2</span> <span style="color: #666666">-</span> <span style="color: #666666">1.</span>)  <span style="color: #408080; font-style: italic"># implémentation de la formule de Wallis</span>
+
+my_pi <span style="color: #666666">*=</span> <span style="color: #666666">2</span>       <span style="color: #408080; font-style: italic"># multiplication par 2 de la valeur trouvée</span>
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La valeur de pi de la bibliothèque &#39;math&#39;: &quot;</span>, pi)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La valeur de pi calculer par la formule de Wallis: &quot;</span>, my_pi)
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La différence entre les deux valeurs:&quot;</span>, <span style="color: #008000">abs</span>(pi <span style="color: #666666">-</span> my_pi))
+<span style="color: #408080; font-style: italic"># la fonction abs() donne la valeur absolue</span>
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<!-- --- end exercise --- -->
+
+<h2 id="___sec19" class="anchor">Compr&#233;hensions de listes </h2>
+
+<p>
+Les compr&#233;hensions de listes fournissent un moyen de construire des listes de mani&#232;re tr&#232;s concise. Une application classique est la construction de nouvelles listes o&#249; chaque &#233;l&#233;ment est le r&#233;sultat d&#8217;une op&#233;ration appliqu&#233;e &#224; chaque &#233;l&#233;ment d&#8217;une autre s&#233;quence ; ou de cr&#233;er une sous-s&#233;quence des &#233;l&#233;ments satisfaisant une condition sp&#233;cifique.
+
+<p>
+Par exemple, supposons que l&#8217;on veuille cr&#233;er une liste de carr&#233;s, comme :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>squares <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>):
+    squares<span style="color: #666666">.</span>append(x<span style="color: #666666">**2</span>)
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>squares
+</pre></div>
+<p>
+Notez que cela cr&#233;e (ou remplace) une variable nomm&#233;e <code>x</code> qui existe toujours apr&#232;s l&#8217;ex&#233;cution de la boucle. On peut calculer une liste de carr&#233;s sans effet de bord avec :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>squares <span style="color: #666666">=</span> [x<span style="color: #666666">**2</span> <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>)]
+squares
+</pre></div>
+<p>
+qui est plus court et lisible.
+
+<p>
+Une compr&#233;hension de liste consiste &#224; placer entre crochets une expression suivie par une clause <code>for</code> puis par z&#233;ro ou plus clauses <code>for</code> ou <code>if</code>. Le r&#233;sultat est une nouvelle liste r&#233;sultat de l&#8217;&#233;valuation de l&#8217;expression dans le contexte des clauses <code>for</code> et <code>if</code> qui la suivent. Par exemple, cette compr&#233;hension de liste combine les &#233;l&#233;ments de deux listes s&#8217;ils ne sont pas &#233;gaux :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>combs <span style="color: #666666">=</span> [(x, y) <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>] <span style="color: #008000; font-weight: bold">for</span> y <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">3</span>,<span style="color: #666666">1</span>,<span style="color: #666666">4</span>] <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">!=</span> y]
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>combs
+</pre></div>
+<p>
+et c&#8217;est &#233;quivalent &#224; :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>combs <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">3</span>]:
+    <span style="color: #008000; font-weight: bold">for</span> y <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">3</span>,<span style="color: #666666">1</span>,<span style="color: #666666">4</span>]:
+        <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">!=</span> y:
+            combs<span style="color: #666666">.</span>append((x, y))
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>combs
+</pre></div>
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Notez que l&#8217;ordre des instructions <code>for</code> et <code>if</code> est le m&#234;me dans ces diff&#233;rents extraits de code.
+</div>
+</div>
+
+
+<h2 id="___sec20" class="anchor">L'instruction break </h2>
+
+<p>
+L'instruction break provoque une sortie imm&#233;diate d'une boucle <code>while</code> ou d'une boucle <code>for</code>.
+
+<p>
+Dans l'exemple suivant, l'expression <code>True</code> est toujours ... vraie : on a une boucle sans fin.
+
+<p>
+L'instruction <code>break</code> est donc le seul moyen de sortir de la boucle.
+
+<h3 id="___sec21" class="anchor">Exemple : Affichage de l'heure courante </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>     <span style="color: #408080; font-style: italic"># importation du module time</span>
+<span style="color: #008000; font-weight: bold">while</span> <span style="color: #008000">True</span>:
+    <span style="color: #408080; font-style: italic"># strftime() est une fonction du module time</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Heure courante &#39;</span>, time<span style="color: #666666">.</span>strftime(<span style="color: #BA2121">&#39;%H:%M:%S&#39;</span>))
+    quitter <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;Voulez-vous quitter le programme (o/n) ? &#39;</span>)
+    <span style="color: #008000; font-weight: bold">if</span> quitter <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;o&#39;</span>:
+        <span style="color: #008000; font-weight: bold">break</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;A bientôt&quot;</span>)
+</pre></div>
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Si vous connaissez le nombre de boucles &#224; effectuer, utiliser une boucle <code>for</code>.
+Autrement, utiliser une boucle <code>while</code> (notamment pour faire des boucles sans fin).
+</div>
+</div>
+
+
+<h1 id="___sec22" class="anchor">Les fonctions </h1>
+
+<p>
+Nous avons d&#233;j&#224; vu beaucoup de fonctions : <code>print()</code>, <code>type()</code>, <code>len()</code>, <code>input()</code>, <code>range()</code>...
+
+<p>
+Ce sont des fonctions pr&#233;-d&#233;finies (<a href="https://docs.python.org/fr/3/library/functions.html" target="_self">Fonctions natives</a>).
+
+<p>
+Nous avons aussi la possibilit&#233; de cr&#233;er nos propres fonctions!
+
+<h2 id="___sec23" class="anchor">Int&#233;r&#234;t des fonctions </h2>
+
+<p>
+Une fonction est une portion de code que l'on peut appeler au besoin (c'est une sorte de sous-programme).
+
+<p>
+L'utilisation des fonctions &#233;vite des redondances dans le code : on obtient ainsi des programmes plus courts et plus lisibles.
+
+<p>
+Par exemple, nous avons besoin de convertir &#224; plusieurs reprises des degr&#233;s Celsius en degr&#233;s Fahrenheit :
+$$T_F = T_C \times 1,8 + 32 $$
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #666666">100</span> <span style="color: #666666">*</span> <span style="color: #666666">1.8</span> <span style="color: #666666">+</span> <span style="color: #666666">32.0</span>)
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #666666">37.0</span> <span style="color: #666666">*</span> <span style="color: #666666">1.8</span> <span style="color: #666666">+</span> <span style="color: #666666">32.0</span>)
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #666666">233.0</span> <span style="color: #666666">*</span> <span style="color: #666666">1.8</span> <span style="color: #666666">+</span> <span style="color: #666666">32.0</span>)
+</pre></div>
+<p>
+La m&#234;me chose en utilisant une fonction :
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">fahrenheit</span>(degre_celsius):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">        Conversion degré Celsius en degré Fahrenheit</span>
+<span style="color: #BA2121; font-style: italic">        &quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">print</span>(degre_celsius <span style="color: #666666">*</span> <span style="color: #666666">1.8</span> <span style="color: #666666">+</span> <span style="color: #666666">32.0</span>)
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fahrenheit(<span style="color: #666666">100</span>)
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fahrenheit(<span style="color: #666666">37</span>)
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>temperature <span style="color: #666666">=</span> <span style="color: #666666">220</span>
+fahrenheit(temperature)
+</pre></div>
+
+<h2 id="___sec24" class="anchor">L'instruction def </h2>
+
+<p>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">nom_de_la_fonction</span>(parametre1, parametre2, parametre3, <span style="color: #666666">...</span>):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Documentation</span>
+<span style="color: #BA2121; font-style: italic">    qu&#39;on peut écrire</span>
+<span style="color: #BA2121; font-style: italic">    sur plusieurs lignes</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>     <span style="color: #408080; font-style: italic"># docstring entouré de 3 guillemets (ou apostrophes)</span>
+
+    <span style="color: #BA2121">&quot;bloc d&#39;instructions&quot;</span>     <span style="color: #408080; font-style: italic"># attention à l&#39;indentation</span>
+
+    <span style="color: #008000; font-weight: bold">return</span> resultat            <span style="color: #408080; font-style: italic"># la fonction retourne le contenu de la variable resultat</span>
+</pre></div>
+<p>
+</div>
+</div>
+
+
+<h3 id="___sec25" class="anchor">Exemple : ma premi&#232;re fonction </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">mapremierefonction</span>():         <span style="color: #408080; font-style: italic"># cette fonction n&#39;a pas de paramètre</span>
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Cette fonction affiche &#39;Bonjour&#39;</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Bonjour&quot;</span>)
+    <span style="color: #008000; font-weight: bold">return</span>                         <span style="color: #408080; font-style: italic"># cette fonction ne retourne rien (&#39;None&#39;)</span>
+    <span style="color: #408080; font-style: italic"># l&#39;instruction return est ici facultative</span>
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>mapremierefonction()
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>help(mapremierefonction)
+</pre></div>
+<p>
+<!-- !split -->
+
+<h1 id="___sec26" class="anchor">Les Scripts </h1>
+
+<p>
+Commen&#231;ons par &#233;crire un script, c&#8217;est-&#224;-dire un fichier avec une s&#233;quence d&#8217;instructions &#224; ex&#233;cuter chaque fois que le script est appel&#233;. Les instructions peuvent &#234;tre, par exemple, copi&#233;-coll&#233; depuis une <b>cellule code</b> dans votre notebook (mais veillez &#224; respecter les r&#232;gles d'indentation!).
+
+<p>
+L'extension pour les fichiers Python est <code>.py</code>. &#201;crivez ou copiez et collez les lignes suivantes dans un fichier appel&#233; <code>test.py</code>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Bonsoir&#39;</span>
+<span style="color: #008000; font-weight: bold">for</span> lettre <span style="color: #AA22FF; font-weight: bold">in</span> chaine:  <span style="color: #408080; font-style: italic"># lettre est la variable d&#39;itération</span>
+    <span style="color: #008000; font-weight: bold">print</span>(lettre)
+</pre></div>
+<p>
+Ex&#233;cutons maintenant le script de mani&#232;re interactive, &#224; l'int&#233;rieur de l'interpr&#233;teur Ipython (cellule code du notebook). C'est peut-&#234;tre l'utilisation la plus courante des scripts en calcul et simulation scientifique.
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Dans la cellule <em>code</em> (Ipython), la syntaxe permettant d'ex&#233;cuter un script est <code>%run script.py</code>. Par exemple:
+</div>
+</div>
+
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">%</span>run test<span style="color: #666666">.</span>py
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chaine
+</pre></div>
+<p>
+La syntaxe permettant de charger le contunu d'un script dans dans une cellule code est <code>%load script.py</code>. Par exemple:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load test.py</span>
+chaine <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Bonsoir&#39;</span>
+<span style="color: #008000; font-weight: bold">for</span> lettre <span style="color: #AA22FF; font-weight: bold">in</span> chaine:  <span style="color: #408080; font-style: italic"># lettre est la variable d&#39;itération</span>
+    <span style="color: #008000; font-weight: bold">print</span>(lettre)
+</pre></div>
+<p>
+<!-- !split -->
+<!-- ======= Travaux dirig&#233;s ======= -->
+<!-- # #include "TP2.do.txt" -->
+
+<h1 id="___sec27" class="anchor">Lectures compl&#233;mentaires </h1>
+
+<ul>
+<li> <a href="https://docs.python.org/fr/3.6/tutorial/index.html" target="_self">Documentation Python 3.6</a></li>
+<li> <a href="http://inforef.be/swi/python.htm" target="_self">Apprendre &#224; programmer avec Python, par G&#233;rard Swinnen</a></li>
+<li> <a href="https://greenteapress.com/wp/think-python/" target="_self">Think Python, par Allen B. Downey</a></li>
+</ul>
+
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

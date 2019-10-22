@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} \PYGZpc{}load solution/ex2}
+\PYG{n}{chaine1}\PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Chaîne 1 : \PYGZdq{}}\PYG{p}{)}
+\PYG{n}{chaine2}\PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Chaîne 2 : \PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{chaine2}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{chaine1}\PYG{p}{)} \PYG{p}{:}
+    \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Chaîne la plus grande : \PYGZdq{}} \PYG{p}{,} \PYG{n}{chaine2} \PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Chaîne la plus grande : \PYGZdq{}} \PYG{p}{,} \PYG{n}{chaine1} \PYG{p}{)}
+\end{Verbatim}

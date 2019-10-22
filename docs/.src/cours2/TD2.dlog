@@ -1,0 +1,1294 @@
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+*** error: figure file "images/ex_fonction1" does not exist!
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+*** error: missing comma after filename, before options in FIGURE
+FIGURE:[imgs/algo1 width = .8]
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+*** error: missing comma after filename, before options in FIGURE
+FIGURE:[imgs/algo1 height = .8]
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+output in TD2.html
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+x_nx_nx_nx_nx_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+une boucle =====
+
+Définir une séquence de nombres: x_nx_nx_nx_nx_n = n^2 + 1 f(x) = cos(2x)f'(x) = -2sin(2x)f"
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format pdflatex
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.pdf for format pdflatex
+output in TD2.tex
+translating doconce text in TD2.do.txt to html
+open file with encoding utf-8
+
+*** Exercise: Comparer deux entiers
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Comparer deux chaînes
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Convertir Euro contre Dinar Tunisien | EUR TND
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Résolution d’une équation du second degré
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: programmez une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Créer une liste avec une boucle `while`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Programmer une boucle `for`
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Ecrire une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Renvoyer trois valeurs d'une fonction Python
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 9 exercises
+figure file imgs/algo1:
+    can use imgs/algo1.png for format html
+figure file imgs/ex_fonction1:
+    can use imgs/ex_fonction1.png for format html
+output in TD2.html
