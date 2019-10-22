@@ -103,7 +103,7 @@ common_replacements $html.html
 
 
 # Jupyter notebook
-doconce format ipynb $name
+doconce format ipynb $name $opt2
 
 # Publish
 dest=../../pub/$name

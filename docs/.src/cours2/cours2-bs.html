@@ -186,7 +186,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Oct 22, 2019</h4></center> <!-- date -->
+<center><h4>Oct 23, 2019</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -503,7 +503,7 @@ Dans la <b>condition vraie</b>, utilisez l'op&#233;rateur logique <code>in</code
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>day_week <span style="color: #666666">=</span> [<span style="color: #BA2121">&quot;Lundi&quot;</span>, <span style="color: #BA2121">&quot;Mardi&quot;</span>, <span style="color: #BA2121">&quot;Mercredi&quot;</span>, <span style="color: #BA2121">&quot;Jeudi&quot;</span>, <span style="color: #BA2121">&quot;Vendredi&quot;</span>, <span style="color: #BA2121">&quot;Samedi&quot;</span>, <span style="color: #BA2121">&quot;Dimanche&quot;</span>]
 today <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Aujourd&#39;hui est: &quot;</span>)
 <span style="color: #008000; font-weight: bold">if</span> today <span style="color: #AA22FF; font-weight: bold">in</span> day_week:
-    <span style="color: #008000; font-weight: bold">if</span> today <span style="color: #666666">==</span> day_week[<span style="color: #666666">-1</span>]:  <span style="color: #408080; font-style: italic"># Quelle est la condition vraie dans ce cas?</span>
+    <span style="color: #008000; font-weight: bold">if</span> today <span style="color: #666666">==</span> day_week[<span style="color: #666666">-1</span>]:  <span style="color: #408080; font-style: italic"># la condition vraie</span>
         <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Je dors le matin!&quot;</span>)
     <span style="color: #008000; font-weight: bold">else</span>:
         <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Je travail le matin!&quot;</span>)
@@ -557,7 +557,7 @@ compteur <span style="color: #666666">=</span> <span style="color: #666666">0</s
 <span style="color: #008000; font-weight: bold">while</span> compteur <span style="color: #666666">&lt;</span> <span style="color: #666666">5</span>:
     <span style="color: #408080; font-style: italic"># ce bloc est exécuté tant que la condition (compteur &lt; 5) est vraie</span>
     <span style="color: #008000; font-weight: bold">print</span>(compteur)
-    compteur <span style="color: #666666">=</span> compteur <span style="color: #666666">+</span> <span style="color: #666666">1</span>    <span style="color: #408080; font-style: italic"># incrémentation du compteur,  compteur = compteur + 1</span>
+    compteur <span style="color: #666666">+=</span>  <span style="color: #666666">1</span>    <span style="color: #408080; font-style: italic"># incrémentation du compteur,  compteur = compteur + 1</span>
 <span style="color: #008000; font-weight: bold">print</span>(compteur)
 <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Fin de la boucle&quot;</span>)
 </pre></div>

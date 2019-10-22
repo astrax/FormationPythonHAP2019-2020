@@ -1,6 +1,0 @@
-\babel@toc {french}{}
-\contentsline {paragraph}{a)}{2}{section*.6}
-\contentsline {paragraph}{Indication.}{2}{section*.7}
-\contentsline {paragraph}{b)}{3}{section*.8}
-\contentsline {paragraph}{c)}{3}{section*.9}
-\contentsline {paragraph}{d)}{3}{section*.10}

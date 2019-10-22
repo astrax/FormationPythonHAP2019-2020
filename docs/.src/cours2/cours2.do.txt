@@ -200,7 +200,7 @@ Dans la _condition vraie_, utilisez l'opérateur logique `in` pour tester les é
 day_week = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 today = input("Aujourd'hui est: ")
 if today in day_week:
-    if today == day_week[-1]:  # Quelle est la condition vraie dans ce cas?
+    if today == day_week[-1]:  # la condition vraie
         print("Je dors le matin!")
     else:
         print("Je travail le matin!")
@@ -231,7 +231,7 @@ compteur = 0
 while compteur < 5:
     # ce bloc est exécuté tant que la condition (compteur < 5) est vraie
     print(compteur)
-    compteur = compteur + 1    # incrémentation du compteur,  compteur = compteur + 1
+    compteur +=  1    # incrémentation du compteur,  compteur = compteur + 1
 print(compteur)
 print("Fin de la boucle")
 !ec
