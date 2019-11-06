@@ -378,7 +378,7 @@ TD N°2 : Contrôle du flux d’instructions
 
 % --- begin date ---
 \begin{center}
-Oct 23, 2019
+Nov 6, 2019
 \end{center}
 % --- end date ---
 
@@ -527,7 +527,7 @@ Soit l’équation du second degré $a x^2 + bx + c = 0$ où $a$, $b$ et $c$ son
 
 
 \subex{a)}
-Écrivez un programme qui  qui demande d'entrer les coefficients et affiche les solutions de l'équation.
+Écrivez un programme qui demande d'entrer les coefficients et affiche les solutions de l'équation.
 
 % --- begin hint in exercise ---
 
@@ -642,9 +642,9 @@ La représentation graphique de $f(x)$ est indiquée ci-dessous:
 
 Nous allons utiliser une fonction \texttt{EqSecondDegree(a,b,c)} dans \textbf{TD N°3} pour reproduire cette figure en utilisant les bibliothèques \texttt{numpy} et \texttt{matplotlib}.
 \begin{itemize}
-\item Ecrivez la fonction \texttt{EqSecondDegree(a,b,c)} qui \textbf{renvoie} les solutions de l'équation $a x^2 + bx + c = 0$.
+\item Écrivez la fonction \texttt{EqSecondDegree(a,b,c)} qui \textbf{renvoie} les solutions de l'équation $a x^2 + bx + c = 0$.
 
-\item Enregistrez la fonction \texttt{EqSecondDegree(a,b,c)} dans un script Python \texttt{racines.py} puis l'exécuter dans la cellule de code suivante:
+\item Enregistrez la fonction \texttt{EqSecondDegree(a,b,c)} dans un script Python \texttt{racines.py}.
 \end{itemize}
 
 \noindent
@@ -836,7 +836,7 @@ print([n**2 +1 for n in range(21)])
 \exercisesection{Exercise \thedoconceexercisecounter: Ecrire une fonction Python}
 
 
-Écriez une fonction \texttt{x(n)} pour calculer un élément dans la séquence $x_n = n^2 + 1 $. Appelez la fonction pour n = 4 et écrivez le résultat.
+Écrivez une fonction \texttt{x(n)} pour calculer un élément dans la séquence $x_n = n^2 + 1 $. Appelez la fonction pour n = 4 et afficher le résultat.
 
 
 % --- begin solution of exercise ---
@@ -845,7 +845,7 @@ La fonction \texttt{x(n)} est définie:
 \begin{cod}{cbg_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
 def x(n):
     return n**2 +1
-print(x(1))
+print(x(4))
 \end{minted}
 \end{cod}
 \noindent

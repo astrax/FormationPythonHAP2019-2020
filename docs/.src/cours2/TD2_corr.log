@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.8.29)  23 OCT 2019 00:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  6 NOV 2019 21:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **TD2_corr
 (./TD2_corr.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -1101,7 +1101,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
 \openout3 = `TD2_corr.pyg'.
 
 
-(./_minted-TD2_corr/D390A9339BFD6E46D0CFDF7B9172B52074D85E346933431E16BCC4A95E9
+(./_minted-TD2_corr/AB3B3DB7F8F7094AF930598F80EC9B4674D85E346933431E16BCC4A95E9
 5367E.pygtex)
 \openout3 = `TD2_corr.pyg'.
 
@@ -1273,7 +1273,7 @@ _minted-TD2_corr/B8385FF956184A8B2D98FEE803ED01FD74D85E346933431E16BCC4A95E9536
 7E.pygtex
 _minted-TD2_corr/68C39587A1C0463934D0FB34AC56798474D85E346933431E16BCC4A95E9536
 7E.pygtex
-_minted-TD2_corr/D390A9339BFD6E46D0CFDF7B9172B52074D85E346933431E16BCC4A95E9536
+_minted-TD2_corr/AB3B3DB7F8F7094AF930598F80EC9B4674D85E346933431E16BCC4A95E9536
 7E.pygtex
 _minted-TD2_corr/4056950E1A345B4288589F88FCC6C65B74D85E346933431E16BCC4A95E9536
 7E.pygtex
@@ -1286,12 +1286,12 @@ runsystem(rm TD2_corr.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 15206 strings out of 492982
- 245750 string characters out of 6134896
- 423733 words of memory out of 5000000
- 18286 multiletter control sequences out of 15000+600000
- 54897 words of font info for 83 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 15208 strings out of 494894
+ 245772 string characters out of 6179473
+ 418897 words of memory out of 5000000
+ 18045 multiletter control sequences out of 15000+600000
+ 54980 words of font info for 84 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
  41i,12n,43p,843b,613s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
 vips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/shar
@@ -1307,7 +1307,7 @@ sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmtti10.pfb>
-Output written on TD2_corr.pdf (7 pages, 351640 bytes).
+Output written on TD2_corr.pdf (7 pages, 351597 bytes).
 PDF statistics:
  223 PDF objects out of 1000 (max. 8388607)
  154 compressed objects within 2 object streams

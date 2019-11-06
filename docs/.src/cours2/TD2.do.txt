@@ -67,7 +67,7 @@ else :
 ===== Exercise: Résolution d’une équation du second degré =====
 Soit l’équation du second degré $a x^2 + bx + c = 0$ où $a$, $b$ et $c$ sont des coefficients réels.
 !bsubex
-Écrivez un programme qui  qui demande d'entrer les coefficients et affiche les solutions de l'équation.
+Écrivez un programme qui demande d'entrer les coefficients et affiche les solutions de l'équation.
 !bhint
 
 _Solutions analytiques_
@@ -153,8 +153,8 @@ La représentation graphique de $f(x)$ est indiquée ci-dessous:
 FIGURE: [imgs/ex_fonction1]
 
 Nous allons utiliser une fonction `EqSecondDegree(a,b,c)` dans _TD N°3_ pour reproduire cette figure en utilisant les bibliothèques `numpy` et `matplotlib`.
-* Ecrivez la fonction `EqSecondDegree(a,b,c)` qui _renvoie_ les solutions de l'équation $a x^2 + bx + c = 0$.
-* Enregistrez la fonction `EqSecondDegree(a,b,c)` dans un script Python `racines.py` puis l'exécuter dans la cellule de code suivante:
+* Écrivez la fonction `EqSecondDegree(a,b,c)` qui _renvoie_ les solutions de l'équation $a x^2 + bx + c = 0$.
+* Enregistrez la fonction `EqSecondDegree(a,b,c)` dans un script Python `racines.py`.
 !bsol
 !bc pycod
 # %load racines.py
@@ -269,14 +269,14 @@ print([n**2 +1 for n in range(21)])
 
 !split
 ===== Exercise: Ecrire une fonction Python =====
-Écriez une fonction `x(n)` pour calculer un élément dans la séquence $x_n = n^2 + 1 $. Appelez la fonction pour n = 4 et écrivez le résultat.
+Écrivez une fonction `x(n)` pour calculer un élément dans la séquence $x_n = n^2 + 1 $. Appelez la fonction pour n = 4 et afficher le résultat.
 
 !bsol
 La fonction `x(n)` est définie:
 !bc pycod
 def x(n):
     return n**2 +1
-print(x(1))
+print(x(4))
 !ec
 !esol
 

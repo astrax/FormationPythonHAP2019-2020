@@ -145,7 +145,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Oct 23, 2019</h4></center> <!-- date -->
+<center><h4>Nov 6, 2019</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -172,8 +172,36 @@ MathJax.Hub.Config({
 &#201;crivez un programme qui vous demande de saisir 2 nombres entiers et affiche la plus petite de ces valeurs.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_1" style="font-size: 80%;"></a>
+<a href="#exer_1_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_1">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load solution/ex1</span>
+valeur1<span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Valeur 1 : &quot;</span>))
+valeur2<span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Valeur 2 : &quot;</span>))
+<span style="color: #008000; font-weight: bold">if</span> (valeur1 <span style="color: #666666">&lt;</span> valeur2 ) :
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Valeur la plus petite : &quot;</span>, valeur1)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Valeur la plus petite : &quot;</span>, valeur2)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -186,8 +214,37 @@ MathJax.Hub.Config({
 &#201;crivez un programme qui demande d'entrer 2 cha&#238;nes et qui affiche la plus grande des 2 cha&#238;nes (celle qui contient le plus de caract&#232;res).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<a href="#exer_2_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load solution/ex2</span>
+chaine1<span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Chaîne 1 : &quot;</span>)
+chaine2<span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Chaîne 2 : &quot;</span>)
+
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(chaine2) <span style="color: #666666">&gt;</span> <span style="color: #008000">len</span>(chaine1) :
+    <span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;Chaîne la plus grande : &quot;</span> , chaine2 )
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;Chaîne la plus grande : &quot;</span> , chaine1 )
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -215,8 +272,42 @@ MathJax.Hub.Config({
    <span style="color: #408080; font-style: italic"># affichage d&#39;un message d&#39;erreur</span>
 </pre></div>
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_1" style="font-size: 80%;"></a>
+<a href="#exer_3_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_1">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load solution/ex3</span>
+devise <span style="color: #666666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Devise : &quot;</span>)
+montant <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span> (<span style="color: #BA2121">&quot;Montant : &quot;</span>))
+<span style="color: #408080; font-style: italic"># 1 EUR = 3.30 TND</span>
+facteur_euro_dinar <span style="color: #666666">=</span> <span style="color: #666666">3.30</span>
+<span style="color: #008000; font-weight: bold">if</span> devise <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;EUR&#39;</span> :
+    <span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;{} TND&quot;</span><span style="color: #666666">.</span>format(montant <span style="color: #666666">*</span> facteur_euro_dinar))
+
+<span style="color: #008000; font-weight: bold">elif</span> devise <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;TND&#39;</span> :
+    <span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;{} Euros&quot;</span><span style="color: #666666">.</span>format(montant <span style="color: #666666">/</span> facteur_euro_dinar))
+
+<span style="color: #008000; font-weight: bold">else</span> :
+    <span style="color: #008000; font-weight: bold">print</span> (<span style="color: #BA2121">&quot;Je n&#39;ai rien compris&quot;</span>) <span style="color: #408080; font-style: italic"># affichage d&#39;un message d&#39;erreur</span>
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -230,7 +321,7 @@ Soit l&#8217;&#233;quation du second degr&#233; \( a x^2 + bx + c = 0 \) o&#249;
 
 <p>
 <b>a)</b>
-&#201;crivez un programme qui  qui demande d'entrer les coefficients et affiche les solutions de l'&#233;quation.
+&#201;crivez un programme qui demande d'entrer les coefficients et affiche les solutions de l'&#233;quation.
 
 <p>
 <!-- --- begin hint in exercise --- -->
@@ -282,15 +373,94 @@ $$  \left\{
 <!-- --- end hint in exercise --- -->
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_2" style="font-size: 80%;"></a>
+<a href="#exer_4_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_2">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load solution/ex4</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">Calcul des racines de l&#39;equation du second degré:</span>
+<span style="color: #BA2121; font-style: italic">a x^2 + b x + c = 0</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sqrt
+
+a <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Valeur de a:&quot;</span>))
+b <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Valeur de b:&quot;</span>))
+c <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Valeur de c:&quot;</span>))
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;L&#39;équation a resoudre est: {} x^2 + {} x + {}&quot;</span><span style="color: #666666">.</span>format(a,b,c))
+
+delta <span style="color: #666666">=</span> b<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">4*</span>a<span style="color: #666666">*</span>c  <span style="color: #408080; font-style: italic">#Calcul du discriminant:</span>
+
+<span style="color: #408080; font-style: italic">#Resultats des racines suivant la valeur de delta:</span>
+<span style="color: #008000; font-weight: bold">if</span> delta <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>:
+    x1 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">-</span> sqrt(delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+    x2 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">+</span> sqrt(delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+    <span style="color: #408080; font-style: italic"># Affichage des solutions trouvées</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Les solutions sont réelles: &quot;</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La premiere racine est x1= &quot;</span>,x1)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La seconde racines est x2= &quot;</span>,x2)
+
+<span style="color: #008000; font-weight: bold">elif</span> delta <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+    x0 <span style="color: #666666">=</span> <span style="color: #666666">-</span>b<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+    <span style="color: #408080; font-style: italic"># Affichage de la solution trouvée</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Il y a une seule solution: &quot;</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La solution est&quot;</span>, x0)
+
+<span style="color: #008000; font-weight: bold">elif</span> delta<span style="color: #666666">&lt;0</span>:
+    z1 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">-</span> <span style="color: #666666">1j*</span>sqrt(<span style="color: #666666">-</span>delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+    z2 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">+</span> <span style="color: #666666">1j*</span>sqrt(<span style="color: #666666">-</span>delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+    <span style="color: #408080; font-style: italic"># Affichage des solutions trouvées</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Les solutions sont complexes: &quot;</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La premiere racine est z1 = &quot;</span>, z1)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La seconde racine est z2 = &quot;</span>, z2)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 Soit la fonction \( f(x) = 0.83 x^2 + 3.8 x + 2.48 \). En utilisant le programme pr&#233;c&#233;dent, trouvez les solutions pour \( f(x) = 0 \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_3" style="font-size: 80%;"></a>
+<a href="#exer_4_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_3">
+
+<p>
+Les solutions des \( f(x) = 0 \) sont r&#233;elles:
+\( x_1 = \) et \( x_2 = \)
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>c)</b>
 La repr&#233;sentation graphique de \( f(x) \) est indiqu&#233;e ci-dessous:
@@ -302,19 +472,107 @@ La repr&#233;sentation graphique de \( f(x) \) est indiqu&#233;e ci-dessous:
 Nous allons utiliser une fonction <code>EqSecondDegree(a,b,c)</code> dans <b>TD N&#176;3</b> pour reproduire cette figure en utilisant les biblioth&#232;ques <code>numpy</code> et <code>matplotlib</code>.
 
 <ul>
-<li> Ecrivez la fonction <code>EqSecondDegree(a,b,c)</code> qui <b>renvoie</b> les solutions de l'&#233;quation \( a x^2 + bx + c = 0 \).</li>
-<li> Enregistrez la fonction <code>EqSecondDegree(a,b,c)</code> dans un script Python <code>racines.py</code> puis l'ex&#233;cuter dans la cellule de code suivante:</li>
+<li> &#201;crivez la fonction <code>EqSecondDegree(a,b,c)</code> qui <b>renvoie</b> les solutions de l'&#233;quation \( a x^2 + bx + c = 0 \).</li>
+<li> Enregistrez la fonction <code>EqSecondDegree(a,b,c)</code> dans un script Python <code>racines.py</code>.</li>
 </ul>
 
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_4" style="font-size: 80%;"></a>
+<a href="#exer_4_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_4">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load racines.py</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">EqSecondDegree</span>(a,b,c):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Calcul des racines de l&#39;equation du second degré:</span>
+<span style="color: #BA2121; font-style: italic">    a x^2 + b x + c = 0</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sqrt
+
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;L&#39;équation a resoudre est: {} x^2 + {} x + {}&quot;</span><span style="color: #666666">.</span>format(a,b,c))
+
+    delta <span style="color: #666666">=</span> b<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">4*</span>a<span style="color: #666666">*</span>c  <span style="color: #408080; font-style: italic">#Calcul du discriminant:</span>
+
+    <span style="color: #408080; font-style: italic">#Resultats des racines suivant la valeur de delta:</span>
+    <span style="color: #008000; font-weight: bold">if</span> delta <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>:
+        x1 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">-</span> sqrt(delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+        x2 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">+</span> sqrt(delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+        <span style="color: #408080; font-style: italic"># Affichage des solutions trouvées</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Les solutions sont réelles: &quot;</span>)
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La premiere racine est x1= &quot;</span>,x1)
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La seconde racines est x2= &quot;</span>,x2)
+        <span style="color: #008000; font-weight: bold">return</span> x1, x2
+
+    <span style="color: #008000; font-weight: bold">elif</span> delta <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+        x0 <span style="color: #666666">=</span> <span style="color: #666666">-</span>b<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+        <span style="color: #408080; font-style: italic"># Affichage de la solution trouvée</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Il y a une seule solution: &quot;</span>)
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La solution est&quot;</span>, x0)
+        <span style="color: #008000; font-weight: bold">return</span> x0
+
+    <span style="color: #008000; font-weight: bold">elif</span> delta<span style="color: #666666">&lt;0</span>:
+        z1 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">-</span> <span style="color: #666666">1j*</span>sqrt(<span style="color: #666666">-</span>delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+        z2 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">+</span> <span style="color: #666666">1j*</span>sqrt(<span style="color: #666666">-</span>delta))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>a)
+        <span style="color: #408080; font-style: italic"># Affichage des solutions trouvées</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Les solutions sont complexes: &quot;</span>)
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La premiere racine est z1 = &quot;</span>, z1)
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La seconde racine est z2 = &quot;</span>, z2)
+        <span style="color: #008000; font-weight: bold">return</span> z1, z2
+</pre></div>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Exécutez le scripte racines.py</span>
+EqSecondDegree(a<span style="color: #666666">=0.83</span>,b<span style="color: #666666">=3.8</span>,c<span style="color: #666666">=2.48</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>d)</b>
 En utilisant la fonction <code>EqSecondDegree(a,b,c)</code>, trouvez les solutions de \( f(x) = 0 \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_5" style="font-size: 80%;"></a>
+<a href="#exer_4_5" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_5">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">racines</span> <span style="color: #008000; font-weight: bold">import</span> EqSecondDegree
+x1, x2 <span style="color: #666666">=</span> EqSecondDegree(<span style="color: #666666">0.83</span>,<span style="color: #666666">3.8</span>,<span style="color: #666666">2.48</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;x1 = {:.3f} et x2 = {:.3f}&quot;</span><span style="color: #666666">.</span>format(x1, x2))
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -330,8 +588,36 @@ D&#233;finir une s&#233;quence de nombres: $$x_n = n^2 + 1$$
 pour les entiers n = 0,1,2,&#8230;, N. &#201;crivez un programme qui affiche \( x_n \) pour n = 0,1,&#8230;, 20 en utilisant une boucle <code>while</code>.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_1" style="font-size: 80%;"></a>
+<a href="#exer_5_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_1">
+
+<p>
+Le programme qui affiche \( x_n \) pour n = 0,1,&#8230;, 20 en utilisant une boucle <code>while</code> s'&#233;crit:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">while</span> n <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>:
+    x_n <span style="color: #666666">=</span> n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;x{} = {}&#39;</span><span style="color: #666666">.</span>format(n, x_n))
+    n <span style="color: #666666">=</span> n <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -347,8 +633,37 @@ pour les entiers n = 0,1,2,&#8230;, N. &#201;crivez un programme qui affiche \( 
 Stockez toutes les valeurs \( x_n \) calcul&#233;es dans l'exercice 5 dans une liste (&#224; l'aide d'une boucle <code>while</code>). Afficher la liste compl&#232;te (en un seul objet).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_1" style="font-size: 80%;"></a>
+<a href="#exer_6_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_1">
+
+<p>
+Les valeurs \( x_n \) sont stock&#233;s dans une liste <code>x</code> d&#233;finie:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+x <span style="color: #666666">=</span> []  <span style="color: #408080; font-style: italic"># les x_n valeurs</span>
+<span style="color: #008000; font-weight: bold">while</span> n <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>:
+    x<span style="color: #666666">.</span>append(n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+    n <span style="color: #666666">=</span> n <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">print</span>(x)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -364,8 +679,44 @@ Stockez toutes les valeurs \( x_n \) calcul&#233;es dans l'exercice 5 dans une l
 Faites l'exercice 6, mais utilisez une boucle <code>for</code>.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_7_1" style="font-size: 80%;"></a>
+<a href="#exer_7_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_7_1">
+
+<p>
+Le programme avec une boucle <code>for</code> s'&#233;crit:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># %load solution/ex7</span>
+x <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>):
+    x<span style="color: #666666">.</span>append(n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+<span style="color: #008000; font-weight: bold">print</span>(x)
+</pre></div>
+<p>
+On peut &#233;galement raccourcir le code en utilisant une liste de compr&#233;hension:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>([n<span style="color: #666666">**2</span> <span style="color: #666666">+1</span> <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>)])
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -378,11 +729,37 @@ Faites l'exercice 6, mais utilisez une boucle <code>for</code>.
 <h2 id="___sec7" class="anchor">Exercise 8: Ecrire une fonction Python </h2>
 
 <p>
-&#201;criez une fonction <code>x(n)</code> pour calculer un &#233;l&#233;ment dans la s&#233;quence \( x_n = n^2 + 1  \). Appelez la fonction pour n = 4 et &#233;crivez le r&#233;sultat.
+&#201;crivez une fonction <code>x(n)</code> pour calculer un &#233;l&#233;ment dans la s&#233;quence \( x_n = n^2 + 1  \). Appelez la fonction pour n = 4 et afficher le r&#233;sultat.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_8_1" style="font-size: 80%;"></a>
+<a href="#exer_8_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_8_1">
+
+<p>
+La fonction <code>x(n)</code> est d&#233;finie:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">x</span>(n):
+    <span style="color: #008000; font-weight: bold">return</span> n<span style="color: #666666">**2</span> <span style="color: #666666">+1</span>
+<span style="color: #008000; font-weight: bold">print</span>(x(<span style="color: #666666">4</span>))
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -398,8 +775,39 @@ Faites l'exercice 6, mais utilisez une boucle <code>for</code>.
 &#201;crivez une fonction Python qui &#233;value les fonctions math&#233;matiques \( f(x) = cos(2x) \), \( f'(x) = -2sin(2x) \) et \( f"(x) = - 4 cos(2x) \). Retourner ces trois valeurs. &#201;crivez les r&#233;sultats de ces valeurs pour \( x = \pi \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_9_1" style="font-size: 80%;"></a>
+<a href="#exer_9_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_9_1">
+
+<p>
+Soit une fonction <code>deriv2(x)</code> qui renvoie les valeurs de \( f(x) \), \( f'(x) \) et \( f"(x) \):
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, pi
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">deriv2</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> cos(<span style="color: #666666">2*</span>x), <span style="color: #666666">-2*</span>sin(<span style="color: #666666">2*</span>x), <span style="color: #666666">-4*</span>cos(<span style="color: #666666">2*</span>x)
+
+f, df, d2f <span style="color: #666666">=</span> deriv2(x<span style="color: #666666">=</span>pi)
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;f(pi) = {}; df(pi) = {}; d2f(pi) = {} &quot;</span><span style="color: #666666">.</span>format(f, df, d2f))
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 

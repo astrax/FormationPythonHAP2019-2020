@@ -43,10 +43,12 @@ DATE: today
 * PDF
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours2/cours2.pdf"
   * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2.pdf"
-# * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2_corr.pdf"
+ * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2_corr.pdf"
 
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours2/cours2-bs.html"
-  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2.html"
+  * "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD2/TD2.html"
 
-  
+===== DS N°1 (Semestre 1) =====
+
+__Mercredi, 13-09-2019 à 16h15__
