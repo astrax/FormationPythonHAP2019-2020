@@ -51,4 +51,5 @@ DATE: today
 
 ===== DS N°1 (Semestre 1) =====
 
-__Mercredi, 13-11-2019 à 16h15__
+* "DS (énoncé-PDF)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/DS1/DS1_B.pdf"
+* "DS (corrigé-PDF)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/DS1/DS1_B_corr.pdf"
