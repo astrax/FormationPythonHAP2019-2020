@@ -1,0 +1,426 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TD N°3 : Bibliothèques numpy et matplotlib">
+
+<title>TD N°3 : Bibliothèques numpy et matplotlib</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Table des matières',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Exercise 1: Tracer une fonction', 2, None, '___sec0'),
+              ('Exercise 2: Tracer deux fonctions', 2, None, '___sec1'),
+              ('Exercise 3: Racines d’une équation du second degré',
+               2,
+               None,
+               '___sec2'),
+              ('Exercise 4: Approximer une fonction par une somme de sinus',
+               2,
+               None,
+               '___sec3'),
+              ('Exercise 5: Fonctions spéciales (intégrales de Fresnel et '
+               'spirale de Cornu)',
+               2,
+               None,
+               '___sec4')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="TD3.html">TD N°3 : Bibliothèques numpy et matplotlib</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table des matières</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Exercise 1: Tracer une fonction</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Exercise 2: Tracer deux fonctions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Exercise 3: Racines d’une équation du second degré</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Exercise 4: Approximer une fonction par une somme de sinus</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">Exercise 5: Fonctions spéciales (intégrales de Fresnel et spirale de Cornu)</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>TD N&#176;3 : Biblioth&#232;ques numpy et matplotlib</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Mercredi, 5 d&#233;cembre 2018</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Exercise 1: Tracer une fonction </a><br>
+<a href="#___sec1"> Exercise 2: Tracer deux fonctions </a><br>
+<a href="#___sec2"> Exercise 3: Racines d&#8217;une &#233;quation du second degr&#233; </a><br>
+<a href="#___sec3"> Exercise 4: Approximer une fonction par une somme de sinus </a><br>
+<a href="#___sec4"> Exercise 5: Fonctions sp&#233;ciales (int&#233;grales de Fresnel et spirale de Cornu) </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec0" class="anchor">Exercise 1: Tracer une fonction </h2>
+
+<p>
+Ecrivez un programme qui trace la fonction \( g(y) = e^{-y} sin(4y) \) pour \( y \in [0, 4] \) en utilisant une ligne continue rouge. Utilisez 500 intervalles pour &#233;valuer les points dans [0,4]. Stockez toutes les coordonn&#233;es et les valeurs dans des tableaux. Placez le texte des graduations sur les axes et utilisez le titre "Onde sinuso&#239;dale att&#233;nu&#233;e".
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec1" class="anchor">Exercise 2: Tracer deux fonctions </h2>
+
+<p>
+Comme Exercice 1, mais ajouter une courbe en pointill&#233; noir pour la fonction \( h(y) = e^{-\frac{3}{2}y} sin(4y) \). Inclure une l&#233;gende pour chaque courbe (avec les noms \( g \) et \( h \)).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec2" class="anchor">Exercise 3: Racines d&#8217;une &#233;quation du second degr&#233; </h2>
+
+<p>
+Dans l'"application de l'exercice 4 dans TD N&#176;2, nous avons montr&#233; la repr&#233;sentation graphique d'une &#233;quation du second degr&#233; \( f(x)=0.83x^2+3.8x+2.48 \) ainsi que ses racines r&#233;elles:
+
+<p>
+<br /><br /><center><p><img src="imgs/equation2deg.png" align="bottom" width=500></p></center><br /><br />
+Reproduire ce graphique en utilisant la fonction <code>EqSecondDegree(a,b,c)</code> du script Python <code>racines.py</code> pour d&#233;terminer les valeurs des racines x1 et x2 de l&#8217;&#233;quation \( f(x) \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec3" class="anchor">Exercise 4: Approximer une fonction par une somme de sinus </h2>
+
+<p>
+Nous consid&#233;rons la fonction constante par morceaux:
+
+$$
+\begin{equation}
+f(t) = \left\lbrace
+\begin{array}{ll}
+1, & 0 < t < T/2,\\
+0, & t = T/2,\\
+-1, & T/2 < t \le T
+\end{array}\right.
+\label{_auto1}
+\end{equation}
+$$
+
+On peut approcher f(t) par la somme:
+$$
+\begin{equation}
+S(t;n) = {4\over\pi}\sum_{i=1}^n {1\over 2i-1}
+\sin\left( {2(2i-1)\pi t\over T}\right)
+\label{_auto2}
+\end{equation}
+$$
+
+On peut montrer que \( S(t;n)\rightarrow f(t) \) quand \( n\rightarrow\infty \)
+
+<p>
+<b>a)</b>
+Ecrivez une fonction Python <code>S(t, n, T)</code> pour renvoyer la valeur de \( S(t; n) \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>b)</b>
+Ecrivez une fonction Python <code>f(t, T)</code> pour calculer \( f(t) \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>c)</b>
+Cr&#233;er un tableau <code>t</code> &#224; l'aide de la fonction <code>linspace</code>, du module <code>numpy</code>, pour <code>100</code> valeurs <code>t</code> uniform&#233;ment espac&#233;s dans [0, T]. On prendra \( T = 2 \pi \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>d)</b>
+Remplir une liste <code>F</code> par les valeurs de <code>f(ti,T)</code> avec \( ti \in t \). Transformer la liste <code>F</code> en un tableau (nous voulons avoir un tableau pour la fonction \( f(t) \) avec \( t \in [0, T] \) et \( T = 2\pi \)).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>e)</b>
+Tracer \( S(t; 1) \), \( S(t; 3) \), \( S(t; 20) \), \( S(t; 200) \) et la fonction exacte \( f(t) \) dans le m&#234;me graphique. Le r&#233;sultat devrait &#234;tre similaire au graphique ci-dessous.
+
+<p>
+<br /><br /><center><p><img src="imgs/fourier.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>f)</b>
+Quelle est la relation entre la qualit&#233; de l'approximation et le choix de la valeur de <code>n</code>?
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec4" class="anchor">Exercise 5: Fonctions sp&#233;ciales (int&#233;grales de Fresnel et spirale de Cornu) </h2>
+
+<p>
+Les int&#233;grales de Fresnel ont &#233;t&#233; introduites par le physicien fran&#231;ais Augustin Fresnel (1788-1827) lors de ses travaux sur les interf&#233;rences lumineuses (voici un article int&#233;ressant &#224; lire: <a href="http://www.mathouriste.eu/Fresnel/Fresnel.html" target="_self">Fresnel, des Math&#233;matiques en Lumi&#232;re</a>).
+
+<p>
+Ces int&#233;grales doivent &#234;tre calcul&#233;es num&#233;riquement &#224; partir des d&#233;veloppements en s&#233;rie des int&#233;grales:
+
+$$\int_{0}^{x} e^{-i\frac{\pi t^{2}}{2}} dt = \int_{0}^{x} cos(t^2) dt -i \int_{0}^{x} sin(t^2) dt= C(x) -i S(x)$$
+
+<p>
+Les fonctions de Fresnel sont des fonctions sp&#233;ciales, d&#233;finies par:
+
+<p>
+Pour \( x \geq \sqrt{\frac{8}{\pi}} \)
+$$
+\begin{equation*}
+\begin{aligned}
+C(x) &= \frac{1}{2} + \cos\left(\frac{\pi x^{2}}{2}\right) gg1 + \sin\left(\frac{\pi x^{2}}{2}\right) ff1\\
+S(x) &=  \frac{1}{2} - \cos\left(\frac{\pi x^{2}}{2}\right) ff1 + \sin\left(\frac{\pi x^{2}}{2}\right) gg1
+\end{aligned}
+\end{equation*}
+$$
+
+et pour \( 0 \leq x < \sqrt{\frac{8}{\pi}} \)
+$$
+\begin{equation*}
+\begin{aligned}
+C(x) &= \cos\left(\frac{\pi x^{2}}{2}\right) gg2 + \sin\left(\frac{\pi x^{2}}{2}\right) ff2 \\
+S(x) &= - \cos\left(\frac{\pi x^{2}}{2}\right) ff2 + \sin\left(\frac{\pi x^{2}}{2}\right) gg2
+\end{aligned}
+\end{equation*}
+$$
+
+O&#249;:
+$$
+\begin{equation*}
+\begin{aligned}
+ff1 = \sum\limits_{n=0}^{11} \frac{d_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n+1/2} & gg1 = \sum\limits_{n=0}^{11} \frac{c_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n+1/2}\\
+ff2 = \sum\limits_{n=0}^{11} b_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2} & gg2 = \sum\limits_{n=0}^{11} a_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2}
+\end{aligned}
+\end{equation*}
+$$
+
+et \( a_n \), \( b_n \), \( c_n \) et \( d_n \) sont des coefficients tabul&#233;s  (<a href="https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf" target="_self">*J.Boersma Math Computation 14,380(1960)*</a>) et donn&#233;s dans un fichier <b>coef.dat</b>:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>#--------------------------------------------------
+#    an            bn          cn           dn
+#--------------------------------------------------
++1.595769140 -0.000000033 -0.000000000 +0.199471140
+-0.000001702 +4.255387524 -0.024933975 +0.000000023
+-6.808568854 -0.000092810 +0.000003936 -0.009351341
+-0.000576361 -7.780020400 +0.005770956 +0.000023006
++6.920691902 -0.009520895 +0.000689892 +0.004851466
+-0.016898657 +5.075161298 -0.009497136 +0.001903218
+-3.050485660 -0.138341947 +0.011948809 -0.017122914
+-0.075752419 -1.363729124 -0.006748873 +0.029064067
++0.850663781 -0.403349276 +0.000246420 -0.027928955
+-0.025639041 +0.702222016 +0.002102967 +0.016497308
+-0.150230960 -0.216195929 -0.001217930 -0.005598515
++0.034404779 +0.019547031 +0.000233939 +0.000838386
+</pre></div>
+<p>
+&#201;crire un programme Python qui calcule les fonctions de Fresnel \( C(x) \) et \( S(x) \) ainsi que leurs repr&#233;sentations graphiques:
+
+<p>
+<b>a)</b>
+D&#233;finir les fonctions <code>ff1(x)</code>, <code>gg1(x)</code>, <code>ff2(x)</code> et <code>gg2(x)</code>. Chaque fonction renvoie la valeur de la somme qui lui correspond.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>b)</b>
+D&#233;finir les fonctions Python <code>C(x)</code> et <code>S(x)</code> qui renvoient respectivement les listes, les valeurs de \( C(x) \) et \( S(x) \), <code>CF</code> et` SF` (en utilisant une boucle <code>for</code> pour remplir les listes par exemple).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>c)</b>
+Cr&#233;er des tableaux <code>an</code>, <code>bn</code>, <code>cn</code> et <code>dn</code> &#224; partir du fichier <b>coef.dat</b>.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>d)</b>
+Cr&#233;er un tableau <code>x</code>. Utilisez 800 intervalles pour &#233;valuer les points dans [0,10] (cas o&#249; \( x \geq 0 \)).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>e)</b>
+Transformer <code>C(x)</code> et <code>S(x)</code> en tableaux <code>numpy</code>, respectivement <code>CF</code> et <code>SF</code>.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>f)</b>
+Tracer une grille de figures &#224; 2 colonnes (voir Cours3: <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#linstruction-subplot" target="_self">Vues en grille</a>) dont le graphique de gauche repr&#233;sente <code>CF</code> et <code>SF</code> en fonction de <code>x</code> et le graphique de droite repr&#233;sente une <a href="https://fr.wikipedia.org/wiki/Clotho%C3%AFde" target="_self">clotho&#239;de</a> (ou spirale de Cornu, ou Spirale de Fresnel..)`SF` en fonction de <code>CF</code>.
+La sortie de ce programme devrait &#234;tre comme suit:
+<br /><br /><center><p><img src="imgs/fresnel.png" align="bottom" width=600></p></center><br /><br />
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2019, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

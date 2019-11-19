@@ -1,0 +1,405 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: TD N°3 : Bibliothèques numpy et matplotlib</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> Mercredi, 5 décembre 2018
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer une fonction =====</span>
+Ecrivez un programme qui trace la fonction $g(y) = e^{-y} sin(4y)$ pour $y \in [0, 4]$ en utilisant une ligne continue rouge. Utilisez 500 intervalles pour évaluer les points dans [0,4]. Stockez toutes les coordonnées et les valeurs dans des tableaux. Placez le texte des graduations sur les axes et utilisez le titre &quot;Onde sinusoïdale atténuée&quot;.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La programme qui trace la fonction $g(y)$ est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Importation</span>
+from math import exp, sin
+import numpy as np
+import matplotlib.pyplot as plt
+
+def g(y):
+    return exp(-y)*sin(4*y)
+
+y = np.linspace(0, 4, 501)
+<span style="color: #228B22"># définir un nouveau graphique</span>
+plt.figure()
+<span style="color: #228B22"># tracer la fonction g(y) avec ligne solide rouge</span>
+plt.plot(y, g(y), &#39;r-&#39;)
+plt.xlabel(&#39;y&#39;); plt.ylabel(&#39;g(y)&#39;)
+plt.title(&#39;Onde sinusoïdale atténuée&#39;)
+ # sauvgarder le grahique (format PNG et PDF)
+plt.savefig(&quot;fig_ex1.png&quot;); plt.savefig(&quot;fig_ex1.pdf&quot;)
+<span style="color: #228B22"># Afficher le graphique</span>
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer deux fonctions =====</span>
+Comme Exercice 1, mais ajouter une courbe en pointillé noir pour la fonction $h(y) = e^{-\frac{3}{2}y} sin(4y)$. Inclure une légende pour chaque courbe (avec les noms $g$ et $h$).
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La programme qui trace la fonction $g(y)$ avec une nouvelle fonction $h(y)$ est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Importation</span>
+from math import exp, sin
+import numpy as np
+import matplotlib.pyplot as plt
+
+def g(y):
+    return exp(-y)*sin(4*y)
+
+def h(y):
+    return exp(-(3./2)*y)*sin(4*y)
+
+y = np.linspace(0, 4, 501)
+plt.figure()
+plt.plot(y, g(y), &#39;r-&#39;, y, h(y), &#39;k--&#39;)
+plt.xlabel(&#39;y&#39;); plt.ylabel(&#39;g(y)&#39;)
+plt.title(&#39;Onde sinusoïdale atténuée&#39;)
+plt.legend([&#39;g&#39;, &#39;h&#39;])
+
+plt.savefig(&quot;fig_ex2.png&quot;); plt.savefig(&quot;fig_ex2.pdf&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #000080; font-weight: bold">===== Exercise: Racines d’une équation du second degré =====</span>
+Dans l&#39;&quot;application de l&#39;exercice 4 dans TD N°2, nous avons montré la représentation graphique d&#39;une équation du second degré $f(x)=0.83x^2+3.8x+2.48$ ainsi que ses racines réelles:
+
+<span style="color: #658b00">FIGURE:[imgs/equation2deg, width=500 frac=0.7]</span>
+Reproduire ce graphique en utilisant la fonction `EqSecondDegree(a,b,c)` du script Python `racines.py` pour déterminer les valeurs des racines x1 et x2 de l’équation $f(x)$.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme qui reproduit la figure en utilisant la fonction `EqSecondDegree()`:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Importation</span>
+import numpy as np
+import matplotlib.pyplot as plt
+from racines import EqSecondDegree
+<span style="color: #228B22"># NOTE: le module racines est le fichier racines.py</span>
+<span style="color: #228B22"># qu&#39;on doit placer dans le répertoire de travail.</span>
+
+def f(x):
+    return 0.83 * x**2 + 3.8 * x + 2.48
+x = np.linspace(-6, 1, 200)
+y = f(x)
+x1, x2 = EqSecondDegree(0.83, 3.8, 2.48)
+
+plt.figure(figsize=(7, 5), dpi=80)
+plt.plot(x, y, color=&quot;blue&quot;, linewidth=3, linestyle=&quot;-&quot;, alpha=.8)
+plt.scatter([x1,x2], [f(x1), f(x2)], 80, color=&#39;red&#39;)
+
+plt.annotate(&#39;x1= {:.2f}&#39;.format(x1),
+             xy=(x1, f(x1)), xycoords=&#39;data&#39;,
+             xytext=(+10, +30), textcoords=&#39;offset points&#39;, fontsize=16,
+             arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))
+plt.annotate(&#39;x2= {:.2f}&#39;.format(x2),
+             xy=(x2, f(x2)), xycoords=&#39;data&#39;,
+             xytext=(+40, +30), textcoords=&#39;offset points&#39;, fontsize=16,
+             arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))
+
+plt.suptitle(&quot;Racines d’une équation du second degré&quot;, fontweight= &#39;bold&#39;)
+plt.title(r&quot;$f(x) = 0.83 * x^2 + 3.8 * x + 2.48$&quot;,fontsize=14, color = &#39;b&#39;)
+
+plt.grid()
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Approximer une fonction par une somme de sinus =====</span>
+Nous considérons la fonction constante par morceaux:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+f(t) = \left\lbrace
+<span style="color: #658b00">\begin{array}</span>{ll}
+1, &amp; 0 &lt; t &lt; T/2,\\
+0, &amp; t = T/2,\\
+-1, &amp; T/2 &lt; t \le T
+<span style="color: #658b00">\end{array}</span>\right.
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+On peut approcher f(t) par la somme:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+S(t;n) = {4\over\pi}\sum_{i=1}^n {1\over 2i-1}
+\sin\left( {2(2i-1)\pi t\over T}\right)
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+On peut montrer que $S(t;n)\rightarrow f(t)$ quand $n\rightarrow\infty$
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Ecrivez une fonction Python `S(t, n, T)` pour renvoyer la valeur de $S(t; n)$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction Python `S(t, n, T)` est la suivante:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import numpy as np
+import matplotlib.pyplot as plt
+from math import cos, sin, pi
+def S(t, n, T):
+    s = 0
+    for i in range(1, n+1):
+        A = 1/(2*i - 1)
+        B = 2*(2*i - 1)* (pi * t)
+        s +=  A * sin(B/T)
+
+    return s*4/pi
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Ecrivez une fonction Python `f(t, T)` pour calculer $f(t)$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction Python `f(t, T)` est la suivante:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def f(t, T):
+    if 0 &lt; t &lt; T/2:
+        return 1
+    elif t == T/2:
+        return 0
+    elif T/2 &lt; t &lt;= T:
+        return -1
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer un tableau `t` à l&#39;aide de la fonction `linspace`, du module `numpy`, pour `100` valeurs `t` uniformément espacés dans [0, T]. On prendra $T = 2 \pi$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le tableau de valeurs de $t$ pour $T = 2 \pi$ est défini comme suit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+T = 2*pi
+t = np.linspace(0, T, 100)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Remplir une liste `F` par les valeurs de `f(ti,T)` avec $ti \in t$. Transformer la liste `F` en un tableau (nous voulons avoir un tableau pour la fonction $f(t)$ avec $t \in [0, T]$ et $T = 2\pi$).
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le code suivant nous permet d’avoir un tableau de $f(t)$:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+F = []
+for ti in t:
+  F.append(f(ti,T))
+F = np.array(F)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer $S(t; 1)$, $S(t; 3)$, $S(t; 20)$, $S(t; 200)$ et la fonction exacte $f(t)$ dans le même graphique. Le résultat devrait être similaire au graphique ci-dessous.
+
+<span style="color: #658b00">FIGURE: [imgs/fourier, width=500 frac=1]</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le programme qui donne le graphique est:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+plt.plot(t, S(t, n=1, T=2*pi), &#39;k-.&#39;, label = &quot;S(t;1)&quot;)
+plt.plot(t, S(t, n=3, T=2*pi), &#39;k:&#39;, label = &quot;S(t;3)&quot;)
+plt.plot(t, S(t, n=20, T=2*pi), &#39;k:&#39;, label = &quot;S(t;20)&quot;)
+plt.plot(t, S(t, n=200, T=2*pi), &#39;k--&#39;, label = &quot;S(t;200)&quot;)
+plt.plot(t, F, &#39;k-&#39;, label = &quot;f(t)&quot;)
+plt.title(&quot;Approximation d’une fonction par sa série de Fourier&quot;, fontweight=&#39;bold&#39;)
+plt.ylabel(&quot;f(t)/S(t;n)&quot;)
+plt.xlabel(&quot;t&quot;)
+plt.legend()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Quelle est la relation entre la qualité de l&#39;approximation et le choix de la valeur de `n`?
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La qualité de l&#39;approximation dépend de $n$. $S(t;n)\rightarrow f(t)$ quand $n\rightarrow\infty$.
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Fonctions spéciales (intégrales de Fresnel et spirale de Cornu) =====</span>
+
+Les intégrales de Fresnel ont été introduites par le physicien français Augustin Fresnel (1788-1827) lors de ses travaux sur les interférences lumineuses (voici un article intéressant à lire: &quot;Fresnel, des Mathématiques en Lumière&quot;: &quot;http://www.mathouriste.eu/Fresnel/Fresnel.html&quot;).
+
+Ces intégrales doivent être calculées numériquement à partir des développements en série des intégrales:
+
+$$\int_{0}^{x} e^{-i\frac{\pi t^{2}}{2}} dt = \int_{0}^{x} cos(t^2) dt -i \int_{0}^{x} sin(t^2) dt= C(x) -i S(x)$$
+
+Les fonctions de Fresnel sont des fonctions spéciales, définies par:
+
+Pour $x \geq \sqrt{\frac{8}{\pi}}$
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+<span style="color: #658b00">\begin{aligned}</span>
+C(x) &amp;= \frac{1}{2} + \cos\left(\frac{\pi x^{2}}{2}\right) gg1 + \sin\left(\frac{\pi x^{2}}{2}\right) ff1\\
+S(x) &amp;=  \frac{1}{2} - \cos\left(\frac{\pi x^{2}}{2}\right) ff1 + \sin\left(\frac{\pi x^{2}}{2}\right) gg1
+<span style="color: #658b00">\end{aligned}</span>
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+et pour $0 \leq x &lt; \sqrt{\frac{8}{\pi}}$
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+<span style="color: #658b00">\begin{aligned}</span>
+C(x) &amp;= \cos\left(\frac{\pi x^{2}}{2}\right) gg2 + \sin\left(\frac{\pi x^{2}}{2}\right) ff2 \\
+S(x) &amp;= - \cos\left(\frac{\pi x^{2}}{2}\right) ff2 + \sin\left(\frac{\pi x^{2}}{2}\right) gg2
+<span style="color: #658b00">\end{aligned}</span>
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Où:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+<span style="color: #658b00">\begin{aligned}</span>
+ff1 = \sum\limits_{n=0}^{11} \frac{d_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n+1/2} &amp; gg1 = \sum\limits_{n=0}^{11} \frac{c_{n}}{x^{2n+1}}\left(\frac{8}{\pi}\right)^{n+1/2}\\
+ff2 = \sum\limits_{n=0}^{11} b_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2} &amp; gg2 = \sum\limits_{n=0}^{11} a_{n}x^{2n+1}\left(\frac{\pi}{8}\right)^{n+1/2}
+<span style="color: #658b00">\end{aligned}</span>
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+et $a_n$, $b_n$, $c_n$ et $d_n$ sont des coefficients tabulés  (&quot;*J.Boersma Math Computation 14,380(1960)*&quot;: &quot;https://www.ams.org/journals/mcom/1960-14-072/S0025-5718-1960-0121973-3/S0025-5718-1960-0121973-3.pdf&quot;) et donnés dans un fichier _coef.dat_:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+<span style="color: #228B22">#--------------------------------------------------</span>
+<span style="color: #228B22">#    an            bn          cn           dn</span>
+<span style="color: #228B22">#--------------------------------------------------</span>
++1.595769140 -0.000000033 -0.000000000 +0.199471140
+-0.000001702 +4.255387524 -0.024933975 +0.000000023
+-6.808568854 -0.000092810 +0.000003936 -0.009351341
+-0.000576361 -7.780020400 +0.005770956 +0.000023006
++6.920691902 -0.009520895 +0.000689892 +0.004851466
+-0.016898657 +5.075161298 -0.009497136 +0.001903218
+-3.050485660 -0.138341947 +0.011948809 -0.017122914
+-0.075752419 -1.363729124 -0.006748873 +0.029064067
++0.850663781 -0.403349276 +0.000246420 -0.027928955
+-0.025639041 +0.702222016 +0.002102967 +0.016497308
+-0.150230960 -0.216195929 -0.001217930 -0.005598515
++0.034404779 +0.019547031 +0.000233939 +0.000838386
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+
+Écrire un programme Python qui calcule les fonctions de Fresnel $C(x)$ et $S(x)$ ainsi que leurs représentations graphiques:
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir les fonctions `ff1(x)`, `gg1(x)`, `ff2(x)` et `gg2(x)`. Chaque fonction renvoie la valeur de la somme qui lui correspond.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les fonctions `ff1(x)`, `gg1(x)`, `ff2(x)` et `gg2(x)` sont les suivantes:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Importation</span>
+import numpy as np
+from math import pi, cos, sin, sqrt
+
+def ff1(x):
+    S = 0
+    for i in range(12):
+        fn = (8 / pi)**(i + 0.5) * dn[i]
+        S += fn * x**(-2 * i - 1)
+    return S
+
+def gg1(x):
+    S = 0
+    for i in range(12):
+        gn = (8 / pi)**(i + 0.5) * cn[i]
+        S += gn * x**(-2 * i - 1)
+    return S
+
+def ff2(x):
+    S = 0
+    for i in range(12):
+        fn = (pi / 8)**(i + 0.5) * bn[i]
+        S += fn * x**(2 * i + 1)
+    return S
+
+def gg2(x):
+
+    S = 0
+    for i in range(12):
+        gn = (pi/8)**(i + 0.5) * an[i]
+        S +=  gn * x**(2 * i + 1)
+    return S
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir les fonctions Python `C(x)` et `S(x)` qui renvoient respectivement les listes, les valeurs de $C(x)$ et $S(x)$, `CF` et` SF` (en utilisant une boucle `for` pour remplir les listes par exemple).
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les fonctions Python `C(x)` et `S(x)` sont les suivantes:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def C(x):
+    CF=[]
+    for i in range(len(x)):
+        if x[i] &gt;= sqrt(8/pi):
+            cf=0.5 + cos((pi*x[i]**2)/2)*gg1(x[i]) + sin((pi*x[i]**2)/2)*ff1(x[i])
+            CF.append(cf)
+        elif 0 &lt;= x[i] &lt; sqrt(8/pi):
+            cf = cos((pi*x[i]**2)/2)*gg2(x[i]) + sin((pi*x[i]**2)/2)*ff2(x[i])
+            CF.append(cf)
+    return CF
+def S(x):
+    SF=[]
+    for i in range(len(x)):
+        if x[i] &gt;= sqrt(8/pi):
+            sf = 0.5 - cos((pi*x[i]**2)/2)*ff1(x[i]) + sin((pi*x[i]**2)/2)*gg1(x[i])
+            SF.append(sf)
+        elif 0 &lt;= x[i] &lt; sqrt(8/pi):
+            sf = -cos((pi*x[i]**2)/2)*ff2(x[i]) + sin((pi*x[i]**2)/2)*gg2(x[i])
+            SF.append(sf)
+    return SF
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer des tableaux `an`, `bn`, `cn` et `dn` à partir du fichier _coef.dat_.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les tableaux `an`, `bn`, `cn` et `dn` sont chargés  à partir du fichier _coef.dat_ à l&#39;aide del a fonction `numpy.loadtxt()`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+an, bn, cn, dn = np.loadtxt(&#39;coef.dat&#39;, comments=&#39;#&#39;, usecols=(0, 1, 2, 3), unpack=True)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Créer un tableau `x`. Utilisez 800 intervalles pour évaluer les points dans [0,10] (cas où $x \geq 0$).
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le tableau `x` s&#39;écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+x = np.linspace(0,10, 500)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Transformer `C(x)` et `S(x)` en tableaux `numpy`, respectivement `CF` et `SF`.
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Les listes `C(x)` et `S(x)` sont transformés en tableaux `numpy` à l&#39;aide de la fonction `numpy.array()`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+CF = np.array(C(x)); SF = np.array(S(x))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer une grille de figures à 2 colonnes (voir Cours3: &quot;Vues en grille&quot;: &quot;https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#linstruction-subplot&quot;) dont le graphique de gauche représente `CF` et `SF` en fonction de `x` et le graphique de droite représente une &quot;clothoïde&quot;: &quot;https://fr.wikipedia.org/wiki/Clotho%C3%AFde&quot; (ou spirale de Cornu, ou Spirale de Fresnel..)`SF` en fonction de `CF`.
+La sortie de ce programme devrait être comme suit:
+<span style="color: #658b00">FIGURE:[imgs/fresnel, width=600 frac=1]</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La représentation graphique des intégrales de Fresnel et du spirale de Cornu est donc:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+plt.figure(figsize=(12,5))
+subplot(1,2,1)
+plt.plot(x, CF,&#39;b&#39;, x, SF,&#39;r&#39;, linewidth=2)
+plt.xlabel(&quot;x&quot;, fontweight=&#39;bold&#39;); plt.ylabel(&quot;C(x) / S(x)&quot;, fontweight=&#39;bold&#39;)
+plt.title(&quot;Intégrales de Fresnel&quot;, fontsize=14, fontweight=&#39;bold&#39;)
+plt.legend([&quot;C(x)&quot;,&quot;S(x)&quot;])
+subplot(1,2,2)
+plt.plot(CF, SF, linewidth = 2, color = &#39;k&#39;)
+plt.xlabel(&quot;C(x)&quot;, fontweight=&#39;bold&#39;); plt.ylabel(&quot;S(x)&quot;, fontweight=&#39;bold&#39;)
+plt.title(&quot;Spirale de Cornu&quot;, fontsize=14, fontweight=&#39;bold&#39;)
+
+plt.savefig(&quot;fresnel.png&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+</pre></div>

@@ -1,0 +1,408 @@
+TITLE: Bibliothèques numpy et matplotlib
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+DATE: today
+
+TOC: on
+
+!split
+======= Bibliothèque numérique: `numpy` =======
+
+La bibliothèque `numpy` (URL:"http://www.numpy.org") est utilisée dans presque tous les calculs numériques réalisés à l'aide de Python. C'est une bibliothèque qui fournit des structures de données de haute performance de type vectoriel, matriciel et de dimensions supérieures. Il est implémenté avec les syntaxes de C et Fortran, ainsi lorsque les calculs sont vectorisés les performances sont très bonnes.
+
+Pour utiliser `numpy`, vous devez importer le module:
+
+!bc pycod
+import numpy as np
+!ec
+Dans la bibliothèque `numpy`, la terminologie utilisée pour les vecteurs, les matrices et tout ensemble de données à grande dimension est _array_.
+
+===== Tableaux et matrices =====
+
+Il existe plusieurs façons d'initialiser de nouveaux tableaux `numpy`, par exemple à partir de:
+
+* Des liste ou des tuples
+* Utilisant des fonctions dédiées à la génération de tableaux numpy, tels que `arange`, `linspace`, etc.
+* Lecture de données à partir de fichiers
+
+=== Listes ===
+
+Par exemple, pour créer de nouveaux tableaux vectoriels et matriciels à partir de listes Python, nous pouvons utiliser la fonction `numpy.array`.
+
+!bc ipy
+In [8]: v = np.array([1,2,3,4]) # Un vecteur: l'argument de la fonction array() est une liste Python
+   ...: v
+Out[8]: array([1, 2, 3, 4])
+!ec
+
+!bc ipy
+In [9]: M = np.array([[1, 2], [3, 4]]) # Une matrice: l'argument de la fonction de tableau est une liste imbriquée de Python
+   ...: M
+Out[9]:
+array([[1, 2],
+       [3, 4]])
+!ec
+Les variables `v` et `M` sont de type `ndarray` que fournit le module `numpy`.
+
+!bc ipy
+In [10]: type(v), type(M)
+Out[10]: (numpy.ndarray, numpy.ndarray)
+!ec
+La différence entre les tableaux `v` et `M` n'est que dans leur forme. Nous pouvons obtenir des informations sur la forme d'un tableau en utilisant la propriété `ndarray.shape`.
+
+!bc ipy
+In [11]: v.shape
+Out[11]: (4,)
+!ec
+
+!bc ipy
+In [13]: M.shape
+Out[13]: (2, 2)
+!ec
+Le nombre d'éléments dans le tableau est disponible via la propriété `ndarray.size`:
+
+!bc ipy
+In [14]: M.size
+Out[14]: 4
+!ec
+De manière équivalente, nous pourrions utiliser la fonction `numpy.shape` et `numpy.size`
+
+!bc ipy
+In [15]: np.shape(M)
+Out[15]: (2, 2)
+!ec
+et
+!bc ipy
+In [16]: np.size(M)
+Out[16]: 4
+!ec
+
+Jusqu'à présent, le `numpy.ndarray` ressemble beaucoup à une liste Python (ou à une liste imbriquée).
+
+!bquestion
+Pourquoi ne pas utiliser simplement les listes Python pour les calculs au lieu de créer un nouveau type de tableau?
+!equestion
+
+!bnotice
+Il existe plusieurs raisons pour ne pas utiliser que les listes:
+* Les listes de Python sont très générales. Ils peuvent contenir tout type d'objets. Une même liste peut contenir des éléments de différentes natures et changeables. Ils ne prennent pas en charge les fonctions mathématiques telles que les multiplications de matrice et de points, etc. L'implémentation de telles fonctions pour les listes Python ne serait pas très efficace en raison du typage dynamique.
+* Les tableaux Numpy sont _typés_ et _homogènes_. Le type d'éléments est déterminé lorsque le tableau est créé.
+* Les tableaux Numpy sont efficaces pour la gestion de la mémoire.
+* En raison du typage statique, la mise en œuvre rapide de fonctions mathématiques telles que la multiplication et l'ajout de tableaux `numpy` peut être implémentée dans une langue compilée (C et Fortran sont utilisés).
+!enotice
+
+En utilisant la propriété `dtype` (type de données) d'un `ndarray`, on peut connaître le type des éléments d'un tableau ou d'une matrice:
+!bc ipy
+In [17]: M.dtype
+Out[17]: dtype('int64')
+!ec
+
+Si nous le désirons, nous pouvons définir explicitement le type de données du tableau lorsque nous le créons, ceci en utilisant le mot-clé `dtype` comme argument:
+
+!bc ipy
+In [18]: M_Complex = np.array([[3, 1+2j], [1+2j, 4]], dtype=complex)
+    ...: M_Complex
+Out[18]: array([[3.+0.j, 1.+2.j],
+                [1.+2.j, 4.+0.j]])
+!ec
+
+!bnotice
+Les types usuels qui peuvent être utilisés avec `dtype` sont: `int`, `float`, `complex`, `bool`, `object`, etc. Nous pouvons également définir explicitement la taille des bits des éléments, par exemple: `int64`, `int16`, `float128`, `complex128`.
+!enotice
+
+=== Utilisation de fonctions génératrices de tableaux et de matrices ===
+
+Pour les tableaux de grandes tailles, il est inconcevable d'initialiser les données manuellement. Au lieu de cela, nous pouvons utiliser l'une des nombreuses fonctions dans `numpy` qui génère des tableaux ou des matrices de différentes formes et tailles. Certains parmi les plus utilisés sont:
+* `arange()`
+* `linspace()` et `logspace()`
+* `mgrid()`
+* `diag()`
+* `zeros()` et `ones()`
+* ...
+
+__Fonction `arange()` :__
+Création d'un tableau à l'aide de la fonction `arange()`
+!bc ipy
+In [19]: x = np.arange(0, 10, 1) # Arguments: start, stop, step
+    ...: x
+Out[19]: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+!ec
+
+!bc ipy
+In [23]: x = np.arange(-2, 2, 0.1)
+    ...: x
+Out[23]:
+array([-2.00000000e+00, -1.90000000e+00, -1.80000000e+00, -1.70000000e+00,
+       -1.60000000e+00, -1.50000000e+00, -1.40000000e+00, -1.30000000e+00,
+       -1.20000000e+00, -1.10000000e+00, -1.00000000e+00, -9.00000000e-01,
+       -8.00000000e-01, -7.00000000e-01, -6.00000000e-01, -5.00000000e-01,
+       -4.00000000e-01, -3.00000000e-01, -2.00000000e-01, -1.00000000e-01,
+        1.77635684e-15,  1.00000000e-01,  2.00000000e-01,  3.00000000e-01,
+        4.00000000e-01,  5.00000000e-01,  6.00000000e-01,  7.00000000e-01,
+        8.00000000e-01,  9.00000000e-01,  1.00000000e+00,  1.10000000e+00,
+        1.20000000e+00,  1.30000000e+00,  1.40000000e+00,  1.50000000e+00,
+        1.60000000e+00,  1.70000000e+00,  1.80000000e+00,  1.90000000e+00])
+!ec
+
+__Fonctions `linspace()` et `logspace()`:__
+En utilisant `linspace()`, les deux points finaux sont inclus
+!bc ipy
+In [24]: np.linspace(0, 10, 20) # linspace(star, stop, Nombre de points)
+Out[24]:
+array([ 0.        ,  0.52631579,  1.05263158,  1.57894737,  2.10526316,
+        2.63157895,  3.15789474,  3.68421053,  4.21052632,  4.73684211,
+        5.26315789,  5.78947368,  6.31578947,  6.84210526,  7.36842105,
+        7.89473684,  8.42105263,  8.94736842,  9.47368421, 10.        ])
+!ec
+
+!bc ipy
+In [25]: np.logspace(0, 10, 10, base=e)
+Out[25]:
+array([1.00000000e+00, 3.03773178e+00, 9.22781435e+00, 2.80316249e+01,
+       8.51525577e+01, 2.58670631e+02, 7.85771994e+02, 2.38696456e+03,
+       7.25095809e+03, 2.20264658e+04])
+!ec
+
+__Fonctions `mgrid()` et `meshgrid()`:__
+
+!bc ipy
+In [26]: x, y = np.mgrid[0:5, 0:5] # Similaire à meshgrid dans MATLAB
+    ...: x
+Out[26]:
+array([[0, 0, 0, 0, 0],
+       [1, 1, 1, 1, 1],
+       [2, 2, 2, 2, 2],
+       [3, 3, 3, 3, 3],
+       [4, 4, 4, 4, 4]])
+
+In [27]: y
+Out[27]:
+array([[0, 1, 2, 3, 4],
+       [0, 1, 2, 3, 4],
+       [0, 1, 2, 3, 4],
+       [0, 1, 2, 3, 4],
+       [0, 1, 2, 3, 4]])
+!ec
+
+!bc ipy
+In [31]: x, y = np.meshgrid(np.linspace(0,2,6),np.linspace(0,2,6))
+    ...: x
+Out[31]:
+array([[0. , 0.4, 0.8, 1.2, 1.6, 2. ],
+       [0. , 0.4, 0.8, 1.2, 1.6, 2. ],
+       [0. , 0.4, 0.8, 1.2, 1.6, 2. ],
+       [0. , 0.4, 0.8, 1.2, 1.6, 2. ],
+       [0. , 0.4, 0.8, 1.2, 1.6, 2. ],
+       [0. , 0.4, 0.8, 1.2, 1.6, 2. ]])
+
+In [32]: y
+Out[32]:
+array([[0. , 0. , 0. , 0. , 0. , 0. ],
+       [0.4, 0.4, 0.4, 0.4, 0.4, 0.4],
+       [0.8, 0.8, 0.8, 0.8, 0.8, 0.8],
+       [1.2, 1.2, 1.2, 1.2, 1.2, 1.2],
+       [1.6, 1.6, 1.6, 1.6, 1.6, 1.6],
+       [2. , 2. , 2. , 2. , 2. , 2. ]])
+!ec
+
+
+__Fonction `diag()`:__
+Une matrice diagonale
+!bc ipy
+In [40]: np.diag([1,2,3])
+Out[40]:
+array([[1, 0, 0],
+       [0, 2, 0],
+       [0, 0, 3]])
+
+!ec
+Diagonale avec décalage de la diagonale principale
+!bc ipy
+In [41]: np.diag([1,2,3], k=3)
+Out[41]:
+array([[0, 0, 0, 1, 0, 0],
+       [0, 0, 0, 0, 2, 0],
+       [0, 0, 0, 0, 0, 3],
+       [0, 0, 0, 0, 0, 0],
+       [0, 0, 0, 0, 0, 0],
+       [0, 0, 0, 0, 0, 0]])
+!ec
+
+__Fonctions `zeros()` et `ones()`:__
+
+!bc ipy
+In [42]: np.zeros((3,3))
+Out[42]:
+array([[0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.]])
+!ec
+
+!bc ipy
+In [43]: np.ones((3,3))
+Out[43]:
+array([[1., 1., 1.],
+       [1., 1., 1.],
+       [1., 1., 1.]])
+!ec
+
+===== Lecture et écriture de données =====
+
+=== Écriture de données ===
+
+Le module `numpy` contient une fonction très pratique, `savetxt`, permettant d’enregistrer des données tabulaires. Les données doivent être stockées dans un tableau numpy à deux dimensions. La fonction `savetxt` permet de contrôler le format des nombres dans chaque colonne (`fmt`), un en-tête peut être ajouté (`header`) et les lignes d'en-tête commencent par un caractère de commentaire (`comment`).
+
+!bblock Exemple
+
+Pour stoker les valeurs de $cos(x)$ avec $x \in [0, 2 \pi]$ dans un fichier *cosinus.dat*, le code est comme ci-dessous:
+
+!bc pycod
+'''Créer un tableau à deux dimensions de
+[x, cos (x)] dans chaque ligne'''
+import numpy as np
+x = np.linspace(0, 2*np.pi, 200) # 200 valeurs de x
+# un tableau 2 colonnes 200 lignes
+data = np.array([x, np.cos(x)]).transpose()
+
+# Écrire un tableau de données dans un fichier sous forme de tableau
+np.savetxt('cosinus.dat', data, fmt=['%.2f', '%.4f'],
+           header='x   cos(x)', comments='#')
+!ec
+Le fichier *cosinus.dat* est créé dans le répertoire de travail:
+!bc
+# x   cos(x)
+0.00 1.0000
+0.03 0.9995
+0.06 0.9980
+0.09 0.9955
+0.13 0.9920
+0.16 0.9876
+0.19 0.9821
+0.22 0.9757
+0.25 0.9683
+...  ......
+...  ......
+!ec
+
+!eblock
+
+=== Lecture de données ===
+
+Les données du fichier *cosinus.dat* peuvent être lues dans un tableau `numpy` par la fonction `loadtxt` (vous pouvez utiliser la commande `help(loadtxt)` dans le notebook pour comprendre l'utilité des arguments entre les parenthèse):
+
+!bc ipy
+
+In [51]: data = np.loadtxt('cosinus.dat', comments='#')
+    ...: data
+Out[51]:
+array([[ 0.    ,  1.    ],
+       [ 0.03  ,  0.9995],
+       [ 0.06  ,  0.998 ],
+       [ 0.09  ,  0.9955],
+       [ 0.13  ,  0.992 ],
+       [ 0.16  ,  0.9876],
+       [ 0.19  ,  0.9821],
+       [ 0.22  ,  0.9757],
+       [ 0.25  ,  0.9683],
+       [ 0.28  ,  0.9599],
+       ..................
+       ..................
+       ..................
+       [ 6.22  ,  0.998 ],
+       [ 6.25  ,  0.9995],
+       [ 6.28  ,  1.    ]])
+!ec
+
+!bnotice
+Les lignes commençant par le caractère de commentaire sont ignorées lors de la lecture. L'objet `data` résultant est un tableau à deux dimensions: `data[i, j]` contient le numéro de ligne `i` et le numéro de colonne `j` dans la table, c'est-à-dire que `data[i, 0]` contiennent la valeur `x` et que `data[i, 1]` la valeur `cos(x)` dans la i-ème ligne.
+!enotice
+
+Nous pouvons utiliser le fichier *cosinus.dat* pour tracer la fonction $cos(x)$ comme indiqué dans le code suivant:
+
+@@@CODE scripts/LoadData.py
+
+La sortie de ce code est la Figure ref{figout:cosinus}.
+FIGURE:[imgs/cosinus, width=500 frac=0.7] Sortie du code. label{figout:cosinus}
+
+
+!split
+======= Bibliothèque Python de visualisation des données: `matplotlib` =======
+`matplotlib` (URL:"http://matplotlib.org/") est une excellente bibliothèque graphique 2D et 3D pour générer des graphiques scientifiques. Voici quelques-uns des nombreux avantages de cette bibliothèque:
+
+* Facile à utiliser
+* Prise en charge des étiquettes et des textes formatés LaTeX
+* Un excellent contrôle des éléments d'une figure, y compris la taille et la résolution (DPI).
+* Sortie de haute qualité dans de nombreux formats, y compris PNG, PDF, SVG, EPS, ...
+* GUI (Graphical User Interface) pour explorer interactivement les figures.
+
+===== Documentation en ligne et Galerie =====
+Vous trouverez plus d'informations, y compris une documentation complète avec une vaste galerie d'exemples, sur le site de `mtplotlib`.
+
+De nombreux utilisateurs de `matplotlib` sont souvent confrontés à la question:
+!bquote
+Je veux tracer les courbes de deux fonctions ($f$ te $g$) _ressemblant_ à une troisième ($h$)?
+!equote
+ Je souhaite bonne chance à ceux qui désirent obtenir rapidement une réponse, même avec l'aide de _google_!. C'est pourquoi la _galerie de matplotlib_ (URL: "http://matplotlib.org/gallery.html") est si utile, car elle montre la variété des possibilités. Ainsi, vous pouvez parcourir la galerie, cliquer sur n'importe quel graphique qui comporte les éléments que vous voulez reproduire et afficher le code qui a servi à le générer. Vous deviendrez rapidement autonome, vous allez mélanger et assortir différents composants pour produire votre propre chef-d’œuvre!
+
+===== Guide de Démarrage =====
+L'exemple ci-dessous montre comment, de manière très simple, représenter graphiquement la fonction $f(x) = y = x$.
+@@@CODE scripts/BasicPlot1.py
+
+FIGURE:[imgs/BasicPlot1, width=500 frac=0.7] Fenêtre de traçage de matplotlib. label{fig:BasicPlot1}
+
+Le graphique (`Figure`) est le conteneur de niveau supérieur dans cette hiérarchie. C'est la fenêtre/page globale sur laquelle tout est dessiné.
+Vous pouvez avoir plusieurs figures indépendantes et les graphiques peuvent contenir plusieurs `Axes`.
+
+La plupart des tracés ont lieu sur des `Axes`. C’est effectivement la zone sur laquelle nous traçons les données et les graduations/labels/etc. qui leur sont associés. Habituellement, nous configurons un `Axes` avec un appel à `Subplot` (qui place les `Axes` sur une grille régulière). Par conséquent, dans la plupart des cas, `Axes` et `Subplot` sont synonymes (figure). Chaque `Axes` ou `Subplot` a un axe X et un axe Y. Ceux-ci contiennent les graduations, les emplacements de graduations, etc.
+
+===== Vues en grille =====
+Nous avons déjà mentionné qu’une figure peut avoir plus d’un axe. Si vous voulez que vos axes soient sur un système de grille standard, il est alors plus simple d'utiliser `plt.subplot(...)` pour créer un graphique et y ajouter les axes automatiquement.
+@@@CODE scripts/subplots.py
+
+FIGURE:[imgs/subplots, width=500 frac=0.7] Vue en grille, figure(1). label{fig:subplots}
+
+
+===== Commandes de texte de base =====
+Les commandes suivantes permettent de créer du texte dans l'interface `pyplot`:
+* `text()` - ajoute du texte à un emplacement quelconque sur les axes; `matplotlib.axes.Axes.text()`.
+* `xlabel()` - ajoute une étiquette à l'axe des x; `matplotlib.axes.Axes.set_xlabel()`
+* `ylabel()` - ajoute une étiquette à l'axe des y; `matplotlib.axes.Axes.set_ylabel()`
+* `title()` - ajoute un titre aux Axes; `matplotlib.axes.Axes.set_title()`
+* `figtext()` - ajoute du texte à un emplacement quelconque sur la figure; `matplotlib.figure.Figure.text()`
+* `suptitle()` - ajoute un titre à la figure; `matplotlib.figure.Figure.suptitle()`
+* `annotate()` - ajoute une annotation, avec une flèche optionnelle, aux axes; `matplotlib.axes.Axes.annotate()`
+
+Toutes ces fonctions créent et renvoient une instance `matplotlib.text.Text()`, qui peut être configurée avec diverses polices et autres propriétés. L'exemple ci-dessous montre toutes ces commandes en action.
+
+@@@CODE scripts/BasicText.py
+
+FIGURE:[imgs/BasicText, width=500 frac=0.7] Texte de base. label{fig:BasicText}
+
+===== Styles de lignes et de marqueurs =====
+Pour changer la largeur de ligne, nous pouvons utiliser l'argument de mot-clé `linewidth` ou `lw`, et le style de ligne peut être sélectionné à l'aide des arguments de mot-clé `linestyle` ou `ls`:
+
+@@@CODE scripts/LineandMarkerStyles.py
+
+FIGURE:[imgs/LineandMarkerStyles, width=500 frac=0.7] Styles de lignes et de marqueurs. label{fig:LineandMarkerStyles}
+
+===== Colormap: Tracés contour, Imshow et 3D =====
+
+
+Voir la documentation de matplotlib colormaps URL: "http://matplotlib.org/users/colormaps.html".
+
+=== Tracés contour ===
+
+@@@CODE scripts/ContourPlot.py
+
+FIGURE:[imgs/ContourPlot, width=500 frac=0.7] Exemple de tracé de contour. label{fig:ContourPlot}
+
+=== Imshow (Image pixelisée) ===
+
+@@@CODE scripts/Imshow.py
+
+FIGURE:[imgs/Imshow, width=500 frac=0.7] Exemple d'image pixelisée. label{fig:CImshow}
+
+=== Tracé en 3D ===
+
+@@@CODE scripts/Plot3D.py
+
+FIGURE:[imgs/Plot3D, width=500 frac=0.7] Exemple de tracé en 3D. label{fig:3D}
