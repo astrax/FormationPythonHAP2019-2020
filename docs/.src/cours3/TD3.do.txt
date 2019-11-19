@@ -1,6 +1,6 @@
 TITLE: TD N°3 : Bibliothèques numpy et matplotlib
 AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
-DATE: Mercredi, 5 décembre 2018
+DATE: today
 
 TOC: on
 
