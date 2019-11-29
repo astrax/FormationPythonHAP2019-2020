@@ -61,8 +61,8 @@ DATE: today
 * PDF
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours3/cours3.pdf"
   * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3.pdf"
-# * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3_corr.pdf"
+  * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3_corr.pdf"
 
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours3/cours3-bs.html"
-  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3.html"
+  * "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3.html"
