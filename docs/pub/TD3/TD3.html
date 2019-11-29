@@ -37,6 +37,21 @@ Automatically generated HTML file from DocOnce source
 </style>
 
 
+<script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -135,7 +150,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Nov 19, 2019</h4></center> <!-- date -->
+<center><h4>Nov 29, 2019</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -161,8 +176,51 @@ MathJax.Hub.Config({
 Ecrivez un programme qui trace la fonction \( g(y) = e^{-y} sin(4y) \) pour \( y \in [0, 4] \) en utilisant une ligne continue rouge. Utilisez 500 intervalles pour &#233;valuer les points dans [0,4]. Stockez toutes les coordonn&#233;es et les valeurs dans des tableaux. Placez le texte des graduations sur les axes et utilisez le titre "Onde sinuso&#239;dale att&#233;nu&#233;e".
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_1" style="font-size: 80%;"></a>
+<a href="#exer_1_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_1">
+
+<p>
+La programme qui trace la fonction \( g(y) \) est:
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+# Importation
+import numpy as np
+import matplotlib.pyplot as plt
+
+def g(y):
+    return np.exp(-y)*np.sin(4*y)
+
+y = np.linspace(0, 4, 501)
+# définir un nouveau graphique
+plt.figure()
+# tracer la fonction g(y) avec ligne solide rouge
+plt.plot(y, g(y), 'r-')
+plt.xlabel('y'); plt.ylabel('g(y)')
+plt.title(u'Onde sinusoïdale atténuée')
+ # sauvgarder le grahique (format PNG et PDF)
+plt.savefig("fig_ex1.png"); plt.savefig("fig_ex1.pdf")
+# Afficher le graphique
+plt.show()
+
+</script></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -175,8 +233,52 @@ Ecrivez un programme qui trace la fonction \( g(y) = e^{-y} sin(4y) \) pour \( y
 Comme Exercice 1, mais ajouter une courbe en pointill&#233; noir pour la fonction \( h(y) = e^{-\frac{3}{2}y} sin(4y) \). Inclure une l&#233;gende pour chaque courbe (avec les noms \( g \) et \( h \)).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<a href="#exer_2_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
+La programme qui trace la fonction \( g(y) \) avec une nouvelle fonction \( h(y) \) est:
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+# Importation
+import numpy as np
+import matplotlib.pyplot as plt
+
+def g(y):
+    return np.exp(-y)*np.sin(4*y)
+
+def h(y):
+    return np.exp(-(3./2)*y)*np.sin(4*y)
+
+y = np.linspace(0, 4, 501)
+plt.figure()
+plt.plot(y, g(y), 'r-', y, h(y), 'k--')
+plt.xlabel('y'); plt.ylabel('g(y)')
+plt.title(u'Onde sinusoïdale atténuée')
+plt.legend(['g', 'h'])
+
+plt.savefig("fig_ex2.png"); plt.savefig("fig_ex2.pdf")
+plt.show()
+
+</script></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -193,8 +295,63 @@ Dans l'"application de l'exercice 4 dans TD N&#176;2, nous avons montr&#233; la 
 Reproduire ce graphique en utilisant la fonction <code>EqSecondDegree(a,b,c)</code> du script Python <code>racines.py</code> pour d&#233;terminer les valeurs des racines x1 et x2 de l&#8217;&#233;quation \( f(x) \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_1" style="font-size: 80%;"></a>
+<a href="#exer_3_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_1">
+
+<p>
+Le programme qui reproduit la figure en utilisant la fonction <code>EqSecondDegree()</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importation</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">racines</span> <span style="color: #008000; font-weight: bold">import</span> EqSecondDegree
+<span style="color: #408080; font-style: italic"># NOTE: le module racines est le fichier racines.py</span>
+<span style="color: #408080; font-style: italic"># qu&#39;on doit placer dans le répertoire de travail.</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0.83</span> <span style="color: #666666">*</span> x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">3.8</span> <span style="color: #666666">*</span> x <span style="color: #666666">+</span> <span style="color: #666666">2.48</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-6</span>, <span style="color: #666666">1</span>, <span style="color: #666666">200</span>)
+y <span style="color: #666666">=</span> f(x)
+x1, x2 <span style="color: #666666">=</span> EqSecondDegree(<span style="color: #666666">0.83</span>, <span style="color: #666666">3.8</span>, <span style="color: #666666">2.48</span>)
+
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">7</span>, <span style="color: #666666">5</span>), dpi<span style="color: #666666">=80</span>)
+plt<span style="color: #666666">.</span>plot(x, y, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;blue&quot;</span>, linewidth<span style="color: #666666">=3</span>, linestyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;-&quot;</span>, alpha<span style="color: #666666">=.8</span>)
+plt<span style="color: #666666">.</span>scatter([x1,x2], [f(x1), f(x2)], <span style="color: #666666">80</span>, color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;red&#39;</span>)
+
+plt<span style="color: #666666">.</span>annotate(<span style="color: #BA2121">&#39;x1= {:.2f}&#39;</span><span style="color: #666666">.</span>format(x1),
+             xy<span style="color: #666666">=</span>(x1, f(x1)), xycoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;data&#39;</span>,
+             xytext<span style="color: #666666">=</span>(<span style="color: #666666">+10</span>, <span style="color: #666666">+30</span>), textcoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;offset points&#39;</span>, fontsize<span style="color: #666666">=16</span>,
+             arrowprops<span style="color: #666666">=</span><span style="color: #008000">dict</span>(arrowstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;-&gt;&quot;</span>, connectionstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;arc3,rad=.2&quot;</span>))
+plt<span style="color: #666666">.</span>annotate(<span style="color: #BA2121">&#39;x2= {:.2f}&#39;</span><span style="color: #666666">.</span>format(x2),
+             xy<span style="color: #666666">=</span>(x2, f(x2)), xycoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;data&#39;</span>,
+             xytext<span style="color: #666666">=</span>(<span style="color: #666666">+40</span>, <span style="color: #666666">+30</span>), textcoords<span style="color: #666666">=</span><span style="color: #BA2121">&#39;offset points&#39;</span>, fontsize<span style="color: #666666">=16</span>,
+             arrowprops<span style="color: #666666">=</span><span style="color: #008000">dict</span>(arrowstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;-&gt;&quot;</span>, connectionstyle<span style="color: #666666">=</span><span style="color: #BA2121">&quot;arc3,rad=.2&quot;</span>))
+
+plt<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&quot;Racines d’une équation du second degré&quot;</span>, fontweight<span style="color: #666666">=</span> <span style="color: #BA2121">&#39;bold&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&quot;$f(x) = 0.83 * x^2 + 3.8 * x + 2.48$&quot;</span>,fontsize<span style="color: #666666">=14</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span>)
+
+plt<span style="color: #666666">.</span>grid()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -237,29 +394,144 @@ On peut montrer que \( S(t;n)\rightarrow f(t) \) quand \( n\rightarrow\infty \)
 Ecrivez une fonction Python <code>S(t, n, T)</code> pour renvoyer la valeur de \( S(t; n) \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_1" style="font-size: 80%;"></a>
+<a href="#exer_4_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_1">
+
+<p>
+La fonction Python <code>S(t, n, T)</code> est la suivante:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">S</span>(t, n, T):
+    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>):
+        A <span style="color: #666666">=</span> <span style="color: #666666">1/</span>(<span style="color: #666666">2*</span>i <span style="color: #666666">-</span> <span style="color: #666666">1</span>)
+        B <span style="color: #666666">=</span> <span style="color: #666666">2*</span>(<span style="color: #666666">2*</span>i <span style="color: #666666">-</span> <span style="color: #666666">1</span>)<span style="color: #666666">*</span> (pi <span style="color: #666666">*</span> t)
+        s <span style="color: #666666">+=</span>  A <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(B<span style="color: #666666">/</span>T)
+
+    <span style="color: #008000; font-weight: bold">return</span> s<span style="color: #666666">*4/</span>np<span style="color: #666666">.</span>pi
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 Ecrivez une fonction Python <code>f(t, T)</code> pour calculer \( f(t) \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_2" style="font-size: 80%;"></a>
+<a href="#exer_4_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_2">
+
+<p>
+La fonction Python <code>f(t, T)</code> est la suivante:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(t, T):
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;</span> t <span style="color: #666666">&lt;</span> T<span style="color: #666666">/2</span>:
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">elif</span> t <span style="color: #666666">==</span> T<span style="color: #666666">/2</span>:
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">elif</span> T<span style="color: #666666">/2</span> <span style="color: #666666">&lt;</span> t <span style="color: #666666">&lt;=</span> T:
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">-1</span>
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>c)</b>
 Cr&#233;er un tableau <code>t</code> &#224; l'aide de la fonction <code>linspace</code>, du module <code>numpy</code>, pour <code>100</code> valeurs <code>t</code> uniform&#233;ment espac&#233;s dans [0, T]. On prendra \( T = 2 \pi \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_3" style="font-size: 80%;"></a>
+<a href="#exer_4_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_3">
+
+<p>
+Le tableau de valeurs de \( t \) pour \( T = 2 \pi \) est d&#233;fini comme suit:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>T <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, T, <span style="color: #666666">100</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>d)</b>
 Remplir une liste <code>F</code> par les valeurs de <code>f(ti,T)</code> avec \( ti \in t \). Transformer la liste <code>F</code> en un tableau (nous voulons avoir un tableau pour la fonction \( f(t) \) avec \( t \in [0, T] \) et \( T = 2\pi \)).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_4" style="font-size: 80%;"></a>
+<a href="#exer_4_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_4">
+
+<p>
+Le code suivant nous permet d&#8217;avoir un tableau de \( f(t) \):
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>F <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> ti <span style="color: #AA22FF; font-weight: bold">in</span> t:
+  F<span style="color: #666666">.</span>append(f(ti,T))
+F <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(F)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>e)</b>
 Tracer \( S(t; 1) \), \( S(t; 3) \), \( S(t; 20) \), \( S(t; 200) \) et la fonction exacte \( f(t) \) dans le m&#234;me graphique. Le r&#233;sultat devrait &#234;tre similaire au graphique ci-dessous.
@@ -268,15 +540,67 @@ Tracer \( S(t; 1) \), \( S(t; 3) \), \( S(t; 20) \), \( S(t; 200) \) et la fonct
 <br /><br /><center><p><img src="imgs/fourier.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_5" style="font-size: 80%;"></a>
+<a href="#exer_4_5" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_5">
+
+<p>
+Le programme qui donne le graphique est:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>plot(t, S(t, n<span style="color: #666666">=1</span>, T<span style="color: #666666">=2*</span>pi), <span style="color: #BA2121">&#39;k-.&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;S(t;1)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, S(t, n<span style="color: #666666">=3</span>, T<span style="color: #666666">=2*</span>pi), <span style="color: #BA2121">&#39;k:&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;S(t;3)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, S(t, n<span style="color: #666666">=20</span>, T<span style="color: #666666">=2*</span>pi), <span style="color: #BA2121">&#39;k:&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;S(t;20)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, S(t, n<span style="color: #666666">=200</span>, T<span style="color: #666666">=2*</span>pi), <span style="color: #BA2121">&#39;k--&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;S(t;200)&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, F, <span style="color: #BA2121">&#39;k-&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;f(t)&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">u&quot;Approximation d’une fonction par sa série de Fourier&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;f(t)/S(t;n)&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;t&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>f)</b>
 Quelle est la relation entre la qualit&#233; de l'approximation et le choix de la valeur de <code>n</code>?
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_6" style="font-size: 80%;"></a>
+<a href="#exer_4_6" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_6">
+
+<p>
+La qualit&#233; de l'approximation d&#233;pend de \( n \). \( S(t;n)\rightarrow f(t) \) quand \( n\rightarrow\infty \).
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -359,36 +683,206 @@ et \( a_n \), \( b_n \), \( c_n \) et \( d_n \) sont des coefficients tabul&#233
 D&#233;finir les fonctions <code>ff1(x)</code>, <code>gg1(x)</code>, <code>ff2(x)</code> et <code>gg2(x)</code>. Chaque fonction renvoie la valeur de la somme qui lui correspond.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_1" style="font-size: 80%;"></a>
+<a href="#exer_5_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_1">
+
+<p>
+Les fonctions <code>ff1(x)</code>, <code>gg1(x)</code>, <code>ff2(x)</code> et <code>gg2(x)</code> sont les suivantes:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importation</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ff1</span>(x):
+    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
+        fn <span style="color: #666666">=</span> (<span style="color: #666666">8</span> <span style="color: #666666">/</span> np<span style="color: #666666">.</span>pi)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> dn[i]
+        S <span style="color: #666666">+=</span> fn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">-2</span> <span style="color: #666666">*</span> i <span style="color: #666666">-</span> <span style="color: #666666">1</span>)
+    <span style="color: #008000; font-weight: bold">return</span> S
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">gg1</span>(x):
+    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
+        gn <span style="color: #666666">=</span> (<span style="color: #666666">8</span> <span style="color: #666666">/</span> np<span style="color: #666666">.</span>pi)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> cn[i]
+        S <span style="color: #666666">+=</span> gn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">-2</span> <span style="color: #666666">*</span> i <span style="color: #666666">-</span> <span style="color: #666666">1</span>)
+    <span style="color: #008000; font-weight: bold">return</span> S
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ff2</span>(x):
+    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
+        fn <span style="color: #666666">=</span> (np<span style="color: #666666">.</span>pi <span style="color: #666666">/</span> <span style="color: #666666">8</span>)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> bn[i]
+        S <span style="color: #666666">+=</span> fn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">2</span> <span style="color: #666666">*</span> i <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+    <span style="color: #008000; font-weight: bold">return</span> S
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">gg2</span>(x):
+
+    S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>):
+        gn <span style="color: #666666">=</span> (np<span style="color: #666666">.</span>pi<span style="color: #666666">/8</span>)<span style="color: #666666">**</span>(i <span style="color: #666666">+</span> <span style="color: #666666">0.5</span>) <span style="color: #666666">*</span> an[i]
+        S <span style="color: #666666">+=</span>  gn <span style="color: #666666">*</span> x<span style="color: #666666">**</span>(<span style="color: #666666">2</span> <span style="color: #666666">*</span> i <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+    <span style="color: #008000; font-weight: bold">return</span> S
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 D&#233;finir les fonctions Python <code>C(x)</code> et <code>S(x)</code> qui renvoient respectivement les listes, les valeurs de \( C(x) \) et \( S(x) \), <code>CF</code> et` SF` (en utilisant une boucle <code>for</code> pour remplir les listes par exemple).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_2" style="font-size: 80%;"></a>
+<a href="#exer_5_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_2">
+
+<p>
+Les fonctions Python <code>C(x)</code> et <code>S(x)</code> sont les suivantes:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">C</span>(x):
+    CF<span style="color: #666666">=</span>[]
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
+        <span style="color: #008000; font-weight: bold">if</span> x[i] <span style="color: #666666">&gt;=</span> np<span style="color: #666666">.</span>sqrt(<span style="color: #666666">8/</span>np<span style="color: #666666">.</span>pi):
+            cf<span style="color: #666666">=0.5</span> <span style="color: #666666">+</span> np<span style="color: #666666">.</span>cos((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg1(x[i]) <span style="color: #666666">+</span> np<span style="color: #666666">.</span>sin((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff1(x[i])
+            CF<span style="color: #666666">.</span>append(cf)
+        <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x[i] <span style="color: #666666">&lt;</span> np<span style="color: #666666">.</span>sqrt(<span style="color: #666666">8/</span>np<span style="color: #666666">.</span>pi):
+            cf <span style="color: #666666">=</span> np<span style="color: #666666">.</span>cos((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg2(x[i]) <span style="color: #666666">+</span> np<span style="color: #666666">.</span>sin((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff2(x[i])
+            CF<span style="color: #666666">.</span>append(cf)
+    <span style="color: #008000; font-weight: bold">return</span> CF
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">S</span>(x):
+    SF<span style="color: #666666">=</span>[]
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
+        <span style="color: #008000; font-weight: bold">if</span> x[i] <span style="color: #666666">&gt;=</span> np<span style="color: #666666">.</span>sqrt(<span style="color: #666666">8/</span>np<span style="color: #666666">.</span>pi):
+            sf <span style="color: #666666">=</span> <span style="color: #666666">0.5</span> <span style="color: #666666">-</span> np<span style="color: #666666">.</span>cos((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff1(x[i]) <span style="color: #666666">+</span> np<span style="color: #666666">.</span>sin((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg1(x[i])
+            SF<span style="color: #666666">.</span>append(sf)
+        <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x[i] <span style="color: #666666">&lt;</span> sqrt(<span style="color: #666666">8/</span>np<span style="color: #666666">.</span>pi):
+            sf <span style="color: #666666">=</span> <span style="color: #666666">-</span>np<span style="color: #666666">.</span>cos((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>ff2(x[i]) <span style="color: #666666">+</span> np<span style="color: #666666">.</span>sin((np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x[i]<span style="color: #666666">**2</span>)<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>gg2(x[i])
+            SF<span style="color: #666666">.</span>append(sf)
+    <span style="color: #008000; font-weight: bold">return</span> SF
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>c)</b>
 Cr&#233;er des tableaux <code>an</code>, <code>bn</code>, <code>cn</code> et <code>dn</code> &#224; partir du fichier <b>coef.dat</b>.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_3" style="font-size: 80%;"></a>
+<a href="#exer_5_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_3">
+
+<p>
+Les tableaux <code>an</code>, <code>bn</code>, <code>cn</code> et <code>dn</code> sont charg&#233;s  &#224; partir du fichier <b>coef.dat</b> &#224; l'aide del a fonction <code>numpy.loadtxt()</code>:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>an, bn, cn, dn <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(<span style="color: #BA2121">&#39;coef.dat&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;#&#39;</span>, usecols<span style="color: #666666">=</span>(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>), unpack<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>d)</b>
 Cr&#233;er un tableau <code>x</code>. Utilisez 800 intervalles pour &#233;valuer les points dans [0,10] (cas o&#249; \( x \geq 0 \)).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_4" style="font-size: 80%;"></a>
+<a href="#exer_5_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_4">
+
+<p>
+Le tableau <code>x</code> s'&#233;crit:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>,<span style="color: #666666">10</span>, <span style="color: #666666">500</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>e)</b>
 Transformer <code>C(x)</code> et <code>S(x)</code> en tableaux <code>numpy</code>, respectivement <code>CF</code> et <code>SF</code>.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_5" style="font-size: 80%;"></a>
+<a href="#exer_5_5" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_5">
+
+<p>
+Les listes <code>C(x)</code> et <code>S(x)</code> sont transform&#233;s en tableaux <code>numpy</code> &#224; l'aide de la fonction <code>numpy.array()</code>:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>CF <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(C(x)); SF <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(S(x))
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>f)</b>
 Tracer une grille de figures &#224; 2 colonnes (voir Cours3: <a href="https://codetunisia.github.io/CoursSimNum/cours3/md/cours3.html#linstruction-subplot" target="_self">Vues en grille</a>) dont le graphique de gauche repr&#233;sente <code>CF</code> et <code>SF</code> en fonction de <code>x</code> et le graphique de droite repr&#233;sente une <a href="https://fr.wikipedia.org/wiki/Clotho%C3%AFde" target="_self">clotho&#239;de</a> (ou spirale de Cornu, ou Spirale de Fresnel..)`SF` en fonction de <code>CF</code>.
@@ -396,8 +890,44 @@ La sortie de ce programme devrait &#234;tre comme suit:
 <br /><br /><center><p><img src="imgs/fresnel.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_6" style="font-size: 80%;"></a>
+<a href="#exer_5_6" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_6">
+
+<p>
+La repr&#233;sentation graphique des int&#233;grales de Fresnel et du spirale de Cornu est donc:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">12</span>,<span style="color: #666666">5</span>))
+subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(x, CF,<span style="color: #BA2121">&#39;b&#39;</span>, x, SF,<span style="color: #BA2121">&#39;r&#39;</span>, linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;x&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;C(x) / S(x)&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">u&quot;Intégrales de Fresnel&quot;</span>, fontsize<span style="color: #666666">=14</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&quot;C(x)&quot;</span>,<span style="color: #BA2121">&quot;S(x)&quot;</span>])
+subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(CF, SF, linewidth <span style="color: #666666">=</span> <span style="color: #666666">2</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;C(x)&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;S(x)&quot;</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Spirale de Cornu&quot;</span>, fontsize<span style="color: #666666">=14</span>, fontweight<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bold&#39;</span>)
+
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;fresnel.png&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 

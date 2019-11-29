@@ -9,14 +9,13 @@ TOC: on
 Ecrivez un programme qui trace la fonction $g(y) = e^{-y} sin(4y)$ pour $y \in [0, 4]$ en utilisant une ligne continue rouge. Utilisez 500 intervalles pour évaluer les points dans [0,4]. Stockez toutes les coordonnées et les valeurs dans des tableaux. Placez le texte des graduations sur les axes et utilisez le titre "Onde sinusoïdale atténuée".
 !bsol
 La programme qui trace la fonction $g(y)$ est:
-!bc pycod
+!bc pyscpro
 # Importation
-from math import exp, sin
 import numpy as np
 import matplotlib.pyplot as plt
 
 def g(y):
-    return exp(-y)*sin(4*y)
+    return np.exp(-y)*np.sin(4*y)
 
 y = np.linspace(0, 4, 501)
 # définir un nouveau graphique
@@ -24,7 +23,7 @@ plt.figure()
 # tracer la fonction g(y) avec ligne solide rouge
 plt.plot(y, g(y), 'r-')
 plt.xlabel('y'); plt.ylabel('g(y)')
-plt.title('Onde sinusoïdale atténuée')
+plt.title(u'Onde sinusoïdale atténuée')
  # sauvgarder le grahique (format PNG et PDF)
 plt.savefig("fig_ex1.png"); plt.savefig("fig_ex1.pdf")
 # Afficher le graphique
@@ -36,23 +35,22 @@ plt.show()
 Comme Exercice 1, mais ajouter une courbe en pointillé noir pour la fonction $h(y) = e^{-\frac{3}{2}y} sin(4y)$. Inclure une légende pour chaque courbe (avec les noms $g$ et $h$).
 !bsol
 La programme qui trace la fonction $g(y)$ avec une nouvelle fonction $h(y)$ est:
-!bc pycod
+!bc pyscpro
 # Importation
-from math import exp, sin
 import numpy as np
 import matplotlib.pyplot as plt
 
 def g(y):
-    return exp(-y)*sin(4*y)
+    return np.exp(-y)*np.sin(4*y)
 
 def h(y):
-    return exp(-(3./2)*y)*sin(4*y)
+    return np.exp(-(3./2)*y)*np.sin(4*y)
 
 y = np.linspace(0, 4, 501)
 plt.figure()
 plt.plot(y, g(y), 'r-', y, h(y), 'k--')
 plt.xlabel('y'); plt.ylabel('g(y)')
-plt.title('Onde sinusoïdale atténuée')
+plt.title(u'Onde sinusoïdale atténuée')
 plt.legend(['g', 'h'])
 
 plt.savefig("fig_ex2.png"); plt.savefig("fig_ex2.pdf")
@@ -133,15 +131,14 @@ La fonction Python `S(t, n, T)` est la suivante:
 !bc pycod
 import numpy as np
 import matplotlib.pyplot as plt
-from math import cos, sin, pi
 def S(t, n, T):
     s = 0
     for i in range(1, n+1):
         A = 1/(2*i - 1)
         B = 2*(2*i - 1)* (pi * t)
-        s +=  A * sin(B/T)
+        s +=  A * np.sin(B/T)
 
-    return s*4/pi
+    return s*4/np.pi
 !ec
 !esol
 !esubex
@@ -166,7 +163,7 @@ Créer un tableau `t` à l'aide de la fonction `linspace`, du module `numpy`, po
 !bsol
 Le tableau de valeurs de $t$ pour $T = 2 \pi$ est défini comme suit:
 !bc pycod
-T = 2*pi
+T = 2*np.pi
 t = np.linspace(0, T, 100)
 !ec
 !esol
@@ -195,7 +192,7 @@ plt.plot(t, S(t, n=3, T=2*pi), 'k:', label = "S(t;3)")
 plt.plot(t, S(t, n=20, T=2*pi), 'k:', label = "S(t;20)")
 plt.plot(t, S(t, n=200, T=2*pi), 'k--', label = "S(t;200)")
 plt.plot(t, F, 'k-', label = "f(t)")
-plt.title("Approximation d’une fonction par sa série de Fourier", fontweight='bold')
+plt.title(u"Approximation d’une fonction par sa série de Fourier", fontweight='bold')
 plt.ylabel("f(t)/S(t;n)")
 plt.xlabel("t")
 plt.legend()
@@ -278,26 +275,25 @@ Les fonctions `ff1(x)`, `gg1(x)`, `ff2(x)` et `gg2(x)` sont les suivantes:
 !bc pycod
 # Importation
 import numpy as np
-from math import pi, cos, sin, sqrt
 
 def ff1(x):
     S = 0
     for i in range(12):
-        fn = (8 / pi)**(i + 0.5) * dn[i]
+        fn = (8 / np.pi)**(i + 0.5) * dn[i]
         S += fn * x**(-2 * i - 1)
     return S
 
 def gg1(x):
     S = 0
     for i in range(12):
-        gn = (8 / pi)**(i + 0.5) * cn[i]
+        gn = (8 / np.pi)**(i + 0.5) * cn[i]
         S += gn * x**(-2 * i - 1)
     return S
 
 def ff2(x):
     S = 0
     for i in range(12):
-        fn = (pi / 8)**(i + 0.5) * bn[i]
+        fn = (np.pi / 8)**(i + 0.5) * bn[i]
         S += fn * x**(2 * i + 1)
     return S
 
@@ -305,7 +301,7 @@ def gg2(x):
 
     S = 0
     for i in range(12):
-        gn = (pi/8)**(i + 0.5) * an[i]
+        gn = (np.pi/8)**(i + 0.5) * an[i]
         S +=  gn * x**(2 * i + 1)
     return S
 !ec
@@ -322,21 +318,21 @@ Les fonctions Python `C(x)` et `S(x)` sont les suivantes:
 def C(x):
     CF=[]
     for i in range(len(x)):
-        if x[i] >= sqrt(8/pi):
-            cf=0.5 + cos((pi*x[i]**2)/2)*gg1(x[i]) + sin((pi*x[i]**2)/2)*ff1(x[i])
+        if x[i] >= np.sqrt(8/np.pi):
+            cf=0.5 + np.cos((np.pi*x[i]**2)/2)*gg1(x[i]) + np.sin((np.pi*x[i]**2)/2)*ff1(x[i])
             CF.append(cf)
-        elif 0 <= x[i] < sqrt(8/pi):
-            cf = cos((pi*x[i]**2)/2)*gg2(x[i]) + sin((pi*x[i]**2)/2)*ff2(x[i])
+        elif 0 <= x[i] < np.sqrt(8/np.pi):
+            cf = np.cos((np.pi*x[i]**2)/2)*gg2(x[i]) + np.sin((np.pi*x[i]**2)/2)*ff2(x[i])
             CF.append(cf)
     return CF
 def S(x):
     SF=[]
     for i in range(len(x)):
-        if x[i] >= sqrt(8/pi):
-            sf = 0.5 - cos((pi*x[i]**2)/2)*ff1(x[i]) + sin((pi*x[i]**2)/2)*gg1(x[i])
+        if x[i] >= np.sqrt(8/np.pi):
+            sf = 0.5 - np.cos((np.pi*x[i]**2)/2)*ff1(x[i]) + np.sin((np.pi*x[i]**2)/2)*gg1(x[i])
             SF.append(sf)
-        elif 0 <= x[i] < sqrt(8/pi):
-            sf = -cos((pi*x[i]**2)/2)*ff2(x[i]) + sin((pi*x[i]**2)/2)*gg2(x[i])
+        elif 0 <= x[i] < sqrt(8/np.pi):
+            sf = -np.cos((np.pi*x[i]**2)/2)*ff2(x[i]) + np.sin((np.pi*x[i]**2)/2)*gg2(x[i])
             SF.append(sf)
     return SF
 !ec
@@ -388,7 +384,7 @@ plt.figure(figsize=(12,5))
 subplot(1,2,1)
 plt.plot(x, CF,'b', x, SF,'r', linewidth=2)
 plt.xlabel("x", fontweight='bold'); plt.ylabel("C(x) / S(x)", fontweight='bold')
-plt.title("Intégrales de Fresnel", fontsize=14, fontweight='bold')
+plt.title(u"Intégrales de Fresnel", fontsize=14, fontweight='bold')
 plt.legend(["C(x)","S(x)"])
 subplot(1,2,2)
 plt.plot(CF, SF, linewidth = 2, color = 'k')
