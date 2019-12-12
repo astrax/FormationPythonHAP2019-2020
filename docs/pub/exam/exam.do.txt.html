@@ -1,0 +1,274 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Contrôle continu: Devoir Surveillé N°2</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> 11 Décembre 2019
+<span style="color: #228B22"># FIGURE: [images/header2, width=700 frac=1]</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Calculer les niveaux d&#39;énergie dans un atome (6 points) =====</span>
+Le $n^{ième}$ niveau d&#39;énergie d&#39;un électron dans un atome d&#39;hydrogène est donné par:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+E_n = -\frac{m_e e^4}{8\epsilon_0^2h^2}\cdot\frac{1}{n^2} ,
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $m_e = 9.1094⋅10^{-31} \ kg$ est la masse de l&#39;électron, $e = 1.602210^{−19} \ C$ est la charge élémentaire, $\epsilon_0 = 8.8542 \cdot 10^{-12} C^2 s^2 \ kg^{-1}m^{-3}$ est la permittivité électrique du vide, et $h=6.6261 \cdot 10^{−34} \ Js$
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir la fonction `E(n)` qui retourne la valeur du niveau d’énergie en électron-volt ($eV$).
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+* On vous donne $1 \ eV = 1.6022 \dot 10^{-19} \ J$.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+On défini d&#39;abord les constantes dans l&#39;équation, ensuite la fonction `E(n)` qui retourne la valeur du niveau d’énergie en électron-volt ($eV$):
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+<span style="color: #228B22"># Constantes</span>
+me = 9.1094e-31
+e = 1.6022e-19
+eps0 = 8.8542e-12
+h = 6.6261e-34
+def E(n):
+    Ejoule = - (me * e**4)/(8*eps0**2 * h**2)* (1/n**2)
+    return Ejoule/e
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+* Calculer la valeur du niveau d&#39;énergie le plus bas, `E(n=1)`. A quoi correspond ce niveau d&#39;énergie?
+* Tester la valeur du niveau d&#39;énergie pour $n \rightarrow \infty$. A quoi correspond le niveau d&#39;énergie $E = 0$ eV ?
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le niveau d&#39;énergie pour n = 1:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+print(&quot;E(n = 1) = &quot;, E(n = 1), &quot; eV&quot;)
+<span style="color: #228B22"># ==&gt; E(n = 1) =  -13.606152702370753  eV</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Le niveau d&#39;énergie le plus bas $E_1 = - 13,6 \ eV$ obtenu pour n = 1, correspond au niveau fondamental de l&#39;atome d&#39;hydrogène. C&#39;est l&#39;état le plus stable.
+
+Le niveau d&#39;énergie pour n = 100:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+print(&quot;E(n = 100) = &quot;, E(n = 100), &quot; eV&quot;)
+<span style="color: #228B22"># ==&gt; E(n = 100) =  -0.0013606152702370755  eV</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Le niveau d&#39;énergie est nul $E = 0 \ eV$  lorsque n tend vers l&#39;infini (l&#39;électron est alors séparé du noyau).
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Écrire une boucle qui calcule et affiche le niveau d&#39;énergie $E_n$ pour $n = 1,…, 20$.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Le résultat doit être comme suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+E1 = -13.606152702370753 eV
+E2 = -3.4015381755926883 eV
+............................
+............................
+E19 = -0.03769017369077771 eV
+E20 = -0.03401538175592689 eV
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+On peut calculer et afficher les valeurs $E_n$ pour $n = 1,…, 20$ en utilisant une boucle for:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+for n in range(1, 21):
+    print(&quot;E{} = {} eV&quot;.format(n, E(n)))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+L&#39;énergie libérée lorsqu&#39;un électron se déplace du niveau ni au niveau nf est donnée par:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\Delta E = -\frac{m_e e^4}{8\epsilon_0^2h^2}\cdot\left( \frac{1}{n_i^2}-\frac{1}{n_f^2}\right)
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Construire et afficher les valeurs de la matrice $\Delta E^{i,f}$ dont la cellule de la colonne `i` et de la ligne `f` contient l’énergie libérée lorsqu’un électron passe du niveau d’énergie `i` au niveau `f`, pour $i, f = 1, …, 5$.
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\Delta E^{i,f} = \begin{pmatrix}
+\Delta  E_{1,1}  &amp; \Delta  E_{1,2}  &amp; \Delta  E_{1,3}  &amp; \Delta  E_{1,4}  &amp; \Delta  E_{1,5} \\\
+\Delta E_{2,1}  &amp; \Delta  E_{2,2}  &amp; \Delta  E_{2,3}  &amp; \Delta  E_{2,4}  &amp; \Delta  E_{2,5} \\\
+\Delta E_{3,1}  &amp; \Delta  E_{3,2}  &amp; \Delta  E_{3,3}  &amp; \Delta  E_{3,4}  &amp; \Delta  E_{3,5} \\\
+\Delta E_{4,1}  &amp; \Delta  E_{4,2}  &amp; \Delta  E_{4,3}  &amp; \Delta  E_{4,4}  &amp; \Delta  E_{4,5} \\\
+\Delta E_{5,1}  &amp; \Delta  E_{5,2}  &amp; \Delta  E_{5,3}  &amp; \Delta  E_{5,4}  &amp; \Delta  E_{5,5}
+<span style="color: #658b00">\end{pmatrix}</span>
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+On peut créer la matrice $\Delta E^{i,f}$ et afficher ces valeurs avec la méthode suivante:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from numpy import array
+DEn = [[E(ni) - E(nf) for ni in range(1, 6)] for nf in range(1,6)]
+print(array(DEn))
+<span style="color: #228B22">#==&gt; DEn =</span>
+<span style="color: #228B22">#[[  0.          10.20461453  12.09435796  12.75576816  13.06190659]</span>
+<span style="color: #228B22"># [-10.20461453   0.           1.88974343   2.55115363   2.85729207]</span>
+<span style="color: #228B22"># [-12.09435796  -1.88974343   0.           0.6614102    0.96754864]</span>
+<span style="color: #228B22"># [-12.75576816  -2.55115363  -0.6614102    0.           0.30613844]</span>
+<span style="color: #228B22"># [-13.06190659  -2.85729207  -0.96754864  -0.30613844   0.        ]]</span>
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Générer des coordonnées équidistantes (4 points) =====</span>
+<span style="color: #658b00">label{ex:coordonnee}</span>
+Nous voulons générer $n + 1$ coordonnées $x$ équidistantes dans $[a, b]$. Stocker, pour `a = -2`; `b = 3` et `n= 20` les coordonnées $x$ dans une liste `xList`.
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir toutes les variables puis utiliser une boucle _for_ et ajouter chaque coordonnée à la liste `xList` (*initialement vide*).
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Avec $n$ intervalles, correspondant à $n + 1$ points, dans $[a, b]$, chaque intervalle a une longueur $h = (b-a) / n$. Les coordonnées peuvent alors être générées par la formule `xi = a + i * h`; $i = 0,…, n$.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La liste `xList` sera remplis par les valeurs de `xi` comme suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+n =20
+a, b = -2, 3
+h = (b - a) / n
+xList = []
+for i in range(n+1):
+    xi  = a + i * h
+    xList.append(xi)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Utiliser une liste de compréhension comme une implémentation alternative.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Nous pouvons également remplir `xList` par une liste de compréhension:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+xList = [a + i * h for i in range(n+1)]
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Vectoriser la liste résultante `xList` en un tableau `numpy` xVect. N&#39;oubliez pas _d&#39;importer_ d&#39;abord la fonction qui transforme les listes en tableaux à partir de `numpy`.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction `numpy.array()` transforme les listes en tableaux `numpy`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from numpy import array
+xVect = array(xList)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer une fonction gaussienne (7 points) =====</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir une fonction `f(x)` qui met en œuvre la gaussienne suivante
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+f(x) = {1\over\sqrt{2\pi}}e^{-\frac{1}{2}x^2}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction `f(x)` s&#39;écrit:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import numpy as np
+def f(x):
+    return 1/np.sqrt(2*np.pi) * np.exp(-0.5 *x*x)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Remplir les listes `xList` et `fList` avec $x$ et $f(x)$ valeurs pour 41 coordonnées $x$ uniformément espacées dans $[−4,4]$.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Adapter l&#39;exemple de l&#39;exercice ref{ex:coordonnee}.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+n = 40
+a, b = -4, 4
+h = (b - a) / n
+xList, fList=[], []
+
+for i in range(n+1):
+    xi  = a + i * h
+    fi = f(xi)
+    xList.append(xi)
+    fList.append(fi)
+
+print(fList)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Vectoriser le code en _b)_ en créant les valeurs `x` à l&#39;aide de la fonction `linspace()` à partir de la bibliothèque `numpy` et en évaluant `f(x)` pour un argument du tableau.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Soit un tableau `x` généré par la fonction `numpy.linspace()`:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+x = np.linspace(-4, 4, 41)
+print(f(x))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Faites un tracé de cette fonction `f(x)` en utilisant la bibliothèque `matplotlib`.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+La sortie du programme devrait ressembler à la figure ci-dessous.
+<span style="color: #658b00">FIGURE: [scripts/gauss, width=500 frac=.5]</span>
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le graphique sera généré en implémentant le code suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import matplotlib.pyplot as plt
+
+plt.plot(x, f(x), &#39;ko-&#39;,lw=2)
+plt.title(&quot;Fonction gaussienne&quot;, fontweight=&#39;bold&#39;)
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;f(x)&quot;)
+plt.grid()
+plt.tight_layout()
+plt.savefig(&quot;gauss.png&quot;); plt.savefig(&quot;gauss.pdf&quot;)
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Tracer la viscosité de l&#39;eau (5 points) =====</span>
+La viscosité de l&#39;eau, $\mu$, varie avec la température $T$ (en Kelvin) selon la formule:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\mu (T) = A\cdot 10^{B/(T-C)}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $A=2.414\cdot 10^{-5}\hbox{ Pa s}$, $B=247.8 \ K$ et $C = 140 \ K$.
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir la fonction `mu(T, A, B, C)` qui renvoie la valeur de la viscosité $\mu$ pour chaque valeur donnée de la température $T$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La fonction `mu(T, A, B, C)` est définie comme suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+def mu(T, A, B, C):
+    return A*10**(B/(T-C))
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer $\mu (T)$ pour 20 valeurs de $T$ entre 0 et 100 degrés Celsius. Marquer l&#39;axe des $x$ avec &quot;Température (degrés Celsius)&quot;, l&#39;axe des $y$ avec &quot;viscosité (Pa~s)&quot; et le titre &quot;Évolution de la viscosité de l&#39;eau avec la température&quot;. _Notez que $T$ dans la formule de $\mu$ doit être en Kelvin_.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+* On vous donne: 0 deg C = 273 deg K
+* La sortie du programme devrait ressembler à la figure ci-dessous.
+<span style="color: #658b00">FIGURE: [scripts/viscosity, width=500 frac=.5]</span>
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le code qui trace la viscosité de l&#39;eau en fonction de la température est comme suivant:
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+import matplotlib.pyplot as plt
+import numpy as np
+<span style="color: #228B22"># 0 deg C = 273 deg K</span>
+T = np.linspace(0, 100, 20)
+
+plt.plot(T, mu(T+273, A = 2.414e-5, B = 247.8, C = 140), &#39;k^--&#39;)
+plt.title(&quot;Évolution de la viscosité de l&#39;eau avec la température&quot;,
+          fontweight=&#39;bold&#39;)
+plt.xlabel(&quot;Température (degrés Celsius)&quot;)
+plt.ylabel(&quot;Viscosité (Pa s)&quot;)
+plt.grid()
+plt.savefig(&quot;viscosity.png&quot;); plt.savefig(&quot;viscosity.pdf&quot;)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+</pre></div>

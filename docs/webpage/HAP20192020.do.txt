@@ -66,3 +66,14 @@ DATE: today
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours3/cours3-bs.html"
   * "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3.html"
+
+===== DS N°2 (Semestre 1) =====
+* Notebook:
+  * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/exam/exam.ipynb"
+
+* HTML:
+  * "DS (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/exam/exam.html"
+
+* PDF
+  * "DS (énoncé-PDF)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/exam/exam.pdf"
+  * "DS (corrigé-PDF)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/exam/exam_corr.pdf"
