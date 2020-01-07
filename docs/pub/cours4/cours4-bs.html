@@ -1,0 +1,1022 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Intégration numérique">
+
+<title>Intégration numérique</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Table des matières',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Introduction', 1, None, '___sec0'),
+              ("Idées de base de l'intégration numérique", 1, None, '___sec1'),
+              ('Exemple de calcul', 2, None, '___sec2'),
+              ('La règle du trapèze composite', 1, None, '___sec3'),
+              ('La formule générale', 2, None, '___sec4'),
+              ('Implémentation', 2, None, '___sec5'),
+              ('Implémentation spécifique ou générale?', 3, None, '___sec6'),
+              ('Implémentation avec fonctions', 3, None, '___sec7'),
+              ('Résoudre notre problème spécifique en une session',
+               3,
+               None,
+               '___sec8'),
+              ('Résoudre notre problème spécifique dans un programme',
+               3,
+               None,
+               '___sec9'),
+              ('Faire un module', 3, None, '___sec10'),
+              ('La méthode du point milieu composite', 1, None, '___sec11'),
+              ("L'idée", 2, None, '___sec12'),
+              ('La formule générale', 2, None, '___sec13'),
+              ('Implémentation', 2, 'sec:implementation', 'sec:implementation'),
+              ('Comparaison des méthodes du trapèze et du point milieu',
+               2,
+               None,
+               '___sec15'),
+              ('Intégration Monte Carlo pour les domaines de forme complexe',
+               1,
+               None,
+               '___sec16'),
+              ("L'algorithme d'intégration de Monte Carlo",
+               2,
+               None,
+               '___sec17'),
+              ('Implémentation', 2, None, '___sec18'),
+              ('Vérification', 3, None, '___sec19'),
+              ('Fonction de test pour la fonction avec des nombres aléatoires',
+               3,
+               None,
+               '___sec20'),
+              ('Intégrale sur un cercle', 3, None, '___sec21')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours4-bs.html">Intégration numérique</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Idées de base de l'intégration numérique</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exemple de calcul</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>La règle du trapèze composite</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La formule générale</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implémentation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Implémentation spécifique ou générale?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Implémentation avec fonctions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Résoudre notre problème spécifique en une session</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Résoudre notre problème spécifique dans un programme</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Faire un module</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;"><b>La méthode du point milieu composite</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'idée</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La formule générale</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:implementation" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implémentation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comparaison des méthodes du trapèze et du point milieu</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><b>Intégration Monte Carlo pour les domaines de forme complexe</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'algorithme d'intégration de Monte Carlo</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implémentation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vérification</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fonction de test pour la fonction avec des nombres aléatoires</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intégrale sur un cercle</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Int&#233;gration num&#233;rique</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Jan 7, 2020</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Introduction </a><br>
+<a href="#___sec1"> Id&#233;es de base de l'int&#233;gration num&#233;rique </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Exemple de calcul </a><br>
+<a href="#___sec3"> La r&#232;gle du trap&#232;ze composite </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> La formule g&#233;n&#233;rale </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Impl&#233;mentation </a><br>
+<a href="#___sec11"> La m&#233;thode du point milieu composite </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> L'id&#233;e </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> La formule g&#233;n&#233;rale </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#sec:implementation"> Impl&#233;mentation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> Comparaison des m&#233;thodes du trap&#232;ze et du point milieu </a><br>
+<a href="#___sec16"> Int&#233;gration Monte Carlo pour les domaines de forme complexe </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> L'algorithme d'int&#233;gration de Monte Carlo </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Impl&#233;mentation </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<h1 id="___sec0" class="anchor">Introduction </h1>
+L'int&#233;gration num&#233;rique est un chapitre important de l'analyse num&#233;rique et un outil indispensable en physique num&#233;rique. On int&#232;gre num&#233;riquement dans deux cas principaux:
+
+<ul>
+<li> on ne peut pas int&#233;grer analytiquement,</li>
+<li> l'int&#233;grande est fourni non pas sous la forme d'une fonction mais de tableaux de mesures, cas d'ailleurs le plus fr&#233;quent dans la vraie vie.</li>
+</ul>
+
+Les m&#233;thodes num&#233;riques d'int&#233;gration d'une fonction sont nombreuses et les techniques tr&#232;s diverses. Des tr&#232;s simples, comme la m&#233;thode des rectangles aux tr&#232;s complexes comme certaines vari&#233;t&#233;s de la m&#233;thode de Monte-Carlo.
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec1" class="anchor">Id&#233;es de base de l'int&#233;gration num&#233;rique </h1>
+Nous consid&#233;rons l'int&#233;grale
+$$
+\begin{equation} \label{eq:ExempleIntegral}
+\int_a^b f(x)dx
+\end{equation}
+$$
+
+La plupart des m&#233;thodes num&#233;riques de calcul de cette int&#233;grale divisent l'int&#233;grale d'origine en une somme de plusieurs int&#233;grales, chacune couvrant une partie plus petite de l'intervalle d'int&#233;gration d'origine \( [a, b] \). Cette r&#233;&#233;criture de l'int&#233;grale est bas&#233;e sur une s&#233;lection de points d'int&#233;gration \( x_i \), \( i = 0,1,&#8230;, n \) qui sont r&#233;partis sur l'intervalle \( [a, b] \). Les points d'int&#233;gration peuvent ou non &#234;tre r&#233;partis uniform&#233;ment. Une distribution uniforme simplifie les expressions et est souvent suffisante, nous nous limiterons donc principalement &#224; ce choix. Les points d'int&#233;gration sont ensuite calcul&#233;s comme:
+$$
+\begin{equation}
+x_i = a + ih,\quad i = 0,1,\ldots,n
+\label{_auto1}
+\end{equation}
+$$
+
+o&#249;
+$$
+\begin{equation}
+h = \frac{b-a}{n}
+\label{_auto2}
+\end{equation}
+$$
+
+Compte tenu des points d'int&#233;gration, l'int&#233;grale d'origine est r&#233;&#233;crite sous la forme d'une somme d'int&#233;grales, chaque int&#233;grale &#233;tant calcul&#233;e sur le sous-intervalle entre deux points d'int&#233;gration cons&#233;cutifs. L'int&#233;grale dans \eqref{eq:ExempleIntegral} est donc exprim&#233;e comme:
+$$
+\begin{equation} \label{eq:SumIntegrals}
+\int_a^b f(x)dx =
+\int_{x_0}^{x_1} f(x)dx + \int_{x_1}^{x_2} f(x)dx + \ldots +
+\int_{x_{n-1}}^{x_n} f(x)dx
+\end{equation}
+$$
+
+Notez que \( x_0 = a \) et \( x_n = b \).
+
+<p>
+En partant de \eqref{eq:SumIntegrals}, les diff&#233;rentes m&#233;thodes d'int&#233;gration diff&#233;reront dans la fa&#231;on dont elles approchent chaque int&#233;grale du c&#244;t&#233; droit. L'id&#233;e fondamentale est que chaque terme est une int&#233;grale sur un petit intervalle \( [x_i, x_{i + 1}] \), et sur ce petit intervalle, il est logique d'approximer f par une forme simple, disons une constante, une ligne droite ou une parabole , que nous pouvons facilement int&#233;grer &#224; la main. Les d&#233;tails deviendront clairs dans les exemples &#224; venir.
+
+<h2 id="___sec2" class="anchor">Exemple de calcul </h2>
+Pour comprendre et comparer les m&#233;thodes d'int&#233;gration num&#233;rique, il est avantageux d'utiliser une int&#233;grale sp&#233;cifique pour les calculs et les illustrations graphiques. En particulier, nous voulons utiliser une int&#233;grale que nous pouvons calculer &#224; la main de sorte que la pr&#233;cision des m&#233;thodes d'approximation puisse &#234;tre facilement &#233;valu&#233;e. Notre int&#233;grale sp&#233;cifique est tir&#233;e de la physique de base. Supposons que vous acc&#233;l&#233;rez votre voiture du repos et demandez-vous jusqu'o&#249; vous allez en \( T \) secondes. La distance est donn&#233;e par l'int&#233;grale \( \int_0^T v(t)dt \) , o&#249; \( v (t) \) est la vitesse en fonction du temps. Une fonction de vitesse en augmentation rapide pourrait &#234;tre:
+$$
+\begin{equation}
+v\left(t\right) = 3t^{2}e^{t^3}\thinspace
+\label{_auto3}
+\end{equation}
+$$
+
+La distance apr&#232;s une seconde est
+$$
+\begin{equation} \label{eq:SpeedIntegral}
+\int_0^1 v(t)dt
+\end{equation}
+$$
+
+qui est l'int&#233;grale que nous cherchons &#224; calculer par des m&#233;thodes num&#233;riques. Heureusement, l'expression choisie de la vitesse a une forme qui permet de calculer facilement la primitive comme
+$$
+\begin{equation}
+V(t) = e^{t^3}-1
+\label{_auto4}
+\end{equation}
+$$
+
+Nous pouvons donc calculer la valeur exacte de l'int&#233;grale comme \( V (1) &#8722;V (0) &#8776;1.718 \) (arrondi &#224; 3 d&#233;cimales pour plus de commodit&#233;).
+
+<h1 id="___sec3" class="anchor">La r&#232;gle du trap&#232;ze composite </h1>
+L'int&#233;grale \( \int_a^b f(x)dx \) peut &#234;tre interpr&#233;t&#233; comme l'aire entre l'axe des x et le graphique \( y = f (x) \) de fonction &#224; int&#233;grer. La figure <a href="#fig:integral_of_f">1</a> illustre cette zone de choix \eqref{eq:SpeedIntegral}. Le calcul de l'int&#233;grale \( \int_0^1f(t)dt \) revient &#224; calculer l'aire de la zone hachur&#233;e.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:integral_of_f"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  L'int&#233;grale de \( v (t) \) interpr&#233;t&#233;e comme l'aire sous le graphique de \( v \).  <!-- caption label: fig:integral_of_f --> </p></center>
+<p><img src="imgs/integral_of_f.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Si nous rempla&#231;ons le vrai graphique de la figure <a href="#fig:integral_of_f">1</a> par un ensemble de segments de ligne droite, nous pouvons voir la zone plut&#244;t comme compos&#233;e de trap&#232;zes, dont les zones sont faciles &#224; calculer. Ceci est illustr&#233; sur la figure <a href="#fig:viz_trapezoidal">2</a>, o&#249; 4 segments de ligne droite donnent naissance &#224; 4 trap&#232;zes, couvrant les intervalles de temps \( [0,0.2) \), \( [0.2,0.6) \), \( [0.6,0.8) \) et \( [0.8,1.0] \). Notez que nous en avons profit&#233; pour d&#233;montrer les calculs avec des intervalles de temps de tailles diff&#233;rentes.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:viz_trapezoidal"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Calculer approximativement l'int&#233;grale d'une fonction comme la somme des aires des trap&#232;zes.  <!-- caption label: fig:viz_trapezoidal --> </p></center>
+<p><img src="imgs/viz_trapezoidal.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Les aires des 4 trap&#232;zes repr&#233;sent&#233;s sur la figure <a href="#fig:viz_trapezoidal">2</a> constituent maintenant notre approximation de l'int&#233;grale \eqref{eq:SpeedIntegral}:
+$$
+\begin{align}
+\int_0^1 v(t)dt &\approx
+h_1 (\frac{v(0)+v(0.2)}{2}) + h_2 (\frac{v(0.2)+v(0.6)}{2}) \nonumber  \\
+&+ h_3 (\frac{v(0.6)+v(0.8)}{2}) + h_4 (\frac{v(0.8)+v(1.0)}{2})
+\label{eq:trapezoids}
+\end{align}
+$$
+
+o&#249;
+$$
+\begin{align}
+h_1 &= (0.2 - 0.0) \label{eq:h1}\\
+h_2 &= (0.6 - 0.2)  \label{eq:h2}\\
+h_3 &= (0.8 - 0.6)  \label{eq:h3}\\
+h_4 &= (1.0 - 0.8) \label{eq:h4}
+\end{align}
+$$
+
+Avec \( v(t) = 3t^{2}e^{t^3} \), chaque terme dans \eqref{eq:trapezoids} est facilement calcul&#233; et notre calcul approximatif donne
+$$
+\begin{equation}
+\int_0^1 v(t)dt \approx 1.895
+\label{_auto5}
+\end{equation}
+$$
+
+Par rapport &#224; la vraie r&#233;ponse de \( 1.718 \), cela est d'environ \( 10 \% \). Cependant, notez que nous avons utilis&#233; seulement 4 trap&#232;zes pour approximer la zone. Avec plus de trap&#232;zes, l'approximation serait devenue meilleure, puisque les segments de droite du c&#244;t&#233; sup&#233;rieur des trap&#232;zes suivraient alors le graphique de plus pr&#232;s. Faire un autre calcul avec plus de trap&#232;zes n'est pas trop tentant pour un humain paresseux, mais c'est un travail parfait pour un ordinateur! D&#233;rivons donc les expressions d'approximation de l'int&#233;grale par un nombre arbitraire de trap&#232;zes.
+
+<h2 id="___sec4" class="anchor">La formule g&#233;n&#233;rale </h2>
+Pour une fonction donn&#233;e \( f (x) \), nous voulons approximer l'int&#233;grale \( \int_a^bf(x)dx \) par \( n \) trap&#232;zes (de largeur &#233;gale). Nous commen&#231;ons par (3.5) et approchons chaque int&#233;grale du c&#244;t&#233; droit avec un seul trap&#232;ze. En d&#233;tail,
+$$
+\begin{align}
+\int_a^b f(x)\,dx &= \int_{x_0}^{x_1} f(x) dx + \int_{x_1}^{x_2} f(x) dx + \ldots + \int_{x_{n-1}}^{x_n} f(x) dx,     \nonumber \\
+                  &\approx h \frac{f(x_0) + f(x_1)}{2} +
+		  h \frac{f(x_1) + f(x_2)}{2} + \ldots + \nonumber \\
+		  &\quad h \frac{f(x_{n-1}) + f(x_n)}{2}
+\label{_auto6}
+\end{align}
+$$
+
+En simplifiant le c&#244;t&#233; droit de (3.15), nous obtenons
+$$
+\begin{equation}
+\int_a^b f(x)\,dx \approx \\
+\frac{h}{2}\left[f(x_0) + 2 f(x_1) + 2 f(x_2) + \ldots + 2 f(x_{n-1}) + f(x_n)\right]
+\label{_auto7}
+\end{equation}
+$$
+
+qui est &#233;crit de fa&#231;on plus compacte comme
+$$
+\begin{equation} \label{eq:GenralIntegral}
+\int_a^b f(x)\,dx \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+\end{equation}
+$$
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">R&#232;gles d'int&#233;gration composites</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Le mot composite est souvent utilis&#233; lorsqu'une m&#233;thode d'int&#233;gration num&#233;rique est appliqu&#233;e avec plus d'un sous-intervalle.
+&#224; vrai dire alors, &#233;crire, par exemple, "la m&#233;thode du trap&#232;ze", devrait impliquer l'utilisation d'un seul trap&#232;ze, tandis que "la m&#233;thode du trap&#232;ze composite" est le nom le plus correct lorsque plusieurs trap&#232;zes sont utilis&#233;s. Cependant, cette convention de d&#233;nomination n'est pas toujours suivie, donc dire que "la m&#233;thode du trap&#232;ze" peut pointer vers un seul trap&#232;ze ainsi que la r&#232;gle composite avec de nombreux trap&#232;zes.
+</div>
+</div>
+
+
+<h2 id="___sec5" class="anchor">Impl&#233;mentation </h2>
+
+<h3 id="___sec6" class="anchor">Impl&#233;mentation sp&#233;cifique ou g&#233;n&#233;rale? </h3>
+
+Supposons que notre objectif principal &#233;tait de calculer l'int&#233;grale sp&#233;cifique \( \int_0^1 v(t)dt \) avec \( v(t)=3t^2e^{t^3} \). D'abord, nous avons jou&#233; avec un simple calcul de main pour voir de quoi il s'agissait, avant de d&#233;velopper (comme c'est souvent le cas en math&#233;matiques) une formule g&#233;n&#233;rale \eqref{eq:GenralIntegral} pour l'int&#233;grale g&#233;n&#233;rale ou &#171;abstraite&#187; \( \int_a^bf(x)dx \). Pour r&#233;soudre notre probl&#232;me sp&#233;cifique \( \int_0^1 v(t)dt \), nous devons ensuite appliquer la formule g&#233;n&#233;rale \eqref{eq:GenralIntegral} aux donn&#233;es donn&#233;es (fonction et limites int&#233;grales) dans notre probl&#232;me. Bien que simples en principe, les &#233;tapes pratiques sont d&#233;routantes pour beaucoup car la notation dans le probl&#232;me abstrait de \eqref{eq:GenralIntegral} diff&#232;re de la notation dans notre probl&#232;me sp&#233;cial. Clairement, les \( f \), \( x \) et \( h \) dans \eqref{eq:GenralIntegral} correspondent &#224; \( v \), \( t \) et peut-&#234;tre \( \Delta t \) pour la largeur du trap&#232;ze dans notre probl&#232;me sp&#233;cial.
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Le dilemme du programmeur</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+
+<ol>
+<li> Faut-il &#233;crire un programme sp&#233;cial pour l'int&#233;grale sp&#233;ciale, en utilisant les id&#233;es de la r&#232;gle g&#233;n&#233;rale \eqref{eq:GenralIntegral}, mais en rempla&#231;ant \( f \) par \( v \), \( x \) par \( t \) et \( h \) par \( \Delta t \)?</li>
+<li> Faut-il impl&#233;menter la m&#233;thode g&#233;n&#233;rale \eqref{eq:GenralIntegral} telle qu'elle se pr&#233;sente dans une fonction g&#233;n&#233;rale <code>trapeze(f, a, b, n)</code> et r&#233;soudre le probl&#232;me sp&#233;cifique en question par un appel sp&#233;cialis&#233; &#224; cette fonction?</li>
+</ol>
+
+<b>L'alternative 2 est toujours le meilleur choix!</b>
+</div>
+</div>
+
+
+<p>
+La premi&#232;re alternative dans l'encadr&#233; ci-dessus semble moins abstraite et donc plus attrayante pour beaucoup. N&#233;anmoins, comme nous l'esp&#233;rons, cela sera &#233;vident &#224; partir des exemples, la deuxi&#232;me alternative est en fait la plus simple et la plus fiable d'un point de vue math&#233;matique et de programmation. Ces auteurs affirmeront que la deuxi&#232;me alternative est l'essence m&#234;me du pouvoir des math&#233;matiques, tandis que la premi&#232;re alternative est la source de beaucoup de confusion sur les math&#233;matiques!
+
+<h3 id="___sec7" class="anchor">Impl&#233;mentation avec fonctions </h3>
+
+Pour l'int&#233;grale \( \int_a^bf(x)dx \) calcul&#233;e par la formule \eqref{eq:GenralIntegral}, nous voulons que le trap&#232;ze de la fonction Python correspondante prenne tout \( f \), \( a \), \( b \) et \( n \) en entr&#233;e et renvoie l'approximation &#224; l'int&#233;grale.
+
+<p>
+Nous &#233;crivons une fonction Python <code>trapeze()</code> dans un fichier <code>trapeze_integral.py</code> aussi proche que possible de la formule \eqref{eq:GenralIntegral}, en nous assurant que les noms de variables correspondent &#224; la notation math&#233;matique:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: trapeze_integral.py</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">trapeze</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    result <span style="color: #666666">=</span> <span style="color: #666666">0.5*</span>f(a) <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>f(b)
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n):
+        xi <span style="color: #666666">=</span> a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h
+        result <span style="color: #666666">+=</span> f(xi)
+    result <span style="color: #666666">*=</span> h
+    <span style="color: #008000; font-weight: bold">return</span> result
+</pre></div>
+
+<h3 id="___sec8" class="anchor">R&#233;soudre notre probl&#232;me sp&#233;cifique en une session </h3>
+
+Le simple fait d'avoir la fonction <code>trapeze()</code> comme seul contenu d'un fichier <code>trapeze_integral.py</code> fait automatiquement de ce fichier un module que nous pouvons importer et tester dans une session interactive:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">3</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapeze_integral</span> <span style="color: #008000; font-weight: bold">import</span> trapeze
+In [<span style="color: #666666">4</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+In [<span style="color: #666666">5</span>]: v <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: <span style="color: #666666">3*</span>(t<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>exp(t<span style="color: #666666">**3</span>)
+In [<span style="color: #666666">6</span>]: n <span style="color: #666666">=</span> <span style="color: #666666">4</span>
+In [<span style="color: #666666">7</span>]: numerical <span style="color: #666666">=</span> trapeze(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
+In [<span style="color: #666666">8</span>]: numerical
+Out[<span style="color: #666666">8</span>]: <span style="color: #666666">1.9227167504675762</span>
+</pre></div>
+<p>
+Calculons l'expression exacte et l'erreur dans l'approximation:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">9</span>]: V <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: exp(t<span style="color: #666666">**3</span>) <span style="color: #666666">-</span> <span style="color: #666666">1</span>
+In [<span style="color: #666666">10</span>]: exact <span style="color: #666666">=</span> V(<span style="color: #666666">1</span>) <span style="color: #666666">-</span> V(<span style="color: #666666">0</span>)
+In [<span style="color: #666666">11</span>]: exact <span style="color: #666666">-</span> numerical
+Out[<span style="color: #666666">11</span>]: <span style="color: #666666">-0.20443492200853108</span>
+</pre></div>
+<p>
+Cette erreur est-elle convaincante? On peut essayer un \( n \) plus grand:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">12</span>]: numerical <span style="color: #666666">=</span> trapeze(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">=400</span>)
+In [<span style="color: #666666">13</span>]: exact <span style="color: #666666">-</span> numerical
+Out[<span style="color: #666666">13</span>]: <span style="color: #666666">-2.1236490512777095e-05</span>
+</pre></div>
+<p>
+Heureusement, beaucoup plus de trap&#232;zes donnent une erreur beaucoup plus petite.
+
+<h3 id="___sec9" class="anchor">R&#233;soudre notre probl&#232;me sp&#233;cifique dans un programme </h3>
+
+Au lieu de calculer notre probl&#232;me sp&#233;cial dans une session interactive, nous pouvons le faire dans un programme. Comme toujours, un morceau de code faisant une chose particuli&#232;re est mieux isol&#233; en tant que fonction m&#234;me si nous ne voyons aucune raison future d'appeler la fonction plusieurs fois et m&#234;me si nous n'avons pas besoin d'arguments pour param&#233;trer ce qui se passe &#224; l'int&#233;rieur de la fonction. Dans le cas pr&#233;sent, nous mettons simplement les instructions que nous aurions autrement mises dans un programme principal, &#224; l'int&#233;rieur d'une fonction:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+    v <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: <span style="color: #666666">3*</span>(t<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>exp(t<span style="color: #666666">**3</span>)
+    n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;n: &#39;</span>))
+    numerical <span style="color: #666666">=</span> trapeze(v, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
+
+    <span style="color: #408080; font-style: italic"># Comparer avec le résultat exact</span>
+    V <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> t: exp(t<span style="color: #666666">**3</span>) <span style="color: #666666">-</span> <span style="color: #666666">1</span>
+    exact <span style="color: #666666">=</span> V(<span style="color: #666666">1</span>) <span style="color: #666666">-</span> V(<span style="color: #666666">0</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(exact)
+    error <span style="color: #666666">=</span> exact <span style="color: #666666">-</span> numerical
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">: </span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121">, erreur: </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (n, numerical, error))
+</pre></div>
+<p>
+Maintenant, nous calculons notre probl&#232;me sp&#233;cial en appelant <code>application()</code> comme la seule instruction du programme principal.
+
+<h3 id="___sec10" class="anchor">Faire un module </h3>
+
+Lorsque nous avons les diff&#233;rentes parties de notre programme comme une collection de fonctions, il est tr&#232;s simple de cr&#233;er un <em>module</em> qui peut &#234;tre import&#233; dans d'autres programmes. Ce fait, avoir notre code comme module, signifie que la fonction <code>trapeze()</code> peut facilement &#234;tre r&#233;utilis&#233;e par d'autres programmes pour r&#233;soudre d'autres probl&#232;mes. Les exigences d'un module sont simples: mettez tout &#224; l'int&#233;rieur des fonctions et laissez les appels de fonction dans le programme principal &#234;tre dans le soi-disant <em>bloc de test</em>:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> <span style="color: #19177C">__name__</span> <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    application()
+</pre></div>
+<p>
+Le test <code>if</code> est vrai si le fichier de module, <code>trapeze_integral.py</code>, est ex&#233;cut&#233; en tant que programme et faux si le module est import&#233; dans un autre programme. Par cons&#233;quent, lorsque nous effectuons une importation: <code>from trapeze_integral import trapeze</code> dans un fichier, le test &#233;choue et <code>application()</code> n'est pas appel&#233;e, c'est-&#224;-dire que notre probl&#232;me sp&#233;cial n'est pas r&#233;solu et n'imprime rien &#224; l'&#233;cran. D'un autre c&#244;t&#233;, si nous ex&#233;cutons <code>trapeze_integral.py</code> dans la fen&#234;tre du terminal, la condition de test est positive, <code>application()</code> est appel&#233;e et nous obtenons une sortie dans la fen&#234;tre:
+
+<p>
+
+<!-- code=text (!bc pycodext) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python trapeze_integral.py
+n: 400
+n=400: 1.7183030649495579, error: -2.12365e-05
+</pre></div>
+
+<h1 id="___sec11" class="anchor">La m&#233;thode du point milieu composite </h1>
+
+<h2 id="___sec12" class="anchor">L'id&#233;e </h2>
+Plut&#244;t que d'approximer l'aire sous une courbe par des trap&#232;zes, nous pouvons utiliser des rectangles simples. Il peut sembler moins pr&#233;cis d'utiliser des lignes horizontales et non des lignes obliques suivant la fonction &#224; int&#233;grer, mais une m&#233;thode d'int&#233;gration bas&#233;e sur des rectangles (la m&#233;thode du point milieu) est en fait l&#233;g&#232;rement plus pr&#233;cise que celle bas&#233;e sur des trap&#232;zes!
+
+<p>
+Dans la m&#233;thode du milieu, nous construisons un rectangle pour chaque sous-intervalle o&#249; la hauteur est &#233;gale &#224; \( f \) au milieu du sous-intervalle. Faisons-le pour quatre rectangles, en utilisant les m&#234;mes sous-intervalles que nous avions pour les calculs manuels avec la m&#233;thode du trap&#232;ze: \( [0,0.2) \), \( [0.2,0.6) \), \( [0.6,0.8) \) et \( [0.8,1.0] \). On a
+$$
+\begin{align}
+\int_0^1 f(t)dt &\approx
+   h_1 f\left(\frac{0 + 0.2}{2}\right) +
+   h_2 f\left(\frac{0.2 + 0.6}{2}\right) \nonumber  \\
+&+ h_3 f\left(\frac{0.6 + 0.8}{2}\right) +
+   h_4 f\left(\frac{0.8 + 1.0}{2}\right)
+\label{_auto8}
+\end{align}
+$$
+
+o&#249; \( h_1 \), \( h_2 \), \( h_3 \) et \( h_4 \) sont les largeurs des sous-intervalles, utilis&#233;es pr&#233;c&#233;demment avec la m&#233;thode du trap&#232;ze et d&#233;finies dans \eqref{eq:h1}-\eqref{eq:h4}.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:viz_midpoint"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Calcul approximatif de l'int&#233;grale d'une fonction comme la somme des aires des rectangles.  <!-- caption label: fig:viz_midpoint --> </p></center>
+<p><img src="imgs/viz_midpoint.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Avec \( f(t) = 3t^{2}e^{t^3} \), l'approximation devient \( 1.632 \). Compar&#233; &#224; la vraie r&#233;ponse (\( 1.718 \)), c'est environ \( 5 \% \) trop petit, mais c'est mieux que ce que nous avons obtenu avec la m&#233;thode trap&#233;zo&#239;dale (\( 10 \% \)) avec les m&#234;mes sous-intervalles. Plus de rectangles donnent une meilleure approximation.
+
+<h2 id="___sec13" class="anchor">La formule g&#233;n&#233;rale </h2>
+D&#233;rivons une formule pour la m&#233;thode du milieu bas&#233;e sur \( n \) rectangles d'&#233;gale largeur:
+$$
+\begin{align}
+\int_a^b f(x)\,dx &= \int_{x_0}^{x_1} f(x)dx + \int_{x_1}^{x_2} f(x)dx +
+                     \ldots + \int_{x_{n-1}}^{x_n} f(x)dx,     \nonumber \\
+                  &\approx h f\left(\frac{x_0 + x_1}{2}\right) +
+                   h f\left(\frac{x_1 + x_2}{2}\right) + \ldots +
+                   h f\left(\frac{x_{n-1} + x_n}{2}\right) 
+\label{_auto9}\\
+                  &\approx h \left(f\left(\frac{x_0 + x_1}{2}\right) +
+                  f\left(\frac{x_1 + x_2}{2}\right) + \ldots +
+                  f\left(\frac{x_{n-1} + x_n}{2}\right)\right)
+\label{_auto10}
+\end{align}
+$$
+
+Cette somme peut &#234;tre &#233;crite de fa&#231;on plus compacte comme
+$$
+\begin{equation} \label{eq:GeneralMidpoint}
+\int_a^b f(x) dx \approx h \sum_{i=0}^{n-1}f(x_i)
+\end{equation}
+$$
+
+o&#249; \( x_i = \left(a + \frac{h}{2}\right) + ih \).
+
+<h2 id="sec:implementation" class="anchor">Impl&#233;mentation</h2>
+Nous suivons les conseils et les enseignements tir&#233;s de l'impl&#233;mentation de la m&#233;thode trap&#232;ze et r&#233;alisons une fonction <code>midpoint(f, a, b, n)</code> (dans un fichier <code>midpoint_integral.py</code>) pour impl&#233;menter la formule g&#233;n&#233;rale \eqref{eq:GeneralMidpoint}:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: midpoint_integral.py</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">midpoint</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    result <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
+        xi <span style="color: #666666">=</span> (a <span style="color: #666666">+</span> h<span style="color: #666666">/2.0</span>) <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h
+        result <span style="color: #666666">+=</span> f(xi)
+    result <span style="color: #666666">*=</span> h
+    <span style="color: #008000; font-weight: bold">return</span> result
+</pre></div>
+<p>
+Nous pouvons tester la fonction comme nous l'avons expliqu&#233; pour la m&#233;thode du trap&#232;ze similaire. L'erreur dans notre probl&#232;me particulier \( \int_0^1 3t^2e^{t^3}dt \) avec quatre intervalles est maintenant d'environ \( 0.1 \) contrairement &#224; \( 0.2 \) pour la r&#232;gle du trap&#232;ze. Les diff&#233;rences sont rarement d'une importance pratique, et sur un ordinateur portable, nous pouvons facilement utiliser \( n = 10^6 \) et obtenir la r&#233;ponse avec une erreur d'environ \( 10^{-12} \) en quelques secondes.
+
+<h2 id="___sec15" class="anchor">Comparaison des m&#233;thodes du trap&#232;ze et du point milieu </h2>
+L'exemple suivant montre la facilit&#233; avec laquelle nous pouvons combiner les fonctions <code>trapeze()</code> et <code>midpoint()</code> pour comparer les deux m&#233;thodes dans le fichier <code>compare_integration_methods.py</code>:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: compare_integration_methods.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapeze_integral</span> <span style="color: #008000; font-weight: bold">import</span> trapeze
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">midpoint_integral</span> <span style="color: #008000; font-weight: bold">import</span> midpoint
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+
+g <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> y: exp(<span style="color: #666666">-</span>y<span style="color: #666666">**2</span>)
+a <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;      n      point milieu     trapèze&quot;</span>)
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, <span style="color: #666666">21</span>):
+    n <span style="color: #666666">=</span> <span style="color: #666666">2**</span>i
+    m <span style="color: #666666">=</span> midpoint(g, a, b, n)
+    t <span style="color: #666666">=</span> trapeze(g, a, b, n)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%7d</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">%</span>(n, m, t))
+</pre></div>
+<p>
+Notez les efforts mis en forme agr&#233;able - la sortie devient
+<p>
+
+<!-- code=shell (!bc shell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>      n      point milieu     trapèze
+      <span style="color: #666666">2</span> <span style="color: #666666">0</span>.8842000076332692 <span style="color: #666666">0</span>.8770372606158094
+      <span style="color: #666666">4</span> <span style="color: #666666">0</span>.8827889485397279 <span style="color: #666666">0</span>.8806186341245393
+      <span style="color: #666666">8</span> <span style="color: #666666">0</span>.8822686991994210 <span style="color: #666666">0</span>.8817037913321336
+     <span style="color: #666666">16</span> <span style="color: #666666">0</span>.8821288703366458 <span style="color: #666666">0</span>.8819862452657772
+     <span style="color: #666666">32</span> <span style="color: #666666">0</span>.8820933014203766 <span style="color: #666666">0</span>.8820575578012112
+     <span style="color: #666666">64</span> <span style="color: #666666">0</span>.8820843709743319 <span style="color: #666666">0</span>.8820754296107942
+    <span style="color: #666666">128</span> <span style="color: #666666">0</span>.8820821359746071 <span style="color: #666666">0</span>.8820799002925637
+    <span style="color: #666666">256</span> <span style="color: #666666">0</span>.8820815770754198 <span style="color: #666666">0</span>.8820810181335849
+    <span style="color: #666666">512</span> <span style="color: #666666">0</span>.8820814373412922 <span style="color: #666666">0</span>.8820812976045025
+   <span style="color: #666666">1024</span> <span style="color: #666666">0</span>.8820814024071774 <span style="color: #666666">0</span>.8820813674728968
+   <span style="color: #666666">2048</span> <span style="color: #666666">0</span>.8820813936736116 <span style="color: #666666">0</span>.8820813849400392
+   <span style="color: #666666">4096</span> <span style="color: #666666">0</span>.8820813914902204 <span style="color: #666666">0</span>.8820813893068272
+   <span style="color: #666666">8192</span> <span style="color: #666666">0</span>.8820813909443684 <span style="color: #666666">0</span>.8820813903985197
+  <span style="color: #666666">16384</span> <span style="color: #666666">0</span>.8820813908079066 <span style="color: #666666">0</span>.8820813906714446
+  <span style="color: #666666">32768</span> <span style="color: #666666">0</span>.8820813907737911 <span style="color: #666666">0</span>.8820813907396778
+ <span style="color: #666666">131072</span> <span style="color: #666666">0</span>.8820813907631487 <span style="color: #666666">0</span>.8820813907610036
+ <span style="color: #666666">262144</span> <span style="color: #666666">0</span>.8820813907625702 <span style="color: #666666">0</span>.8820813907620528
+ <span style="color: #666666">524288</span> <span style="color: #666666">0</span>.8820813907624605 <span style="color: #666666">0</span>.8820813907623183
+<span style="color: #666666">1048576</span> <span style="color: #666666">0</span>.8820813907624268 <span style="color: #666666">0</span>.8820813907623890
+</pre></div>
+<p>
+Une inspection visuelle des chiffres montre &#224; quelle vitesse les chiffres se stabilisent dans les deux m&#233;thodes. Il semble que 13 chiffres se soient stabilis&#233;s dans les deux derni&#232;res lignes.
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Remarque</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+Les m&#233;thodes du trap&#232;ze et du point milieu ne sont que deux exemples dans une jungle de r&#232;gles d'int&#233;gration num&#233;rique. D'autres m&#233;thodes c&#233;l&#232;bres sont la r&#232;gle de Simpson et la quadrature de Gauss. Ils fonctionnent tous de la m&#234;me mani&#232;re:
+$$\int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_if(x_i)$$
+Autrement dit, l'int&#233;grale est approxim&#233;e par une somme d'&#233;valuations de fonctions, o&#249; chaque &#233;valuation \( f (x_i) \) re&#231;oit un poids \( w_i \). Les diff&#233;rentes m&#233;thodes diff&#232;rent par la fa&#231;on dont elles construisent les points d'&#233;valuation \( x_i \) et les poids \( w_i \). Nous avons utilis&#233; des points \( x_i \) &#233;galement espac&#233;s, mais une pr&#233;cision plus &#233;lev&#233;e peut &#234;tre obtenue en optimisant l'emplacement de \( x_i \).
+</div>
+</div>
+
+
+<p>
+<!-- ======= Int&#233;grales doubles et triples ======= -->
+<!-- ===== La r&#232;gle du point milieu pour une double int&#233;grale ===== -->
+<!-- <div id="sec:midpointDouble"></div> -->
+<!-- &#201;tant donn&#233; une int&#233;grale double sur un domaine rectangulaire \( [a, b] \times [c, d] \), -->
+<!--  -->
+<!-- $$\int_a^b \int_c^d f(x,y) dydx$$ -->
+<!--  -->
+<!-- comment approcher cette int&#233;grale par des m&#233;thodes num&#233;riques? -->
+<!-- === D&#233;rivation via des int&#233;grales unidimensionnelles === -->
+<!-- Puisque nous savons comment traiter les int&#233;grales &#224; une variable, une approche fructueuse consiste &#224; consid&#233;rer l'int&#233;grale double comme deux int&#233;grales, chacune &#224; une variable, qui peut &#234;tre approxim&#233;e num&#233;riquement par les formules unidimensionnelles pr&#233;c&#233;dentes. &#192; cette fin, nous introduisons une fonction interm&#233;diaire \( g (x) \) et &#233;crivons -->
+<!-- $$\int_a^b \int_c^d f(x,y) dydx = \int_a^b g(x)dx,\quad -->
+<!-- g(x) = \int_c^d f(x,y) dy$$ -->
+<!-- Chacune des int&#233;grales -->
+<!-- $$ \int_a^b g(x)dx,\quad -->
+<!-- g(x) = \int_c^d f(x,y) dy$$ -->
+<!-- peut &#234;tre discr&#233;tis&#233; par n'importe quelle r&#232;gle d'int&#233;gration num&#233;rique pour une int&#233;grale dans une variable. Utilisons la m&#233;thode du point milieu \eqref{eq:GeneralMidpoint} et commen&#231;ons par \( g(x)=\int_c^d f(x,y)dy \). Nous introduisons \( n_y \) intervalles sur \( [c, d] \) de longueur \( h_y \). La r&#232;gle du point milieu pour cette int&#233;grale devient alors -->
+<!-- $$g(x) = \int_c^d f(x,y) dy \approx  h_y \sum_{j=0}^{n_y-1} f(x,y_j), -->
+<!-- \quad y_j = c + \frac{1}{2}{h_y} + jh_y $$ -->
+<!--  -->
+<!-- L'expression semble quelque peu diff&#233;rente de \eqref{eq:GeneralMidpoint}, mais c'est &#224; cause de la notation: puisque nous nous int&#233;grons dans la direction \( y \) et que nous devrons travailler avec \( x \) et \( y \) comme coordonn&#233;es, nous devons utiliser \( n_y \) pour \( n \), \( h_y \) pour \( h \) et le compteur \( i \) est plus naturellement appel&#233; \( j \) lors de l'int&#233;gration dans \( y \). Les int&#233;grales dans la direction \( x \) utiliseront \( h_x \) et \( n_x \) pour \( h \) et \( n \), et \( i \) comme compteur. -->
+<!--  -->
+<!-- L'int&#233;grale double est \( \int_a^b g(x)dx \), qui peut &#234;tre approxim&#233;e par la m&#233;thode du point milieu: -->
+<!-- $$\int_a^b g(x)dx \approx h_x \sum_{i=0}^{n_x-1} g(x_i),\quad x_i=a + \frac{1}{2}{h_x} + ih_x$$ -->
+<!--  -->
+<!-- En rassemblant les formules, nous arrivons &#224; la m&#233;thode du point milieu composite pour une double int&#233;grale: -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- \int_a^b \int_c^d f(x,y) dydx &\approx -->
+<!-- h_x \sum_{i=0}^{n_x-1} h_y \sum_{j=0}^{n_y-1} f(x_i,y_j)\nonumber\\ -->
+<!-- &= -->
+<!-- h_xh_y \sum_{i=0}^{n_x-1} \sum_{j=0}^{n_y-1} f(a + \frac{h_x}{2} + ih_x, c + \frac{h_y}{2} + jh_y) \<div id="eq:MidpointDouble"></div> -->
+<!-- \end{align} -->
+<!-- !et -->
+<!-- La formule (<a href="#eq:MidpointDouble">eq:MidpointDouble</a>) peut &#233;galement &#234;tre d&#233;riv&#233;e directement dans le cas bidimensionnel en appliquant l'id&#233;e de la m&#233;thode du point milieu. Nous divisons le rectangle \( [a, b] \times [c, d] \) en \( nx \times ny \) cellules de taille &#233;gale. L'id&#233;e de la m&#233;thode du point milieu est d'approximer \( f \) par une constante sur chaque cellule et d'&#233;valuer la constante au point m&#233;dian. La cellule \( (i, j) \) occupe la zone -->
+<!--  -->
+<!-- $$[a+ih_x,a+(i+1)h_x]\times [c+jh_y, c+ (j+1)h_y],$$ -->
+<!-- et le milieu est \( (x_i, y_j) \) avec -->
+<!-- $$x_i=a + ih_x + \frac{1}{2}{h_x} ,\quad y_j = c + jh_y + \frac{1}{2}{h_y}$$ -->
+<!-- L'int&#233;grale sur la cellule est donc \( h_xh_y f(x_i,y_j) \), et l'int&#233;grale double totale est la somme sur toutes les cellules, qui n'est rien d'autre que la formule (<a href="#eq:MidpointDouble">eq:MidpointDouble</a>). -->
+<!-- === Programmation d'une double somme === -->
+<!-- La formule (<a href="#eq:MidpointDouble">eq:MidpointDouble</a>) implique une double somme, qui est normalement impl&#233;ment&#233;e sous la forme d'une boucle double. Une fonction Python impl&#233;mentant (<a href="#eq:MidpointDouble">eq:MidpointDouble</a>) peut ressembler &#224; -->
+<!-- !bc  pycod -->
+<!-- def midpoint_double1(f, a, b, c, d, nx, ny): -->
+<!-- hx = (b - a)/float(nx) -->
+<!-- hy = (d - c)/float(ny) -->
+<!-- I = 0 -->
+<!-- for i in range(nx): -->
+<!-- for j in range(ny): -->
+<!-- xi = a + hx/2 + i*hx -->
+<!-- yj = c + hy/2 + j*hy -->
+<!-- I += hx*hy*f(xi, yj) -->
+<!-- return I -->
+<!-- !ec -->
+<!-- Si cette fonction est stock&#233;e dans un fichier de module <code>midpoint_double.py</code>, nous pouvons calculer une int&#233;grale, par exemple, \( \int_2^3\int_0^2 (2x + y)dxdy=9 \) dans un shell interactif et d&#233;montrer que la fonction calcule le bon nombre: -->
+<!-- !bc ipy -->
+<!-- >>> from midpoint_double import midpoint_double1 -->
+<!-- >>> def f(x, y): -->
+<!-- ...     return 2*x + y -->
+<!-- ... -->
+<!-- >>> midpoint_double1(f, 0, 2, 2, 3, 5, 5) -->
+<!-- 9.0 -->
+<!-- !ec -->
+<!-- === R&#233;utilisation du code pour les int&#233;grales unidimensionnelles === -->
+<!-- Il est tr&#232;s naturel d'&#233;crire une m&#233;thode de point milieu bidimensionnelle comme nous l'avons fait dans la fonction <code>midpoint_double1</code> lorsque nous avons la formule (<a href="#eq:MidpointDouble">eq:MidpointDouble</a>). Cependant, nous pourrions &#233;galement demander, tout comme nous l'avons fait en math&#233;matiques, pouvons-nous r&#233;utiliser une impl&#233;mentation bien test&#233;e pour les int&#233;grales unidimensionnelles pour calculer les doubles int&#233;grales? Autrement dit, pouvons-nous utiliser la fonction <code>midpoint</code>. -->
+<!--  -->
+<!-- !bc pycod -->
+<!-- def midpoint(f, a, b, n): -->
+<!-- h = float(b-a)/n -->
+<!-- result = 0 -->
+<!-- for i in range(n): -->
+<!-- result += f((a + h/2.0) + i*h) -->
+<!-- result *= h -->
+<!-- return result -->
+<!-- !ec -->
+<!--  -->
+<!-- de la the section <a href="#sec:implementation">Impl&#233;mentation</a> "deux fois"? La r&#233;ponse est oui, si nous pensons comme nous l'avons fait dans les math&#233;matiques: calculer l'int&#233;grale double comme r&#232;gle du point milieu pour int&#233;grer \( g (x) \) et d&#233;finir \( g (x_i) \) en termes d'une r&#232;gle du point milieu sur \( f \) dans la coordonn&#233;e \( y \). -->
+<!-- !bc pycod -->
+<!-- def midpoint_double2(f, a, b, c, d, nx, ny): -->
+<!-- def g(x): -->
+<!-- return midpoint(lambda y: f(x, y), c, d, ny) -->
+<!--  -->
+<!-- return midpoint(g, a, b, nx) -->
+<!-- !ec -->
+<!-- L'avantage important de cette impl&#233;mentation est que nous r&#233;utilisons une fonction bien test&#233;e pour la r&#232;gle du point milieu unidimensionnelle standard et que nous appliquons la r&#232;gle unidimensionnelle exactement comme dans les math&#233;matiques. -->
+<!-- === V&#233;rification via les fonctions de test === -->
+<!-- Comment tester que nos fonctions pour la double int&#233;grale fonctionnent? Le meilleur test unitaire consiste &#224; trouver un probl&#232;me o&#249; l'erreur d'approximation num&#233;rique dispara&#238;t, car alors nous savons exactement quelle devrait &#234;tre la r&#233;ponse num&#233;rique. La r&#232;gle du point milieu est exacte pour les fonctions lin&#233;aires, quel que soit le nombre de sous-intervalles que nous utilisons. De plus, toute fonction lin&#233;aire bidimensionnelle \( f(x,y)=px+qy+r \) sera int&#233;gr&#233;e exactement par la r&#232;gle point milieu bidimensionnelle. Nous pouvons choisir \( f(x,y)=2x+y \) et cr&#233;er une fonction de test appropri&#233;e qui peut automatiquement v&#233;rifier nos deux impl&#233;mentations alternatives de la r&#232;gle du point milieu bidimensionnelle. La fonction de test devient: -->
+<!-- !bc pycod -->
+<!-- def test_midpoint_double(): -->
+<!-- """Test that a linear function is integrated exactly.""" -->
+<!-- def f(x, y): -->
+<!-- return 2*x + y -->
+<!--  -->
+<!-- a = 0;  b = 2;  c = 2;  d = 3 -->
+<!-- import sympy -->
+<!-- x, y = sympy.symbols('x  y') -->
+<!-- I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d)) -->
+<!-- # Test three cases: nx < ny, nx = ny, nx > ny -->
+<!-- for nx, ny in (3, 5), (4, 4), (5, 3): -->
+<!-- I_computed1 = midpoint_double1(f, a, b, c, d, nx, ny) -->
+<!-- I_computed2 = midpoint_double2(f, a, b, c, d, nx, ny) -->
+<!-- tol = 1E-14 -->
+<!-- #print I_expected, I_computed1, I_computed2 -->
+<!-- assert abs(I_computed1 - I_expected) < tol -->
+<!-- assert abs(I_computed2 - I_expected) < tol -->
+<!-- !ec -->
+<!-- !bnotice Laisser parler les fonctions de test? -->
+<!-- Si nous appelons la fonction <code>test_midpoint_double</code> ci-dessus et que rien ne se passe, nos impl&#233;mentations sont correctes. Cependant, il est quelque peu ennuyeux d'avoir une fonction compl&#232;tement silencieuse lorsqu'elle fonctionne sommes-nous s&#251;rs que tout est correctement calcul&#233;? Pendant le d&#233;veloppement, il est donc fortement recommand&#233; d'ins&#233;rer une instruction d'impression afin que nous puissions surveiller les calculs et &#234;tre convaincu que la fonction de test fait ce que nous voulons. Puisqu'une fonction de test ne doit avoir aucune instruction print(), nous la commentons simplement comme nous l'avons fait dans la fonction list&#233;e ci-dessus. -->
+<!--  -->
+<!-- !enotice -->
+<!-- La m&#233;thode du trap&#232;ze peut &#234;tre utilis&#233;e comme alternative &#224; la m&#233;thode du point milieu. La d&#233;rivation d'une formule pour la double int&#233;grale et les impl&#233;mentations suivent exactement les m&#234;mes id&#233;es que nous avons expliqu&#233;es avec la m&#233;thode du point milieu, mais il y a plus de termes &#224; &#233;crire dans les formules. -->
+<!-- ===== La r&#232;gle du point milieu pour une triple int&#233;grale ===== -->
+<!-- === Th&#233;orie === -->
+<!-- Une fois qu'une m&#233;thode qui fonctionne pour un probl&#232;me unidimensionnel est g&#233;n&#233;ralis&#233;e &#224; deux dimensions, il est g&#233;n&#233;ralement assez simple d'&#233;tendre la m&#233;thode &#224; trois dimensions. Cela sera maintenant d&#233;montr&#233; pour les int&#233;grales. Nous avons la triple int&#233;grale: -->
+<!-- $$\int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx$$ -->
+<!-- et veulent approximer l'int&#233;grale par une r&#232;gle du point milieu. En suivant les id&#233;es de la double int&#233;grale, nous avons divis&#233; cette int&#233;grale en int&#233;grales unidimensionnelles: -->
+<!-- !bt -->
+<!-- \begin{align*} -->
+<!-- p(x,y) &= \int_e^f g(x,y,z) dz\\ -->
+<!-- q(x) &= \int_c^d p(x,y) dy\\ -->
+<!-- \int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx &= \int_a^b q(x)dx -->
+<!-- \end{align*} -->
+<!-- !et -->
+<!-- Pour chacune de ces int&#233;grales unidimensionnelles, nous appliquons la r&#232;gle du point milieu: -->
+<!-- !bt -->
+<!-- \begin{align*} -->
+<!-- p(x,y) = \int_e^f g(x,y,z) dz -->
+<!-- &\approx \sum_{k=0}^{n_z-1} g(x,y,z_k), -->
+<!-- \\ -->
+<!-- q(x) = \int_c^d p(x,y) dy -->
+<!-- &\approx \sum_{j=0}^{n_y-1} p(x,y_j), -->
+<!-- \\ -->
+<!-- \int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx = \int_a^b q(x)dx -->
+<!-- &\approx \sum_{i=0}^{n_x-1} q(x_i), -->
+<!-- \end{align*} -->
+<!-- !et -->
+<!-- o&#249; -->
+<!-- $$z_k=e + \frac{1}{2}h_z + kh_z,\quad y_j=c + \frac{1}{2}h_y + jh_y \quad -->
+<!-- x_i=a + \frac{1}{2}h_x + ih_x$$ -->
+<!-- En commen&#231;ant par la formule pour \( \int_{a}^{b} \int_c^d \int_e^f g(x,y,z) dzdydx \) et en ins&#233;rant les deux formules pr&#233;c&#233;dentes donne -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- & \int_{a}^{b} \int_c^d \int_e^f g(x,y,z)\, dzdydx\approx\nonumber\\ -->
+<!-- & h_xh_yh_z -->
+<!-- \sum_{i=0}^{n_x-1}\sum_{j=0}^{n_y-1}\sum_{k=0}^{n_z-1} -->
+<!-- g(a + \frac{1}{2}h_x + ih_x, -->
+<!-- c + \frac{1}{2}h_y + jh_y, -->
+<!-- e + \frac{1}{2}h_z + kh_z) \<div id="eq:midpointTriple"></div> -->
+<!-- \end{align} -->
+<!-- !et -->
+<!-- Notez que nous pouvons appliquer les id&#233;es sous D&#233;rivation directe &#224; la fin de la the section <a href="#sec:midpointDouble">sec:midpointDouble</a> arrive &#224; (<a href="#eq:midpointTriple">eq:midpointTriple</a>) directement: diviser le domaine en \( n_x\times n_y\times n_z \) cellules de volumes \( h_xh_yh_z \); approximativement g par une constante, &#233;valu&#233;e au milieu \( (x_i,y_j,z_k) \), dans chaque cellule; et additionner les int&#233;grales de cellule \( h_xh_yh_zg(x_i,y_j,z_k) \). -->
+<!-- === Impl&#233;mentation === -->
+<!-- Nous suivons les id&#233;es pour les impl&#233;mentations de la r&#232;gle du point milieu pour une double int&#233;grale. Les fonctions correspondantes sont pr&#233;sent&#233;es ci-dessous et se trouvent dans le fichier <code>midpoint_triple.py</code>. -->
+<!-- !bc pycod -->
+<!-- def midpoint_triple1(g, a, b, c, d, e, f, nx, ny, nz): -->
+<!-- hx = (b - a)/float(nx) -->
+<!-- hy = (d - c)/float(ny) -->
+<!-- hz = (f - e)/float(nz) -->
+<!-- I = 0 -->
+<!-- for i in range(nx): -->
+<!-- for j in range(ny): -->
+<!-- for k in range(nz): -->
+<!-- xi = a + hx/2 + i*hx -->
+<!-- yj = c + hy/2 + j*hy -->
+<!-- zk = e + hz/2 + k*hz -->
+<!-- I += hx*hy*hz*g(xi, yj, zk) -->
+<!-- return I -->
+<!--  -->
+<!-- def midpoint(f, a, b, n): -->
+<!-- h = float(b-a)/n -->
+<!-- result = 0 -->
+<!-- for i in range(n): -->
+<!-- result += f((a + h/2.0) + i*h) -->
+<!-- result *= h -->
+<!-- return result -->
+<!--  -->
+<!-- def midpoint_triple2(g, a, b, c, d, e, f, nx, ny, nz): -->
+<!-- def p(x, y): -->
+<!-- return midpoint(lambda z: g(x, y, z), e, f, nz) -->
+<!--  -->
+<!-- def q(x): -->
+<!-- return midpoint(lambda y: p(x, y), c, d, ny) -->
+<!--  -->
+<!-- return midpoint(q, a, b, nx) -->
+<!--  -->
+<!-- def test_midpoint_triple(): -->
+<!-- """Test that a linear function is integrated exactly.""" -->
+<!-- def g(x, y, z): -->
+<!-- return 2*x + y - 4*z -->
+<!--  -->
+<!-- a = 0;  b = 2;  c = 2;  d = 3;  e = -1;  f = 2 -->
+<!-- import sympy -->
+<!-- x, y, z = sympy.symbols('x y z') -->
+<!-- I_expected = sympy.integrate( -->
+<!-- g(x, y, z), (x, a, b), (y, c, d), (z, e, f)) -->
+<!-- for nx, ny, nz in (3, 5, 2), (4, 4, 4), (5, 3, 6): -->
+<!-- I_computed1 = midpoint_triple1( -->
+<!-- g, a, b, c, d, e, f, nx, ny, nz) -->
+<!-- I_computed2 = midpoint_triple2( -->
+<!-- g, a, b, c, d, e, f, nx, ny, nz) -->
+<!-- tol = 1E-14 -->
+<!-- print(I_expected, I_computed1, I_computed2) -->
+<!-- assert abs(I_computed1 - I_expected) < tol -->
+<!-- assert abs(I_computed2 - I_expected) < tol -->
+<!--  -->
+<!-- if __name__ == '__main__': -->
+<!-- test_midpoint_triple() -->
+<!-- !ec -->
+
+<h1 id="___sec16" class="anchor">Int&#233;gration Monte Carlo pour les domaines de forme complexe </h1>
+L'utilisation r&#233;p&#233;t&#233;e de r&#232;gles d'int&#233;gration unidimensionnelles pour g&#233;rer les int&#233;grales doubles et triples ne constitue une strat&#233;gie de travail que si le domaine d'int&#233;gration est un rectangle ou une bo&#238;te. Pour toute autre forme de domaine, des m&#233;thodes compl&#232;tement diff&#233;rentes doivent &#234;tre utilis&#233;es. Une approche courante pour les domaines bidimensionnels et tridimensionnels consiste &#224; diviser le domaine en plusieurs petits triangles ou t&#233;tra&#232;dres et &#224; utiliser des m&#233;thodes d'int&#233;gration num&#233;rique pour chaque triangle ou t&#233;tra&#232;dre. L'algorithme global et l'impl&#233;mentation sont trop compliqu&#233;s pour &#234;tre trait&#233;s dans ce livre. Au lieu de cela, nous utiliserons une m&#233;thode alternative, tr&#232;s simple et g&#233;n&#233;rale, appel&#233;e <em>int&#233;gration de Monte Carlo</em>. Il peut &#234;tre impl&#233;ment&#233; dans une demi-page de code, mais n&#233;cessite des ordres de grandeur plus d'&#233;valuations de fonctions en int&#233;grales doubles par rapport &#224; la r&#232;gle du point milieu.
+
+<p>
+Cependant, l'int&#233;gration Monte Carlo est beaucoup plus efficace en termes de calcul que la r&#232;gle du point m&#233;dian lors du calcul d'int&#233;grales de dimension sup&#233;rieure dans plus de trois variables sur des domaines d'hypercube. Nos id&#233;es d'int&#233;grales doubles et triples peuvent &#234;tre facilement g&#233;n&#233;ralis&#233;es pour g&#233;rer une int&#233;grale en \( m \) variables. Une formule m&#233;diane implique alors \( m \) sommes. Avec \( n \) cellules dans chaque direction de coordonn&#233;es, la formule n&#233;cessite une fonction \( n^m \) d'&#233;valuations. Autrement dit, le travail de calcul explose comme une fonction exponentielle du nombre de dimensions de l'espace. L'int&#233;gration de Monte-Carlo, quant &#224; elle, ne souffre pas de cette explosion du travail de calcul et est la m&#233;thode pr&#233;f&#233;r&#233;e pour calculer les int&#233;grales de dimension sup&#233;rieure. Ainsi, il est logique dans un chapitre sur l'int&#233;gration num&#233;rique d'aborder les m&#233;thodes de Monte Carlo, &#224; la fois pour la gestion de domaines complexes et pour la gestion d'int&#233;grales avec de nombreuses variables.
+
+<h2 id="___sec17" class="anchor">L'algorithme d'int&#233;gration de Monte Carlo </h2>
+L'id&#233;e de l'int&#233;gration Monte Carlo de \( \int_a^b f(x)dx \) est d'utiliser le th&#233;or&#232;me de la valeur moyenne du calcul, qui dit que l'int&#233;grale \( \int_a^b f(x)dx \) est &#233;gale &#224; la longueur du domaine d'int&#233;gration, ici \( b - a \), multipli&#233;e par la <em>valeur moyenne</em> de \( f \), \( \bar f \), dans \( [a, b] \). La valeur moyenne peut &#234;tre calcul&#233;e en &#233;chantillonnant \( f \) &#224; un ensemble de points <em>al&#233;atoires</em> &#224; l'int&#233;rieur du domaine et en prenant la moyenne des valeurs de fonction. Dans les dimensions sup&#233;rieures, une int&#233;grale est estim&#233;e comme l'aire/le volume du domaine multipli&#233; par la valeur moyenne, et encore une fois, on peut &#233;valuer l'int&#233;grande &#224; un ensemble de points al&#233;atoires dans le domaine et calculer la valeur moyenne de ces &#233;valuations.
+
+<p>
+Introduisons quelques quantit&#233;s pour nous aider &#224; rendre la sp&#233;cification de l'algorithme d'int&#233;gration plus pr&#233;cise. Supposons que nous ayons une int&#233;grale &#224; deux dimensions
+$$\int_\Omega f(x,y)dxdx,$$
+o&#249; \( \Omega \) est un domaine bidimensionnel d&#233;fini via une fonction d'aide \( g (x, y) \): $$\Omega = \{ (x,y)\,|\, g(x,y) \geq 0\}$$
+Autrement dit, les points \( (x, y) \) pour lesquels \( g (x, y) \ge 0 \) se trouvent &#224; l'int&#233;rieur de \( \Omega \), et les points pour lesquels \( g (x, y) < \Omega \) sont &#224; l'ext&#233;rieur de \( \Omega \). La fronti&#232;re du domaine \( \partial\Omega \) est donn&#233;e par la courbe implicite \( g (x, y) = 0 \). De telles formulations de g&#233;om&#233;tries ont &#233;t&#233; tr&#232;s courantes au cours des deux derni&#232;res d&#233;cennies, et l'une se r&#233;f&#232;re &#224; \( g \) comme une fonction de <em>level-set</em> et la fronti&#232;re \( g = 0 \) comme le contour de niveau z&#233;ro de la fonction de level-set. Pour des g&#233;om&#233;tries simples, on peut facilement construire \( g \) &#224; la main, tandis que dans des applications industrielles plus compliqu&#233;es, il faut recourir &#224; des mod&#232;les math&#233;matiques pour construire \( g \).
+
+<p>
+Soit \( A(\Omega) \) l'aire d'un domaine \( \Omega \). On peut estimer l'int&#233;grale par cette m&#233;thode d'int&#233;gration de Monte Carlo:
+
+<ol>
+<li> incorporer la g&#233;om&#233;trie de \( \Omega \) dans une zone rectangulaire \( R \)</li>
+<li> dessiner un grand nombre de points al&#233;atoires \( (x, y) \) dans \( R \)</li>
+<li> compter la fraction \( q \) de points qui sont &#224; l'int&#233;rieur de \( \Omega \)</li>
+<li> approximativement \( A(\Omega)/ A(R) \) par \( q \), c'est-&#224;-dire, r&#233;gler \( A(\Omega) = q A(R) \)</li>
+<li> &#233;valuer la moyenne de \( f \), \( \bar f \), aux points &#224; l'int&#233;rieur de \( \Omega \)</li>
+<li> estimer l'int&#233;grale comme \( A(\Omega) \bar f \)</li>
+</ol>
+
+Notez que \( A (R) \) est trivial &#224; calculer car R est un rectangle, tandis que \( A(\Omega) \) est inconnu. Cependant, si nous supposons que la fraction de \( A (R) \) occup&#233;e par \( A(\Omega) \) est la m&#234;me que la fraction des points al&#233;atoires &#224; l'int&#233;rieur de \( \Omega \), nous obtenons une estimation simple pour \( A(\Omega) \).
+
+<p>
+Pour avoir une id&#233;e de la m&#233;thode, consid&#233;rons un domaine circulaire \( \Omega \) incorpor&#233; dans un rectangle comme indiqu&#233; ci-dessous. Une collection de points al&#233;atoires est illustr&#233;e par des points noirs.
+<br /><br /><center><p><img src="imgs/integral_complex_domain.png" align="bottom" width=400></p></center><br /><br />
+
+<h2 id="___sec18" class="anchor">Impl&#233;mentation </h2>
+Une fonction Python impl&#233;mentant \( \int_\Omega f(x,y)dxdy \) peut &#234;tre &#233;crite comme ceci:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MonteCarlo_double</span>(f, g, x0, x1, y0, y1, n):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Monte Carlo integration of f over a domain g&gt;=0, embedded</span>
+<span style="color: #BA2121; font-style: italic">    in a rectangle [x0,x1]x[y0,y1]. n^2 is the number of</span>
+<span style="color: #BA2121; font-style: italic">    random points.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #408080; font-style: italic"># Draw n**2 random points in the rectangle</span>
+    x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>uniform(x0, x1, n)
+    y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>uniform(y0, y1, n)
+    <span style="color: #408080; font-style: italic"># Compute sum of f values inside the integration domain</span>
+    f_mean <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    num_inside <span style="color: #666666">=</span> <span style="color: #666666">0</span>   <span style="color: #408080; font-style: italic"># number of x,y points inside domain (g&gt;=0)</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
+        <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(y)):
+            <span style="color: #008000; font-weight: bold">if</span> g(x[i], y[j]) <span style="color: #666666">&gt;=</span> <span style="color: #666666">0</span>:
+                num_inside <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+                f_mean <span style="color: #666666">+=</span> f(x[i], y[j])
+    f_mean <span style="color: #666666">=</span> f_mean<span style="color: #666666">/</span><span style="color: #008000">float</span>(num_inside)
+    area <span style="color: #666666">=</span> num_inside<span style="color: #666666">/</span><span style="color: #008000">float</span>(n<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>(x1 <span style="color: #666666">-</span> x0)<span style="color: #666666">*</span>(y1 <span style="color: #666666">-</span> y0)
+    <span style="color: #008000; font-weight: bold">return</span> area<span style="color: #666666">*</span>f_mean
+</pre></div>
+<p>
+(Voir le fichier <code>MC_double.py</code>.)
+
+<h3 id="___sec19" class="anchor">V&#233;rification </h3>
+
+Un cas de test simple consiste &#224; v&#233;rifier l'aire d'un rectangle \( [0, 2] \times [3, 4.5] \) int&#233;gr&#233; dans un rectangle \( [0,3] \times [2, 5] \). La bonne r&#233;ponse est 3, mais l'int&#233;gration de Monte Carlo n'est malheureusement jamais exacte, il est donc impossible de pr&#233;dire la sortie de l'algorithme. Tout ce que nous savons, c'est que l'int&#233;grale estim&#233;e devrait approcher 3 lorsque le nombre de points al&#233;atoires va &#224; l'infini. De plus, pour un nombre fixe de points, nous pouvons ex&#233;cuter l'algorithme plusieurs fois et obtenir diff&#233;rents nombres qui fluctuent autour de la valeur exacte, car diff&#233;rents points d'&#233;chantillonnage sont utilis&#233;s dans diff&#233;rents appels &#224; l'algorithme d'int&#233;gration de Monte Carlo.
+
+<p>
+L'aire du rectangle peut &#234;tre calcul&#233;e par l'int&#233;grale &#8747;20&#8747;4.53dydx, donc dans ce cas, nous identifions \( f (x, y) = 1 \), et la fonction \( g \) peut &#234;tre sp&#233;cifi&#233;e comme (par exemple) \( 1 \) si \( (x, y) \) est &#224; l'int&#233;rieur de \( [0, 2] \times [3, 4.5] \) et \( &#8722;1 \) sinon. Voici un exemple sur la fa&#231;on dont nous pouvons utiliser la fonction <code>MonteCarlo_double</code> pour calculer la zone pour diff&#233;rents nombres d'&#233;chantillons:
+<p>
+
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">MC_double</span> <span style="color: #008000; font-weight: bold">import</span> MonteCarlo_double
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x, y):
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x <span style="color: #666666">&lt;=</span> <span style="color: #666666">2</span> <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #666666">3</span> <span style="color: #666666">&lt;=</span> y <span style="color: #666666">&lt;=</span> <span style="color: #666666">4.5</span>) <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">-1</span>)
+<span style="color: #666666">...</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">100</span>)
+<span style="color: #666666">2.9484</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">1000</span>)
+<span style="color: #666666">2.947032</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">1000</span>)
+<span style="color: #666666">3.0234600000000005</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">2000</span>)
+<span style="color: #666666">2.9984580000000003</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">2000</span>)
+<span style="color: #666666">3.1903469999999996</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">5000</span>)
+<span style="color: #666666">2.986515</span>
+</pre></div>
+<p>
+Nous voyons que les valeurs fluctuent autour de 3, un fait qui prend en charge une impl&#233;mentation correcte, mais en principe, des bugs peuvent &#234;tre cach&#233;s derri&#232;re les r&#233;ponses inexactes.
+
+<p>
+Il est math&#233;matiquement connu que l'&#233;cart-type de l'estimation de Monte Carlo d'une int&#233;grale converge comme \( n^{&#8722;1/2} \), o&#249; \( n \) est le nombre d'&#233;chantillons.
+
+<h3 id="___sec20" class="anchor">Fonction de test pour la fonction avec des nombres al&#233;atoires </h3>
+
+Pour cr&#233;er une fonction de test, nous avons besoin d'un test unitaire qui a un comportement identique &#224; chaque fois que nous ex&#233;cutons le test. Cela semble difficile lorsque des nombres al&#233;atoires sont impliqu&#233;s, car ces nombres sont diff&#233;rents &#224; chaque fois que nous ex&#233;cutons l'algorithme, et chaque ex&#233;cution produit donc un r&#233;sultat (l&#233;g&#232;rement) diff&#233;rent. Une fa&#231;on standard de tester des algorithmes impliquant des nombres al&#233;atoires consiste &#224; <em>fixer</em> le <em>seed</em> du g&#233;n&#233;rateur de nombres al&#233;atoires. Ensuite, la s&#233;quence de nombres est la m&#234;me chaque fois que nous ex&#233;cutons l'algorithme. En supposant que la fonction <code>MonteCarlo_double</code> fonctionne, nous fixons le <em>seed</em>, observons un certain r&#233;sultat et prenons ce r&#233;sultat comme le r&#233;sultat correct. &#192; condition que la fonction de test utilise toujours cette valeur de d&#233;part (seed), nous devrions obtenir exactement ce r&#233;sultat chaque fois que la fonction <code>MonteCarlo_double</code> est appel&#233;e. Notre fonction de test peut alors &#234;tre &#233;crite comme indiqu&#233; ci-dessous.
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_MonteCarlo_double_rectangle_area</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check the area of a rectangle.&quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x, y):
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x <span style="color: #666666">&lt;=</span> <span style="color: #666666">2</span> <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #666666">3</span> <span style="color: #666666">&lt;=</span> y <span style="color: #666666">&lt;=</span> <span style="color: #666666">4.5</span>) <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">-1</span>)
+
+    x0 <span style="color: #666666">=</span> <span style="color: #666666">0</span>;  x1 <span style="color: #666666">=</span> <span style="color: #666666">3</span>;  y0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  y1 <span style="color: #666666">=</span> <span style="color: #666666">5</span>  <span style="color: #408080; font-style: italic"># embedded rectangle</span>
+    n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+    np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">8</span>)      <span style="color: #408080; font-style: italic"># must fix the seed!</span>
+    I_expected <span style="color: #666666">=</span> <span style="color: #666666">3.121092</span>  <span style="color: #408080; font-style: italic"># computed with this seed</span>
+    I_computed <span style="color: #666666">=</span> MonteCarlo_double(
+        <span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, x0, x1, y0, y1, n)
+    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(I_expected <span style="color: #666666">-</span> I_computed) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-14</span>
+</pre></div>
+<p>
+(Voir le fichier <code>MC_double.py</code>.)
+
+<h3 id="___sec21" class="anchor">Int&#233;grale sur un cercle </h3>
+
+Le test ci-dessus implique une fonction triviale \( f (x, y) = 1 \). Nous devons &#233;galement tester une fonction \( f \) non constante et un domaine plus compliqu&#233;. Soit \( \Omega \) un cercle &#224; l'origine de rayon \( 2 \), et soit \( f=\sqrt{x^2 + y^2} \). son choix permet de calculer un r&#233;sultat exact: en coordonn&#233;es polaires, \( \int_\Omega f(x,y)dxdy \) se simplifie &#224; \( 2\pi\int_0^2 r^2dr = 16\pi/3 \). Nous devons nous pr&#233;parer &#224; des approximations assez grossi&#232;res qui fluctuent autour de ce r&#233;sultat exact. Comme dans le cas de test ci-dessus, nous obtenons de meilleurs r&#233;sultats avec un plus grand nombre de points. Lorsque nous avons de telles preuves pour une impl&#233;mentation fonctionnelle, nous pouvons transformer le test en une fonction de test appropri&#233;e. Voici un exemple:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_MonteCarlo_double_circle_r</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check the integral of r over a circle with radius 2.&quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x, y):
+        xc, yc <span style="color: #666666">=</span> <span style="color: #666666">0</span>, <span style="color: #666666">0</span>  <span style="color: #408080; font-style: italic"># center</span>
+        R <span style="color: #666666">=</span> <span style="color: #666666">2</span>          <span style="color: #408080; font-style: italic"># radius</span>
+        <span style="color: #008000; font-weight: bold">return</span>  R<span style="color: #666666">**2</span> <span style="color: #666666">-</span> ((x<span style="color: #666666">-</span>xc)<span style="color: #666666">**2</span> <span style="color: #666666">+</span> (y<span style="color: #666666">-</span>yc)<span style="color: #666666">**2</span>)
+
+    <span style="color: #408080; font-style: italic"># Exact: integral of r*r*dr over circle with radius R becomes</span>
+    <span style="color: #408080; font-style: italic"># 2*pi*1/3*R**3</span>
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span>
+    r <span style="color: #666666">=</span> sympy<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;r&#39;</span>)
+    I_exact <span style="color: #666666">=</span> sympy<span style="color: #666666">.</span>integrate(<span style="color: #666666">2*</span>sympy<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>r<span style="color: #666666">*</span>r, (r, <span style="color: #666666">0</span>, <span style="color: #666666">2</span>))
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Exact integral:&#39;</span>, I_exact<span style="color: #666666">.</span>evalf())
+    x0 <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  x1 <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  y0 <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  y1 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+    np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">6</span>)
+    I_expected <span style="color: #666666">=</span> <span style="color: #666666">16.7970837117376384</span>  <span style="color: #408080; font-style: italic"># Computed with this seed</span>
+    I_computed <span style="color: #666666">=</span> MonteCarlo_double(
+        <span style="color: #008000; font-weight: bold">lambda</span> x, y: np<span style="color: #666666">.</span>sqrt(x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> y<span style="color: #666666">**2</span>),
+        g, x0, x1, y0, y1, n)
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;MC approximation </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> samples): </span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (n<span style="color: #666666">**2</span>, I_computed))
+    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(I_expected <span style="color: #666666">-</span> I_computed) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-15</span>
+</pre></div>
+<p>
+(Voir le fichier <code>MC_double.py</code>.)
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+
