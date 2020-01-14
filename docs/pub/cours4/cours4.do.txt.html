@@ -95,16 +95,16 @@ Avec $v(t) = 3t^{2}e^{t^3}$, chaque terme dans (ref{eq:trapezoids}) est facileme
 <span style="color: #8B008B; font-weight: bold">!et</span>
 Par rapport à la vraie réponse de $1.718$, cela est d&#39;environ $10 \%$. Cependant, notez que nous avons utilisé seulement 4 trapèzes pour approximer la zone. Avec plus de trapèzes, l&#39;approximation serait devenue meilleure, puisque les segments de droite du côté supérieur des trapèzes suivraient alors le graphique de plus près. Faire un autre calcul avec plus de trapèzes n&#39;est pas trop tentant pour un humain paresseux, mais c&#39;est un travail parfait pour un ordinateur! Dérivons donc les expressions d&#39;approximation de l&#39;intégrale par un nombre arbitraire de trapèzes.
 <span style="color: #000080; font-weight: bold">===== La formule générale =====</span>
-Pour une fonction donnée $f (x)$, nous voulons approximer l&#39;intégrale $\int_a^bf(x)dx$ par $n$ trapèzes (de largeur égale). Nous commençons par (3.5) et approchons chaque intégrale du côté droit avec un seul trapèze. En détail,
+Pour une fonction donnée $f (x)$, nous voulons approximer l&#39;intégrale $\int_a^bf(x)dx$ par $n$ trapèzes (de largeur égale). Nous commençons par (ref{eq:SumIntegrals}) et approchons chaque intégrale du côté droit avec un seul trapèze. En détail,
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{align}</span>
 \int_a^b f(x)\,dx &amp;= \int_{x_0}^{x_1} f(x) dx + \int_{x_1}^{x_2} f(x) dx + \ldots + \int_{x_{n-1}}^{x_n} f(x) dx,     \nonumber \\
                   &amp;\approx h \frac{f(x_0) + f(x_1)}{2} +
 		  h \frac{f(x_1) + f(x_2)}{2} + \ldots + \nonumber \\
-		  &amp;\quad h \frac{f(x_{n-1}) + f(x_n)}{2}
+		  &amp;\quad h \frac{f(x_{n-1}) + f(x_n)}{2} \label{eq:SumTrapezes}
 <span style="color: #658b00">\end{align}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
-En simplifiant le côté droit de (3.15), nous obtenons
+En simplifiant le côté droit de (ref{eq:SumTrapezes}), nous obtenons
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{equation}</span>
 \int_a^b f(x)\,dx \approx \\

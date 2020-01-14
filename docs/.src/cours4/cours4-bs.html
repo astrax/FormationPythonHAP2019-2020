@@ -179,7 +179,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Jan 7, 2020</h4></center> <!-- date -->
+<center><h4>Jan 14, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -334,23 +334,22 @@ $$
 Par rapport &#224; la vraie r&#233;ponse de \( 1.718 \), cela est d'environ \( 10 \% \). Cependant, notez que nous avons utilis&#233; seulement 4 trap&#232;zes pour approximer la zone. Avec plus de trap&#232;zes, l'approximation serait devenue meilleure, puisque les segments de droite du c&#244;t&#233; sup&#233;rieur des trap&#232;zes suivraient alors le graphique de plus pr&#232;s. Faire un autre calcul avec plus de trap&#232;zes n'est pas trop tentant pour un humain paresseux, mais c'est un travail parfait pour un ordinateur! D&#233;rivons donc les expressions d'approximation de l'int&#233;grale par un nombre arbitraire de trap&#232;zes.
 
 <h2 id="___sec4" class="anchor">La formule g&#233;n&#233;rale </h2>
-Pour une fonction donn&#233;e \( f (x) \), nous voulons approximer l'int&#233;grale \( \int_a^bf(x)dx \) par \( n \) trap&#232;zes (de largeur &#233;gale). Nous commen&#231;ons par (3.5) et approchons chaque int&#233;grale du c&#244;t&#233; droit avec un seul trap&#232;ze. En d&#233;tail,
+Pour une fonction donn&#233;e \( f (x) \), nous voulons approximer l'int&#233;grale \( \int_a^bf(x)dx \) par \( n \) trap&#232;zes (de largeur &#233;gale). Nous commen&#231;ons par \eqref{eq:SumIntegrals} et approchons chaque int&#233;grale du c&#244;t&#233; droit avec un seul trap&#232;ze. En d&#233;tail,
 $$
 \begin{align}
 \int_a^b f(x)\,dx &= \int_{x_0}^{x_1} f(x) dx + \int_{x_1}^{x_2} f(x) dx + \ldots + \int_{x_{n-1}}^{x_n} f(x) dx,     \nonumber \\
                   &\approx h \frac{f(x_0) + f(x_1)}{2} +
 		  h \frac{f(x_1) + f(x_2)}{2} + \ldots + \nonumber \\
-		  &\quad h \frac{f(x_{n-1}) + f(x_n)}{2}
-\label{_auto6}
+		  &\quad h \frac{f(x_{n-1}) + f(x_n)}{2} \label{eq:SumTrapezes}
 \end{align}
 $$
 
-En simplifiant le c&#244;t&#233; droit de (3.15), nous obtenons
+En simplifiant le c&#244;t&#233; droit de \eqref{eq:SumTrapezes}, nous obtenons
 $$
 \begin{equation}
 \int_a^b f(x)\,dx \approx \\
 \frac{h}{2}\left[f(x_0) + 2 f(x_1) + 2 f(x_2) + \ldots + 2 f(x_{n-1}) + f(x_n)\right]
-\label{_auto7}
+\label{_auto6}
 \end{equation}
 $$
 
@@ -512,7 +511,7 @@ $$
    h_2 f\left(\frac{0.2 + 0.6}{2}\right) \nonumber  \\
 &+ h_3 f\left(\frac{0.6 + 0.8}{2}\right) +
    h_4 f\left(\frac{0.8 + 1.0}{2}\right)
-\label{_auto8}
+\label{_auto7}
 \end{align}
 $$
 
@@ -537,11 +536,11 @@ $$
                   &\approx h f\left(\frac{x_0 + x_1}{2}\right) +
                    h f\left(\frac{x_1 + x_2}{2}\right) + \ldots +
                    h f\left(\frac{x_{n-1} + x_n}{2}\right) 
-\label{_auto9}\\
+\label{_auto8}\\
                   &\approx h \left(f\left(\frac{x_0 + x_1}{2}\right) +
                   f\left(\frac{x_1 + x_2}{2}\right) + \ldots +
                   f\left(\frac{x_{n-1} + x_n}{2}\right)\right)
-\label{_auto10}
+\label{_auto9}
 \end{align}
 $$
 
