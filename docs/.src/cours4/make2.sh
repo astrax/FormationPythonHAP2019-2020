@@ -3,7 +3,7 @@
 # Compile a French document to PDF and HTML
 #
 
-name=TD3
+name=TD4
 # doconce ipynb2doconce $name.ipynb
 
 options="--encoding=utf-8"
@@ -29,6 +29,8 @@ function common_replacements {
   doconce replace "Example" "Exemple" $1
   doconce replace "Warning" "Attention" $1
   doconce replace "Hint" "Indication" $1
+  doconce replace "Exercise" "Exercice" $1
+  doconce replace "Remarks" "Remarques" $1
 }
 
 doconce pygmentize $name.do.txt perldoc
@@ -65,7 +67,7 @@ pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 # HTML
-system doconce format html $name --html_style=bootswatch_journal $options
+system doconce format html $name --html_style=bootswatch_journal $options $opt2
 common_replacements $name.html
 
 # Publish

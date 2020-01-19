@@ -1,0 +1,420 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TD N°4 : Intégration numérique">
+
+<title>TD N°4 : Intégration numérique</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Table des matières',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ("Exercice 1: Vitesse d'une fusée", 2, None, '___sec0'),
+              ('Exercice 2: Valeur approchée de $\\pi$', 2, None, '___sec1'),
+              ('Exercice 3: Intégration adaptative',
+               2,
+               'ex:adaptatif',
+               'ex:adaptatif'),
+              ('Remarques', 3, None, '___sec3'),
+              ('Exercice 4: Intégration de x élevé à x', 2, None, '___sec4'),
+              ('Exercice 5: Orbitales atomiques', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="TD4.html">TD N°4 : Intégration numérique</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Exercice 1: Vitesse d'une fusée</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Exercice 2: Valeur approchée de \( \pi \)</b></a></li>
+     <!-- navigation toc: --> <li><a href="#ex:adaptatif" style="font-size: 80%;"><b>Exercice 3: Intégration adaptative</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Remarques</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>Exercice 4: Intégration de x élevé à x</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>Exercice 5: Orbitales atomiques</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>TD N&#176;4 : Int&#233;gration num&#233;rique</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Jan 19, 2020</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Exercice 1: Vitesse d'une fus&#233;e </a><br>
+<a href="#___sec1"> Exercice 2: Valeur approch&#233;e de \( \pi \) </a><br>
+<a href="#ex:adaptatif"> Exercice 3: Int&#233;gration adaptative </a><br>
+<a href="#___sec4"> Exercice 4: Int&#233;gration de x &#233;lev&#233; &#224; x </a><br>
+<a href="#___sec5"> Exercice 5: Orbitales atomiques </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec0" class="anchor">Exercice 1: Vitesse d'une fus&#233;e </h2>
+
+<p>
+On lance une fus&#233;e verticalement du sol et l&#8217;on mesure pendant les premi&#232;res 80 secondes l'acc&#233;l&#233;ration \( \gamma \):
+
+<p>
+
+<div class="row">
+  <div class="col-xs-8">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="left"><b>           t[s]          </b></td> <td align="center"><b>0 </b></td> <td align="center"><b>  10 </b></td> <td align="center"><b>  20 </b></td> <td align="center"><b>  30 </b></td> <td align="center"><b>  40 </b></td> <td align="center"><b>  50 </b></td> <td align="center"><b>  60 </b></td> <td align="center"><b>  70 </b></td> <td align="center"><b>  80 </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   \( \gamma \) [m $s^{-2}$]    </td> <td align="center">   30    </td> <td align="center">   31.63    </td> <td align="center">   33.44    </td> <td align="center">   35.47    </td> <td align="center">   37.75    </td> <td align="center">   40.33    </td> <td align="center">   43.29    </td> <td align="center">   46.70    </td> <td align="center">   50.67    </td> </tr>
+</tbody>
+    </table>
+  </div> <!-- col-xs-8 -->
+</div> <!-- cell row -->
+<p>
+Calculer la vitesse \( V \) de la fus&#233;e &#224; l&#8217;instant \( t=80 \ s \), par la m&#233;thode des trap&#232;zes.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec1" class="anchor">Exercice 2: Valeur approch&#233;e de \( \pi \) </h2>
+
+<p>
+&#201;tant donn&#233;e l'&#233;galit&#233;:
+$$
+\begin{equation}
+\pi = 4 \left( \int_0^\infty e^{-x^2} dx \right)^2 = 4 \left( \int_0^{10} e^{-x^2} dx + \epsilon \right)^2
+\label{_auto1}
+\end{equation}
+$$
+
+avec \( 0 < \epsilon < 10^{&#8722;44} \) , utiliser la m&#233;thode des trap&#232;zes composite &#224; \( 10 \) intervalles pour estimer la valeur de \( \pi \).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="ex:adaptatif" class="anchor">Exercice 3: Int&#233;gration adaptative</h2>
+
+<p>
+Supposons que nous voulons utiliser la m&#233;thode des trap&#232;zes ou du point milieu pour calculer une int&#233;grale \( \int_a^b f(x)dx \) avec une erreur inf&#233;rieure &#224; une tol&#233;rance prescrite \( \epsilon \). Quelle est la taille appropri&#233;e de \( n \)?
+
+<p>
+Pour r&#233;pondre &#224; cette question, nous pouvons entrer une proc&#233;dure it&#233;rative o&#249; nous comparons les r&#233;sultats produits par \( n \) et \( 2n \) intervalles, et si la diff&#233;rence est inf&#233;rieure &#224; \( \epsilon \), la valeur correspondant &#224; \( 2n \) est retourn&#233;e. Sinon, nous avons \( n \) et r&#233;p&#233;tons la proc&#233;dure.
+
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_1" style="font-size: 80%;"></a>
+<a href="#exer_3_1" data-toggle="collapse">
+<b>Indication.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_1">
+
+<p>
+Il peut &#234;tre une bonne id&#233;e d'organiser votre code afin que la fonction <code>integration_adaptive</code> peut &#234;tre utilis&#233; facilement dans les programmes futurs que vous &#233;crivez.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+
+<p>
+<b>a)</b>
+&#201;crire une fonction <code>integration_adaptive(f, a, b, eps, method=&quot;midpoint&quot;)</code> qui impl&#233;mente l'id&#233;e ci-dessus (<code>eps</code> correspond &#224; la tol&#233;rance \( \epsilon \), et la m&#233;thode peut &#234;tre <code>midpoint</code> ou <code>trapeze</code>).
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>b)</b>
+Testez la m&#233;thode sur \( g(x) = \int_0^2\sqrt{x}dx \) pour \( \epsilon = 10^{&#8722;1},10^{&#8722;10} \) et notez l'erreur exacte.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>c)</b>
+Faites un trac&#233; de \( n \) en fonction de \( \epsilon \in [10^{-1}, 10^{-10}] \) pour \( \int_0^2\sqrt{x}dx \). Utilisez l'&#233;chelle logarithmique pour \( \epsilon \).
+
+<p>
+<center> <!-- figure label: --> <div id="fig:eps"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Affichage de n en fonction de \( \epsilon \) lorsque \( \int_0^2\sqrt{x}dx \) est calcul&#233; par la m&#233;thode du point milieu (bleu) et la m&#233;thode des trap&#232;zes (rouge).  <!-- caption label: fig:eps --> </p></center>
+<p><img src="imgs/eps.png" align="bottom" width=400></p>
+</center>
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- Closing remarks for this Exercice -->
+
+<h3 id="___sec3" class="anchor">Remarques </h3>
+
+<p>
+Le type de m&#233;thode explor&#233; dans cet exercice est appel&#233; <em>adaptatif</em>, car il essaie d'adapter la valeur de n pour r&#233;pondre &#224; un crit&#232;re d'erreur donn&#233;. La vraie erreur peut tr&#232;s rarement &#234;tre calcul&#233;e (car nous ne connaissons pas la r&#233;ponse exacte au probl&#232;me de calcul), il faut donc trouver d'autres indicateurs de l'erreur, comme celui ici o&#249; les changements de la valeur int&#233;grale, comme le nombre d'intervalles est doubl&#233;, est pris pour refl&#233;ter l'erreur.
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec4" class="anchor">Exercice 4: Int&#233;gration de x &#233;lev&#233; &#224; x </h2>
+
+<p>
+Consid&#233;rons l'int&#233;grale
+$$
+\begin{equation*}
+I = \int_0^2 x^x\,dx\thinspace .
+\end{equation*}
+$$
+
+L'int&#233;grande \( x^x \) n'a pas de primitive qui peut &#234;tre exprim&#233; en termes de fonctions standard (visitez <a href="http://wolframalpha.com" target="_self"><tt>http://wolframalpha.com</tt></a> et tapez <code>integral x^x dx from 0 to 2</code> pour vous convaincre que notre affirmation est juste. Notez que Wolfram alpha vous donne une r&#233;ponse, mais cette r&#233;ponse est une approximation, elle n'est pas <em>exacte</em>. C'est parce que Wolfram alpha utilise &#233;galement des m&#233;thodes num&#233;riques pour arriver &#224; la r&#233;ponse, comme vous le ferez dans cet exercice). Par cons&#233;quent, nous sommes oblig&#233;s de calculer l'int&#233;grale par des m&#233;thodes num&#233;riques. Calculez un r&#233;sultat compos&#233; de quatre chiffres.
+
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_1" style="font-size: 80%;"></a>
+<a href="#exer_4_1" data-toggle="collapse">
+<b>Indication.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_1">
+
+<p>
+Utilisez des id&#233;es de l'exercice <a href="#ex:adaptatif">Exercice 3: Int&#233;gration adaptative</a>.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec5" class="anchor">Exercice 5: Orbitales atomiques </h2>
+
+<p>
+Pour d&#233;crire la trajectoire d'un &#233;lectron autour d'un noyau, une description probabiliste est adopt&#233;e : l'&#233;lectron n'est plus caract&#233;ris&#233; par ses coordonn&#233;es spatiales mais par sa <em>probabilit&#233; de pr&#233;sence</em> en un point de l'espace.
+
+<p>
+Pour simplifier le probl&#232;me, on consid&#233;rera que cette probabilit&#233; de pr&#233;sence ne d&#233;pend que de la variable \( r \), distance entre l'&#233;lectron et le centre du noyau. Pour une orbitale \( 1s \), la probabilit&#233; de trouver l'&#233;lectron entre les rayons \( r_1 \) et \( r_2 \) s'&#233;crit :
+$$
+\begin{align*}
+P_{s1} = \int_{r_1}^{r_2} \underbrace{4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}}_\text{densité radiale} dr
+\end{align*}
+$$
+
+avec \( a_0 = 0.529 \) $\AA$, appel&#233; le rayon de Bohr.
+
+<p>
+La densit&#233; radiale, repr&#233;sent&#233;e dans la figure <a href="#fig:D_rad">2</a>, est maximale pour \( r = a_0 \). Ce rayon qui maximise la densit&#233; radiale est appel&#233; le <em>rayon orbitalaire</em>.
+<div class="alert alert-block alert-success alert-text-normal"><b>À noter.</b>
+Dans ce probl&#232;me, les distances seront conserv&#233;es en Angstr&#246;m.
+</div>
+
+
+<p>
+<center> <!-- figure label: --> <div id="fig:D_rad"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Densit&#233; radiale pour une orbitale atomique 1s.  <!-- caption label: fig:D_rad --> </p></center>
+<p><img src="imgs/densite_radiale.png" align="bottom" width=400></p>
+</center>
+
+<p>
+<b>a)</b>
+D&#233;finir une fonction <code>densite_radiale()</code>, d&#233;finie entre \( 0 \) et \( \infty \) qui prend comme param&#232;tre variable un rayon \( r \) et comme param&#232;tre par d&#233;faut \( a_0 = 0.529 \) $\AA$ et renvoie la valeur \( 4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}} \).
+
+<p>
+<b>b)</b>
+Tracer la densit&#233; radiale pour \( r \in [0, 2.6] \quad \AA \), afin d'obtenir le m&#234;me graphique sur la figure <a href="#fig:D_rad">2</a>.
+
+<p>
+<b>c)</b>
+On souhaite d&#233;terminer la probabilit&#233; de pr&#233;sence de l'&#233;lectron entre \( 0 \) et \( a_0 \). &#201;valuer cette probabilit&#233; &#224; l'aide de \( 100 \) rectangles. On pourra v&#233;rifier que la r&#233;ponse obtenue est proche de \( 0.32 \).
+
+<p>
+<b>d)</b>
+D&#233;terminer le nombre entier \( n \), tel que l'&#233;lectron ait une probabilit&#233; sup&#233;rieure ou &#233;gale &#224; \( 90 \% \) de se trouver entre \( 0 \) et \( n*a_0 \).
+
+<p>
+<b>e)</b>
+On souhaite d&#233;sormais &#233;valuer la probabilit&#233; de trouver l'&#233;lectron proche du rayon de Bohr, c'est-&#224;-dire entre \( 0.9*a_0 \) et \( 1.1*a_0 \). &#201;valuer cette probabilit&#233; &#224; l'aide de 100 rectangles.
+
+<p>
+<b>f)</b>
+D'apr&#232;s la valeur obtenue &#224; la question pr&#233;c&#233;dente, que penser de la description des trajectoires des &#233;lectrons par orbite autour du noyau ?
+<div class="alert alert-block alert-success alert-text-normal"><b>À noter.</b>
+On r&#233;pondra en commentaire dans le programme.
+</div>
+
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- --- end exercise --- -->
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

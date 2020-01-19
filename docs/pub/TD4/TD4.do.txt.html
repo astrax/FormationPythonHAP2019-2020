@@ -1,0 +1,213 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: TD N°4 : Intégration numérique</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Vitesse d&#39;une fusée =====</span>
+On lance une fusée verticalement du sol et l’on mesure pendant les premières 80 secondes l&#39;accélération $\gamma$:
+
+<span style="color: #CD5555">|------l--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c-------|</span>
+<span style="color: #CD5555">| t[s]         | 0            | 10           | 20           | 30           | 40           | 50           | 60           | 70           | 80           |</span>
+<span style="color: #CD5555">|------l--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c--------------c-------|</span>
+<span style="color: #CD5555">| $\gamma$ [m $s^{-2}$]  | 30           | 31.63        | 33.44        | 35.47        | 37.75        | 40.33        | 43.29        | 46.70        | 50.67        |</span>
+<span style="color: #CD5555">|-----------------------------------------------------------------------------------------------------------------------------------------------------|</span>
+
+Calculer la vitesse $V$ de la fusée à l’instant $t=80 \ s$, par la méthode des trapèzes.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+On sait que l’accélération $\gamma$ est la dérivée de la vitesse $V$, donc,
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+V(t) &amp;= \int_0^t \gamma(s) ds \\
+I &amp;= V(80) = \int_0^{80} \gamma(s) ds
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Calculons $I$ par la méthode des trapèzes. Ici, d’après le tableau des valeurs, $h = 10$.
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+I \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+I &amp;\approx 10 \left[\frac{1}{2} \times 30 + \frac{1}{2} \times 50.67 + 31.63 + 33.44 + \ldots + 46.70 \right] \\
+  &amp;\approx 3089.45 \quad ms^{-1}
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+h = 10
+I = 0.5 * (30 + 50.67) # 1/2 * [f(x0) + f(xn)]
+fx = [31.63,33.44,35.47,37.75,40.33,43.29,46.70] # f(x1) ---&gt; f(xn-1)
+for i in range(len(fx)):
+    I+= fx[i]
+I*=h
+print(I, &quot;ms^-1&quot;)
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Valeur approchée de $\pi$ =====</span>
+Étant donnée l&#39;égalité:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\pi = 4 \left( \int_0^\infty e^{-x^2} dx \right)^2 = 4 \left( \int_0^{10} e^{-x^2} dx + \epsilon \right)^2
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $0 &lt; \epsilon &lt; 10^{−44}$ , utiliser la méthode des trapèzes composite à $10$ intervalles pour estimer la valeur de $\pi$.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La méthode des trapèzes composite à $n$ intervalles pour calculer l’intégrale d’une fonction f sur l’intervalle $[a, b]$ s’écrit
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+\int_a^b f(x)\,dx \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $h = \frac{b-a}{n}$ et $x_i = a + ih,\quad i = 0,1,\ldots,n$
+
+Ici on a $f (x) = e^{-x}$ , $a = 0$, $b = 10$, $n = 10$ d’où $h = 1$ et on obtient
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+I \approx \frac{1}{2} + \sum_{i=1}^{9} e^{-i} + \frac{1}{2e^{100}} = \frac{1}{2} + \frac{1}{e} + \frac{1}{e^{4}} + \frac{1}{e^{9}} + \frac{1}{e^{16}} + \frac{1}{e^{25}} + \frac{1}{e^{36}} + \frac{1}{e^{49}} + \frac{1}{e^{64}} + \frac{1}{e^{81}} + \frac{1}{2e^{100}}
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+ainsi en utilisant la fonction `trapeze(f,a,b,n)` du module `trapeze_integral.py` décrite dans le cours comme suit
+<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
+from trapeze_integral import trapeze
+from math import exp
+f = lambda x: exp(-x**2)
+I = trapeze(f, 0, 10, 10)
+print(4*I**2)
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+on obtient $\pi \approx 4I^2 = 3.14224265994$.
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Intégration adaptative =====</span>
+<span style="color: #658b00">label{ex:adaptatif}</span>
+
+Supposons que nous voulons utiliser la méthode des trapèzes ou du point milieu pour calculer une intégrale $\int_a^b f(x)dx$ avec une erreur inférieure à une tolérance prescrite $\epsilon$. Quelle est la taille appropriée de $n$?
+
+Pour répondre à cette question, nous pouvons entrer une procédure itérative où nous comparons les résultats produits par $n$ et $2n$ intervalles, et si la différence est inférieure à $\epsilon$, la valeur correspondant à $2n$ est retournée. Sinon, nous avons $n$ et répétons la procédure.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Il peut être une bonne idée d&#39;organiser votre code afin que la fonction `integration_adaptive` peut être utilisé facilement dans les programmes futurs que vous écrivez.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+
+Écrire une fonction `integration_adaptive(f, a, b, eps, method=&quot;midpoint&quot;)` qui implémente l&#39;idée ci-dessus (`eps` correspond à la tolérance $\epsilon$, et la méthode peut être `midpoint` ou `trapeze`).
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+En facilitant les réponses à l&#39;ensemble de cet exercice, ainsi qu&#39;en préparant l&#39;utilisation facile de l&#39;intégration adaptative dans les futurs programmes, nous organisons le codage des tâches a, b et c en un seul fichier, ce qui en fait un module. Le code se lit alors:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/integration_adaptive.py</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Testez la méthode sur $g(x) = \int_0^2\sqrt{x}dx$ pour $\epsilon = 10^{−1},10^{−10}$ et notez l&#39;erreur exacte.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Voir le code ci-dessus. Notez que, dans notre code suggéré, il est prévu que le programmeur bascule entre les deux valeurs epsilon en utilisant des commentaires, c&#39;est-à-dire en ajoutant/supprimant `#`. Cela peut bien sûr être évité, si cela est souhaitable, en demandant à l&#39;utilisateur d&#39;entrer un valeur d&#39;epsilon.
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Faites un tracé de $n$ en fonction de $\epsilon \in [10^{-1}, 10^{-10}]$ pour $\int_0^2\sqrt{x}dx$. Utilisez l&#39;échelle logarithmique pour $\epsilon$.
+
+<span style="color: #658b00">FIGURE:[imgs/eps, width=400 frac=0.7] Affichage de n en fonction de $\epsilon$ lorsque $\int_0^2\sqrt{x}dx$ est calculé par la méthode du point milieu (bleu) et la méthode des trapèzes (rouge). label{fig:eps}</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La figure ref{fig:eps} montre que plus la valeur d&#39;epsilon est stricte, plus la différence entre les méthodes du point milieu et des trapèzes est grande. Pour une valeur donnée pour epsilon, la méthode du point milieu se situe dans la tolérance avec moins d&#39;intervalles (valeur inférieure de $n$) que la méthode des trapèzes. Il faut s&#39;y attendre, car la méthode du point milieu est un peu plus précise que la méthode des trapèzes.
+
+Une façon de produire ce tracé est d&#39;utiliser les lignes de code incluses à la fin de `integration_adaptive.py` (voir ci-dessus).
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bremarks</span>
+Le type de méthode exploré dans cet exercice est appelé *adaptatif*, car il essaie d&#39;adapter la valeur de n pour répondre à un critère d&#39;erreur donné. La vraie erreur peut très rarement être calculée (car nous ne connaissons pas la réponse exacte au problème de calcul), il faut donc trouver d&#39;autres indicateurs de l&#39;erreur, comme celui ici où les changements de la valeur intégrale, comme le nombre d&#39;intervalles est doublé, est pris pour refléter l&#39;erreur.
+<span style="color: #8B008B; font-weight: bold">!eremarks</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Intégration de x élevé à x =====</span>
+Considérons l&#39;intégrale
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+I = \int_0^2 x^x\,dx\thinspace .
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+L&#39;intégrande $x^x$ n&#39;a pas de primitive qui peut être exprimé en termes de fonctions standard (visitez URL:&quot;http://wolframalpha.com&quot; et tapez `integral x^x dx from 0 to 2` pour vous convaincre que notre affirmation est juste. Notez que Wolfram alpha vous donne une réponse, mais cette réponse est une approximation, elle n&#39;est pas *exacte*. C&#39;est parce que Wolfram alpha utilise également des méthodes numériques pour arriver à la réponse, comme vous le ferez dans cet exercice). Par conséquent, nous sommes obligés de calculer l&#39;intégrale par des méthodes numériques. Calculez un résultat composé de quatre chiffres.
+<span style="color: #8B008B; font-weight: bold">!bhint</span>
+Utilisez des idées de l&#39;exercice ref{ex:adaptatif}.
+<span style="color: #8B008B; font-weight: bold">!ehint</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Lorsque la fonction `integration_adaptive` est disponible, le code peut s&#39;écrire:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/xtox.py</span>
+
+N&#39;oubliez pas que `integration_adaptive` affiche l&#39;intégrale calculée, donc aucun effort à cet égard n&#39;est requis ici.
+
+L&#39;exécution du programme donne une impression à l&#39;écran montrant comment la différence devient de plus en plus petite à chaque fois. Les deux lignes de l&#39;impression se lisent comme suit:
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+L&#39;intégrale calcule:  2.8338439595776044
+n suffisant est: 256
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+La valeur calculée peut être comparée à ce que donne Wolfram alpha. N&#39;oubliez pas qu&#39;étant donné que nous n&#39;avons pas calculé l&#39;erreur exacte, nous ne pouvons garantir que le &quot;résultat est correct à quatre chiffres&quot;. Cependant, nous avons des raisons de croire que nous &quot;sommes proches&quot;. Typiquement, lorsque l&#39;on sait que la mesure d&#39;erreur utilisée n&#39;est pas précise, la tolérance est rendue plus stricte.
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise: Orbitales atomiques =====</span>
+Pour décrire la trajectoire d&#39;un électron autour d&#39;un noyau, une description probabiliste est adoptée : l&#39;électron n&#39;est plus caractérisé par ses coordonnées spatiales mais par sa *probabilité de présence* en un point de l&#39;espace.
+
+Pour simplifier le problème, on considérera que cette probabilité de présence ne dépend que de la variable $r$, distance entre l&#39;électron et le centre du noyau. Pour une orbitale $1s$, la probabilité de trouver l&#39;électron entre les rayons $r_1$ et $r_2$ s&#39;écrit :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+P_{s1} = \int_{r_1}^{r_2} \underbrace{4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}}_\text{densité radiale} dr
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $a_0 = 0.529$ $\AA$, appelé le rayon de Bohr.
+
+La densité radiale, représentée dans la figure ref{fig:D_rad}, est maximale pour $r = a_0$. Ce rayon qui maximise la densité radiale est appelé le *rayon orbitalaire*.
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Dans ce problème, les distances seront conservées en Angström.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #658b00">FIGURE:[imgs/densite_radiale, width=400 frac=0.7] Densité radiale pour une orbitale atomique 1s. label{fig:D_rad}</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Définir une fonction `densite_radiale()`, définie entre $0$ et $\infty$ qui prend comme paramètre variable un rayon $r$ et comme paramètre par défaut $a_0 = 0.529$ $\AA$ et renvoie la valeur $4 \times \frac{r^2}{a_0^3} \times e^{-2 \times \frac{r}{a_0}}$.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Tracer la densité radiale pour $r \in [0, 2.6] \quad \AA$, afin d&#39;obtenir le même graphique sur la figure ref{fig:D_rad}.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+On souhaite déterminer la probabilité de présence de l&#39;électron entre $0$ et $a_0$. Évaluer cette probabilité à l&#39;aide de $100$ rectangles. On pourra vérifier que la réponse obtenue est proche de $0.32$.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Déterminer le nombre entier $n$, tel que l&#39;électron ait une probabilité supérieure ou égale à $90 \%$ de se trouver entre $0$ et $n*a_0$.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+On souhaite désormais évaluer la probabilité de trouver l&#39;électron proche du rayon de Bohr, c&#39;est-à-dire entre $0.9*a_0$ et $1.1*a_0$. Évaluer cette probabilité à l&#39;aide de 100 rectangles.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+D&#39;après la valeur obtenue à la question précédente, que penser de la description des trajectoires des électrons par orbite autour du noyau ?
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+On répondra en commentaire dans le programme.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+La solution de l&#39;exercice est dans le programme python suivant:
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/OrbitalesAtomiques.py</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+</pre></div>
