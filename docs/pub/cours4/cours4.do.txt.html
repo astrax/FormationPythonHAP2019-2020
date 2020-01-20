@@ -474,125 +474,59 @@ Autrement dit, l&#39;intégrale est approximée par une somme d&#39;évaluations
 <span style="color: #228B22">#     test_midpoint_triple()</span>
 <span style="color: #228B22"># !ec</span>
 
-<span style="color: #000080; font-weight: bold">======= Intégration Monte Carlo pour les domaines de forme complexe =======</span>
-L&#39;utilisation répétée de règles d&#39;intégration unidimensionnelles pour gérer les intégrales doubles et triples ne constitue une stratégie de travail que si le domaine d&#39;intégration est un rectangle ou une boîte. Pour toute autre forme de domaine, des méthodes complètement différentes doivent être utilisées. Une approche courante pour les domaines bidimensionnels et tridimensionnels consiste à diviser le domaine en plusieurs petits triangles ou tétraèdres et à utiliser des méthodes d&#39;intégration numérique pour chaque triangle ou tétraèdre. L&#39;algorithme global et l&#39;implémentation sont trop compliqués pour être traités dans ce livre. Au lieu de cela, nous utiliserons une méthode alternative, très simple et générale, appelée *intégration de Monte Carlo*. Il peut être implémenté dans une demi-page de code, mais nécessite des ordres de grandeur plus d&#39;évaluations de fonctions en intégrales doubles par rapport à la règle du point milieu.
+<span style="color: #000080; font-weight: bold">======= Intégration Monte Carlo =======</span>
+Les méthodes de Monte Carlo sont des techniques de calcul probabilistes. Au cœur, un algorithme de Monte Carlo représente de façon aléatoire certaines valeurs de l&#39;espace de valeurs d&#39;un paramètre considéré. La combinaison de plusieurs paramètres permet de tirer des conclusions stochastiques des relations. L&#39;intégration des fonctions mathématiques de la forme:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+A = \int_a^b f(x) \cdot dx
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
 
-Cependant, l&#39;intégration Monte Carlo est beaucoup plus efficace en termes de calcul que la règle du point médian lors du calcul d&#39;intégrales de dimension supérieure dans plus de trois variables sur des domaines d&#39;hypercube. Nos idées d&#39;intégrales doubles et triples peuvent être facilement généralisées pour gérer une intégrale en $m$ variables. Une formule médiane implique alors $m$ sommes. Avec $n$ cellules dans chaque direction de coordonnées, la formule nécessite une fonction $n^m$ d&#39;évaluations. Autrement dit, le travail de calcul explose comme une fonction exponentielle du nombre de dimensions de l&#39;espace. L&#39;intégration de Monte-Carlo, quant à elle, ne souffre pas de cette explosion du travail de calcul et est la méthode préférée pour calculer les intégrales de dimension supérieure. Ainsi, il est logique dans un chapitre sur l&#39;intégration numérique d&#39;aborder les méthodes de Monte Carlo, à la fois pour la gestion de domaines complexes et pour la gestion d&#39;intégrales avec de nombreuses variables.
-<span style="color: #000080; font-weight: bold">===== L&#39;algorithme d&#39;intégration de Monte Carlo =====</span>
-L&#39;idée de l&#39;intégration Monte Carlo de $\int_a^b f(x)dx$ est d&#39;utiliser le théorème de la valeur moyenne du calcul, qui dit que l&#39;intégrale $\int_a^b f(x)dx$ est égale à la longueur du domaine d&#39;intégration, ici $b - a$, multipliée par la *valeur moyenne* de $f$, $\bar f$, dans $[a, b]$. La valeur moyenne peut être calculée en échantillonnant $f$ à un ensemble de points *aléatoires* à l&#39;intérieur du domaine et en prenant la moyenne des valeurs de fonction. Dans les dimensions supérieures, une intégrale est estimée comme l&#39;aire/le volume du domaine multiplié par la valeur moyenne, et encore une fois, on peut évaluer l&#39;intégrande à un ensemble de points aléatoires dans le domaine et calculer la valeur moyenne de ces évaluations.
+Pour effectuer une intégration, nous voulons savoir comment les valeurs sélectionnées au hasard sont réparties: lesquelles des valeurs sont égales ou inférieures à la valeur de la fonction et lesquelles sont supérieures. Il s&#39;agit d&#39;une décision binaire qui divise les valeurs aléatoires en deux groupes. Du rapport de la taille des groupes, nous pouvons tirer nos conclusions.
 
-Introduisons quelques quantités pour nous aider à rendre la spécification de l&#39;algorithme d&#39;intégration plus précise. Supposons que nous ayons une intégrale à deux dimensions
-$$\int_\Omega f(x,y)dxdx,$$
-où $\Omega$ est un domaine bidimensionnel défini via une fonction d&#39;aide $g (x, y)$: $$\Omega = \{ (x,y)\,|\, g(x,y) \geq 0\}$$
-Autrement dit, les points $(x, y)$ pour lesquels $g (x, y) \ge 0$ se trouvent à l&#39;intérieur de $\Omega$, et les points pour lesquels $g (x, y) &lt; \Omega$ sont à l&#39;extérieur de $\Omega$. La frontière du domaine $\partial\Omega$ est donnée par la courbe implicite $g (x, y) = 0$. De telles formulations de géométries ont été très courantes au cours des deux dernières décennies, et l&#39;une se réfère à $g$ comme une fonction de *level-set* et la frontière $g = 0$ comme le contour de niveau zéro de la fonction de level-set. Pour des géométries simples, on peut facilement construire $g$ à la main, tandis que dans des applications industrielles plus compliquées, il faut recourir à des modèles mathématiques pour construire $g$.
+Nous utilisons la fonction (intégrande) comme critère de décision uniquement. L&#39;algorithme ne nous fournit rien d&#39;autre que des comptes/fréquences. La fermeture probabiliste est alors:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation*}</span>
+\frac{\textrm{cas favorables}} {\textrm{cas possibles}} = \frac {n}{N} = \frac{A_{sous\;la\;fonction}}{A_{aire \;totale}}
+<span style="color: #658b00">\end{equation*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+La zone $A_{sous\;la\;fonction}$ est la zone inconnue qui nous intéresse. Pour $A_{aire \;totale}$, nous choisissons arbitrairement une région simple, cette zone que nous pouvons calculer sans difficultés.
 
-Soit $A(\Omega)$ l&#39;aire d&#39;un domaine $\Omega$. On peut estimer l&#39;intégrale par cette méthode d&#39;intégration de Monte Carlo:
-o incorporer la géométrie de $\Omega$ dans une zone rectangulaire $R$
-o dessiner un grand nombre de points aléatoires $(x, y)$ dans $R$
-o compter la fraction $q$ de points qui sont à l&#39;intérieur de $\Omega$
-o approximativement $A(\Omega)/ A(R)$ par $q$, c&#39;est-à-dire, régler $A(\Omega) = q A(R)$
-o évaluer la moyenne de $f$, $\bar f$, aux points à l&#39;intérieur de $\Omega$
-o estimer l&#39;intégrale comme $A(\Omega) \bar f$
+<span style="color: #000080; font-weight: bold">===== Exemple: détermination de $\pi$ =====</span>
+À titre d&#39;exemple, nous choisissons un cercle dont la fonction mathématique est donnée par la première:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+x^2 + y^2 &amp;= R^2 \\
+y = f(x) &amp;= \sqrt{R^2 - x^2}
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Pour l&#39;estimation de $\pi$, l&#39;aire du cercle est comparée à l&#39;aire du carré $2R \times 2R$, ce rapport est $\pi / 4$:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+A_{cercle} &amp;= R^2 \cdot \pi \\
+A_{carré} &amp;= {(2R)}^2 = 4R^2
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Nous générons au hasard $(x_rand, y_rand)$-points. Pour chaque point, nous devons décider s&#39;il se trouve à l&#39;intérieur ou à l&#39;extérieur du cercle. Pour cela, nous utilisons la différence $y_{rand} - f(x_{rand})$, où $f(x) = \sqrt{R^2 - x^2}$ est la fonction d&#39;un cercle dans le premier quadrant. Nous pouvons compter le nombre de points à l&#39;intérieur du cercle. Nous pouvons compter le nombre de points à l&#39;intérieur du cercle. Le rapport $n / N$ est supposé être égal au rapport $A_{cercle}/A_{carré}$
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+\frac {\textrm{n = (x,y)-points dans le cercle}}  {\textrm{N = (x,y)-points dans le carré}} &amp;= \frac{A_{cercle}}{A_{carré}}
+ = \frac {R^2 \cdot \pi}{4R^2 } = \frac {\pi}{4} \\
+\pi &amp;= 4\frac{n}{N}
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #000080; font-weight: bold">===== implémentation =====</span>
+Nous avons vu l&#39;intégration de Monte Carlo lorsque nous avons calculé $\pi / 4$ en calculant l&#39;aire du quart de cercle unitaire.
 
-Notez que $A (R)$ est trivial à calculer car R est un rectangle, tandis que $A(\Omega)$ est inconnu. Cependant, si nous supposons que la fraction de $A (R)$ occupée par $A(\Omega)$ est la même que la fraction des points aléatoires à l&#39;intérieur de $\Omega$, nous obtenons une estimation simple pour $A(\Omega)$.
+Voici le code:
 
-Pour avoir une idée de la méthode, considérons un domaine circulaire $\Omega$ incorporé dans un rectangle comme indiqué ci-dessous. Une collection de points aléatoires est illustrée par des points noirs.
-<span style="color: #658b00">FIGURE:[imgs/integral_complex_domain, width=400 frac=0.7]</span>
-
-<span style="color: #000080; font-weight: bold">===== Implémentation =====</span>
-Une fonction Python implémentant $\int_\Omega f(x,y)dxdy$ peut être écrite comme ceci:
-<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
-import numpy as np
-
-def MonteCarlo_double(f, g, x0, x1, y0, y1, n):
-    &quot;&quot;&quot;
-    Monte Carlo integration of f over a domain g&gt;=0, embedded
-    in a rectangle [x0,x1]x[y0,y1]. n^2 is the number of
-    random points.
-    &quot;&quot;&quot;
-    # Draw n**2 random points in the rectangle
-    x = np.random.uniform(x0, x1, n)
-    y = np.random.uniform(y0, y1, n)
-    # Compute sum of f values inside the integration domain
-    f_mean = 0
-    num_inside = 0   # number of x,y points inside domain (g&gt;=0)
-    for i in range(len(x)):
-        for j in range(len(y)):
-            if g(x[i], y[j]) &gt;= 0:
-                num_inside += 1
-                f_mean += f(x[i], y[j])
-    f_mean = f_mean/float(num_inside)
-    area = num_inside/float(n**2)*(x1 - x0)*(y1 - y0)
-    return area*f_mean
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/MC_integral.py</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span>
+PI numpy       :  3.141592653589793
+PI monte carlo :  3.1436
+différence     :  0.002007346410207056
 <span style="color: #8B008B; font-weight: bold">!ec</span>
-(Voir le fichier `MC_double.py`.)
-<span style="color: #000080; font-weight: bold">=== Vérification ===</span>
-Un cas de test simple consiste à vérifier l&#39;aire d&#39;un rectangle $[0, 2] \times [3, 4.5]$ intégré dans un rectangle $[0,3] \times [2, 5]$. La bonne réponse est 3, mais l&#39;intégration de Monte Carlo n&#39;est malheureusement jamais exacte, il est donc impossible de prédire la sortie de l&#39;algorithme. Tout ce que nous savons, c&#39;est que l&#39;intégrale estimée devrait approcher 3 lorsque le nombre de points aléatoires va à l&#39;infini. De plus, pour un nombre fixe de points, nous pouvons exécuter l&#39;algorithme plusieurs fois et obtenir différents nombres qui fluctuent autour de la valeur exacte, car différents points d&#39;échantillonnage sont utilisés dans différents appels à l&#39;algorithme d&#39;intégration de Monte Carlo.
+<span style="color: #658b00">FIGURE: [imgs/MC_integral, width=400 frac=0.7]</span>
 
-L&#39;aire du rectangle peut être calculée par l&#39;intégrale ∫20∫4.53dydx, donc dans ce cas, nous identifions $f (x, y) = 1$, et la fonction $g$ peut être spécifiée comme (par exemple) $1$ si $(x, y)$ est à l&#39;intérieur de $[0, 2] \times [3, 4.5]$ et $−1$ sinon. Voici un exemple sur la façon dont nous pouvons utiliser la fonction `MonteCarlo_double` pour calculer la zone pour différents nombres d&#39;échantillons:
-<span style="color: #8B008B; font-weight: bold">!bc</span> ipy
-&gt;&gt;&gt; from MC_double import MonteCarlo_double
-&gt;&gt;&gt; def g(x, y):
-...     return (1 if (0 &lt;= x &lt;= 2 and 3 &lt;= y &lt;= 4.5) else -1)
-...
-&gt;&gt;&gt; MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 100)
-2.9484
-&gt;&gt;&gt; MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 1000)
-2.947032
-&gt;&gt;&gt; MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 1000)
-3.0234600000000005
-&gt;&gt;&gt; MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 2000)
-2.9984580000000003
-&gt;&gt;&gt; MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 2000)
-3.1903469999999996
-&gt;&gt;&gt; MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 5000)
-2.986515
-<span style="color: #8B008B; font-weight: bold">!ec</span>
-Nous voyons que les valeurs fluctuent autour de 3, un fait qui prend en charge une implémentation correcte, mais en principe, des bugs peuvent être cachés derrière les réponses inexactes.
-
-Il est mathématiquement connu que l&#39;écart-type de l&#39;estimation de Monte Carlo d&#39;une intégrale converge comme $n^{−1/2}$, où $n$ est le nombre d&#39;échantillons.
-<span style="color: #000080; font-weight: bold">=== Fonction de test pour la fonction avec des nombres aléatoires ===</span>
-Pour créer une fonction de test, nous avons besoin d&#39;un test unitaire qui a un comportement identique à chaque fois que nous exécutons le test. Cela semble difficile lorsque des nombres aléatoires sont impliqués, car ces nombres sont différents à chaque fois que nous exécutons l&#39;algorithme, et chaque exécution produit donc un résultat (légèrement) différent. Une façon standard de tester des algorithmes impliquant des nombres aléatoires consiste à *fixer* le *seed* du générateur de nombres aléatoires. Ensuite, la séquence de nombres est la même chaque fois que nous exécutons l&#39;algorithme. En supposant que la fonction `MonteCarlo_double` fonctionne, nous fixons le *seed*, observons un certain résultat et prenons ce résultat comme le résultat correct. À condition que la fonction de test utilise toujours cette valeur de départ (seed), nous devrions obtenir exactement ce résultat chaque fois que la fonction `MonteCarlo_double` est appelée. Notre fonction de test peut alors être écrite comme indiqué ci-dessous.
-<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
-def test_MonteCarlo_double_rectangle_area():
-    &quot;&quot;&quot;Check the area of a rectangle.&quot;&quot;&quot;
-    def g(x, y):
-        return (1 if (0 &lt;= x &lt;= 2 and 3 &lt;= y &lt;= 4.5) else -1)
-
-    x0 = 0;  x1 = 3;  y0 = 2;  y1 = 5  # embedded rectangle
-    n = 1000
-    np.random.seed(8)      # must fix the seed!
-    I_expected = 3.121092  # computed with this seed
-    I_computed = MonteCarlo_double(
-        lambda x, y: 1, g, x0, x1, y0, y1, n)
-    assert abs(I_expected - I_computed) &lt; 1E-14
-<span style="color: #8B008B; font-weight: bold">!ec</span>
-(Voir le fichier `MC_double.py`.)
-<span style="color: #000080; font-weight: bold">=== Intégrale sur un cercle ===</span>
-Le test ci-dessus implique une fonction triviale $f (x, y) = 1$. Nous devons également tester une fonction $f$ non constante et un domaine plus compliqué. Soit $\Omega$ un cercle à l&#39;origine de rayon $2$, et soit $f=\sqrt{x^2 + y^2}$. son choix permet de calculer un résultat exact: en coordonnées polaires, $\int_\Omega f(x,y)dxdy$ se simplifie à $2\pi\int_0^2 r^2dr = 16\pi/3$. Nous devons nous préparer à des approximations assez grossières qui fluctuent autour de ce résultat exact. Comme dans le cas de test ci-dessus, nous obtenons de meilleurs résultats avec un plus grand nombre de points. Lorsque nous avons de telles preuves pour une implémentation fonctionnelle, nous pouvons transformer le test en une fonction de test appropriée. Voici un exemple:
-<span style="color: #8B008B; font-weight: bold">!bc</span> pycod
-def test_MonteCarlo_double_circle_r():
-    &quot;&quot;&quot;Check the integral of r over a circle with radius 2.&quot;&quot;&quot;
-    def g(x, y):
-        xc, yc = 0, 0  # center
-        R = 2          # radius
-        return  R**2 - ((x-xc)**2 + (y-yc)**2)
-
-    # Exact: integral of r*r*dr over circle with radius R becomes
-    # 2*pi*1/3*R**3
-    import sympy
-    r = sympy.symbols(&#39;r&#39;)
-    I_exact = sympy.integrate(2*sympy.pi*r*r, (r, 0, 2))
-    print(&#39;Exact integral:&#39;, I_exact.evalf())
-    x0 = -2;  x1 = 2;  y0 = -2;  y1 = 2
-    n = 1000
-    np.random.seed(6)
-    I_expected = 16.7970837117376384  # Computed with this seed
-    I_computed = MonteCarlo_double(
-        lambda x, y: np.sqrt(x**2 + y**2),
-        g, x0, x1, y0, y1, n)
-    print(&#39;MC approximation %d samples): %.16f&#39; % (n**2, I_computed))
-    assert abs(I_expected - I_computed) &lt; 1E-15
-<span style="color: #8B008B; font-weight: bold">!ec</span>
-(Voir le fichier `MC_double.py`.)
+Nous pouvons généraliser cette approche aux courbes autres que $y = \sqrt{1-x^2}$. L&#39;idée est la suivante: pour une courbe arbitraire, trouvez le rectangle qui la contient, générez un point aléatoire dans ce rectangle et déterminez combien de points aléatoires se trouvent sous la courbe.
 </pre></div>

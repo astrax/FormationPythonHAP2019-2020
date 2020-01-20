@@ -72,21 +72,9 @@ body { font-size:20px;line-height:1.5; }
                2,
                None,
                '___sec15'),
-              ('Intégration Monte Carlo pour les domaines de forme complexe',
-               1,
-               None,
-               '___sec16'),
-              ("L'algorithme d'intégration de Monte Carlo",
-               2,
-               None,
-               '___sec17'),
-              ('Implémentation', 2, None, '___sec18'),
-              ('Vérification', 3, None, '___sec19'),
-              ('Fonction de test pour la fonction avec des nombres aléatoires',
-               3,
-               None,
-               '___sec20'),
-              ('Intégrale sur un cercle', 3, None, '___sec21')]}
+              ('Intégration Monte Carlo', 1, None, '___sec16'),
+              ('Exemple: détermination de $\\pi$', 2, None, '___sec17'),
+              ('implémentation', 2, None, '___sec18')]}
 end of tocinfo -->
 
 <body>
@@ -141,12 +129,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La formule générale</a></li>
      <!-- navigation toc: --> <li><a href="#sec:implementation" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implémentation</a></li>
      <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comparaison des méthodes du trapèze et du point milieu</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><b>Intégration Monte Carlo pour les domaines de forme complexe</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'algorithme d'intégration de Monte Carlo</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implémentation</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vérification</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fonction de test pour la fonction avec des nombres aléatoires</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intégrale sur un cercle</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><b>Intégration Monte Carlo</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exemple: détermination de \( \pi \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;implémentation</a></li>
 
         </ul>
       </li>
@@ -179,7 +164,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Jan 14, 2020</h4></center> <!-- date -->
+<center><h4>Jan 20, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -198,9 +183,9 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec13"> La formule g&#233;n&#233;rale </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:implementation"> Impl&#233;mentation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Comparaison des m&#233;thodes du trap&#232;ze et du point milieu </a><br>
-<a href="#___sec16"> Int&#233;gration Monte Carlo pour les domaines de forme complexe </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> L'algorithme d'int&#233;gration de Monte Carlo </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Impl&#233;mentation </a><br>
+<a href="#___sec16"> Int&#233;gration Monte Carlo </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Exemple: d&#233;termination de \( \pi \) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> impl&#233;mentation </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -846,155 +831,112 @@ Autrement dit, l'int&#233;grale est approxim&#233;e par une somme d'&#233;valuat
 <!-- test_midpoint_triple() -->
 <!-- !ec -->
 
-<h1 id="___sec16" class="anchor">Int&#233;gration Monte Carlo pour les domaines de forme complexe </h1>
-L'utilisation r&#233;p&#233;t&#233;e de r&#232;gles d'int&#233;gration unidimensionnelles pour g&#233;rer les int&#233;grales doubles et triples ne constitue une strat&#233;gie de travail que si le domaine d'int&#233;gration est un rectangle ou une bo&#238;te. Pour toute autre forme de domaine, des m&#233;thodes compl&#232;tement diff&#233;rentes doivent &#234;tre utilis&#233;es. Une approche courante pour les domaines bidimensionnels et tridimensionnels consiste &#224; diviser le domaine en plusieurs petits triangles ou t&#233;tra&#232;dres et &#224; utiliser des m&#233;thodes d'int&#233;gration num&#233;rique pour chaque triangle ou t&#233;tra&#232;dre. L'algorithme global et l'impl&#233;mentation sont trop compliqu&#233;s pour &#234;tre trait&#233;s dans ce livre. Au lieu de cela, nous utiliserons une m&#233;thode alternative, tr&#232;s simple et g&#233;n&#233;rale, appel&#233;e <em>int&#233;gration de Monte Carlo</em>. Il peut &#234;tre impl&#233;ment&#233; dans une demi-page de code, mais n&#233;cessite des ordres de grandeur plus d'&#233;valuations de fonctions en int&#233;grales doubles par rapport &#224; la r&#232;gle du point milieu.
+<h1 id="___sec16" class="anchor">Int&#233;gration Monte Carlo </h1>
+Les m&#233;thodes de Monte Carlo sont des techniques de calcul probabilistes. Au c&#339;ur, un algorithme de Monte Carlo repr&#233;sente de fa&#231;on al&#233;atoire certaines valeurs de l'espace de valeurs d'un param&#232;tre consid&#233;r&#233;. La combinaison de plusieurs param&#232;tres permet de tirer des conclusions stochastiques des relations. L'int&#233;gration des fonctions math&#233;matiques de la forme:
+$$
+\begin{equation*}
+A = \int_a^b f(x) \cdot dx
+\end{equation*}
+$$
 
 <p>
-Cependant, l'int&#233;gration Monte Carlo est beaucoup plus efficace en termes de calcul que la r&#232;gle du point m&#233;dian lors du calcul d'int&#233;grales de dimension sup&#233;rieure dans plus de trois variables sur des domaines d'hypercube. Nos id&#233;es d'int&#233;grales doubles et triples peuvent &#234;tre facilement g&#233;n&#233;ralis&#233;es pour g&#233;rer une int&#233;grale en \( m \) variables. Une formule m&#233;diane implique alors \( m \) sommes. Avec \( n \) cellules dans chaque direction de coordonn&#233;es, la formule n&#233;cessite une fonction \( n^m \) d'&#233;valuations. Autrement dit, le travail de calcul explose comme une fonction exponentielle du nombre de dimensions de l'espace. L'int&#233;gration de Monte-Carlo, quant &#224; elle, ne souffre pas de cette explosion du travail de calcul et est la m&#233;thode pr&#233;f&#233;r&#233;e pour calculer les int&#233;grales de dimension sup&#233;rieure. Ainsi, il est logique dans un chapitre sur l'int&#233;gration num&#233;rique d'aborder les m&#233;thodes de Monte Carlo, &#224; la fois pour la gestion de domaines complexes et pour la gestion d'int&#233;grales avec de nombreuses variables.
-
-<h2 id="___sec17" class="anchor">L'algorithme d'int&#233;gration de Monte Carlo </h2>
-L'id&#233;e de l'int&#233;gration Monte Carlo de \( \int_a^b f(x)dx \) est d'utiliser le th&#233;or&#232;me de la valeur moyenne du calcul, qui dit que l'int&#233;grale \( \int_a^b f(x)dx \) est &#233;gale &#224; la longueur du domaine d'int&#233;gration, ici \( b - a \), multipli&#233;e par la <em>valeur moyenne</em> de \( f \), \( \bar f \), dans \( [a, b] \). La valeur moyenne peut &#234;tre calcul&#233;e en &#233;chantillonnant \( f \) &#224; un ensemble de points <em>al&#233;atoires</em> &#224; l'int&#233;rieur du domaine et en prenant la moyenne des valeurs de fonction. Dans les dimensions sup&#233;rieures, une int&#233;grale est estim&#233;e comme l'aire/le volume du domaine multipli&#233; par la valeur moyenne, et encore une fois, on peut &#233;valuer l'int&#233;grande &#224; un ensemble de points al&#233;atoires dans le domaine et calculer la valeur moyenne de ces &#233;valuations.
+Pour effectuer une int&#233;gration, nous voulons savoir comment les valeurs s&#233;lectionn&#233;es au hasard sont r&#233;parties: lesquelles des valeurs sont &#233;gales ou inf&#233;rieures &#224; la valeur de la fonction et lesquelles sont sup&#233;rieures. Il s'agit d'une d&#233;cision binaire qui divise les valeurs al&#233;atoires en deux groupes. Du rapport de la taille des groupes, nous pouvons tirer nos conclusions.
 
 <p>
-Introduisons quelques quantit&#233;s pour nous aider &#224; rendre la sp&#233;cification de l'algorithme d'int&#233;gration plus pr&#233;cise. Supposons que nous ayons une int&#233;grale &#224; deux dimensions
-$$\int_\Omega f(x,y)dxdx,$$
-o&#249; \( \Omega \) est un domaine bidimensionnel d&#233;fini via une fonction d'aide \( g (x, y) \): $$\Omega = \{ (x,y)\,|\, g(x,y) \geq 0\}$$
-Autrement dit, les points \( (x, y) \) pour lesquels \( g (x, y) \ge 0 \) se trouvent &#224; l'int&#233;rieur de \( \Omega \), et les points pour lesquels \( g (x, y) < \Omega \) sont &#224; l'ext&#233;rieur de \( \Omega \). La fronti&#232;re du domaine \( \partial\Omega \) est donn&#233;e par la courbe implicite \( g (x, y) = 0 \). De telles formulations de g&#233;om&#233;tries ont &#233;t&#233; tr&#232;s courantes au cours des deux derni&#232;res d&#233;cennies, et l'une se r&#233;f&#232;re &#224; \( g \) comme une fonction de <em>level-set</em> et la fronti&#232;re \( g = 0 \) comme le contour de niveau z&#233;ro de la fonction de level-set. Pour des g&#233;om&#233;tries simples, on peut facilement construire \( g \) &#224; la main, tandis que dans des applications industrielles plus compliqu&#233;es, il faut recourir &#224; des mod&#232;les math&#233;matiques pour construire \( g \).
+Nous utilisons la fonction (int&#233;grande) comme crit&#232;re de d&#233;cision uniquement. L'algorithme ne nous fournit rien d'autre que des comptes/fr&#233;quences. La fermeture probabiliste est alors:
+$$
+\begin{equation*}
+\frac{\textrm{cas favorables}} {\textrm{cas possibles}} = \frac {n}{N} = \frac{A_{sous\;la\;fonction}}{A_{aire \;totale}}
+\end{equation*}
+$$
+
+La zone \( A_{sous\;la\;fonction} \) est la zone inconnue qui nous int&#233;resse. Pour \( A_{aire \;totale} \), nous choisissons arbitrairement une r&#233;gion simple, cette zone que nous pouvons calculer sans difficult&#233;s.
+
+<h2 id="___sec17" class="anchor">Exemple: d&#233;termination de \( \pi \) </h2>
+&#192; titre d'exemple, nous choisissons un cercle dont la fonction math&#233;matique est donn&#233;e par la premi&#232;re:
+$$
+\begin{align*}
+x^2 + y^2 &= R^2 \\
+y = f(x) &= \sqrt{R^2 - x^2}
+\end{align*}
+$$
+
+Pour l'estimation de \( \pi \), l'aire du cercle est compar&#233;e &#224; l'aire du carr&#233; \( 2R \times 2R \), ce rapport est \( \pi / 4 \):
+$$
+\begin{align*}
+A_{cercle} &= R^2 \cdot \pi \\
+A_{carré} &= {(2R)}^2 = 4R^2
+\end{align*}
+$$
+
+Nous g&#233;n&#233;rons au hasard \( (x_rand, y_rand) \)-points. Pour chaque point, nous devons d&#233;cider s'il se trouve &#224; l'int&#233;rieur ou &#224; l'ext&#233;rieur du cercle. Pour cela, nous utilisons la diff&#233;rence \( y_{rand} - f(x_{rand}) \), o&#249; \( f(x) = \sqrt{R^2 - x^2} \) est la fonction d'un cercle dans le premier quadrant. Nous pouvons compter le nombre de points &#224; l'int&#233;rieur du cercle. Nous pouvons compter le nombre de points &#224; l'int&#233;rieur du cercle. Le rapport \( n / N \) est suppos&#233; &#234;tre &#233;gal au rapport \( A_{cercle}/A_{carr&#233;} \)
+$$
+\begin{align*}
+\frac {\textrm{n = (x,y)-points dans le cercle}}  {\textrm{N = (x,y)-points dans le carré}} &= \frac{A_{cercle}}{A_{carré}}
+ = \frac {R^2 \cdot \pi}{4R^2 } = \frac {\pi}{4} \\
+\pi &= 4\frac{n}{N}
+\end{align*}
+$$
+
+<h2 id="___sec18" class="anchor">impl&#233;mentation </h2>
+Nous avons vu l'int&#233;gration de Monte Carlo lorsque nous avons calcul&#233; \( \pi / 4 \) en calculant l'aire du quart de cercle unitaire.
 
 <p>
-Soit \( A(\Omega) \) l'aire d'un domaine \( \Omega \). On peut estimer l'int&#233;grale par cette m&#233;thode d'int&#233;gration de Monte Carlo:
-
-<ol>
-<li> incorporer la g&#233;om&#233;trie de \( \Omega \) dans une zone rectangulaire \( R \)</li>
-<li> dessiner un grand nombre de points al&#233;atoires \( (x, y) \) dans \( R \)</li>
-<li> compter la fraction \( q \) de points qui sont &#224; l'int&#233;rieur de \( \Omega \)</li>
-<li> approximativement \( A(\Omega)/ A(R) \) par \( q \), c'est-&#224;-dire, r&#233;gler \( A(\Omega) = q A(R) \)</li>
-<li> &#233;valuer la moyenne de \( f \), \( \bar f \), aux points &#224; l'int&#233;rieur de \( \Omega \)</li>
-<li> estimer l'int&#233;grale comme \( A(\Omega) \bar f \)</li>
-</ol>
-
-Notez que \( A (R) \) est trivial &#224; calculer car R est un rectangle, tandis que \( A(\Omega) \) est inconnu. Cependant, si nous supposons que la fraction de \( A (R) \) occup&#233;e par \( A(\Omega) \) est la m&#234;me que la fraction des points al&#233;atoires &#224; l'int&#233;rieur de \( \Omega \), nous obtenons une estimation simple pour \( A(\Omega) \).
+Voici le code:
 
 <p>
-Pour avoir une id&#233;e de la m&#233;thode, consid&#233;rons un domaine circulaire \( \Omega \) incorpor&#233; dans un rectangle comme indiqu&#233; ci-dessous. Une collection de points al&#233;atoires est illustr&#233;e par des points noirs.
-<br /><br /><center><p><img src="imgs/integral_complex_domain.png" align="bottom" width=400></p></center><br /><br />
 
-<h2 id="___sec18" class="anchor">Impl&#233;mentation </h2>
-Une fonction Python impl&#233;mentant \( \int_\Omega f(x,y)dxdy \) peut &#234;tre &#233;crite comme ceci:
-<p>
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: MC_integral.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">    fonction pour un cercle</span>
+<span style="color: #BA2121; font-style: italic">    &#39;&#39;&#39;</span>
+    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sqrt(<span style="color: #666666">1-</span>x<span style="color: #666666">*</span>x)
 
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MonteCarlo_double</span>(f, g, x0, x1, y0, y1, n):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #BA2121; font-style: italic">    Monte Carlo integration of f over a domain g&gt;=0, embedded</span>
-<span style="color: #BA2121; font-style: italic">    in a rectangle [x0,x1]x[y0,y1]. n^2 is the number of</span>
-<span style="color: #BA2121; font-style: italic">    random points.</span>
-<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
-    <span style="color: #408080; font-style: italic"># Draw n**2 random points in the rectangle</span>
-    x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>uniform(x0, x1, n)
-    y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>uniform(y0, y1, n)
-    <span style="color: #408080; font-style: italic"># Compute sum of f values inside the integration domain</span>
-    f_mean <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-    num_inside <span style="color: #666666">=</span> <span style="color: #666666">0</span>   <span style="color: #408080; font-style: italic"># number of x,y points inside domain (g&gt;=0)</span>
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
-        <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(y)):
-            <span style="color: #008000; font-weight: bold">if</span> g(x[i], y[j]) <span style="color: #666666">&gt;=</span> <span style="color: #666666">0</span>:
-                num_inside <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
-                f_mean <span style="color: #666666">+=</span> f(x[i], y[j])
-    f_mean <span style="color: #666666">=</span> f_mean<span style="color: #666666">/</span><span style="color: #008000">float</span>(num_inside)
-    area <span style="color: #666666">=</span> num_inside<span style="color: #666666">/</span><span style="color: #008000">float</span>(n<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>(x1 <span style="color: #666666">-</span> x0)<span style="color: #666666">*</span>(y1 <span style="color: #666666">-</span> y0)
-    <span style="color: #008000; font-weight: bold">return</span> area<span style="color: #666666">*</span>f_mean
+N <span style="color: #666666">=</span> <span style="color: #666666">10000</span>   <span style="color: #408080; font-style: italic"># nombre d&#39;essais</span>
+x0 <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+x1 <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(x0, x1, <span style="color: #666666">0.01</span>)
+y <span style="color: #666666">=</span> f(x)
+fmax <span style="color: #666666">=</span> <span style="color: #008000">max</span>(y)
+np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">6</span>)
+x_rand <span style="color: #666666">=</span> x0 <span style="color: #666666">+</span> (x1 <span style="color: #666666">-</span> x0) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(N)
+y_rand <span style="color: #666666">=</span> fmax <span style="color: #666666">*</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(N)
+n <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sum(y_rand <span style="color: #666666">-</span> f(x_rand) <span style="color: #666666">&lt;</span> <span style="color: #666666">0.0</span>) <span style="color: #408080; font-style: italic"># nombre de points dans le cercle</span>
+<span style="color: #408080; font-style: italic">#----- Sortie et graphiques -------------------</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;PI numpy       : &#39;</span>, np<span style="color: #666666">.</span>pi)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;PI monte carlo : &#39;</span>, <span style="color: #666666">4*</span>n<span style="color: #666666">/</span>N)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;différence     : &#39;</span>, <span style="color: #666666">4*</span>n<span style="color: #666666">/</span>(N) <span style="color: #666666">-</span> np<span style="color: #666666">.</span>pi)
+
+index_below <span style="color: #666666">=</span> np<span style="color: #666666">.</span>where(y_rand <span style="color: #666666">&lt;</span> f(x_rand))
+index_above <span style="color: #666666">=</span> np<span style="color: #666666">.</span>where(y_rand <span style="color: #666666">&gt;=</span> f(x_rand))
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">7</span>,<span style="color: #666666">7</span>))
+plt<span style="color: #666666">.</span>plot(x,f(x),<span style="color: #BA2121">&#39;--k&#39;</span>)
+plt<span style="color: #666666">.</span>scatter(x_rand[index_below], y_rand[index_below],
+            c<span style="color: #666666">=</span><span style="color: #BA2121">&quot;r&quot;</span>, s <span style="color: #666666">=</span> <span style="color: #666666">5</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Pts sous la courbe&quot;</span>)
+plt<span style="color: #666666">.</span>scatter(x_rand[index_above], y_rand[index_above],
+            c<span style="color: #666666">=</span><span style="color: #BA2121">&quot;b&quot;</span>, s <span style="color: #666666">=</span> <span style="color: #666666">5</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Pts au-dessus de la courbe&quot;</span>)
+plt<span style="color: #666666">.</span>legend(bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.</span>, <span style="color: #666666">1.02</span>, <span style="color: #666666">1.</span>, <span style="color: #666666">.102</span>), ncol<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-(Voir le fichier <code>MC_double.py</code>.)
 
-<h3 id="___sec19" class="anchor">V&#233;rification </h3>
-
-Un cas de test simple consiste &#224; v&#233;rifier l'aire d'un rectangle \( [0, 2] \times [3, 4.5] \) int&#233;gr&#233; dans un rectangle \( [0,3] \times [2, 5] \). La bonne r&#233;ponse est 3, mais l'int&#233;gration de Monte Carlo n'est malheureusement jamais exacte, il est donc impossible de pr&#233;dire la sortie de l'algorithme. Tout ce que nous savons, c'est que l'int&#233;grale estim&#233;e devrait approcher 3 lorsque le nombre de points al&#233;atoires va &#224; l'infini. De plus, pour un nombre fixe de points, nous pouvons ex&#233;cuter l'algorithme plusieurs fois et obtenir diff&#233;rents nombres qui fluctuent autour de la valeur exacte, car diff&#233;rents points d'&#233;chantillonnage sont utilis&#233;s dans diff&#233;rents appels &#224; l'algorithme d'int&#233;gration de Monte Carlo.
-
-<p>
-L'aire du rectangle peut &#234;tre calcul&#233;e par l'int&#233;grale &#8747;20&#8747;4.53dydx, donc dans ce cas, nous identifions \( f (x, y) = 1 \), et la fonction \( g \) peut &#234;tre sp&#233;cifi&#233;e comme (par exemple) \( 1 \) si \( (x, y) \) est &#224; l'int&#233;rieur de \( [0, 2] \times [3, 4.5] \) et \( &#8722;1 \) sinon. Voici un exemple sur la fa&#231;on dont nous pouvons utiliser la fonction <code>MonteCarlo_double</code> pour calculer la zone pour diff&#233;rents nombres d'&#233;chantillons:
-<p>
-
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">MC_double</span> <span style="color: #008000; font-weight: bold">import</span> MonteCarlo_double
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x, y):
-<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x <span style="color: #666666">&lt;=</span> <span style="color: #666666">2</span> <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #666666">3</span> <span style="color: #666666">&lt;=</span> y <span style="color: #666666">&lt;=</span> <span style="color: #666666">4.5</span>) <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">-1</span>)
-<span style="color: #666666">...</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">100</span>)
-<span style="color: #666666">2.9484</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">1000</span>)
-<span style="color: #666666">2.947032</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">1000</span>)
-<span style="color: #666666">3.0234600000000005</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">2000</span>)
-<span style="color: #666666">2.9984580000000003</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">2000</span>)
-<span style="color: #666666">3.1903469999999996</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> MonteCarlo_double(<span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>, <span style="color: #666666">5</span>, <span style="color: #666666">5000</span>)
-<span style="color: #666666">2.986515</span>
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>PI numpy       :  3.141592653589793
+PI monte carlo :  3.1436
+différence     :  0.002007346410207056
 </pre></div>
 <p>
-Nous voyons que les valeurs fluctuent autour de 3, un fait qui prend en charge une impl&#233;mentation correcte, mais en principe, des bugs peuvent &#234;tre cach&#233;s derri&#232;re les r&#233;ponses inexactes.
+<br /><br /><center><p><img src="imgs/MC_integral.png" align="bottom" width=400></p></center><br /><br />
 
 <p>
-Il est math&#233;matiquement connu que l'&#233;cart-type de l'estimation de Monte Carlo d'une int&#233;grale converge comme \( n^{&#8722;1/2} \), o&#249; \( n \) est le nombre d'&#233;chantillons.
-
-<h3 id="___sec20" class="anchor">Fonction de test pour la fonction avec des nombres al&#233;atoires </h3>
-
-Pour cr&#233;er une fonction de test, nous avons besoin d'un test unitaire qui a un comportement identique &#224; chaque fois que nous ex&#233;cutons le test. Cela semble difficile lorsque des nombres al&#233;atoires sont impliqu&#233;s, car ces nombres sont diff&#233;rents &#224; chaque fois que nous ex&#233;cutons l'algorithme, et chaque ex&#233;cution produit donc un r&#233;sultat (l&#233;g&#232;rement) diff&#233;rent. Une fa&#231;on standard de tester des algorithmes impliquant des nombres al&#233;atoires consiste &#224; <em>fixer</em> le <em>seed</em> du g&#233;n&#233;rateur de nombres al&#233;atoires. Ensuite, la s&#233;quence de nombres est la m&#234;me chaque fois que nous ex&#233;cutons l'algorithme. En supposant que la fonction <code>MonteCarlo_double</code> fonctionne, nous fixons le <em>seed</em>, observons un certain r&#233;sultat et prenons ce r&#233;sultat comme le r&#233;sultat correct. &#192; condition que la fonction de test utilise toujours cette valeur de d&#233;part (seed), nous devrions obtenir exactement ce r&#233;sultat chaque fois que la fonction <code>MonteCarlo_double</code> est appel&#233;e. Notre fonction de test peut alors &#234;tre &#233;crite comme indiqu&#233; ci-dessous.
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_MonteCarlo_double_rectangle_area</span>():
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check the area of a rectangle.&quot;&quot;&quot;</span>
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x, y):
-        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">0</span> <span style="color: #666666">&lt;=</span> x <span style="color: #666666">&lt;=</span> <span style="color: #666666">2</span> <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #666666">3</span> <span style="color: #666666">&lt;=</span> y <span style="color: #666666">&lt;=</span> <span style="color: #666666">4.5</span>) <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">-1</span>)
-
-    x0 <span style="color: #666666">=</span> <span style="color: #666666">0</span>;  x1 <span style="color: #666666">=</span> <span style="color: #666666">3</span>;  y0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  y1 <span style="color: #666666">=</span> <span style="color: #666666">5</span>  <span style="color: #408080; font-style: italic"># embedded rectangle</span>
-    n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
-    np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">8</span>)      <span style="color: #408080; font-style: italic"># must fix the seed!</span>
-    I_expected <span style="color: #666666">=</span> <span style="color: #666666">3.121092</span>  <span style="color: #408080; font-style: italic"># computed with this seed</span>
-    I_computed <span style="color: #666666">=</span> MonteCarlo_double(
-        <span style="color: #008000; font-weight: bold">lambda</span> x, y: <span style="color: #666666">1</span>, g, x0, x1, y0, y1, n)
-    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(I_expected <span style="color: #666666">-</span> I_computed) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-14</span>
-</pre></div>
-<p>
-(Voir le fichier <code>MC_double.py</code>.)
-
-<h3 id="___sec21" class="anchor">Int&#233;grale sur un cercle </h3>
-
-Le test ci-dessus implique une fonction triviale \( f (x, y) = 1 \). Nous devons &#233;galement tester une fonction \( f \) non constante et un domaine plus compliqu&#233;. Soit \( \Omega \) un cercle &#224; l'origine de rayon \( 2 \), et soit \( f=\sqrt{x^2 + y^2} \). son choix permet de calculer un r&#233;sultat exact: en coordonn&#233;es polaires, \( \int_\Omega f(x,y)dxdy \) se simplifie &#224; \( 2\pi\int_0^2 r^2dr = 16\pi/3 \). Nous devons nous pr&#233;parer &#224; des approximations assez grossi&#232;res qui fluctuent autour de ce r&#233;sultat exact. Comme dans le cas de test ci-dessus, nous obtenons de meilleurs r&#233;sultats avec un plus grand nombre de points. Lorsque nous avons de telles preuves pour une impl&#233;mentation fonctionnelle, nous pouvons transformer le test en une fonction de test appropri&#233;e. Voici un exemple:
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_MonteCarlo_double_circle_r</span>():
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check the integral of r over a circle with radius 2.&quot;&quot;&quot;</span>
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x, y):
-        xc, yc <span style="color: #666666">=</span> <span style="color: #666666">0</span>, <span style="color: #666666">0</span>  <span style="color: #408080; font-style: italic"># center</span>
-        R <span style="color: #666666">=</span> <span style="color: #666666">2</span>          <span style="color: #408080; font-style: italic"># radius</span>
-        <span style="color: #008000; font-weight: bold">return</span>  R<span style="color: #666666">**2</span> <span style="color: #666666">-</span> ((x<span style="color: #666666">-</span>xc)<span style="color: #666666">**2</span> <span style="color: #666666">+</span> (y<span style="color: #666666">-</span>yc)<span style="color: #666666">**2</span>)
-
-    <span style="color: #408080; font-style: italic"># Exact: integral of r*r*dr over circle with radius R becomes</span>
-    <span style="color: #408080; font-style: italic"># 2*pi*1/3*R**3</span>
-    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span>
-    r <span style="color: #666666">=</span> sympy<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;r&#39;</span>)
-    I_exact <span style="color: #666666">=</span> sympy<span style="color: #666666">.</span>integrate(<span style="color: #666666">2*</span>sympy<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>r<span style="color: #666666">*</span>r, (r, <span style="color: #666666">0</span>, <span style="color: #666666">2</span>))
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Exact integral:&#39;</span>, I_exact<span style="color: #666666">.</span>evalf())
-    x0 <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  x1 <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  y0 <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  y1 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-    n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
-    np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">6</span>)
-    I_expected <span style="color: #666666">=</span> <span style="color: #666666">16.7970837117376384</span>  <span style="color: #408080; font-style: italic"># Computed with this seed</span>
-    I_computed <span style="color: #666666">=</span> MonteCarlo_double(
-        <span style="color: #008000; font-weight: bold">lambda</span> x, y: np<span style="color: #666666">.</span>sqrt(x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> y<span style="color: #666666">**2</span>),
-        g, x0, x1, y0, y1, n)
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;MC approximation </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> samples): </span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (n<span style="color: #666666">**2</span>, I_computed))
-    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(I_expected <span style="color: #666666">-</span> I_computed) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-15</span>
-</pre></div>
-<p>
-(Voir le fichier <code>MC_double.py</code>.)
+Nous pouvons g&#233;n&#233;raliser cette approche aux courbes autres que \( y = \sqrt{1-x^2} \). L'id&#233;e est la suivante: pour une courbe arbitraire, trouvez le rectangle qui la contient, g&#233;n&#233;rez un point al&#233;atoire dans ce rectangle et d&#233;terminez combien de points al&#233;atoires se trouvent sous la courbe.
 
 <!-- ------------------- end of main content --------------- -->
 
