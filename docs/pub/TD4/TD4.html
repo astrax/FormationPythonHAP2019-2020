@@ -130,7 +130,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Jan 19, 2020</h4></center> <!-- date -->
+<center><h4>Feb 11, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -173,8 +173,60 @@ On lance une fus&#233;e verticalement du sol et l&#8217;on mesure pendant les pr
 Calculer la vitesse \( V \) de la fus&#233;e &#224; l&#8217;instant \( t=80 \ s \), par la m&#233;thode des trap&#232;zes.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_1" style="font-size: 80%;"></a>
+<a href="#exer_1_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_1">
+
+<p>
+On sait que l&#8217;acc&#233;l&#233;ration \( \gamma \) est la d&#233;riv&#233;e de la vitesse \( V \), donc,
+$$
+\begin{align*}
+V(t) &= \int_0^t \gamma(s) ds \\
+I &= V(80) = \int_0^{80} \gamma(s) ds
+\end{align*}
+$$
+
+Calculons \( I \) par la m&#233;thode des trap&#232;zes. Ici, d&#8217;apr&#232;s le tableau des valeurs, \( h = 10 \).
+
+$$
+\begin{equation*}
+I \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+\end{equation*}
+$$
+
+$$
+\begin{align*}
+I &\approx 10 \left[\frac{1}{2} \times 30 + \frac{1}{2} \times 50.67 + 31.63 + 33.44 + \ldots + 46.70 \right] \\
+  &\approx 3089.45 \quad ms^{-1}
+\end{align*}
+$$
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>h <span style="color: #666666">=</span> <span style="color: #666666">10</span>
+I <span style="color: #666666">=</span> <span style="color: #666666">0.5</span> <span style="color: #666666">*</span> (<span style="color: #666666">30</span> <span style="color: #666666">+</span> <span style="color: #666666">50.67</span>) <span style="color: #408080; font-style: italic"># 1/2 * [f(x0) + f(xn)]</span>
+fx <span style="color: #666666">=</span> [<span style="color: #666666">31.63</span>,<span style="color: #666666">33.44</span>,<span style="color: #666666">35.47</span>,<span style="color: #666666">37.75</span>,<span style="color: #666666">40.33</span>,<span style="color: #666666">43.29</span>,<span style="color: #666666">46.70</span>] <span style="color: #408080; font-style: italic"># f(x1) ---&gt; f(xn-1)</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(fx)):
+    I<span style="color: #666666">+=</span> fx[i]
+I<span style="color: #666666">*=</span>h
+<span style="color: #008000; font-weight: bold">print</span>(I, <span style="color: #BA2121">&quot;ms^-1&quot;</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -198,8 +250,56 @@ $$
 avec \( 0 < \epsilon < 10^{&#8722;44} \) , utiliser la m&#233;thode des trap&#232;zes composite &#224; \( 10 \) intervalles pour estimer la valeur de \( \pi \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<a href="#exer_2_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
+La m&#233;thode des trap&#232;zes composite &#224; \( n \) intervalles pour calculer l&#8217;int&#233;grale d&#8217;une fonction f sur l&#8217;intervalle \( [a, b] \) s&#8217;&#233;crit
+$$
+\begin{equation*}
+\int_a^b f(x)\,dx \approx h \left[\frac{1}{2}f(x_0) + \sum_{i=1}^{n-1}f(x_i) + \frac{1}{2}f(x_n) \right]
+\end{equation*}
+$$
+
+avec \( h = \frac{b-a}{n} \) et \( x_i = a + ih,\quad i = 0,1,\ldots,n \)
+
+<p>
+Ici on a \( f (x) = e^{-x} \) , \( a = 0 \), \( b = 10 \), \( n = 10 \) d&#8217;o&#249; \( h = 1 \) et on obtient
+$$
+\begin{equation*}
+I \approx \frac{1}{2} + \sum_{i=1}^{9} e^{-i} + \frac{1}{2e^{100}} = \frac{1}{2} + \frac{1}{e} + \frac{1}{e^{4}} + \frac{1}{e^{9}} + \frac{1}{e^{16}} + \frac{1}{e^{25}} + \frac{1}{e^{36}} + \frac{1}{e^{49}} + \frac{1}{e^{64}} + \frac{1}{e^{81}} + \frac{1}{2e^{100}}
+\end{equation*}
+$$
+
+ainsi en utilisant la fonction <code>trapeze(f,a,b,n)</code> du module <code>trapeze_integral.py</code> d&#233;crite dans le cours comme suit
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapeze_integral</span> <span style="color: #008000; font-weight: bold">import</span> trapeze
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+f <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>)
+I <span style="color: #666666">=</span> trapeze(f, <span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">10</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #666666">4*</span>I<span style="color: #666666">**2</span>)
+</pre></div>
+<p>
+on obtient \( \pi \approx 4I^2 = 3.14224265994 \).
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -245,15 +345,133 @@ Il peut &#234;tre une bonne id&#233;e d'organiser votre code afin que la fonctio
 &#201;crire une fonction <code>integration_adaptive(f, a, b, eps, method=&quot;midpoint&quot;)</code> qui impl&#233;mente l'id&#233;e ci-dessus (<code>eps</code> correspond &#224; la tol&#233;rance \( \epsilon \), et la m&#233;thode peut &#234;tre <code>midpoint</code> ou <code>trapeze</code>).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_2" style="font-size: 80%;"></a>
+<a href="#exer_3_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_2">
+
+<p>
+En facilitant les r&#233;ponses &#224; l'ensemble de cet exercice, ainsi qu'en pr&#233;parant l'utilisation facile de l'int&#233;gration adaptative dans les futurs programmes, nous organisons le codage des t&#226;ches a, b et c en un seul fichier, ce qui en fait un module. Le code se lit alors:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: integration_adaptive.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros, sqrt
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">trapeze_integral</span> <span style="color: #008000; font-weight: bold">import</span> trapeze
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">midpoint_integral</span> <span style="color: #008000; font-weight: bold">import</span> midpoint
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integration_adaptative</span>(f, a, b, eps, method<span style="color: #666666">=</span><span style="color: #BA2121">&#39;midpoint&#39;</span>):
+    <span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">    Question a)</span>
+<span style="color: #BA2121; font-style: italic">    &#39;&#39;&#39;</span>
+    n_limit <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>  <span style="color: #408080; font-style: italic"># Juste un choix (utilisé pour éviter la boucle inf)</span>
+    n <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    <span style="color: #008000; font-weight: bold">if</span> method <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;trapeze&#39;</span>:
+        integral_n  <span style="color: #666666">=</span> trapeze(f, a, b, n)
+        integral_2n <span style="color: #666666">=</span> trapeze(f, a, b, <span style="color: #666666">2*</span>n)
+        diff <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(integral_2n <span style="color: #666666">-</span> integral_n)
+        <span style="color: #008000; font-weight: bold">while</span> (diff <span style="color: #666666">&gt;</span> eps) <span style="color: #AA22FF; font-weight: bold">and</span> (n <span style="color: #666666">&lt;</span> n_limit):
+            integral_n  <span style="color: #666666">=</span> trapeze(f, a, b, n)
+            integral_2n <span style="color: #666666">=</span> trapeze(f, a, b, <span style="color: #666666">2*</span>n)
+            diff <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(integral_2n <span style="color: #666666">-</span> integral_n)
+            n <span style="color: #666666">*=</span> <span style="color: #666666">2</span>
+    <span style="color: #008000; font-weight: bold">elif</span> method <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;midpoint&#39;</span>:
+        integral_n  <span style="color: #666666">=</span> midpoint(f, a, b, n)
+        integral_2n <span style="color: #666666">=</span> midpoint(f, a, b, <span style="color: #666666">2*</span>n)
+        diff <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(integral_2n <span style="color: #666666">-</span> integral_n)
+        <span style="color: #008000; font-weight: bold">while</span> (diff <span style="color: #666666">&gt;</span> eps) <span style="color: #AA22FF; font-weight: bold">and</span> (n <span style="color: #666666">&lt;</span> n_limit):
+            integral_n  <span style="color: #666666">=</span> midpoint(f, a, b, n)
+            integral_2n <span style="color: #666666">=</span> midpoint(f, a, b, <span style="color: #666666">2*</span>n)
+            diff <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(integral_2n <span style="color: #666666">-</span> integral_n)
+            n <span style="color: #666666">*=</span> <span style="color: #666666">2</span>
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Erreur - intégration adaptative appelée avec un paramètre inconnu&#39;</span>)
+    <span style="color: #408080; font-style: italic"># Maintenant, nous vérifions si un n acceptable a été trouvé ou non</span>
+    <span style="color: #008000; font-weight: bold">if</span> diff <span style="color: #666666">&lt;=</span> eps:   <span style="color: #408080; font-style: italic"># Succès</span>
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;L&#39;intégrale calcule: &quot;</span>, integral_2n)
+        <span style="color: #008000; font-weight: bold">return</span> n
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">-</span>n   <span style="color: #408080; font-style: italic"># Renvoie n négatif pour dire &quot;non trouvé&quot;</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Questions b) and c)&quot;&quot;&quot;</span>
+
+    g <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: sqrt(x)
+
+<span style="color: #408080; font-style: italic">#    eps = 1E-1 # Il suffit de basculer entre ces deux valeurs eps</span>
+    eps <span style="color: #666666">=</span> <span style="color: #666666">1E-10</span>
+    a <span style="color: #666666">=</span> <span style="color: #666666">0.0</span> <span style="color: #666666">+</span> <span style="color: #666666">0.01</span>  <span style="color: #408080; font-style: italic"># Si nous ajustons a, sqrt (x) est géré facilement</span>
+    b <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>
+    n <span style="color: #666666">=</span> integration_adaptative(g, a, b, eps, <span style="color: #BA2121">&#39;midpoint&#39;</span>)
+    <span style="color: #008000; font-weight: bold">if</span> n <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;n suffisant est: </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">%</span>(n))
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Aucun n n&#39;a été trouvé dans </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> iterations&quot;</span> <span style="color: #666666">%</span> (n_limit))
+   
+    <span style="color: #408080; font-style: italic"># c) faire un tracé pour le point milieu et les trapèzes</span>
+    eps <span style="color: #666666">=</span> linspace(<span style="color: #666666">1E-1</span>,<span style="color: #666666">10E-10</span>,<span style="color: #666666">10</span>)
+    n_m <span style="color: #666666">=</span> zeros(<span style="color: #008000">len</span>(eps))
+    n_t <span style="color: #666666">=</span> zeros(<span style="color: #008000">len</span>(eps))
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(n_m)):
+        n_m[i] <span style="color: #666666">=</span> integration_adaptative(g, a, b, eps[i], <span style="color: #BA2121">&#39;midpoint&#39;</span>)
+        n_t[i] <span style="color: #666666">=</span> integration_adaptative(g, a, b, eps[i], <span style="color: #BA2121">&#39;trapeze&#39;</span>)
+
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+    plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">7</span>,<span style="color: #666666">5</span>))
+    plt<span style="color: #666666">.</span>plot(eps,n_m,<span style="color: #BA2121">&#39;b-&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;méthode du point milieu&quot;</span>)
+    plt<span style="color: #666666">.</span>plot(eps,n_t,<span style="color: #BA2121">&#39;r-&#39;</span>,  label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;méthode des trapèzes&quot;</span>)
+    plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&#39;$\epsilon$&#39;</span>)
+    plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;n&#39;</span>)
+    plt<span style="color: #666666">.</span>xscale(<span style="color: #BA2121">&quot;log&quot;</span>)
+    plt<span style="color: #666666">.</span>legend()
+    plt<span style="color: #666666">.</span>show()
+
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #19177C">__name__</span> <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    application()
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 Testez la m&#233;thode sur \( g(x) = \int_0^2\sqrt{x}dx \) pour \( \epsilon = 10^{&#8722;1},10^{&#8722;10} \) et notez l'erreur exacte.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_3" style="font-size: 80%;"></a>
+<a href="#exer_3_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_3">
+
+<p>
+Voir le code ci-dessus. Notez que, dans notre code sugg&#233;r&#233;, il est pr&#233;vu que le programmeur bascule entre les deux valeurs epsilon en utilisant des commentaires, c'est-&#224;-dire en ajoutant/supprimant <code>#</code>. Cela peut bien s&#251;r &#234;tre &#233;vit&#233;, si cela est souhaitable, en demandant &#224; l'utilisateur d'entrer un valeur d'epsilon.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>c)</b>
 Faites un trac&#233; de \( n \) en fonction de \( \epsilon \in [10^{-1}, 10^{-10}] \) pour \( \int_0^2\sqrt{x}dx \). Utilisez l'&#233;chelle logarithmique pour \( \epsilon \).
@@ -266,8 +484,31 @@ Faites un trac&#233; de \( n \) en fonction de \( \epsilon \in [10^{-1}, 10^{-10
 </center>
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_4" style="font-size: 80%;"></a>
+<a href="#exer_3_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_4">
+
+<p>
+La figure <a href="#fig:eps">1</a> montre que plus la valeur d'epsilon est stricte, plus la diff&#233;rence entre les m&#233;thodes du point milieu et des trap&#232;zes est grande. Pour une valeur donn&#233;e pour epsilon, la m&#233;thode du point milieu se situe dans la tol&#233;rance avec moins d'intervalles (valeur inf&#233;rieure de \( n \)) que la m&#233;thode des trap&#232;zes. Il faut s'y attendre, car la m&#233;thode du point milieu est un peu plus pr&#233;cise que la m&#233;thode des trap&#232;zes.
+
+<p>
+Une fa&#231;on de produire ce trac&#233; est d'utiliser les lignes de code incluses &#224; la fin de <code>integration_adaptive.py</code> (voir ci-dessus).
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- Closing remarks for this Exercice -->
 
@@ -321,8 +562,64 @@ Utilisez des id&#233;es de l'exercice <a href="#ex:adaptatif">Exercice 3: Int&#2
 <!-- --- end hint in exercise --- -->
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_2" style="font-size: 80%;"></a>
+<a href="#exer_4_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_2">
+
+<p>
+Lorsque la fonction <code>integration_adaptive</code> est disponible, le code peut s'&#233;crire:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: xtox.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">integration_adaptive</span> <span style="color: #008000; font-weight: bold">import</span> integration_adaptative
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">**</span>x
+
+eps <span style="color: #666666">=</span> <span style="color: #666666">1E-4</span>
+a <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>;  b <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>
+
+<span style="color: #408080; font-style: italic"># Choisir la méthode milieu</span>
+n <span style="color: #666666">=</span> integration_adaptative(f, a, b, eps, <span style="color: #BA2121">&#39;midpoint&#39;</span>)
+<span style="color: #008000; font-weight: bold">if</span> n <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>:
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;n suffisant est: </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">%</span>(n))
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #408080; font-style: italic"># Le n négatif est renvoyé pour signaler que la limite supérieure de n </span>
+    <span style="color: #408080; font-style: italic"># a été dépassée</span>
+    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Aucun n n&#39;a été trouvé dans </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> iterations&quot;</span>  <span style="color: #666666">%</span> (<span style="color: #008000">abs</span>(n)))
+</pre></div>
+<p>
+N'oubliez pas que <code>integration_adaptive</code> affiche l'int&#233;grale calcul&#233;e, donc aucun effort &#224; cet &#233;gard n'est requis ici.
+
+<p>
+L'ex&#233;cution du programme donne une impression &#224; l'&#233;cran montrant comment la diff&#233;rence devient de plus en plus petite &#224; chaque fois. Les deux lignes de l'impression se lisent comme suit:
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>L&#39;intégrale calcule:  2.8338439595776044
+n suffisant est: 256
+</pre></div>
+<p>
+La valeur calcul&#233;e peut &#234;tre compar&#233;e &#224; ce que donne Wolfram alpha. N'oubliez pas qu'&#233;tant donn&#233; que nous n'avons pas calcul&#233; l'erreur exacte, nous ne pouvons garantir que le "r&#233;sultat est correct &#224; quatre chiffres". Cependant, nous avons des raisons de croire que nous "sommes proches". Typiquement, lorsque l'on sait que la mesure d'erreur utilis&#233;e n'est pas pr&#233;cise, la tol&#233;rance est rendue plus stricte.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -390,8 +687,86 @@ On r&#233;pondra en commentaire dans le programme.
 
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_1" style="font-size: 80%;"></a>
+<a href="#exer_5_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_1">
+
+<p>
+La solution de l'exercice est dans le programme python suivant:
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: OrbitalesAtomiques.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">midpoint_integral</span> <span style="color: #008000; font-weight: bold">import</span> midpoint
+<span style="color: #408080; font-style: italic"># a) </span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">densite_radiale</span>(r, a0 <span style="color: #666666">=</span> <span style="color: #666666">0.529</span>):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">4</span> <span style="color: #666666">*</span> (r<span style="color: #666666">**2/</span>a0<span style="color: #666666">**3</span>) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-2*</span>(r<span style="color: #666666">/</span>a0))
+<span style="color: #408080; font-style: italic"># b)</span>
+r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>,<span style="color: #666666">2.6</span>, <span style="color: #666666">100</span>)
+
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">7</span>,<span style="color: #666666">5</span>))
+plt<span style="color: #666666">.</span>plot(r, densite_radiale(r), label <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;densité radiale pour une OA 1s&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;r &quot;</span><span style="color: #666666">+</span><span style="color: #BA2121">r&quot;$[\AA]$&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;densité radiale&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+
+<span style="color: #408080; font-style: italic"># c) probabilité de présence de l’électron entre 0 et a0</span>
+a0 <span style="color: #666666">=</span> <span style="color: #666666">0.529</span>
+Pa0 <span style="color: #666666">=</span> midpoint(densite_radiale, <span style="color: #666666">0</span>, a0, <span style="color: #666666">100</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La probabilité de présence de l’électron entre 0 et a0 est: &quot;</span>, Pa0)
+
+<span style="color: #408080; font-style: italic"># d) rayon moyen de l&#39;OA 1s</span>
+
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>):
+    Prn <span style="color: #666666">=</span> midpoint(densite_radiale, <span style="color: #666666">0</span>, n<span style="color: #666666">*</span>a0, <span style="color: #666666">100</span>)
+    <span style="color: #008000; font-weight: bold">if</span> Prn <span style="color: #666666">&gt;=</span> <span style="color: #666666">0.90</span>:
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;n = </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">, Pr</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> = </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">%</span>(n,n,Prn))
+    
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">r90 = 3*a0. On dit donc que la rayon moyen de l&#39;OA 1s de l&#39;atome d&#39;hydrogène </span>
+<span style="color: #BA2121; font-style: italic">est une sphère de rayon 3*a0, soit à peu près 1.6 Å.</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+
+<span style="color: #408080; font-style: italic"># e)</span>
+Pr <span style="color: #666666">=</span> midpoint(densite_radiale, <span style="color: #666666">0.9*</span>a0, <span style="color: #666666">1.1*</span>a0, <span style="color: #666666">100</span>)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est: &quot;</span>, Pr)
+
+<span style="color: #408080; font-style: italic"># La probabilité de présence de l’électron entre 0.9*a0 et 1.1*a0 est:  0.10790737203009312</span>
+
+<span style="color: #408080; font-style: italic"># f) Conclusion</span>
+
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">* La densité radiale de probabilité de présence est maximale </span>
+<span style="color: #BA2121; font-style: italic">pour r = a0 (rayon de Bohr) On dit que c&#39;est le rayon le plus probable.</span>
+
+<span style="color: #BA2121; font-style: italic">* Ce résultat est trompeur, car entre 0.9*a0  et 1.1*a0, la probabilité de présence</span>
+<span style="color: #BA2121; font-style: italic">de l&#39;électron n&#39;est que de 11%.</span>
+
+<span style="color: #BA2121; font-style: italic">* l&#39;atome d&#39;hydrogène est une sphère de rayon 3*a0, soit à peu près 1.6 Å.</span>
+
+<span style="color: #BA2121; font-style: italic">* La probabilité de présence de l’électron 1s est plus élevée à l’extérieur </span>
+<span style="color: #BA2121; font-style: italic">de l’orbite de Bohr. </span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 

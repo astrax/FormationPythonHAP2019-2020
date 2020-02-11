@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  29 NOV 2019 20:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  11 FEB 2020 20:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -596,49 +596,8 @@ Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
 less on input line 172.
 
 \c@doconceexercisecounter=\count153
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
-)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
-Language: french 2018/02/04 v3.4b French support from the babel system
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count154
-\U@D=\dimen143
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count155
-)
-\l@acadian = a dialect from \language\l@french 
-\FB@nonchar=\count156
-Package babel Info: Making : an active character on input line 411.
-Package babel Info: Making ; an active character on input line 412.
-Package babel Info: Making ! an active character on input line 413.
-Package babel Info: Making ? an active character on input line 414.
-\FBguill@level=\count157
-\FB@everypar=\toks36
-\FB@Mht=\dimen144
-\mc@charclass=\count158
-\mc@charfam=\count159
-\mc@charslot=\count160
-\std@mcc=\count161
-\dec@mcc=\count162
-\c@FBcaption@count=\count163
-\listindentFB=\skip69
-\descindentFB=\skip70
-\labelwidthFB=\skip71
-\leftmarginFB=\skip72
-\parindentFFN=\dimen145
-\FBfnindent=\skip73
-))
-(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 \@indexfile=\write6
 \openout6 = `TD3_corr.idx'.
-
 
 Writing index file TD3_corr.idx
 (/usr/share/texlive/texmf-dist/tex/latex/idxlayout/idxlayout.sty
@@ -646,23 +605,23 @@ Package: idxlayout 2012/03/30 v0.4d Configurable index layout
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
-\c@tracingmulticols=\count164
+\c@tracingmulticols=\count154
 \mult@box=\box41
-\multicol@leftmargin=\dimen146
-\c@unbalance=\count165
-\c@collectmore=\count166
-\doublecol@number=\count167
-\multicoltolerance=\count168
-\multicolpretolerance=\count169
-\full@width=\dimen147
-\page@free=\dimen148
-\premulticols=\dimen149
-\postmulticols=\dimen150
-\multicolsep=\skip74
-\multicolbaselineskip=\skip75
+\multicol@leftmargin=\dimen143
+\c@unbalance=\count155
+\c@collectmore=\count156
+\doublecol@number=\count157
+\multicoltolerance=\count158
+\multicolpretolerance=\count159
+\full@width=\dimen144
+\page@free=\dimen145
+\premulticols=\dimen146
+\postmulticols=\dimen147
+\multicolsep=\skip69
+\multicolbaselineskip=\skip70
 \partial@page=\box42
 \last@line=\box43
-\maxbalancingoverflow=\dimen151
+\maxbalancingoverflow=\dimen148
 \mult@rightbox=\box44
 \mult@grightbox=\box45
 \mult@gfirstbox=\box46
@@ -684,20 +643,20 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \@tempa=\box62
 \@tempa=\box63
 \@tempa=\box64
-\c@columnbadness=\count170
-\c@finalcolumnbadness=\count171
-\last@try=\dimen152
-\multicolovershoot=\dimen153
-\multicolundershoot=\dimen154
+\c@columnbadness=\count160
+\c@finalcolumnbadness=\count161
+\last@try=\dimen149
+\multicolovershoot=\dimen150
+\multicolundershoot=\dimen151
 \mult@nat@firstbox=\box65
 \colbreak@box=\box66
-\mc@col@check@num=\count172
+\mc@col@check@num=\count162
 )
-\c@idxcols=\count173
-\indexcolsep=\skip76
-\indexrule=\skip77
-\ila@indentunit=\skip78
-\ila@initsep=\skip79
+\c@idxcols=\count163
+\indexcolsep=\skip71
+\indexrule=\skip72
+\ila@indentunit=\skip73
+\ila@initsep=\skip74
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
@@ -799,63 +758,63 @@ Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
-\CenteringLeftskip=\skip80
-\RaggedLeftLeftskip=\skip81
-\RaggedRightLeftskip=\skip82
-\CenteringRightskip=\skip83
-\RaggedLeftRightskip=\skip84
-\RaggedRightRightskip=\skip85
-\CenteringParfillskip=\skip86
-\RaggedLeftParfillskip=\skip87
-\RaggedRightParfillskip=\skip88
-\JustifyingParfillskip=\skip89
-\CenteringParindent=\skip90
-\RaggedLeftParindent=\skip91
-\RaggedRightParindent=\skip92
-\JustifyingParindent=\skip93
+\CenteringLeftskip=\skip75
+\RaggedLeftLeftskip=\skip76
+\RaggedRightLeftskip=\skip77
+\CenteringRightskip=\skip78
+\RaggedLeftRightskip=\skip79
+\RaggedRightRightskip=\skip80
+\CenteringParfillskip=\skip81
+\RaggedLeftParfillskip=\skip82
+\RaggedRightParfillskip=\skip83
+\JustifyingParfillskip=\skip84
+\CenteringParindent=\skip85
+\RaggedLeftParindent=\skip86
+\RaggedRightParindent=\skip87
+\JustifyingParindent=\skip88
 ) (./TD3_corr.aux)
 \openout1 = `TD3_corr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 234.
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 234.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 234.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 232.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 232.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 232.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 234.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 234.
+LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 232.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count174
-\scratchdimen=\dimen155
+\scratchcounter=\count164
+\scratchdimen=\dimen152
 \scratchbox=\box67
-\nofMPsegments=\count175
-\nofMParguments=\count176
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count177
-\MPscratchDim=\dimen156
-\MPnumerator=\count178
-\makeMPintoPDFobject=\count179
-\everyMPtoPDFconversion=\toks38
+\nofMPsegments=\count165
+\nofMParguments=\count166
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count167
+\MPscratchDim=\dimen153
+\MPnumerator=\count168
+\makeMPintoPDFobject=\count169
+\everyMPtoPDFconversion=\toks37
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -873,7 +832,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 234.
+LaTeX Info: Redefining \microtypecontext on input line 232.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -892,7 +851,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 \AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring ON on input line 234.
+Package hyperref Info: Link coloring ON on input line 232.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -900,39 +859,36 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count180
+\c@section@level=\count170
 )
-LaTeX Info: Redefining \ref on input line 234.
-LaTeX Info: Redefining \pageref on input line 234.
-LaTeX Info: Redefining \nameref on input line 234.
+LaTeX Info: Redefining \ref on input line 232.
+LaTeX Info: Redefining \pageref on input line 232.
+LaTeX Info: Redefining \nameref on input line 232.
 
 (./TD3_corr.out) (./TD3_corr.out)
 \@outlinefile=\write7
 \openout7 = `TD3_corr.out'.
 
-LaTeX Info: Redefining \degres on input line 234.
-LaTeX Info: Redefining \dots on input line 234.
-LaTeX Info: Redefining \up on input line 234.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 234.
+LaTeX Info: Redefining \selectfont on input line 232.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 253.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 251.
 
 
 (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 261.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 259.
 
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 261.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 259.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -941,37 +897,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 \tf@toc=\write8
 \openout8 = `TD3_corr.toc'.
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 298.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 296.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 298.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 296.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 298
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 296
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 298
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 296
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 298.
+(Font)              <10> on input line 296.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 298.
+(Font)              <7> on input line 296.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 298.
-LaTeX Font Info:    Try loading font information for U+msa on input line 298.
+(Font)              <5> on input line 296.
+LaTeX Font Info:    Try loading font information for U+msa on input line 296.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -979,7 +935,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 298.
+LaTeX Font Info:    Try loading font information for U+msb on input line 296.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1021,14 +977,14 @@ File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 <imgs/equation2deg.pdf, id=30, 505.89pt x 361.35pt>
 File: imgs/equation2deg.pdf Graphic file (type pdf)
 <use imgs/equation2deg.pdf>
-Package pdftex.def Info: imgs/equation2deg.pdf  used on input line 394.
+Package pdftex.def Info: imgs/equation2deg.pdf  used on input line 392.
 (pdftex.def)             Requested size: 241.49895pt x 172.50317pt.
 
 [2 <./imgs/equation2deg.pdf>]
-Overfull \hbox (50.74153pt too wide) in paragraph at lines 404--405
+Overfull \hbox (48.51932pt too wide) in paragraph at lines 402--403
  []\T1/lmr/bx/n/10 Solution.[] \T1/lmr/m/n/10 (-20) Le pro-gramme qui re-pro-du
-it la fi-gure en uti-li-sant la fonc-tion \T1/lmtt/m/n/10 EqSecondDegree() \T1/
-lmr/m/n/10 (-20) : 
+it la fig-ure en util-isant la fonc-tion \T1/lmtt/m/n/10 EqSecondDegree()\T1/lm
+r/m/n/10 (-20) : 
  []
 
 \openout3 = `TD3_corr.pyg'.
@@ -1043,7 +999,7 @@ Package microtype Info: Character `texttrademark ' is missing
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 470.
+(amsmath)                 on input line 468.
 
 [3]
 \openout3 = `TD3_corr.pyg'.
@@ -1069,7 +1025,7 @@ D0D45.pygtex)
 <imgs/fourier.pdf, id=108, 433.62pt x 289.08pt>
 File: imgs/fourier.pdf Graphic file (type pdf)
 <use imgs/fourier.pdf>
-Package pdftex.def Info: imgs/fourier.pdf  used on input line 563.
+Package pdftex.def Info: imgs/fourier.pdf  used on input line 561.
 (pdftex.def)             Requested size: 345.0pt x 230.01158pt.
  [4]
 \openout3 = `TD3_corr.pyg'.
@@ -1082,10 +1038,6 @@ D0D45.pygtex) [5 <./imgs/fourier.pdf>]
 
 (./_minted-TD3_corr/4D106CBD29BB76DBB7135F15054C4EEBA5D9E75EE8F7167F098E896ACB6
 52153.pygtex) [6]
-Underfull \hbox (badness 10000) in paragraph at lines 674--675
-
- []
-
 \openout3 = `TD3_corr.pyg'.
 
 
@@ -1114,7 +1066,7 @@ D0D45.pygtex)
 <imgs/fresnel.png, id=197, 867.24pt x 361.35pt>
 File: imgs/fresnel.png Graphic file (type png)
 <use imgs/fresnel.png>
-Package pdftex.def Info: imgs/fresnel.png  used on input line 801.
+Package pdftex.def Info: imgs/fresnel.png  used on input line 799.
 (pdftex.def)             Requested size: 345.0pt x 143.74896pt.
  [8]
 \openout3 = `TD3_corr.pyg'.
@@ -1122,11 +1074,11 @@ Package pdftex.def Info: imgs/fresnel.png  used on input line 801.
 
 (./_minted-TD3_corr/441E0F265C44760F54CAC81BA923CFAD447F966D79FF32F728B4E14C30F
 D0D45.pygtex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 838.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 836.
  [9 <./imgs/fresnel.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 838.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 836.
  (./TD3_corr.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 838.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 836.
 
 
  *File List*
@@ -1222,9 +1174,6 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 fancyhdr.sty    2017/06/30 v3.9a Extensive control of page headers and footers
-   babel.sty    2018/02/14 3.18 The Babel package
-  french.ldf    2018/02/04 v3.4b French support from the babel system
-scalefnt.sty    
 idxlayout.sty    2012/03/30 v0.4d Configurable index layout
 multicol.sty    2017/04/11 v1.8q multicolumn formatting (FMi)
 tocbibind.sty    2010/10/13 v1.5k extra ToC listings
@@ -1295,20 +1244,20 @@ _minted-TD3_corr/441E0F265C44760F54CAC81BA923CFAD447F966D79FF32F728B4E14C30FD0D
 45.pygtex
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 838.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 836.
 Package rerunfilecheck Info: File `TD3_corr.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(rm TD3_corr.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 15144 strings out of 494894
- 245051 string characters out of 6179473
- 422804 words of memory out of 5000000
- 17967 multiletter control sequences out of 15000+600000
- 54985 words of font info for 87 fonts, out of 8000000 for 9000
+ 13965 strings out of 494894
+ 227842 string characters out of 6179473
+ 399251 words of memory out of 5000000
+ 16803 multiletter control sequences out of 15000+600000
+ 55317 words of font info for 91 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,12n,48p,843b,613s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,48p,843b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/
 share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
@@ -1324,7 +1273,7 @@ s/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type
 1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/
 share/texmf/fonts/type1/public/lm/lmtti10.pfb>
-Output written on TD3_corr.pdf (9 pages, 399179 bytes).
+Output written on TD3_corr.pdf (9 pages, 398705 bytes).
 PDF statistics:
  296 PDF objects out of 1000 (max. 8388607)
  185 compressed objects within 2 object streams
