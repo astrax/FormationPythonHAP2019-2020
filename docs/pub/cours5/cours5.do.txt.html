@@ -1,0 +1,325 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Équations différentielles ordinaires</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #000080; font-weight: bold">======= Introduction =======</span>
+Dans les domaines scientifiques et industriels, il est courant aujourd&#39;hui d&#39;étudier la nature ou les dispositifs technologiques au moyen de modèles sur ordinateur. Avec de tels modèles, l&#39;ordinateur agit comme un laboratoire virtuel où les expériences peuvent être effectuées de manière rapide, fiable, sûre et économique.
+
+Les équations différentielles constituent l&#39;un des outils mathématiques les plus puissants pour comprendre et prédire le comportement des systèmes dynamiques de la nature, de l&#39;ingénierie et de la société. Un système dynamique est un système avec un état, généralement exprimé par un ensemble de variables, évoluant dans le temps. Par exemple, un pendule oscillant, la propagation d&#39;une maladie et les conditions météorologiques sont des exemples de systèmes dynamiques. Nous pouvons utiliser les lois fondamentales de la physique, ou l&#39;intuition simple, pour exprimer des règles mathématiques qui régissent l&#39;évolution du système dans le temps. Ces règles prennent la forme d&#39;équations différentielles.
+
+
+<span style="color: #228B22"># ======= Exemple I : Radioactivité =======</span>
+<span style="color: #228B22"># ===== La découverte de la radioactivité =====</span>
+<span style="color: #228B22"># La radioactivité a été découverte en France, de 1896 à 1898, par Henri Becquerel, qui a mis en évidence l’existence d’un rayonnement invisible provenant de l’uranium (voir Figure ref{fig:Becquerel}), et par Pierre et Marie Curie qui ont montré la généralité de ce phénomène, lui ont donné son nom, et découvert deux éléments chimiques particulièrement radioactifs, le polonium et le radium. Dans l’histoire de cette découverte, et du développement de toutes ses conséquences, on retrouve toutes les grandes questions liées à la recherche, aux mécanismes de la découverte, aux remises en cause des acquis de la science et à l’exploitation scientifique, technologique et industrielle des connaissances nouvelles.</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># FIGURE:[imgs/radioactivite, width=500 frac=0.7] Cliché développé par Becquerel le $1^{er}$ mars 1896 après être resté dans un tiroir. On distingue dans la tache inférieure, une croix de Malte à laquelle Becquerel fait allusion (« Si, entre la lamelle du sel d’uranium et la lame d’aluminium ou le papier noir, on interpose un écran formé d’une lame de cuivre … par exemple en forme de croix, on observe dans l’image la silhouette de cette croix, en plus clair… »). Les annotations sont de la main de Becquerel.[source: OpenEdition Journals, &quot;Henri Becquerel : découverte de la radioactivité&quot;:&quot;https://journals.openedition.org/bibnum/848&quot;] label{fig:Becquerel}</span>
+
+<span style="color: #000080; font-weight: bold">======= Loi de désintégration radioactive =======</span>
+Considérons la désintégration radioactive des noyaux. Le nombre de noyaux, N, suit l&#39;équation différentielle ordinaire:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\frac{dN(t)}{dt} = - \frac{N(t)}{\tau}
+\label{eq:desintegration_ode}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $\tau$ est la constante de temps de décroissance (on l&#39;appelle aussi durée de vie moyenne). Cette équation peut être intégrée directement, avec la solution:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+N(t) = N_0 e^{-t/\tau}
+\label{eq:desintegration_exact}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+mais nous voulons essayer de résoudre l&#39;équation numériquement.
+
+L&#39;approche la plus simple consiste à exprimer le nombre de noyaux à l&#39;instant $t + \Delta t$ en termes de nombre à l&#39;instant $t$:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+N(t + \Delta t) = N(t) - \frac{N(t)}{\tau} \Delta t + \mathcal{O}(\Delta t^2)
+\label{eq:desintegration_euler}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Si nous commençons par $N_0$ noyaux à l&#39;instant $t = 0$, alors à $t = \Delta t$ nous aurons $N(\Delta t) \approx N_0 - (N_0/ \tau) \Delta t$; at $t = 2 \Delta t$ nous aurons $N(2\Delta t) \approx N(\Delta t) - [N(\Delta t)/ \tau] \Delta t$ etc.
+L&#39;erreur de troncature est $\mathcal{O}(\Delta t^2)$. Par conséquent, si la taille du pas $\Delta t$ est petite, nous nous attendons à ce que notre solution numérique soit proche de la solution exacte. Cette méthode d’intégration d’une équation différentielle ordinaire est connue sous le nom de _méthode d’Euler_.
+
+<span style="color: #658b00">FIGURE:[scripts/euler_schema, width=500 frac=0.7]</span>
+
+Voici un programme qui implémentera cette méthode d&#39;intégration de l&#39;équation différentielle pour la désintégration radioactive:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/desintegration.py</span>
+
+Le programme demande le nombre initial de noyaux, $N_0$, la constante de temps de décroissance $\tau$, le pas de temps $\Delta t$ et la durée totale de l&#39;intégration $t_{max}$. Lorsque ce programme est exécuté avec les valeurs d&#39;entrée sont; $N_0 = 100$, $\tau = 1$, $\Delta t = 0.04$ et $t_{max} = 5$, le programme produit le tracé présenté dans la Figure ref{figout:desintegration}.
+
+<span style="color: #658b00">FIGURE:[scripts/desintegration, width=500 frac=0.7] Résultat de l&#39;exécution du programme *desintegration.py* avec entrée $N_0 = 100$, $\tau = 1$, $\Delta t = 0.04$ et $t_{max} = 5$. label{figout:desintegration}</span>
+
+Voyons maintenant à quel point notre programme est proche de la solution exacte. Vraisemblablement, lorsque le pas $\Delta t$ est grand, l&#39;erreur sera pire; aussi, les erreurs grandissent avec le temps. Pour voir cela, considérons une version modifiée de notre programme *desintegration.py* qui trace la différence fractionnaire entre le résultat numérique et le résultat exact donné par Eq.~(ref{eq:desintegration_exact}). Notre nouveau programme effectuera des évolutions numériques sur un certain nombre de _différentes valeurs du pas_ afin que nous puissions voir comment l&#39;erreur dépend du degré de raffinement de $\Delta t$.
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/desintegrationErr.py</span>
+
+Ce programme produit les résultats montrés à la Figure ref{figout:desintegrationErr}.
+
+<span style="color: #658b00">FIGURE:[scripts/desintegrationErr, width=500 frac=0.7] Résultat de l&#39;exécution du programme *desintegrationErr.py* avec entrée $N_0 = 100$, $\tau = 1$, $\Delta t = 0.1$, $N_{res}=4$ et $t_{max} = 10$. label{figout:desintegrationErr}</span>
+
+Les erreurs se rapprochent de manière linéaire avec le temps (les lignes du tracé logarithmique ont une pente approximativement égale à l&#39;unité) et chaque facteur de 10 dans le raffinement diminue l&#39;erreur fractionnaire d&#39;un facteur 10. Pour comprendre cela, notez que le terme que nous avons jeté dans l&#39;expansion de Taylor de notre équation différentielle ordinaire était le terme $d^2 N / d t^2 $, donc chaque étape introduit une erreur de:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+e_i \approx \frac{1}{2} \frac{d^2 N(t_i)}{d t^2} \Delta t^2 = \frac{N(t_i)}{2 \tau^2} \Delta t^2
+<span style="color: #658b00">label{eq:local_erreur}</span>
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Ceci est connu sous le nom _d&#39;erreur locale_. Si l&#39;erreur locale d&#39;un schéma d&#39;intégration numérique est $\mathcal{O}(\Delta t^{p + 1})$ comme $t \rightarrow 0$, alors on dit que c&#39;est l&#39;ordre $p$. La méthode d’Euler est donc un schéma d’intégration de premier ordre. _L&#39;erreur globale_ est l&#39;erreur accumulée lorsque l&#39;intégration est effectuée pendant une certaine durée T. Le nombre d&#39;étapes requis est $n = T / \Delta t$ et chaque étape $i~=~1...n$ accumule une erreur $e_i$, nous nous attendons donc à ce que l&#39;erreur globale soit:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+E_n \le \sum_{i=1}^n e_i \le T \frac{N_0}{2 \tau^2} \Delta t
+<span style="color: #658b00">label{eq:global_erreur}</span>
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+puisque $e_i \le \frac{N_0}{2 \tau^2} \Delta t^2$. Notez que pour un schéma d’intégration d&#39;ordre $p$, l&#39;erreur sera $\mathcal{O}(\Delta t^{p})$; de plus, l&#39;erreur grandit avec le temps $T$. Pour la méthode d&#39;Euler, l&#39;erreur croît de manière approximativement linéaire avec $T$ et avec $\Delta t$, ce qui est ce que nous voyons sur la Figure ref{figout:desintegrationErr}.
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+La méthode d&#39;Euler n&#39;est pas une méthode recommandée pour résoudre des équations différentielles ordinaires. S&#39;agissant simplement du premier ordre, une précision souhaitée n&#39;est obtenue que pour de très petites valeurs de $\Delta t$, de nombreuses étapes d&#39;intégration sont donc nécessaires pour faire évoluer le système pour une durée donnée $T$. Mais le coût en calcul de la méthode d’Euler n’est pas son seul inconvénient: elle n’est pas particulièrement stable non plus, comme nous le verrons plus loin dans ce chapitre..
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+
+<span style="color: #000080; font-weight: bold">======= Mouvement d&#39;un projectile =======</span>
+Un autre exemple d&#39;équation différentielle ordinaire est celui du mouvement du projectile, pour lequel les équations du mouvement sont:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{dx}{dt} &amp;=v_x, &amp; \frac{dv_x}{dt} &amp;=0, \\
+\frac{dy}{dt} &amp;=v_y, &amp; \frac{dv_y}{dt} &amp;=-g,
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $g$ est l&#39;accélération de pesanteur. Nous pouvons utiliser la méthode d&#39;Euler pour écrire chaque dérivée sous une forme de différence finie convenant à l&#39;intégration numérique:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+x_{i+1} &amp;  =x_i + v_{x,i} \Delta t, &amp;  v_{x,i+1} &amp;= v_{x,i}, \\
+y_{i+1} &amp;  =y_i + v_{y,i} \Delta t, &amp;  v_{y,i+1} &amp;= v_{y,i} - g \Delta t,
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Les trajectoires d&#39;un projectile lancé avec une vitesse $v_0~=~10~ \ m~s^{-1}$ à différents angles sont tracées par le programme `projectile.py` et sont tracées à la Fig. ref{fig:projectile}.
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/projectile.py</span>
+Nous voyons, comme prévu, que la plus grande plage est atteinte pour un angle de lancement de $45^\circ$.
+
+<span style="color: #658b00">FIGURE:[scripts/projectile, width=500 frac=0.7] Résultats de l&#39;exécution du programme `projectile.py`. On voit que la plus grande plage est atteinte avec un angle de lancement de $\theta = 45^\circ$. label{fig:projectile}</span>
+
+Trouver la trajectoire d&#39;un projectile compte tenu de ses conditions initiales, $v_{x,i}$ et $v_{x,i}$ ou de manière équivalente $v_0$ et $\theta$, est relativement simple. Cependant, supposons que nous voulons trouver l&#39;angle de lancement $\theta$ requis pour atteindre une cible à une distance donnée avec une vitesse initiale $v_0$ donnée. Ceci est un exemple de problème de la *valeur aux limites* à deux points.Une approche pour résoudre un tel problème est connue comme *méthode de tir*.
+
+L&#39;idée est simple: devinez la valeur de $\theta$, effectuez l&#39;intégration, déterminez combien vous manquez votre note, puis affinez votre estimation de manière itérative jusqu’à ce que vous soyez suffisamment proche de la cible. Si $\Delta x(\theta)$ est la quantité que vous manquez la cible avec l&#39;angle de lancement $\theta$ alors l&#39;objectif est de résoudre l&#39;équation:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> label{eq:theta}
+\Delta x(\theta) = 0
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+pour $\theta$. Ce problème général s&#39;appelle _la recherche de racine_. Nous allons utiliser ici une méthode assez simple pour résoudre une racine appelée *méthode de bissection*. Supposons que nous savons que la racine de l&#39;équation (ref{eq:theta}) se situe quelque part dans l&#39;intervalle $\theta_1 &lt; \theta &lt; \theta_2$ et $\Delta x(\theta_1)$ a le signe opposé de $\Delta x(\theta_2)$ (c&#39;est-à-dire si $\Delta x(\theta_1) &lt;0$ alors $\Delta x(\theta_2)&gt; 0$, ou vice versa). On dit alors que $\theta_1$ et $\theta_2$ *encadrent* la racine.
+
+Commençons par évaluer $\Delta x(\theta_1)$, $\Delta x(\theta_2)$ et $\Delta x(\theta_{deviner})$ avec  $\theta_{deviner}$ au milieu entre  $\theta_1$  et  $\theta_2$ , $\theta_{deviner} = \frac{1}{2} (\theta_1 + \theta_2)$. Si le signe de $\Delta x(\theta_{deviner})$ est identique au signe de $\Delta x(\theta_1)$, alors nous savons que la racine doit être comprise entre $\theta_{deviner}$ et $\theta_2$, nous assignons donc $\theta_1$ à $\theta_{deviner}$ et faisons une nouvelle hypothèse à mi-chemin entre les nouveaux $\theta_1$ et $\theta_2$. Sinon, si le signe de $\Delta x(\theta_{deviner})$ est identique au signe de $\Delta x(\theta_2)$, nous savons que la racine doit être comprise entre $\theta_1$ et $\theta_{deviner}$. Nous affectons donc $\theta_2$ à $\theta_{deviner}$ et faisons une nouvelle hypothèse à mi-chemin entre $\theta_1$ et le nouveau $\theta_2$. Nous continuons cette itération jusqu&#39;à ce que nous soyons *suffisamment proche*, c&#39;est-à-dire $| \Delta x(\theta_{deviner}) | &lt; \epsilon$ pour une petite valeur de $\epsilon$.
+
+Pour le problème à résoudre, la cible doit être située à une distance $x_{cible}$ et le point où le projectile touche le sol lorsqu’il est lancé à l&#39;angle $\theta$ est $x_{sol}(\theta)$. Définir $\Delta x(\theta) = x_{sol}(\theta) - x_{cible}$ de telle sorte que $\Delta x(\theta) &gt; 0$ si nous avons tiré trop loin et $\Delta x(\theta) &lt; 0$ si nous avons tiré trop près. Ensuite, si $0 &lt;x_{cible} &lt;x_{max}$ où nous connaissons $x_{sol}(0^\circ) = 0$ et $x_{sol}(45^\circ) = x_{max}$, alors nous savons que $\theta_1 = 0^\circ$ et $\theta_2 = 45^\circ$ encadrent la racine. Le programme `tire.py` utilise la méthode de tir pour calculer la trajectoire d&#39;un projectile lancé à partir de $x = 0$ avec une vitesse fixe et atterrissant au point $x = x_{sol}$. Le résultat de ce programme exécuté avec une vitesse initiale $v_0 = 10 \ m \ s^{-1}$ et un emplacement cible $x_{cible} = 8 \ m$ est présenté à la Fig. ref{fig:tire}.
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/tire.py</span>
+
+<span style="color: #658b00">FIGURE:[scripts/tire, width=500 frac=0.7] Résultats de l&#39;exécution du programme tire.py avec une vitesse initiale $v_0 = 10 \ m \ s^{−1}$ et l&#39;emplacement cible $x_{cible}$ = 8 m. L&#39;angle requis pour atteindre la cible est $\theta = 25.84^\circ$. label{fig:tire}</span>
+
+<span style="color: #000080; font-weight: bold">======= Convergence et de stabilité de la méthode d&#39;Euler: Cas des systèmes linéaires =======</span>
+En mécanique classique, les équations du mouvement d&#39;un système mécanique (systèmes de points matériels, système de solides) sont des équations différentielles du second ordre par rapport au temps. La connaissance des positions et des vitesses des points à l&#39;instant $t=0$ suffit à déterminer le mouvement pour $t&gt;0$.
+
+Ces équations sont souvent non linéaires car les forces elles-mêmes le sont (par exemple la force de gravitation) et car l&#39;accélération est souvent une fonction non linéaire des degrés de liberté. Dans ce cas, il est fréquent que l&#39;on ne connaisse pas de solution analytique exacte. On est alors amené à rechercher une solution approchée par une méthode numérique.
+
+Cette partie du cours explique le principe de ce type d&#39;intégration numérique. On prendra l&#39;exemple de l&#39;oscillateur harmonique (dont la solution exacte est connue) auquel on appliquera la méthode numérique d&#39;Euler. On abordera les notions importantes de *convergence* et de *stabilité*.
+
+On verra aussi des variantes de la méthode d&#39;Euler, qui peuvent être utilisées pour résoudre des systèmes conservatifs à N corps, par exemple en dynamique moléculaire.
+
+De manière générale soit le système d&#39;équations différentielles suivant:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\label{eq:sysdiff1}
+<span style="color: #658b00">\begin{align}</span>
+\pmb{\dot{u}} &amp;= f(\pmb{u})
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Où $\pmb{u}$ peut être un vecteur d&#39;état et $f(\pmb{u})$ peut être linéaire ou non linéaire.
+
+Soit $f(\pmb{u}) = \pmb{A} \cdot \pmb{u}$ avec $\pmb{A}$ une matrice. Donc on peut écrire l&#39;équation (ref{eq:sysdiff1}) comme suit:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\label{eq:sysdiff2}
+<span style="color: #658b00">\begin{align}</span>
+\pmb{\dot{u}} &amp;= \pmb{A} \cdot \pmb{u} \quad avec \ \pmb{u}(t=0)=\pmb{u}_0
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+La solution analytique exacte d&#39;un tel système est de la forme:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\label{eq:solexact1}
+<span style="color: #658b00">\begin{align}</span>
+\pmb{u}(t) &amp;= e^{\pmb{A}t} \cdot \pmb{u}_0
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+On se propose d&#39;appliquer différentes méthodes d&#39;Euler au système (ref{eq:sysdiff2}).
+
+<span style="color: #000080; font-weight: bold">===== La méthode d&#39;Euler explicite (progressive) =====</span>
+
+<span style="color: #658b00">FIGURE:[imgs/fd_forward, width=500 frac=0.7] Illustration d&#39;une approximation par différence progressive de la dérivée.</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{\pmb{u}_{k+1}-\pmb{u}_k}{\Delta t} &amp;\approx \pmb{\dot{u}}_k = f(\pmb{u}_k)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\pmb{u}_{k+1}  &amp;= \pmb{u}_k + \Delta t  f(\pmb{u}_k)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Si $\pmb{\dot{u}} = \pmb{A} \cdot \pmb{u}$ alors;
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:euler_exp}
+\pmb{u}_{k+1}  &amp;= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_k = (\pmb{I} + \Delta t  \pmb{A}) \cdot \pmb{u}_k
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Où $\pmb{I}$ est la matrice identité.
+
+<span style="color: #000080; font-weight: bold">===== La méthode d&#39;Euler implicite (rétrograde) =====</span>
+
+<span style="color: #658b00">FIGURE:[imgs/fd_backward, width=500 frac=0.7] Illustration d&#39;une approximation par différence rétrograde de la dérivée.</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{\pmb{u}_{k+1}-\pmb{u}_k}{\Delta t} &amp;\approx \pmb{\dot{u}}_{k+1} = f(\pmb{u}_{k+1})
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\pmb{u}_{k+1}  &amp;= \pmb{u}_k + \Delta t  f(\pmb{u}_{k+1})
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Si $\pmb{\dot{u}} = \pmb{A} \cdot \pmb{u}$ alors;
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\pmb{u}_{k+1}  &amp;= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_{k+1}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+(\pmb{I} - \Delta t  \pmb{A}) \cdot \pmb{u}_{k+1}  &amp;= \pmb{u}_k
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:euler_imp}
+\pmb{u}_{k+1}  &amp;=(\pmb{I} - \Delta t  \pmb{A})^{-1}  \cdot \pmb{u}_k
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+
+Où $\pmb{I}$ est la matrice identité.
+<span style="color: #000080; font-weight: bold">===== Exemple: Oscillateur libre amorti [masse, ressort, amortisseur] =====</span>
+Un bloc de masse $m$ est lié à l&#39;extrémité libre d&#39;un ressort de raideur $k$ , de longueur au repos $l$, de masse négligeable et d&#39;élasticité parfaite, l&#39;autre extrémité du ressort étant fixe. Le système est supposé dans l&#39;espace (on néglige la force de pesanteur). Le seul mouvement possible pour le bloc est une translation suivant $x$; on assimilera le bloc à un point matériel $M$.
+
+<span style="color: #658b00">FIGURE:[imgs/oscillator, width=500 frac=0.7] Schéma d&#39;un système dynamique oscillant amorti unidimensionnel.</span>
+
+<span style="color: #000080; font-weight: bold">=== Bilan des forces ===</span>
+* La force de rappel $\overrightarrow{F_r} = - k \overrightarrow{x}$ où $k$ est un coefficient positif et $\overrightarrow{x}$ le vecteur position de $M$.
+* Le système est amorti. L&#39;amortissement de type visqueux est représenté par un amortisseur qui exerce la force dissipative (ou force d&#39;amortissement visqueux) $\overrightarrow{F_a} = - b \overrightarrow{v}$ où $b$ est un coefficient positif et $\overrightarrow{v}$ le vecteur vitesse de $M$.
+
+<span style="color: #000080; font-weight: bold">=== Équation de mouvement ===</span>
+La deuxième loi de Newton pour le système peut être écrite avec l&#39;accélération multipliée par la masse du côté gauche et la somme des forces du côté droit:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+  m \overrightarrow{a} &amp;=  \overrightarrow{F_a} + \overrightarrow{F_r}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+  m \ddot{x} &amp;=  - b \dot{x} - kx
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+  m \ddot{x} + b \dot{x} + kx &amp;= 0
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+On réécrit cette équation sous la forme canonique suivante :
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:ordre2}
+\ddot{x} + 2 \zeta \omega_0 \dot{x} + \omega_0^2 x &amp;= 0
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $\omega_0 = \sqrt{\frac{k}{m}}$ désigne une *pulsation caractéristique* et $\zeta = \frac{b}{2 \sqrt{km}}$ est une quantité positive sans dimension, appelée *taux d’amortissement*.
+
+C&#39;est une équation différentielle linéaire d&#39;ordre 2 à coefficients constants.
+
+On peut trouver numériquement la solution de l&#39;équation (ref{eq:ordre2}) à l&#39;aide des méthodes d&#39;Euler à partir du système d&#39;équations différentielles ordinaires suivant:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dot{x} &amp;= v\\
+\dot{v} &amp;= - 2 \zeta \omega_0 v - \omega_0^2 x\\
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\label{eq:linalg}
+<span style="color: #658b00">\begin{align}</span>
+\frac{d}{dt}
+\left(\begin{array}{c}
+x\\
+v
+<span style="color: #658b00">\end{array}</span>\right)
+&amp;=
+\left(\begin{array}{cc}
+0 &amp; 1\\
+- \omega_0^2 &amp; - 2 \zeta \omega_0
+<span style="color: #658b00">\end{array}</span>\right) \cdot
+\left(\begin{array}{c}
+x\\
+v
+<span style="color: #658b00">\end{array}</span>\right)
+
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+L&#39;équation (ref{eq:linalg}) est de la forme: $\dot{\pmb{u}} = \pmb{A} \cdot \pmb{u}$ avec:
+$$ \pmb{A}= \left(\begin{array}{ll} 0    &amp;    1 \\ - \omega_0^2 &amp; - 2 \zeta \omega_0 \end{array}\right) $$ et $$\pmb{u} = \left(\begin{array}{c} x\\ v \end{array}\right)$$
+
+Supposons que nous voulions résoudre le problème avec: $\omega_0 = 2 \pi$, $\zeta = 0.25$, $\pmb{u_0}= \left(\begin{array}{c} x(t=0)\\ v(t=0) \end{array}\right)= \left(\begin{array}{c} 2\\ 0 \end{array}\right)$, $\Delta t = 0.01$ pour $t \in [0, 10]$. Ce sera une solution sinusoïdale amortie.
+
+<span style="color: #000080; font-weight: bold">=== Solution avec la méthode d&#39;Euler explicite ===</span>
+Nous implémentons l&#39;expression explicite d&#39;Euler montrée dans (ref{eq:euler_exp}) dans le code python suivant:
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/OscillateurEulerExp.py</span>
+
+<span style="color: #658b00">FIGURE:[scripts/EulerExp_3, width=500 frac=0.7] Simulation d&#39;un système oscillant avec différents pas de temps; $\Delta t = 0.01$ et $\Delta t = 0.1$ et pour $\zeta = 0.25$. label{fig:EulerExp_3}</span>
+
+La figure ref{fig:EulerExp_3} est générée par le code `OscillateurEulerExp.py`, montrant la divergence et l&#39;instabilité de la méthode Euler explicite. En effet, le pas d&#39;intégration $\Delta t$ agit considérablement sur la qualité de la simulation et donne un résultat inacceptable physiquement.
+
+<span style="color: #658b00">FIGURE:[scripts/EulerExpGen, width=500 frac=0.7] Simulation d&#39;un système oscillant avec différentes valeurs de $\zeta$ et pour $\Delta t = 0.01$. label{fig:EulerExpGen}</span>
+
+Dans le cas d&#39;intégration avec la méthode d&#39;Euler explicite, la figure ref{fig:EulerExpGen} montre que nous avons un problème d’augmentation d’amplitude dans le cas d’un oscillateur non amorti (courbe bleue pour $\zeta = 0$). Plus le temps de simulation est long, plus l&#39;amplitude augmente, ce qui n&#39;est pas ce que nous attendons de l&#39;évolution du système dans le temps. En d’autres termes, l’amplitude devrait être constante dans le temps pour un système oscillant non amorti.
+
+<span style="color: #000080; font-weight: bold">=== Solution avec la méthode d&#39;Euler implicite ===</span>
+Nous implémentons l&#39;expression implicite d&#39;Euler montrée dans (ref{eq:euler_imp}) dans le code python suivant:
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/OscillateurEulerImp.py</span>
+
+<span style="color: #658b00">FIGURE:[scripts/Eulerimp_3, width=500 frac=0.7] Simulation d&#39;un système oscillant avec différents pas de temps; $\Delta t = 0.01$ et $\Delta t = 0.1$ et pour $\zeta = 0.25$. label{fig:Eulerimp_3}</span>
+
+La figure ref{fig:Eulerimp_3} est générée par le code `OscillateurEulerImp.py`, montrant que la méthode d&#39;Euler implicite est plus stable que la méthode Euler explicite. Nous remarquons toujours qu&#39; il y a un effet du changement du pas d&#39;intégration $\Delta t$ sur la qualité de la simulation mais le résultat du calcul est désormais acceptable physiquement.
+
+<span style="color: #658b00">FIGURE:[scripts/EulerExpGen2, width=500 frac=0.7] Simulation d&#39;un système oscillant avec différentes valeurs de $\zeta$ et pour $\Delta t = 0.01$. label{fig:EulerExpGen2}</span>
+
+Même problème avec l&#39;amplitude pour le cas d&#39;intégration avec la méthode implicite d&#39;Euler, la figure ref{fig:EulerExpGen2} montre que nous avons un problème de diminution d&#39;amplitude dans le cas d&#39;un oscillateur non amorti (courbe bleue pour $\zeta = 0$). Comme indiqué ci-dessus, l&#39;amplitude devrait être constante dans le temps pour un système oscillant non amorti.
+
+<span style="color: #000080; font-weight: bold">===== Conclusion =====</span>
+La conclusion ici est que la méthode Euler implicite est plus stable que celle explicite. Les deux méthodes posent un problème fondamental avec ses amplitudes croissantes et décroissantes, pour le cas d&#39;oscillateur libre non amorti, et qu’un très petit $\Delta t$ est nécessaire pour obtenir des résultats satisfaisants. Plus la simulation est longue, plus $\Delta t$ doit être petit. Il est certainement temps de rechercher des méthodes numériques plus stables et plus efficaces tels que les méthodes de &quot;Runge-Kutta&quot;:&quot;https://fr.wikipedia.org/wiki/M%C3%A9thodes_de_Runge-Kutta&quot;.
+</pre></div>
