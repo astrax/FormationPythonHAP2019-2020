@@ -1,0 +1,197 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="ANTENNE DIPÔLE: Diagramme de rayonnement">
+
+<title>ANTENNE DIPÔLE: Diagramme de rayonnement</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1, 'sections': [('Programme Python', 1, None, '___sec0')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="antenne-bs.html">ANTENNE DIPÔLE: Diagramme de rayonnement</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Programme Python</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>ANTENNE DIP&#212;LE: Diagramme de rayonnement</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Feb 20, 2020</h4></center> <!-- date -->
+<br>
+<p>
+<!-- TOC: on -->
+
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0" class="anchor">Programme Python </h1>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: DipRadiation.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">axes3d</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">rho</span>(theta, rapport <span style="color: #666666">=</span> <span style="color: #666666">0.7</span>):
+    u <span style="color: #666666">=</span> <span style="color: #666666">2*</span>rapport<span style="color: #666666">*</span> np<span style="color: #666666">.</span>pi
+    F <span style="color: #666666">=</span> (np<span style="color: #666666">.</span>cos(u<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(theta)) <span style="color: #666666">-</span> np<span style="color: #666666">.</span>cos(u))<span style="color: #666666">/</span>np<span style="color: #666666">.</span>sin(theta)
+    G <span style="color: #666666">=</span> F <span style="color: #666666">*</span> F
+    <span style="color: #008000; font-weight: bold">return</span> G<span style="color: #666666">/</span>G<span style="color: #666666">.</span>max() 
+
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">111</span>, polar<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Rayonnement d&#39;une antenne dipolaire de longueur L&quot;</span>)
+ax<span style="color: #666666">.</span>set_theta_zero_location(<span style="color: #BA2121">&#39;N&#39;</span>)
+ax<span style="color: #666666">.</span>set_theta_direction(<span style="color: #666666">-1</span>)
+
+ax<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">500</span>)
+
+<span style="color: #008000; font-weight: bold">for</span> rapport <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">0.1</span>,<span style="color: #666666">0.5</span>,<span style="color: #666666">1.0</span>,<span style="color: #666666">1.5</span>]:
+    ax<span style="color: #666666">.</span>plot(theta,rho(theta, rapport),label<span style="color: #666666">=</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
+plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower right&#39;</span>)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+
+<span style="color: #408080; font-style: italic">#% Dipôle 3D</span>
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
+phi <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
+THETA, PHI <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(theta,phi)
+<span style="color: #408080; font-style: italic"># </span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sph2cart</span>(azimuth,elevation,r):
+    x <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(elevation) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(azimuth)
+    y <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(elevation) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(azimuth)
+    z <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(elevation)
+    <span style="color: #008000; font-weight: bold">return</span> x, y, z
+
+rapport <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+X, Y, Z <span style="color: #666666">=</span> sph2cart(PHI,THETA,rho(THETA,rapport <span style="color: #666666">=</span> rapport))
+<span style="color: #408080; font-style: italic"># Plot</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.colors</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">mcolors</span>
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>add_subplot(<span style="color: #666666">1</span>,<span style="color: #666666">1</span>,<span style="color: #666666">1</span>, projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>)
+ax<span style="color: #666666">.</span>_axis3don <span style="color: #666666">=</span> <span style="color: #008000">False</span> <span style="color: #408080; font-style: italic"># hide x, y, z axis</span>
+cmap <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>get_cmap(<span style="color: #BA2121">&#39;gnuplot&#39;</span>)
+norm <span style="color: #666666">=</span> mcolors<span style="color: #666666">.</span>Normalize(vmin<span style="color: #666666">=</span>Z<span style="color: #666666">.</span>min(), vmax<span style="color: #666666">=</span>Z<span style="color: #666666">.</span>max())
+plot <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot_surface(
+    X, Y, Z, rstride<span style="color: #666666">=8</span>, cstride<span style="color: #666666">=8</span>, 
+    facecolors<span style="color: #666666">=</span>cmap(norm(Z)), antialiased<span style="color: #666666">=</span><span style="color: #008000">True</span>, alpha<span style="color: #666666">=0.5</span>)
+
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Diagramme de rayonnement: &quot;</span><span style="color: #666666">+</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole3D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole3D.pdf&quot;</span>)
+</pre></div>
+<p>
+<br /><br /><center><p><img src="scripts/dipole.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<br /><br /><center><p><img src="scripts/dipole3D.png" align="bottom" width=500></p></center><br /><br />
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+
