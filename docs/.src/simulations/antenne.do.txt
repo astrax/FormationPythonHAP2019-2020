@@ -1,13 +1,13 @@
-TITLE: ANTENNE DIPÔLE: Diagramme de rayonnement
+TITLE: Diagramme de rayonnement
 AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
 DATE: today
 
 # TOC: on
 
-======= Programme Python =======
-
+======= Simulation Python =======
+FIGURE:[imgs/formule, width=500 frac=1]
 @@@CODE scripts/DipRadiation.py
 
-FIGURE:[scripts/dipole, width=500 frac=0.7]
+FIGURE:[scripts/dipole, width=500 frac=.8]
 
-FIGURE:[scripts/dipole3D, width=500 frac=0.7]
+FIGURE:[scripts/dipole3D, width=500 frac=1]
