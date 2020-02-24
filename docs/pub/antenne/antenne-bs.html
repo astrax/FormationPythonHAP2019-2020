@@ -42,10 +42,28 @@ body { font-size:20px;line-height:1.5; }
 </head>
 
 <!-- tocinfo
-{'highest level': 1, 'sections': [('Simulation Python', 1, None, '___sec0')]}
+{'highest level': 1,
+ 'sections': [('Antenne dipolaire', 1, None, '___sec0'),
+              ('Simulation Python', 2, None, '___sec1')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <!-- Bootstrap navigation bar -->
@@ -64,7 +82,8 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Simulation Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Antenne dipolaire</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simulation Python</a></li>
 
         </ul>
       </li>
@@ -97,16 +116,47 @@ end of tocinfo -->
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Feb 20, 2020</h4></center> <!-- date -->
+<center><h4>Feb 24, 2020</h4></center> <!-- date -->
 <br>
 <p>
 <!-- TOC: on -->
 
-<p>
+
 </div> <!-- end jumbotron -->
 
-<h1 id="___sec0" class="anchor">Simulation Python </h1>
-<br /><br /><center><p><img src="imgs/formule.png" align="bottom" width=500></p></center><br /><br />
+<h1 id="___sec0" class="anchor">Antenne dipolaire </h1>
+Pour une antenne dipolaire de longueur L, le calcul est tr&#232;s complexe car on ne conna&#238;t pas a priori l'expression de l'intensit&#233; I(z,t) du courant dans l'antenne. Les calculs conduisent &#224; l'expression suivante :
+$$
+\begin{equation}
+I(z,t)=I_0 sin(\frac{L}{2}-z)e^{-i \omega t}
+\label{_auto1}
+\end{equation}
+$$
+
+On par ailleurs I(-z,t)=I(z,t). Le courant s'annule aux extr&#233;mit&#233;s et varie sinuso&#239;dalement avec une p&#233;riode \( \lambda \). Connaissant le courant, on peut calculer le champ &#233;lectromagn&#233;tique en sommant les contributions des segments &#233;l&#233;mentaires, qui sont des dip&#244;les oscillants.
+
+<p>
+Pour une antenne de longueur petite devant la longueur d'onde, le courant d&#233;cro&#238;t lin&#233;airement entre sa valeur I0 au centre de l'antenne et une valeur nulle &#224; l'extr&#233;mit&#233;. Dans ce cas, on peut utiliser les r&#233;sultats du dip&#244;le oscillant en rempla&#231;ant I0 par I0/2.
+
+<p>
+Il est int&#233;ressant d'augmenter la longueur des antennes car la puissance &#233;mise est proportionnelle au carr&#233; de la longueur. Pour des fr&#233;quences sup&#233;rieures &#224; \( 100 \ MHz \), on utilise des antennes dont la longueur n'est pas petite devant la longueur d'onde. Par exemple, une antenne demi-onde a une longueur &#233;gale &#224; \( \lambda / 2 \). Dans le cas g&#233;n&#233;ral, le facteur angulaire du champ &#233;lectrique est la fonction suivante :
+$$
+\begin{equation}
+f(\theta) = \frac{cos(\frac{kL}{2}cos \theta) -cos(\frac{kL}{2})}{sin \theta}
+\label{_auto2}
+\end{equation}
+$$
+
+Le carr&#233; de cette fonction permet de tracer le diagramme de rayonnement en fonction du rapport
+$$
+\begin{equation}
+\frac{kL}{2} = \frac{\pi L}{\lambda}
+\label{_auto3}
+\end{equation}
+$$
+
+<h2 id="___sec1" class="anchor">Simulation Python </h2>
+
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
@@ -116,9 +166,9 @@ end of tocinfo -->
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">axes3d</span>
 
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">rho</span>(theta, rapport <span style="color: #666666">=</span> <span style="color: #666666">0.7</span>):
-    u <span style="color: #666666">=</span> <span style="color: #666666">2*</span>rapport<span style="color: #666666">*</span> np<span style="color: #666666">.</span>pi
-    F <span style="color: #666666">=</span> (np<span style="color: #666666">.</span>cos(u<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(theta)) <span style="color: #666666">-</span> np<span style="color: #666666">.</span>cos(u))<span style="color: #666666">/</span>np<span style="color: #666666">.</span>sin(theta)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">rho</span>(theta, rapport <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>):
+    u <span style="color: #666666">=</span> rapport<span style="color: #666666">*</span> np<span style="color: #666666">.</span>pi
+    F <span style="color: #666666">=</span> (np<span style="color: #666666">.</span>cos(u<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(theta)) <span style="color: #666666">-</span> np<span style="color: #666666">.</span>cos(u))<span style="color: #666666">/</span>(np<span style="color: #666666">.</span>sin(theta))
     G <span style="color: #666666">=</span> F <span style="color: #666666">*</span> F
     <span style="color: #008000; font-weight: bold">return</span> G<span style="color: #666666">/</span>G<span style="color: #666666">.</span>max() 
 
@@ -131,43 +181,51 @@ ax<span style="color: #666666">.</span>set_theta_direction(<span style="color: #
 ax<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
 theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">500</span>)
 
-<span style="color: #008000; font-weight: bold">for</span> rapport <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">0.1</span>,<span style="color: #666666">0.5</span>,<span style="color: #666666">1.0</span>,<span style="color: #666666">1.5</span>]:
-    ax<span style="color: #666666">.</span>plot(theta,rho(theta, rapport),label<span style="color: #666666">=</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
+<span style="color: #008000; font-weight: bold">for</span> rapport <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">0.5</span>,<span style="color: #666666">1.0</span>,<span style="color: #666666">1.5</span>, <span style="color: #666666">2</span>]:
+    ax<span style="color: #666666">.</span>plot(theta,rho(theta, rapport), lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>,
+            label<span style="color: #666666">=</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
 plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower right&#39;</span>)
 plt<span style="color: #666666">.</span>tight_layout()
 plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole.pdf&quot;</span>)
 plt<span style="color: #666666">.</span>show()
 
 <span style="color: #408080; font-style: italic">#% Dipôle 3D</span>
-theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
-phi <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
-THETA, PHI <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(theta,phi)
+Theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.001</span>,np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
+Phi <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.001</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
+THETA, PHI <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(Theta,Phi)
 <span style="color: #408080; font-style: italic"># </span>
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sph2cart</span>(azimuth,elevation,r):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Convertisseur de Coordonnée Sphérique/Cartésienne</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
     x <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(elevation) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(azimuth)
     y <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(elevation) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(azimuth)
     z <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(elevation)
     <span style="color: #008000; font-weight: bold">return</span> x, y, z
 
-rapport <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
-X, Y, Z <span style="color: #666666">=</span> sph2cart(PHI,THETA,rho(THETA,rapport <span style="color: #666666">=</span> rapport))
-<span style="color: #408080; font-style: italic"># Plot</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.colors</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">mcolors</span>
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
-ax <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>add_subplot(<span style="color: #666666">1</span>,<span style="color: #666666">1</span>,<span style="color: #666666">1</span>, projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>)
-ax<span style="color: #666666">.</span>_axis3don <span style="color: #666666">=</span> <span style="color: #008000">False</span> <span style="color: #408080; font-style: italic"># hide x, y, z axis</span>
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">8</span>,<span style="color: #666666">5</span>))
 cmap <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>get_cmap(<span style="color: #BA2121">&#39;gnuplot&#39;</span>)
+rapport <span style="color: #666666">=</span> <span style="color: #666666">1.4</span>
+X, Y, Z <span style="color: #666666">=</span> sph2cart(PHI,THETA,rho(THETA,rapport))
+<span style="color: #408080; font-style: italic">#ax1 = plt.subplot(121, polar=True)</span>
+<span style="color: #408080; font-style: italic">#ax1.plot(theta,rho(theta, rapport), lw = 2)</span>
+<span style="color: #408080; font-style: italic">#ax1.set_theta_zero_location(&#39;N&#39;)</span>
+<span style="color: #408080; font-style: italic">#ax1.set_theta_direction(-1)</span>
+ax2 <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">111</span>, projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>)
+ax2<span style="color: #666666">.</span>_axis3don <span style="color: #666666">=</span> <span style="color: #008000">False</span> <span style="color: #408080; font-style: italic"># hide x, y, z axis</span>
 norm <span style="color: #666666">=</span> mcolors<span style="color: #666666">.</span>Normalize(vmin<span style="color: #666666">=</span>Z<span style="color: #666666">.</span>min(), vmax<span style="color: #666666">=</span>Z<span style="color: #666666">.</span>max())
-plot <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot_surface(
-    X, Y, Z, rstride<span style="color: #666666">=8</span>, cstride<span style="color: #666666">=8</span>, 
-    facecolors<span style="color: #666666">=</span>cmap(norm(Z)), antialiased<span style="color: #666666">=</span><span style="color: #008000">True</span>, alpha<span style="color: #666666">=0.5</span>)
-
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Diagramme de rayonnement: &quot;</span><span style="color: #666666">+</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
+ax2<span style="color: #666666">.</span>plot_surface(X, Y, Z, rstride<span style="color: #666666">=8</span>, cstride<span style="color: #666666">=8</span>,
+                 facecolors<span style="color: #666666">=</span>cmap(norm(Z)), antialiased<span style="color: #666666">=</span><span style="color: #008000">True</span>, alpha<span style="color: #666666">=0.5</span>)
+fig<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&quot;Diagramme de rayonnement: &quot;</span><span style="color: #666666">+</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
 plt<span style="color: #666666">.</span>tight_layout()
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole3D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole3D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole3D_w14.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole3D_w14.pdf&quot;</span>)
 </pre></div>
 <p>
 <br /><br /><center><p><img src="scripts/dipole.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<br /><br /><center><p><img src="scripts/dipole3D_w05.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 <br /><br /><center><p><img src="scripts/dipole3D.png" align="bottom" width=500></p></center><br /><br />

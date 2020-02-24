@@ -3,11 +3,35 @@ AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut P
 DATE: today
 
 # TOC: on
+======= Antenne dipolaire =======
+Pour une antenne dipolaire de longueur L, le calcul est très complexe car on ne connaît pas a priori l'expression de l'intensité I(z,t) du courant dans l'antenne. Les calculs conduisent à l'expression suivante :
+!bt
+\begin{equation}
+I(z,t)=I_0 sin(\frac{L}{2}-z)e^{-i \omega t}
+\end{equation}
+!et
+On par ailleurs I(-z,t)=I(z,t). Le courant s'annule aux extrémités et varie sinusoïdalement avec une période $\lambda$. Connaissant le courant, on peut calculer le champ électromagnétique en sommant les contributions des segments élémentaires, qui sont des dipôles oscillants.
 
-======= Simulation Python =======
-FIGURE:[imgs/formule, width=500 frac=1]
+Pour une antenne de longueur petite devant la longueur d'onde, le courant décroît linéairement entre sa valeur I0 au centre de l'antenne et une valeur nulle à l'extrémité. Dans ce cas, on peut utiliser les résultats du dipôle oscillant en remplaçant I0 par I0/2.
+
+Il est intéressant d'augmenter la longueur des antennes car la puissance émise est proportionnelle au carré de la longueur. Pour des fréquences supérieures à $100 \ MHz$, on utilise des antennes dont la longueur n'est pas petite devant la longueur d'onde. Par exemple, une antenne demi-onde a une longueur égale à $\lambda / 2$. Dans le cas général, le facteur angulaire du champ électrique est la fonction suivante :
+!bt
+\begin{equation}
+f(\theta) = \frac{cos(\frac{kL}{2}cos \theta) -cos(\frac{kL}{2})}{sin \theta}
+\end{equation}
+!et
+Le carré de cette fonction permet de tracer le diagramme de rayonnement en fonction du rapport
+!bt
+\begin{equation}
+\frac{kL}{2} = \frac{\pi L}{\lambda}
+\end{equation}
+!et
+===== Simulation Python =====
+
 @@@CODE scripts/DipRadiation.py
 
 FIGURE:[scripts/dipole, width=500 frac=.8]
+
+FIGURE:[scripts/dipole3D_w05, width=500 frac=1]
 
 FIGURE:[scripts/dipole3D, width=500 frac=1]

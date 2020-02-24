@@ -3,12 +3,36 @@
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
 <span style="color: #228B22"># TOC: on</span>
+<span style="color: #000080; font-weight: bold">======= Antenne dipolaire =======</span>
+Pour une antenne dipolaire de longueur L, le calcul est très complexe car on ne connaît pas a priori l&#39;expression de l&#39;intensité I(z,t) du courant dans l&#39;antenne. Les calculs conduisent à l&#39;expression suivante :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+I(z,t)=I_0 sin(\frac{L}{2}-z)e^{-i \omega t}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+On par ailleurs I(-z,t)=I(z,t). Le courant s&#39;annule aux extrémités et varie sinusoïdalement avec une période $\lambda$. Connaissant le courant, on peut calculer le champ électromagnétique en sommant les contributions des segments élémentaires, qui sont des dipôles oscillants.
 
-<span style="color: #000080; font-weight: bold">======= Simulation Python =======</span>
-<span style="color: #658b00">FIGURE:[imgs/formule, width=500 frac=1]</span>
+Pour une antenne de longueur petite devant la longueur d&#39;onde, le courant décroît linéairement entre sa valeur I0 au centre de l&#39;antenne et une valeur nulle à l&#39;extrémité. Dans ce cas, on peut utiliser les résultats du dipôle oscillant en remplaçant I0 par I0/2.
+
+Il est intéressant d&#39;augmenter la longueur des antennes car la puissance émise est proportionnelle au carré de la longueur. Pour des fréquences supérieures à $100 \ MHz$, on utilise des antennes dont la longueur n&#39;est pas petite devant la longueur d&#39;onde. Par exemple, une antenne demi-onde a une longueur égale à $\lambda / 2$. Dans le cas général, le facteur angulaire du champ électrique est la fonction suivante :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+f(\theta) = \frac{cos(\frac{kL}{2}cos \theta) -cos(\frac{kL}{2})}{sin \theta}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Le carré de cette fonction permet de tracer le diagramme de rayonnement en fonction du rapport
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\frac{kL}{2} = \frac{\pi L}{\lambda}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #000080; font-weight: bold">===== Simulation Python =====</span>
+
 <span style="color: #800080; font-weight: bold">@@@CODE scripts/DipRadiation.py</span>
 
 <span style="color: #658b00">FIGURE:[scripts/dipole, width=500 frac=.8]</span>
+
+<span style="color: #658b00">FIGURE:[scripts/dipole3D_w05, width=500 frac=1]</span>
 
 <span style="color: #658b00">FIGURE:[scripts/dipole3D, width=500 frac=1]</span>
 </pre></div>
