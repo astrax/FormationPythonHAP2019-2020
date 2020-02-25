@@ -48,7 +48,7 @@ doconce replace '\eqref{mysec:eq:Dudt}' '(ref{mysec:eq:Dudt})' $1
 }
 
 doconce pygmentize $name.do.txt perldoc
-system doconce format pdflatex $name --latex_code_style=pyg-gray $options --latex_admon=grayicon --latex_admon_title_no_period --latex_style=std --latex_copyright=titlepages
+system doconce format pdflatex $name --latex_code_style=pyg-gray --latex_bibstyle=plain $options --latex_admon=grayicon --latex_admon_title_no_period --latex_style=std --latex_copyright=titlepages
 # Tips: http://folk.uio.no/tobiasvl/latex.html
 system common_replacements $name.tex
 # Auto edits
@@ -65,7 +65,7 @@ doconce replace '11pt]{' '11pt,french]{' $name.tex
 # package [norsk]{label} requires texlive-lang-norwegian package
 doconce subst '% insert custom LaTeX commands...' '\usepackage[french]{babel}\n\n% insert custom LaTeX commands...' $name.tex
 system pdflatex -shell-escape $name
-#system bibtex $name
+system bibtex $name
 system makeindex $name
 pdflatex -shell-escape $name
 pdflatex -shell-escape $name

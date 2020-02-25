@@ -3,7 +3,25 @@
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
 <span style="color: #228B22"># TOC: on</span>
-<span style="color: #000080; font-weight: bold">======= Antenne dipolaire =======</span>
+<span style="color: #000080; font-weight: bold">======= Diagramme de rayonnement =======</span>
+La puissance surfacique rayonnée dépend localement de l&#39;angle $\theta$. Elle est maximale dans le plan équatorial et s&#39;annule dans l&#39;axe du dipôle. Pour représenter graphiquement cette dépendance angulaire, on trace la courbe suivante en coordonnées polaires cite{perez1997electromagnetisme}:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\rho (\theta)=sin^2 \theta
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #000080; font-weight: bold">===== Simulation Python =====</span>
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/DipRadiation.py</span>
+<span style="color: #658b00">FIGURE:[scripts/dipole1, width=500 frac=1]</span>
+
+Ce tracé est un diagramme de rayonnement (ou indicatrice de rayonnement). Il permet de voir comment évolue la puissance avec l&#39;angle. On voit par exemple que la puissance est égale à la moitié de sa valeur maximale pour un angle de 45 degrés.
+
+Pour tracer le diagramme de rayonnement sur un graphe 3D, nous devons passer par une fonction de conversion de coordonnées sphériques/cartésiennes; `sph2cart(azimuth,elevation,r)`:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/DipRadiation3D.py</span>
+<span style="color: #658b00">FIGURE:[scripts/dipole1_3D, width=500 frac=1]</span>
+<span style="color: #000080; font-weight: bold">===== Antenne dipolaire =====</span>
+
 Pour une antenne dipolaire de longueur L, le calcul est très complexe car on ne connaît pas a priori l&#39;expression de l&#39;intensité I(z,t) du courant dans l&#39;antenne. Les calculs conduisent à l&#39;expression suivante :
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{equation}</span>
@@ -14,7 +32,7 @@ On par ailleurs I(-z,t)=I(z,t). Le courant s&#39;annule aux extrémités et vari
 
 Pour une antenne de longueur petite devant la longueur d&#39;onde, le courant décroît linéairement entre sa valeur I0 au centre de l&#39;antenne et une valeur nulle à l&#39;extrémité. Dans ce cas, on peut utiliser les résultats du dipôle oscillant en remplaçant I0 par I0/2.
 
-Il est intéressant d&#39;augmenter la longueur des antennes car la puissance émise est proportionnelle au carré de la longueur. Pour des fréquences supérieures à $100 \ MHz$, on utilise des antennes dont la longueur n&#39;est pas petite devant la longueur d&#39;onde. Par exemple, une antenne demi-onde a une longueur égale à $\lambda / 2$. Dans le cas général, le facteur angulaire du champ électrique est la fonction suivante :
+Il est intéressant d&#39;augmenter la longueur des antennes car la puissance émise est proportionnelle au carré de la longueur. Pour des fréquences supérieures à $100 \ MHz$, on utilise des antennes dont la longueur n&#39;est pas petite devant la longueur d&#39;onde. Par exemple, une antenne demi-onde a une longueur égale à $\lambda / 2$. Dans le cas général, le facteur angulaire du champ électrique est la fonction suivante cite{perez1997electromagnetisme}:
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{equation}</span>
 f(\theta) = \frac{cos(\frac{kL}{2}cos \theta) -cos(\frac{kL}{2})}{sin \theta}
@@ -28,11 +46,17 @@ Le carré de cette fonction permet de tracer le diagramme de rayonnement en fonc
 <span style="color: #8B008B; font-weight: bold">!et</span>
 <span style="color: #000080; font-weight: bold">===== Simulation Python =====</span>
 
-<span style="color: #800080; font-weight: bold">@@@CODE scripts/DipRadiation.py</span>
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/DipRadiationGeneral.py</span>
 
-<span style="color: #658b00">FIGURE:[scripts/dipole, width=500 frac=.8]</span>
+<span style="color: #658b00">FIGURE:[scripts/dipole, width=500 frac=1]</span>
+
+On voit que la directivité de l&#39;émission augmente avec la longueur de l&#39;antenne. Pour $L &gt; \lambda$, il apparaît des lobes à 45 degrés, qui deviennent prépondérants lorsque la longueur augmente.
 
 <span style="color: #658b00">FIGURE:[scripts/dipole3D_w05, width=500 frac=1]</span>
 
 <span style="color: #658b00">FIGURE:[scripts/dipole3D, width=500 frac=1]</span>
+
+
+<span style="color: #000080; font-weight: bold">======= References =======</span>
+BIBFILE: papers.pub
 </pre></div>

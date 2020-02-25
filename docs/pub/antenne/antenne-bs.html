@@ -43,8 +43,11 @@ body { font-size:20px;line-height:1.5; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Antenne dipolaire', 1, None, '___sec0'),
-              ('Simulation Python', 2, None, '___sec1')]}
+ 'sections': [('Diagramme de rayonnement', 1, None, '___sec0'),
+              ('Simulation Python', 2, None, '___sec1'),
+              ('Antenne dipolaire', 2, None, '___sec2'),
+              ('Simulation Python', 2, None, '___sec3'),
+              ('References', 1, None, '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -82,8 +85,11 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Antenne dipolaire</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Diagramme de rayonnement</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simulation Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Antenne dipolaire</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simulation Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -124,12 +130,93 @@ MathJax.Hub.Config({
 
 </div> <!-- end jumbotron -->
 
-<h1 id="___sec0" class="anchor">Antenne dipolaire </h1>
+<h1 id="___sec0" class="anchor">Diagramme de rayonnement </h1>
+La puissance surfacique rayonn&#233;e d&#233;pend localement de l'angle \( \theta \). Elle est maximale dans le plan &#233;quatorial et s'annule dans l'axe du dip&#244;le. Pour repr&#233;senter graphiquement cette d&#233;pendance angulaire, on trace la courbe suivante en coordonn&#233;es polaires <a href="#perez1997electromagnetisme">[1]</a>:
+$$
+\begin{equation}
+\rho (\theta)=sin^2 \theta
+\label{_auto1}
+\end{equation}
+$$
+
+<h2 id="___sec1" class="anchor">Simulation Python </h2>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: DipRadiation.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">500</span>)
+rho <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(theta)<span style="color: #666666">**2</span>
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">111</span>, polar<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+ax<span style="color: #666666">.</span>plot(theta, rho,color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;r&#39;</span>)
+ax<span style="color: #666666">.</span>set_theta_zero_location(<span style="color: #BA2121">&#39;N&#39;</span>)
+ax<span style="color: #666666">.</span>set_theta_direction(<span style="color: #666666">-1</span>)
+ax<span style="color: #666666">.</span>set_rmax(<span style="color: #666666">1.0</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Rayonnement d&#39;un dipole&quot;</span>, va<span style="color: #666666">=</span><span style="color: #BA2121">&#39;bottom&#39;</span>)
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">500</span>)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole1.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole1.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<br /><br /><center><p><img src="scripts/dipole1.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+Ce trac&#233; est un diagramme de rayonnement (ou indicatrice de rayonnement). Il permet de voir comment &#233;volue la puissance avec l'angle. On voit par exemple que la puissance est &#233;gale &#224; la moiti&#233; de sa valeur maximale pour un angle de 45 degr&#233;s.
+
+<p>
+Pour tracer le diagramme de rayonnement sur un graphe 3D, nous devons passer par une fonction de conversion de coordonn&#233;es sph&#233;riques/cart&#233;siennes; <code>sph2cart(azimuth,elevation,r)</code>:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: DipRadiation3D.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">axes3d</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.colors</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">mcolors</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sph2cart</span>(azimuth,elevation,r):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Convertisseur de Coordonnée Sphérique/Cartésienne</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    x <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(elevation) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(azimuth)
+    y <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(elevation) <span style="color: #666666">*</span> np<span style="color: #666666">.</span>sin(azimuth)
+    z <span style="color: #666666">=</span> r <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(elevation)
+    <span style="color: #008000; font-weight: bold">return</span> x, y, z
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.001</span>,np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
+phi <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.001</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">400</span>)
+THETA, PHI <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(theta,phi)
+RHO <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(THETA)<span style="color: #666666">**2</span>
+X, Y, Z <span style="color: #666666">=</span> sph2cart(PHI,THETA,RHO)
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">8</span>,<span style="color: #666666">5</span>))
+cmap <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>get_cmap(<span style="color: #BA2121">&#39;gnuplot&#39;</span>)
+ax2 <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">111</span>, projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>)
+ax2<span style="color: #666666">.</span>_axis3don <span style="color: #666666">=</span> <span style="color: #008000">False</span> <span style="color: #408080; font-style: italic"># hide x, y, z axis</span>
+norm <span style="color: #666666">=</span> mcolors<span style="color: #666666">.</span>Normalize(vmin<span style="color: #666666">=</span>Z<span style="color: #666666">.</span>min(), vmax<span style="color: #666666">=</span>Z<span style="color: #666666">.</span>max())
+ax2<span style="color: #666666">.</span>plot_surface(X, Y, Z, rstride<span style="color: #666666">=8</span>, cstride<span style="color: #666666">=8</span>,
+                 facecolors<span style="color: #666666">=</span>cmap(norm(Z)), antialiased<span style="color: #666666">=</span><span style="color: #008000">True</span>, alpha<span style="color: #666666">=0.5</span>)
+fig<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&quot;Rayonnement d&#39;un dipole (3D)&quot;</span>)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole1_3D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole1_3D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<br /><br /><center><p><img src="scripts/dipole1_3D.png" align="bottom" width=500></p></center><br /><br />
+
+<h2 id="___sec2" class="anchor">Antenne dipolaire </h2>
+
+<p>
 Pour une antenne dipolaire de longueur L, le calcul est tr&#232;s complexe car on ne conna&#238;t pas a priori l'expression de l'intensit&#233; I(z,t) du courant dans l'antenne. Les calculs conduisent &#224; l'expression suivante :
 $$
 \begin{equation}
 I(z,t)=I_0 sin(\frac{L}{2}-z)e^{-i \omega t}
-\label{_auto1}
+\label{_auto2}
 \end{equation}
 $$
 
@@ -139,11 +226,11 @@ On par ailleurs I(-z,t)=I(z,t). Le courant s'annule aux extr&#233;mit&#233;s et 
 Pour une antenne de longueur petite devant la longueur d'onde, le courant d&#233;cro&#238;t lin&#233;airement entre sa valeur I0 au centre de l'antenne et une valeur nulle &#224; l'extr&#233;mit&#233;. Dans ce cas, on peut utiliser les r&#233;sultats du dip&#244;le oscillant en rempla&#231;ant I0 par I0/2.
 
 <p>
-Il est int&#233;ressant d'augmenter la longueur des antennes car la puissance &#233;mise est proportionnelle au carr&#233; de la longueur. Pour des fr&#233;quences sup&#233;rieures &#224; \( 100 \ MHz \), on utilise des antennes dont la longueur n'est pas petite devant la longueur d'onde. Par exemple, une antenne demi-onde a une longueur &#233;gale &#224; \( \lambda / 2 \). Dans le cas g&#233;n&#233;ral, le facteur angulaire du champ &#233;lectrique est la fonction suivante :
+Il est int&#233;ressant d'augmenter la longueur des antennes car la puissance &#233;mise est proportionnelle au carr&#233; de la longueur. Pour des fr&#233;quences sup&#233;rieures &#224; \( 100 \ MHz \), on utilise des antennes dont la longueur n'est pas petite devant la longueur d'onde. Par exemple, une antenne demi-onde a une longueur &#233;gale &#224; \( \lambda / 2 \). Dans le cas g&#233;n&#233;ral, le facteur angulaire du champ &#233;lectrique est la fonction suivante <a href="#perez1997electromagnetisme">[1]</a>:
 $$
 \begin{equation}
 f(\theta) = \frac{cos(\frac{kL}{2}cos \theta) -cos(\frac{kL}{2})}{sin \theta}
-\label{_auto2}
+\label{_auto3}
 \end{equation}
 $$
 
@@ -151,16 +238,16 @@ Le carr&#233; de cette fonction permet de tracer le diagramme de rayonnement en 
 $$
 \begin{equation}
 \frac{kL}{2} = \frac{\pi L}{\lambda}
-\label{_auto3}
+\label{_auto4}
 \end{equation}
 $$
 
-<h2 id="___sec1" class="anchor">Simulation Python </h2>
+<h2 id="___sec3" class="anchor">Simulation Python </h2>
 
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: DipRadiation.py</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: DipRadiationGeneral.py</span>
 <span style="color: #408080; font-style: italic">#% IMPORTATION</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
@@ -177,13 +264,12 @@ ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span
 plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Rayonnement d&#39;une antenne dipolaire de longueur L&quot;</span>)
 ax<span style="color: #666666">.</span>set_theta_zero_location(<span style="color: #BA2121">&#39;N&#39;</span>)
 ax<span style="color: #666666">.</span>set_theta_direction(<span style="color: #666666">-1</span>)
-
-ax<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
+ax<span style="color: #666666">.</span>set_rmax(<span style="color: #666666">1.0</span>)
 theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0.01</span>,<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi,<span style="color: #666666">500</span>)
 
 <span style="color: #008000; font-weight: bold">for</span> rapport <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">0.5</span>,<span style="color: #666666">1.0</span>,<span style="color: #666666">1.5</span>, <span style="color: #666666">2</span>]:
     ax<span style="color: #666666">.</span>plot(theta,rho(theta, rapport), lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>,
-            label<span style="color: #666666">=</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport)
+            label<span style="color: #666666">=</span><span style="color: #BA2121">r&quot;$L/\lambda=</span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rapport, alpha<span style="color: #666666">=0.75</span>)
 plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower right&#39;</span>)
 plt<span style="color: #666666">.</span>tight_layout()
 plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;dipole.pdf&quot;</span>)
@@ -225,10 +311,27 @@ plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&qu
 <br /><br /><center><p><img src="scripts/dipole.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
+On voit que la directivit&#233; de l'&#233;mission augmente avec la longueur de l'antenne. Pour \( L > \lambda \), il appara&#238;t des lobes &#224; 45 degr&#233;s, qui deviennent pr&#233;pond&#233;rants lorsque la longueur augmente.
+
+<p>
 <br /><br /><center><p><img src="scripts/dipole3D_w05.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 <br /><br /><center><p><img src="scripts/dipole3D.png" align="bottom" width=500></p></center><br /><br />
+
+<h1 id="___sec4" class="anchor">References </h1>
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <div id="perez1997electromagnetisme"></div> <b>J.-P. Pérez, R. Fleckinger and R. Carles</b>. 
+    <em>Electromagnétisme: Fondements Et Applications: Avec 300 Exercices Et Problèmes Résolus</em>,
+    Masson,
+    1997.</li>
+</ol>
+
+<!-- end bibliography -->
 
 <!-- ------------------- end of main content --------------- -->
 
