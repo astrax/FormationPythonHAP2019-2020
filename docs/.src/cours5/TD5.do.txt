@@ -1,0 +1,272 @@
+TITLE: TD N°5 : Équations différentielles ordinaires
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+DATE: today
+
+TOC: on
+===== Exercise: Pendule simple =====
+On considère un pendule simple de masse $m =1 \ kg$ , de longueur $l=1 \ m$ qui va osciller d’arrière en avant à cause du champ de gravité de la Terre $g = 9.8 \ m/s^2$.
+
+FIGURE:[imgs/pendule, width=300 frac=.4]
+
+Le pendule a l'équation du mouvement :
+
+!bt
+\begin{align}
+\ddot{\theta} &= - \frac{g}{l} sin(\theta)
+\end{align}
+!et
+Pour les petites amplitudes d'oscillation, $\theta \ll 1$, on peut faire l'approximation $sin(\theta) \approx \theta$, on retrouve alors l’équation différentielle d’un oscillateur harmonique:
+
+!bt
+\begin{align}
+\label{eq:eqdiff}
+\ddot{\theta} &= - \frac{g}{l} \theta
+\end{align}
+!et
+
+La solution exacte de cette équation est simplement:
+!bt
+\begin{align}
+\label{eq:solexacte}
+\theta (t) &= \theta_0 \ cos(\omega_0 t)
+\end{align}
+!et
+où $\omega_0 = \sqrt{g/l}$ et nous avons supposé que le pendule partait du repos avec un déplacement initial $\theta_0 =0.2 \ rad$.
+
+
+Nous allons transformer l'équation différentielle d’ordre 2 (Eq. (ref{eq:eqdiff})) en deux équations différentielles d’ordre 1 afin de pouvoir utiliser simplement la méthode d’Euler. En posant $\omega (t)= \dot{\theta}(t)$ la vitesse angulaire du pendule, on obtient le système de deux fonctions inconnues suivant :
+!bt
+\begin{align}
+\dot{\theta} (t) &= \omega (t) \\
+\dot{\omega }(t) &= - \omega_0^2 \ \theta (t)
+\end{align}
+!et
+Pour résoudre ce système nous devons connaître les deux conditions initiales suivantes :
+!bt
+\begin{align*}
+\theta(0) &= \theta_0 \\
+\omega (0) &= 0
+
+\end{align*}
+!et
+
+!bsubex
+label{ex:exacte}
+
+Définir une fonction `sol_exacte(t)` qui renvoie la solution exacte de l'oscillateur harmonique donnée par l'équation (ref{eq:solexacte}). Tracer cette solution pour $t \in [0,10]$ et pour un pas de $\Delta t = 0.01$ s.
+!bhint
+* Utiliser la fonction `numpy.arange()` pour créer le vecteur temps `t`.
+* Utiliser la fonction `matplotlib.pyplot.plot()` pour tracer `sol_exacte(t)`.
+
+!ehint
+!bsol
+Le programme Python qui renvoie et trace la solution exacte de l'oscillateur harmonique est le suivant:
+
+@@@CODE scripts/SolutionPendule.py fromto:import @#%% EULER
+
+L'exécution de ce programme donne la figure suivante:
+
+FIGURE: [scripts/sol_exacte, width=350 frac=.7]
+
+!esol
+!esubex
+
+!bsubex
+Rappeler l'expression de la méthode *d'Euler explicite* pour ce système.
+!bsol
+!bt
+\begin{align}
+\label{eq:euler_exp}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_k = (\pmb{I} + \Delta t  \pmb{A}) \cdot \pmb{u}_k
+\end{align}
+!et
+
+Où $\pmb{u}_k= \left(\begin{array}{c} \theta_k \\ \omega_k \end{array}\right)$, $\pmb{A}= \left(\begin{array}{ll} 0&1 \\ - g/l& 0 \end{array}\right)$ et $\pmb{I}$ est la matrice identité.
+
+!esol
+!esubex
+
+!bsubex
+label{ex:eulerexp}
+
+Calculer $\pmb{u}= \left(\begin{array}{c} \theta (t) \\ \omega (t) \end{array}\right)$ avec la méthode d'Euler explicite pour $t \in [0, 10]$ et pour un pas d’intégration $\Delta t = 0.01$ s.
+
+Tracer:
+* Dans un même graphique, la variation de l'amplitude d'oscillation $\theta$ en fonction du temps $t$ et le diagramme des phases (vitesse angulaire $\omega$ en fonction de $\theta$).
+* Dans un graphique 3D, la vitesse angulaire $\omega$ et l'amplitude d'oscillation $\theta$ en fonction du temps $t$.
+!bhint
+On vous donne les instructions nécessaires pour reproduire un graphique en 3D:
+!bc pycod-t
+from mpl_toolkits.mplot3d.axes3d import Axes3D
+plt.figure()
+ax = plt.axes(projection="3d")
+ax.plot(....)
+!ec
+
+!ehint
+Que remarquez-vous pour le résultat trouvé?
+
+!bsol
+
+@@@CODE scripts/SolutionPendule.py fromto:#%% EULER EXPLICITE@#%% EULER IMPLICITE
+
+L'exécution de ce programme donne les figures suivantes:
+
+FIGURE: [scripts/Pendule_EulerExp1D, width=700 frac=1]
+
+et la figure en 3D:
+
+FIGURE: [scripts/Pendule_EulerExp3D, width=500 frac=1]
+
+!bblock Remarque
+Dans le cas d'intégration avec la méthode d'Euler explicite nous avons un problème d’augmentation d’amplitude dans le cas d’un oscillateur libre non amorti. Plus le temps de simulation est long, plus l'amplitude augmente, ce qui n'est pas ce que nous attendons de l'évolution du système dans le temps.
+!eblock
+
+!esol
+!esubex
+
+!bsubex
+Rappeler l'expression de la méthode *d'Euler implicite* pour ce système.
+
+!bsol
+
+!bt
+\begin{align}
+\label{eq:euler_imp}
+\pmb{u}_{k+1}  &=(\pmb{I} - \Delta t  \pmb{A})^{-1}  \cdot \pmb{u}_k
+\end{align}
+!et
+
+Où $\pmb{u}_k= \left(\begin{array}{c} \theta_k \\ \omega_k \end{array}\right)$, $\pmb{A}= \left(\begin{array}{ll} 0&1 \\ - g/l& 0 \end{array}\right)$ et $\pmb{I}$ est la matrice identité.
+
+!esol
+!esubex
+
+!bsubex
+label{ex:eulerimp}
+
+Calculer $\pmb{u}= \left(\begin{array}{c} \theta (t) \\ \omega (t) \end{array}\right)$ avec la méthode d'Euler implicite pour $t \in [0, 10]$ et pour un pas d'integration $\Delta t = 0.01$ s.
+
+Tracer:
+* Dans un même graphique, la variation de l'amplitude d'oscillation $\theta$ en fonction du temps $t$ et le diagramme des phases (vitesse angulaire $\omega$ en fonction de $\theta$).
+* Dans un graphique 3D, la vitesse angulaire $\omega$ et l'amplitude d'oscillation $\theta$ en fonction du temps $t$.
+
+Que remarquez-vous pour le résultat trouvé?
+
+!bsol
+
+@@@CODE scripts/SolutionPendule.py fromto:#%% EULER IMPLICITE@#%% ILLUSTRATION
+
+L'exécution de ce programme donne les figures suivantes:
+
+FIGURE: [scripts/Pendule_Eulerimp1D, width=700 frac=1]
+
+et la figure en 3D:
+
+FIGURE: [scripts/Pendule_Eulerimp3D, width=500 frac=1]
+
+!bblock Remarque
+Dans le cas d'intégration avec la méthode d'Euler implicite nous avons un problème de diminution d’amplitude dans le cas d’un oscillateur libre non amorti. Plus le temps de simulation est long, plus l'amplitude diminue, ce qui n'est pas ce que nous attendons de l'évolution du système dans le temps.
+!eblock
+
+!esol
+!esubex
+
+!bsubex
+Tracer dans un même graphique pour $t \in [0, 10]$ et avec un pas $\Delta t = 0.01$ s:
+* `sol_exacte(t)` calculée dans _a)_.
+* $\theta (t)$ calculée dans _c)_ par la méthode d'Euler explicite.
+* $\theta (t)$ calculée dans _e)_ par la méthode d'Euler implicite.
+Que remarquez-vous si nous modifions la valeur du pas d’intégration par $\Delta~t =~0.001$~s? Expliquer le résultat trouvé.
+
+!bsol
+
+@@@CODE scripts/SolutionPendule.py fromto:#%% ILLUSTRATION@#END Program
+
+Pour $\Delta t = 0.01$, l'exécution du code donne la figure suivante:
+
+FIGURE: [scripts/Pendule_illustration, width=400 frac=0.7]
+
+Pour $\Delta t = 0.001$, l'exécution du code donne la figure suivante:
+
+FIGURE: [scripts/Pendule_illustration1, width=400 frac=0.7]
+
+!bblock Remarque
+Les deux méthodes d'Euler, explicite et implicite, posent un problème fondamental avec ses amplitudes croissantes et décroissantes pour le cas d'oscillateur libre non amorti. Un très petit $\Delta t$ est nécessaire pour obtenir des résultats satisfaisants.
+
+*Plus la simulation est longue, plus $\Delta t$ doit être petit.*
+!eblock
+
+!esol
+
+!esubex
+
+===== Exercise: Comparaison des schémas d’Euler explicite et implicite =====
+On considère le problème de Cauchy:
+!bt
+\begin{align}
+\frac{d z(t)}{dt} = 1 - \frac{t}{\mu}, \ t \in \Re, \ z(0) = z_0
+\end{align}
+!et
+On rappelle que la solution exacte de ce problème est donnée par:
+!bt
+\begin{align}
+\label{eq:solexacte2}
+z(t) = \mu -(\mu - z_0) e^{-\frac{t}{\mu}}
+\end{align}
+!et
+
+1. Définir une fonction `sol_exacte(t, mu, z0)` qui renvoie la solution exacte donnée par l'équation (ref{eq:solexacte2}). Tracer sur un même graphique pour $\mu= 1$ et $z_0 \in \{0, 1, 2\}$ ces solutions. Soit $t \in [0,2]$ et pour un pas de $\Delta t = 0.1$ s.
+
+2. Même questions pour $\mu= 0.05$ et $z_0 \in \{0, 1, 2\}$.
+
+3. On suppose dans cette question que $\mu= 0.05$ et que $z_0  = 2$.
+
+!bsubex
+* Rappeler l'expression de la méthode *d'Euler explicite* pour ce problème.
+* Calculer $z(t)$ avec la méthode *d’Euler explicite* pour $t \in [0, 2]$ et pour un pas d’intégration $\Delta t = 0.1$ s.
+!esubex
+
+!bsubex
+* Montrer que l'expression de la méthode *d'Euler implicite* est:
+!bt
+\begin{align*}
+z_{n+1} = \frac{z_n + \Delta t}{1 + \frac{\Delta t}{\mu}}, \ n = 0, 1, 2, ..., N-1
+\end{align*}
+!et
+* Calculer $z(t)$ avec la méthode *d’Euler implicite* pour $t \in [0, 2]$ et pour un pas d’intégration $\Delta t = 0.1$ s.
+!esubex
+
+!bsubex
+Tracer dans un même graphique pour $t \in [0, 2]$ et avec des pas d'intégration
+ $\Delta t = 0.5, 0.1, 0.05, 0.01, 0.005$ s:
+ * La solution exacte: `sol_exacte(t, 0.05, 2)`
+ * $z(t)$ calculée par la méthode d'Euler explicite.
+ * $z(t)$ calculée par la méthode d'Euler explicite.
+
+ Que remarquez-vous pour les résultats trouvés? Quelle est la méthode la plus proche de la solution exacte?
+!esubex
+
+!split
+===== Exercise: Atterrissage d'un vaisseau spatial =====
+
+FIGURE:[imgs/spacecraft, width=300 frac=.4]
+
+Un vaisseau spatial est lancé à l'altitude $H = 772 \ km$ au-dessus du niveau de la mer avec la vitesse $v_0 = 6700 \ m/s$ dans la direction indiquée sur la figure ci-dessus. Les équations différentielles décrivant le mouvement du vaisseau spatial sont:
+!bt
+\begin{align*}
+\ddot{r} &= r \dot{\theta}^2 - \frac{G M_T}{r^2} \\
+\ddot{\theta} &= - \frac{2 \dot{r} \dot{\theta}}{r}
+\end{align*}
+!et
+où $r$ et $\theta$ sont les coordonnées polaires du vaisseau spatial. Les constantes impliquées dans le mouvement sont:
+* $G = 6.672 \times 10^{−11}$ $m^3 kg^{−1} s^{−2}$ = constante gravitationnelle universelle.
+* $M_T = 5.9742 \times 10^24 \ kg$ = masse de la terre.
+* $R_T = 6378.14 \ km$ = rayon de la terre au niveau de la mer.
+!bsubex
+Dériver les équations différentielles du premier ordre et les conditions initiales de la forme $\dot{y} = F (t, y)$, $y(0) = b$.
+!esubex
+
+!bsubex
+Utiliser la méthode Runge-Kutta du quatrième ordre (RK4) pour intégrer les équations depuis le lancement jusqu'à ce que le vaisseau spatial touche la terre. Déterminez $\theta$ au site d'impact.
+!esubex

@@ -3,7 +3,7 @@
 # Compile a French document to PDF and HTML
 #
 
-name=TD4
+name=TD5
 # doconce ipynb2doconce $name.ipynb
 
 options="--encoding=utf-8"

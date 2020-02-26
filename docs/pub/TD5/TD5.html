@@ -1,0 +1,771 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TD N°5 : Équations différentielles ordinaires">
+
+<title>TD N°5 : Équations différentielles ordinaires</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Table des matières',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Exercice 1: Pendule simple', 2, 'ex:exacte', 'ex:exacte'),
+              ('Exercice 2: Comparaison des schémas d’Euler explicite et '
+               'implicite',
+               2,
+               None,
+               '___sec1'),
+              ("Exercice 3: Atterrissage d'un vaisseau spatial",
+               2,
+               None,
+               '___sec2')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="TD5.html">TD N°5 : Équations différentielles ordinaires</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table des matières</a></li>
+     <!-- navigation toc: --> <li><a href="#ex:exacte" style="font-size: 80%;">Exercice 1: Pendule simple</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Exercice 2: Comparaison des schémas d’Euler explicite et implicite</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Exercice 3: Atterrissage d'un vaisseau spatial</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>TD N&#176;5 : &#201;quations diff&#233;rentielles ordinaires</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Feb 26, 2020</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#ex:exacte"> Exercice 1: Pendule simple </a><br>
+<a href="#___sec1"> Exercice 2: Comparaison des sch&#233;mas d&#8217;Euler explicite et implicite </a><br>
+<a href="#___sec2"> Exercice 3: Atterrissage d'un vaisseau spatial </a><br>
+</p>
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="ex:exacte" class="anchor">Exercice 1: Pendule simple</h2>
+
+<p>
+On consid&#232;re un pendule simple de masse \( m =1 \ kg \) , de longueur \( l=1 \ m \) qui va osciller d&#8217;arri&#232;re en avant &#224; cause du champ de gravit&#233; de la Terre \( g = 9.8 \ m/s^2 \).
+
+<p>
+<br /><br /><center><p><img src="imgs/pendule.png" align="bottom" width=300></p></center><br /><br />
+
+<p>
+Le pendule a l'&#233;quation du mouvement :
+
+$$
+\begin{align}
+\ddot{\theta} &= - \frac{g}{l} sin(\theta)
+\label{_auto1}
+\end{align}
+$$
+
+Pour les petites amplitudes d'oscillation, \( \theta \ll 1 \), on peut faire l'approximation \( sin(\theta) \approx \theta \), on retrouve alors l&#8217;&#233;quation diff&#233;rentielle d&#8217;un oscillateur harmonique:
+
+$$
+\begin{align}
+\label{eq:eqdiff}
+\ddot{\theta} &= - \frac{g}{l} \theta
+\end{align}
+$$
+
+<p>
+La solution exacte de cette &#233;quation est simplement:
+$$
+\begin{align}
+\label{eq:solexacte}
+\theta (t) &= \theta_0 \ cos(\omega_0 t)
+\end{align}
+$$
+
+o&#249; \( \omega_0 = \sqrt{g/l} \) et nous avons suppos&#233; que le pendule partait du repos avec un d&#233;placement initial \( \theta_0 =0.2 \ rad \).
+
+<p>
+Nous allons transformer l'&#233;quation diff&#233;rentielle d&#8217;ordre 2 (Eq. \eqref{eq:eqdiff}) en deux &#233;quations diff&#233;rentielles d&#8217;ordre 1 afin de pouvoir utiliser simplement la m&#233;thode d&#8217;Euler. En posant \( \omega (t)= \dot{\theta}(t) \) la vitesse angulaire du pendule, on obtient le syst&#232;me de deux fonctions inconnues suivant :
+$$
+\begin{align}
+\dot{\theta} (t) &= \omega (t) 
+\label{_auto2}\\
+\dot{\omega }(t) &= - \omega_0^2 \ \theta (t)
+\label{_auto3}
+\end{align}
+$$
+
+Pour r&#233;soudre ce syst&#232;me nous devons conna&#238;tre les deux conditions initiales suivantes :
+$$
+\begin{align*}
+\theta(0) &= \theta_0 \\
+\omega (0) &= 0
+\end{align*}
+$$
+
+<p>
+<b>a)</b>
+D&#233;finir une fonction <code>sol_exacte(t)</code> qui renvoie la solution exacte de l'oscillateur harmonique donn&#233;e par l'&#233;quation \eqref{eq:solexacte}. Tracer cette solution pour \( t \in [0,10] \) et pour un pas de \( \Delta t = 0.01 \) s.
+
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_1" style="font-size: 80%;"></a>
+<a href="#exer_1_1" data-toggle="collapse">
+<b>Indication.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_1">
+
+<ul>
+<li> Utiliser la fonction <code>numpy.arange()</code> pour cr&#233;er le vecteur temps <code>t</code>.</li>
+<li> Utiliser la fonction <code>matplotlib.pyplot.plot()</code> pour tracer <code>sol_exacte(t)</code>.</li>
+</ul>
+
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_3" style="font-size: 80%;"></a>
+<a href="#exer_1_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_3">
+
+<p>
+Le programme Python qui renvoie et trace la solution exacte de l'oscillateur harmonique est le suivant:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #408080; font-style: italic"># SYSTÈME: PENDULE SIMPLE</span>
+g <span style="color: #666666">=</span> <span style="color: #666666">9.8</span> <span style="color: #408080; font-style: italic"># accélération de pesanteur [m/s^2]</span>
+l <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #408080; font-style: italic"># longeur du pendule [m]</span>
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.01</span> <span style="color: #408080; font-style: italic"># pas du temps [s]</span>
+Tf <span style="color: #666666">=</span> <span style="color: #666666">10</span> <span style="color: #408080; font-style: italic"># temps finale de la simulation [s]</span>
+theta0 <span style="color: #666666">=</span> <span style="color: #666666">0.2</span> <span style="color: #408080; font-style: italic"># angle initiale [rad]</span>
+omega0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sqrt(g<span style="color: #666666">/</span>l) 
+<span style="color: #408080; font-style: italic"># SOLUTION EXACTE</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">pendule_exacte</span>(t):
+    <span style="color: #008000; font-weight: bold">return</span> theta0 <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(omega0 <span style="color: #666666">*</span> t)
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0</span>, Tf, dt)
+
+plt<span style="color: #666666">.</span>plot(t, pendule_exacte(t), linewidth<span style="color: #666666">=2</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sol exacte&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+L'ex&#233;cution de ce programme donne la figure suivante:
+
+<p>
+<br /><br /><center><p><img src="scripts/sol_exacte.png" align="bottom" width=350></p></center><br /><br />
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<b>b)</b>
+Rappeler l'expression de la m&#233;thode <em>d'Euler explicite</em> pour ce syst&#232;me.
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_4" style="font-size: 80%;"></a>
+<a href="#exer_1_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_4">
+
+$$
+\begin{align}
+\label{eq:euler_exp}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_k = (\pmb{I} + \Delta t  \pmb{A}) \cdot \pmb{u}_k
+\end{align}
+$$
+
+<p>
+O&#249; \( \pmb{u}_k= \left(\begin{array}{c} \theta_k \\ \omega_k \end{array}\right) \), \( \pmb{A}= \left(\begin{array}{ll} 0&1 \\ - g/l& 0 \end{array}\right) \) et \( \pmb{I} \) est la matrice identit&#233;.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<b>c)</b>
+Calculer \( \pmb{u}= \left(\begin{array}{c} \theta (t) \\ \omega (t) \end{array}\right) \) avec la m&#233;thode d'Euler explicite pour \( t \in [0, 10] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.01 \) s.
+
+<p>
+Tracer:
+
+<ul>
+<li> Dans un m&#234;me graphique, la variation de l'amplitude d'oscillation \( \theta \) en fonction du temps \( t \) et le diagramme des phases (vitesse angulaire \( \omega \) en fonction de \( \theta \)).</li>
+<li> Dans un graphique 3D, la vitesse angulaire \( \omega \) et l'amplitude d'oscillation \( \theta \) en fonction du temps \( t \).</li>
+</ul>
+
+Que remarquez-vous pour le r&#233;sultat trouv&#233;?
+
+<p>
+<!-- --- begin hint in exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_2" style="font-size: 80%;"></a>
+<a href="#exer_1_2" data-toggle="collapse">
+<b>Indication.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_2">
+
+<p>
+On vous donne les instructions n&#233;cessaires pour reproduire un graphique en 3D:
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(<span style="color: #666666">....</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end hint in exercise --- -->
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_5" style="font-size: 80%;"></a>
+<a href="#exer_1_5" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_5">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#%% EULER EXPLICITE</span>
+A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>], [<span style="color: #666666">-</span> omega0<span style="color: #666666">**2</span>, <span style="color: #666666">0</span>]])
+nsteps <span style="color: #666666">=</span> <span style="color: #008000">int</span>(Tf<span style="color: #666666">/</span>dt)
+<span style="color: #408080; font-style: italic"># CONDITIONS INITIALES: à t = 0; theta = theta0, omega = 0</span>
+u0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([theta0, <span style="color: #666666">0</span>])
+
+Texp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nsteps)
+Uexp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">2</span>, nsteps))
+Texp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+Uexp[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> u0
+<span style="color: #408080; font-style: italic"># ITÉRATION</span>
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nsteps<span style="color: #666666">-1</span>):
+    Texp[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> Texp[k] <span style="color: #666666">+</span> dt
+    Uexp[:,k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot((np<span style="color: #666666">.</span>eye(<span style="color: #666666">2</span>) <span style="color: #666666">+</span> dt <span style="color: #666666">*</span> A), Uexp[:,k])
+    
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+<span style="color: #408080; font-style: italic"># PLOT POSITION vs TEMPS</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(Texp,Uexp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique (Euler explicite)&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 2D</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(Uexp[<span style="color: #666666">0</span>,:],Uexp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Espace des phases (Euler explicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_EulerExp1D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_EulerExp1D.pdf&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 3D</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(Texp, Uexp[<span style="color: #666666">0</span>,:],Uexp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Espace des phases (Euler explicite)&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+L'ex&#233;cution de ce programme donne les figures suivantes:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_EulerExp1D.png" align="bottom" width=700></p></center><br /><br />
+
+<p>
+et la figure en 3D:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_EulerExp3D.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remarque.</b>
+Dans le cas d'int&#233;gration avec la m&#233;thode d'Euler explicite nous avons un probl&#232;me d&#8217;augmentation d&#8217;amplitude dans le cas d&#8217;un oscillateur libre non amorti. Plus le temps de simulation est long, plus l'amplitude augmente, ce qui n'est pas ce que nous attendons de l'&#233;volution du syst&#232;me dans le temps.
+</div>
+
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<b>d)</b>
+Rappeler l'expression de la m&#233;thode <em>d'Euler implicite</em> pour ce syst&#232;me.
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_6" style="font-size: 80%;"></a>
+<a href="#exer_1_6" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_6">
+
+$$
+\begin{align}
+\label{eq:euler_imp}
+\pmb{u}_{k+1}  &=(\pmb{I} - \Delta t  \pmb{A})^{-1}  \cdot \pmb{u}_k
+\end{align}
+$$
+
+<p>
+O&#249; \( \pmb{u}_k= \left(\begin{array}{c} \theta_k \\ \omega_k \end{array}\right) \), \( \pmb{A}= \left(\begin{array}{ll} 0&1 \\ - g/l& 0 \end{array}\right) \) et \( \pmb{I} \) est la matrice identit&#233;.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<b>e)</b>
+Calculer \( \pmb{u}= \left(\begin{array}{c} \theta (t) \\ \omega (t) \end{array}\right) \) avec la m&#233;thode d'Euler implicite pour \( t \in [0, 10] \) et pour un pas d'integration \( \Delta t = 0.01 \) s.
+
+<p>
+Tracer:
+
+<ul>
+<li> Dans un m&#234;me graphique, la variation de l'amplitude d'oscillation \( \theta \) en fonction du temps \( t \) et le diagramme des phases (vitesse angulaire \( \omega \) en fonction de \( \theta \)).</li>
+<li> Dans un graphique 3D, la vitesse angulaire \( \omega \) et l'amplitude d'oscillation \( \theta \) en fonction du temps \( t \).</li>
+</ul>
+
+Que remarquez-vous pour le r&#233;sultat trouv&#233;?
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_7" style="font-size: 80%;"></a>
+<a href="#exer_1_7" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_7">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#%% EULER IMPLICITE</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.linalg</span> <span style="color: #008000; font-weight: bold">import</span> inv
+Timp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nsteps)
+Uimp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">2</span>, nsteps))
+Timp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+Uimp[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> u0
+<span style="color: #408080; font-style: italic"># ITÉRATION</span>
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nsteps<span style="color: #666666">-1</span>):
+    Timp[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> Timp[k] <span style="color: #666666">+</span> dt
+    Uimp[:,k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot(inv(np<span style="color: #666666">.</span>eye(<span style="color: #666666">2</span>) <span style="color: #666666">-</span> dt <span style="color: #666666">*</span> A), Uimp[:,k])
+    
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+<span style="color: #408080; font-style: italic"># PLOT POSITION vs TEMPS</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(Timp,Uimp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique (Euler implicite)&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(Uimp[<span style="color: #666666">0</span>,:],Uimp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Espace des phases (Euler implicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp1D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp1D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 3D</span>
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(Timp, Uimp[<span style="color: #666666">0</span>,:],Uimp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Espace des phases (Euler implicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp3D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp3D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+L'ex&#233;cution de ce programme donne les figures suivantes:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_Eulerimp1D.png" align="bottom" width=700></p></center><br /><br />
+
+<p>
+et la figure en 3D:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_Eulerimp3D.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remarque.</b>
+Dans le cas d'int&#233;gration avec la m&#233;thode d'Euler implicite nous avons un probl&#232;me de diminution d&#8217;amplitude dans le cas d&#8217;un oscillateur libre non amorti. Plus le temps de simulation est long, plus l'amplitude diminue, ce qui n'est pas ce que nous attendons de l'&#233;volution du syst&#232;me dans le temps.
+</div>
+
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<b>f)</b>
+Tracer dans un m&#234;me graphique pour \( t \in [0, 10] \) et avec un pas \( \Delta t = 0.01 \) s:
+
+<ul>
+<li> <code>sol_exacte(t)</code> calcul&#233;e dans <b>a)</b>.</li>
+<li> \( \theta (t) \) calcul&#233;e dans <b>c)</b> par la m&#233;thode d'Euler explicite.</li>
+<li> \( \theta (t) \) calcul&#233;e dans <b>e)</b> par la m&#233;thode d'Euler implicite.</li>
+</ul>
+
+Que remarquez-vous si nous modifions la valeur du pas d&#8217;int&#233;gration par \( \Delta&nbsp;t =~0.001 \)&nbsp;s? Expliquer le r&#233;sultat trouv&#233;.
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_8" style="font-size: 80%;"></a>
+<a href="#exer_1_8" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_8">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#%% ILLUSTRATION</span>
+plt<span style="color: #666666">.</span>figure()
+plt<span style="color: #666666">.</span>plot(t, pendule_exacte(t), linewidth<span style="color: #666666">=2</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sol exact&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, Uexp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>, linestyle<span style="color: #666666">=</span><span style="color: #BA2121">&#39;--&#39;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Euler explicite&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, Uimp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>, linestyle<span style="color: #666666">=</span><span style="color: #BA2121">&#39;--&#39;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Euler implicite&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique avec &quot;</span><span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$\Delta t =$&quot;</span><span style="color: #666666">+</span><span style="color: #008000">str</span>(dt))
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_illustration.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_illustration.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+Pour \( \Delta t = 0.01 \), l'ex&#233;cution du code donne la figure suivante:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_illustration.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+Pour \( \Delta t = 0.001 \), l'ex&#233;cution du code donne la figure suivante:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_illustration1.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remarque.</b>
+Les deux m&#233;thodes d'Euler, explicite et implicite, posent un probl&#232;me fondamental avec ses amplitudes croissantes et d&#233;croissantes pour le cas d'oscillateur libre non amorti. Un tr&#232;s petit \( \Delta t \) est n&#233;cessaire pour obtenir des r&#233;sultats satisfaisants.
+
+<p>
+<em>Plus la simulation est longue, plus \( \Delta t \) doit &#234;tre petit.</em>
+</div>
+
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec1" class="anchor">Exercice 2: Comparaison des sch&#233;mas d&#8217;Euler explicite et implicite </h2>
+
+<p>
+On consid&#232;re le probl&#232;me de Cauchy:
+$$
+\begin{align}
+\frac{d z(t)}{dt} = 1 - \frac{t}{\mu}, \ t \in \Re, \ z(0) = z_0
+\label{_auto4}
+\end{align}
+$$
+
+On rappelle que la solution exacte de ce probl&#232;me est donn&#233;e par:
+$$
+\begin{align}
+\label{eq:solexacte2}
+z(t) = \mu -(\mu - z_0) e^{-\frac{t}{\mu}}
+\end{align}
+$$
+
+<p>
+1. D&#233;finir une fonction <code>sol_exacte(t, mu, z0)</code> qui renvoie la solution exacte donn&#233;e par l'&#233;quation \eqref{eq:solexacte2}. Tracer sur un m&#234;me graphique pour \( \mu= 1 \) et \( z_0 \in \{0, 1, 2\} \) ces solutions. Soit \( t \in [0,2] \) et pour un pas de \( \Delta t = 0.1 \) s.
+
+<p>
+2. M&#234;me questions pour \( \mu= 0.05 \) et \( z_0 \in \{0, 1, 2\} \).
+
+<p>
+3. On suppose dans cette question que \( \mu= 0.05 \) et que \( z_0  = 2 \).
+
+<p>
+<b>a)</b>
+
+<ul>
+<li> Rappeler l'expression de la m&#233;thode <em>d'Euler explicite</em> pour ce probl&#232;me.</li>
+<li> Calculer \( z(t) \) avec la m&#233;thode <em>d&#8217;Euler explicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.</li>
+</ul>
+
+<b>b)</b>
+
+<ul>
+<li> Montrer que l'expression de la m&#233;thode <em>d'Euler implicite</em> est:</li>
+</ul>
+
+$$
+\begin{align*}
+z_{n+1} = \frac{z_n + \Delta t}{1 + \frac{\Delta t}{\mu}}, \ n = 0, 1, 2, ..., N-1
+\end{align*}
+$$
+
+
+<ul>
+<li> Calculer \( z(t) \) avec la m&#233;thode <em>d&#8217;Euler implicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.</li>
+</ul>
+
+<b>c)</b>
+Tracer dans un m&#234;me graphique pour \( t \in [0, 2] \) et avec des pas d'int&#233;gration
+ \( \Delta t = 0.5, 0.1, 0.05, 0.01, 0.005 \) s:
+
+<ul>
+ <li> La solution exacte: <code>sol_exacte(t, 0.05, 2)</code></li>
+ <li> \( z(t) \) calcul&#233;e par la m&#233;thode d'Euler explicite.</li>
+ <li> \( z(t) \) calcul&#233;e par la m&#233;thode d'Euler explicite.</li>
+</ul>
+
+ Que remarquez-vous pour les r&#233;sultats trouv&#233;s? Quelle est la m&#233;thode la plus proche de la solution exacte?
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec2" class="anchor">Exercice 3: Atterrissage d'un vaisseau spatial </h2>
+
+<p>
+<br /><br /><center><p><img src="imgs/spacecraft.png" align="bottom" width=300></p></center><br /><br />
+
+<p>
+Un vaisseau spatial est lanc&#233; &#224; l'altitude \( H = 772 \ km \) au-dessus du niveau de la mer avec la vitesse \( v_0 = 6700 \ m/s \) dans la direction indiqu&#233;e sur la figure ci-dessus. Les &#233;quations diff&#233;rentielles d&#233;crivant le mouvement du vaisseau spatial sont:
+$$
+\begin{align*}
+\ddot{r} &= r \dot{\theta}^2 - \frac{G M_T}{r^2} \\
+\ddot{\theta} &= - \frac{2 \dot{r} \dot{\theta}}{r}
+\end{align*}
+$$
+
+o&#249; \( r \) et \( \theta \) sont les coordonn&#233;es polaires du vaisseau spatial. Les constantes impliqu&#233;es dans le mouvement sont:
+
+<ul>
+<li> \( G = 6.672 \times 10^{&#8722;11} \) $m^3 kg^{&#8722;1} s^{&#8722;2}$ = constante gravitationnelle universelle.</li>
+<li> \( M_T = 5.9742 \times 10^24 \ kg \) = masse de la terre.</li>
+<li> \( R_T = 6378.14 \ km \) = rayon de la terre au niveau de la mer.</li>
+</ul>
+
+<b>a)</b>
+D&#233;river les &#233;quations diff&#233;rentielles du premier ordre et les conditions initiales de la forme \( \dot{y} = F (t, y) \), \( y(0) = b \).
+
+<p>
+<b>b)</b>
+Utiliser la m&#233;thode Runge-Kutta du quatri&#232;me ordre (RK4) pour int&#233;grer les &#233;quations depuis le lancement jusqu'&#224; ce que le vaisseau spatial touche la terre. D&#233;terminez \( \theta \) au site d'impact.
+
+<p>
+<!-- --- end exercise --- -->
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

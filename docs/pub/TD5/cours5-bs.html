@@ -1,0 +1,900 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Équations différentielles ordinaires">
+
+<title>Équations différentielles ordinaires</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Table des matières',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Introduction', 1, None, '___sec0'),
+              ("Convergence et de stabilité de la méthode d'Euler: Cas des "
+               'systèmes linéaires',
+               1,
+               None,
+               '___sec1'),
+              ("La méthode d'Euler explicite (progressive)",
+               2,
+               None,
+               '___sec2'),
+              ("La méthode d'Euler implicite (rétrograde)", 2, None, '___sec3'),
+              ('Exemple: Oscillateur libre amorti [masse, ressort, '
+               'amortisseur]',
+               2,
+               None,
+               '___sec4'),
+              ('Bilan des forces', 3, None, '___sec5'),
+              ('Équation de mouvement', 3, None, '___sec6'),
+              ("Solution avec la méthode d'Euler explicite",
+               3,
+               None,
+               '___sec7'),
+              ("Solution avec la méthode d'Euler implicite",
+               3,
+               None,
+               '___sec8'),
+              ('Conclusion', 2, None, '___sec9'),
+              ("La méthode de Runge-Kutta d'ordre 4", 1, None, '___sec10'),
+              ("Algorithme de Runge-Kutta d'ordre 4", 2, None, '___sec11'),
+              ('Exemple: Système dynamique différentiel de Lorenz (attracteur '
+               'de Lorenz)',
+               2,
+               None,
+               '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours5-bs.html">Équations différentielles ordinaires</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table des matières</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Convergence et de stabilité de la méthode d'Euler: Cas des systèmes linéaires</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La méthode d'Euler explicite (progressive)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La méthode d'Euler implicite (rétrograde)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exemple: Oscillateur libre amorti [masse, ressort, amortisseur]</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bilan des forces</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Équation de mouvement</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution avec la méthode d'Euler explicite</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution avec la méthode d'Euler implicite</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusion</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;"><b>La méthode de Runge-Kutta d'ordre 4</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Algorithme de Runge-Kutta d'ordre 4</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exemple: Système dynamique différentiel de Lorenz (attracteur de Lorenz)</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>&#201;quations diff&#233;rentielles ordinaires</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Feb 26, 2020</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Introduction </a><br>
+<a href="#___sec1"> Convergence et de stabilit&#233; de la m&#233;thode d'Euler: Cas des syst&#232;mes lin&#233;aires </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> La m&#233;thode d'Euler explicite (progressive) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> La m&#233;thode d'Euler implicite (r&#233;trograde) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Exemple: Oscillateur libre amorti [masse, ressort, amortisseur] </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Conclusion </a><br>
+<a href="#___sec10"> La m&#233;thode de Runge-Kutta d'ordre 4 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Algorithme de Runge-Kutta d'ordre 4 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Exemple: Syst&#232;me dynamique diff&#233;rentiel de Lorenz (attracteur de Lorenz) </a><br>
+</p>
+
+<h1 id="___sec0" class="anchor">Introduction </h1>
+Dans les domaines scientifiques et industriels, il est courant aujourd'hui d'&#233;tudier la nature ou les dispositifs technologiques au moyen de mod&#232;les sur ordinateur. Avec de tels mod&#232;les, l'ordinateur agit comme un laboratoire virtuel o&#249; les exp&#233;riences peuvent &#234;tre effectu&#233;es de mani&#232;re rapide, fiable, s&#251;re et &#233;conomique.
+
+<p>
+Les &#233;quations diff&#233;rentielles constituent l'un des outils math&#233;matiques les plus puissants pour comprendre et pr&#233;dire le comportement des syst&#232;mes dynamiques de la nature, de l'ing&#233;nierie et de la soci&#233;t&#233;. Un syst&#232;me dynamique est un syst&#232;me avec un &#233;tat, g&#233;n&#233;ralement exprim&#233; par un ensemble de variables, &#233;voluant dans le temps. Par exemple, un pendule oscillant, la propagation d'une maladie et les conditions m&#233;t&#233;orologiques sont des exemples de syst&#232;mes dynamiques. Nous pouvons utiliser les lois fondamentales de la physique, ou l'intuition simple, pour exprimer des r&#232;gles math&#233;matiques qui r&#233;gissent l'&#233;volution du syst&#232;me dans le temps. Ces r&#232;gles prennent la forme d'&#233;quations diff&#233;rentielles.
+
+<p>
+<!-- ======= Exemple I : Radioactivit&#233; ======= -->
+<!-- ===== La d&#233;couverte de la radioactivit&#233; ===== -->
+<!-- La radioactivit&#233; a &#233;t&#233; d&#233;couverte en France, de 1896 &#224; 1898, par Henri Becquerel, qui a mis en &#233;vidence l&#8217;existence d&#8217;un rayonnement invisible provenant de l&#8217;uranium (voir Figure <a href="#fig:Becquerel">fig:Becquerel</a>), et par Pierre et Marie Curie qui ont montr&#233; la g&#233;n&#233;ralit&#233; de ce ph&#233;nom&#232;ne, lui ont donn&#233; son nom, et d&#233;couvert deux &#233;l&#233;ments chimiques particuli&#232;rement radioactifs, le polonium et le radium. Dans l&#8217;histoire de cette d&#233;couverte, et du d&#233;veloppement de toutes ses cons&#233;quences, on retrouve toutes les grandes questions li&#233;es &#224; la recherche, aux m&#233;canismes de la d&#233;couverte, aux remises en cause des acquis de la science et &#224; l&#8217;exploitation scientifique, technologique et industrielle des connaissances nouvelles. -->
+<!--  -->
+<!-- FIGURE:[imgs/radioactivite, width=500 frac=0.7] Clich&#233; d&#233;velopp&#233; par Becquerel le \( 1^{er} \) mars 1896 apr&#232;s &#234;tre rest&#233; dans un tiroir. On distingue dans la tache inf&#233;rieure, une croix de Malte &#224; laquelle Becquerel fait allusion (&#171; Si, entre la lamelle du sel d&#8217;uranium et la lame d&#8217;aluminium ou le papier noir, on interpose un &#233;cran form&#233; d&#8217;une lame de cuivre &#8230; par exemple en forme de croix, on observe dans l&#8217;image la silhouette de cette croix, en plus clair&#8230; &#187;). Les annotations sont de la main de Becquerel.[s:OpenEdition Journals, <a href="https://journals.openedition.org/bibnum/848" target="_self">Henri Becquerel : d&#233;couverte de la radioactivit&#233;</a>] <div id="fig:Becquerel"></div> -->
+
+<p>
+<!-- ======= Loi de d&#233;sint&#233;gration radioactive ======= -->
+<!-- Consid&#233;rons la d&#233;sint&#233;gration radioactive des noyaux. Le nombre de noyaux, N, suit l'&#233;quation diff&#233;rentielle ordinaire: -->
+<!-- !bt -->
+<!-- \begin{equation} -->
+<!-- \frac{dN(t)}{dt} = - \frac{N(t)}{\tau} -->
+<!-- \<div id="eq:desintegration_ode"></div> -->
+<!-- \end{equation} -->
+<!-- !et -->
+<!-- o&#249; \( \tau \) est la constante de temps de d&#233;croissance (on l'appelle aussi dur&#233;e de vie moyenne). Cette &#233;quation peut &#234;tre int&#233;gr&#233;e directement, avec la solution: -->
+<!-- !bt -->
+<!-- \begin{equation} -->
+<!-- N(t) = N_0 e^{-t/\tau} -->
+<!-- \<div id="eq:desintegration_exact"></div> -->
+<!-- \end{equation} -->
+<!-- !et -->
+<!-- mais nous voulons essayer de r&#233;soudre l'&#233;quation num&#233;riquement. -->
+<!--  -->
+<!-- L'approche la plus simple consiste &#224; exprimer le nombre de noyaux &#224; l'instant \( t + \Delta t \) en termes de nombre &#224; l'instant \( t \): -->
+<!--  -->
+<!-- !bt -->
+<!-- \begin{equation} -->
+<!-- N(t + \Delta t) = N(t) - \frac{N(t)}{\tau} \Delta t + \mathcal{O}(\Delta t^2) -->
+<!-- \<div id="eq:desintegration_euler"></div> -->
+<!-- \end{equation} -->
+<!-- !et -->
+<!-- Si nous commen&#231;ons par \( N_0 \) noyaux &#224; l'instant \( t = 0 \), alors &#224; \( t = \Delta t \) nous aurons \( N(\Delta t) \approx N_0 - (N_0/ \tau) \Delta t \); at \( t = 2 \Delta t \) nous aurons \( N(2\Delta t) \approx N(\Delta t) - [N(\Delta t)/ \tau] \Delta t \) etc. -->
+<!-- L'erreur de troncature est \( \mathcal{O}(\Delta t^2) \). Par cons&#233;quent, si la taille du pas \( \Delta t \) est petite, nous nous attendons &#224; ce que notre solution num&#233;rique soit proche de la solution exacte. Cette m&#233;thode d&#8217;int&#233;gration d&#8217;une &#233;quation diff&#233;rentielle ordinaire est connue sous le nom de <b>m&#233;thode d&#8217;Euler</b>. -->
+<!--  -->
+<!-- FIGURE:[scripts/euler_schema, width=500 frac=0.7] -->
+<!--  -->
+<!-- Voici un programme qui impl&#233;mentera cette m&#233;thode d'int&#233;gration de l'&#233;quation diff&#233;rentielle pour la d&#233;sint&#233;gration radioactive: -->
+<!--  -->
+<!-- @@@CODE scripts/desintegration.py -->
+<!--  -->
+<!-- Le programme demande le nombre initial de noyaux, \( N_0 \), la constante de temps de d&#233;croissance \( \tau \), le pas de temps \( \Delta t \) et la dur&#233;e totale de l'int&#233;gration \( t_{max} \). Lorsque ce programme est ex&#233;cut&#233; avec les valeurs d'entr&#233;e sont; \( N_0 = 100 \), \( \tau = 1 \), \( \Delta t = 0.04 \) et \( t_{max} = 5 \), le programme produit le trac&#233; pr&#233;sent&#233; dans la Figure <a href="#figout:desintegration">figout:desintegration</a>. -->
+<!--  -->
+<!-- FIGURE:[scripts/desintegration, width=500 frac=0.7] R&#233;sultat de l'ex&#233;cution du programme <em>desintegration.py</em> avec entr&#233;e \( N_0 = 100 \), \( \tau = 1 \), \( \Delta t = 0.04 \) et \( t_{max} = 5 \). <div id="figout:desintegration"></div> -->
+<!--  -->
+<!-- Voyons maintenant &#224; quel point notre programme est proche de la solution exacte. Vraisemblablement, lorsque le pas \( \Delta t \) est grand, l'erreur sera pire; aussi, les erreurs grandissent avec le temps. Pour voir cela, consid&#233;rons une version modifi&#233;e de notre programme <em>desintegration.py</em> qui trace la diff&#233;rence fractionnaire entre le r&#233;sultat num&#233;rique et le r&#233;sultat exact donn&#233; par Eq.&nbsp;(<a href="#eq:desintegration_exact">eq:desintegration_exact</a>). Notre nouveau programme effectuera des &#233;volutions num&#233;riques sur un certain nombre de <b>diff&#233;rentes valeurs du pas</b> afin que nous puissions voir comment l'erreur d&#233;pend du degr&#233; de raffinement de \( \Delta t \). -->
+<!--  -->
+<!-- @@@CODE scripts/desintegrationErr.py -->
+<!--  -->
+<!-- Ce programme produit les r&#233;sultats montr&#233;s &#224; la Figure <a href="#figout:desintegrationErr">figout:desintegrationErr</a>. -->
+<!--  -->
+<!-- FIGURE:[scripts/desintegrationErr, width=500 frac=0.7] R&#233;sultat de l'ex&#233;cution du programme <em>desintegrationErr.py</em> avec entr&#233;e \( N_0 = 100 \), \( \tau = 1 \), \( \Delta t = 0.1 \), \( N_{res}=4 \) et \( t_{max} = 10 \). <div id="figout:desintegrationErr"></div> -->
+<!--  -->
+<!-- Les erreurs se rapprochent de mani&#232;re lin&#233;aire avec le temps (les lignes du trac&#233; logarithmique ont une pente approximativement &#233;gale &#224; l'unit&#233;) et chaque facteur de 10 dans le raffinement diminue l'erreur fractionnaire d'un facteur 10. Pour comprendre cela, notez que le terme que nous avons jet&#233; dans l'expansion de Taylor de notre &#233;quation diff&#233;rentielle ordinaire &#233;tait le terme \( d^2 N / d t^2  \), donc chaque &#233;tape introduit une erreur de: -->
+<!-- !bt -->
+<!-- \begin{equation} -->
+<!-- e_i \approx \frac{1}{2} \frac{d^2 N(t_i)}{d t^2} \Delta t^2 = \frac{N(t_i)}{2 \tau^2} \Delta t^2 -->
+<!-- <div id="eq:local_erreur"></div> -->
+<!-- \end{equation} -->
+<!-- !et -->
+<!-- Ceci est connu sous le nom <b>d'erreur locale</b>. Si l'erreur locale d'un sch&#233;ma d'int&#233;gration num&#233;rique est \( \mathcal{O}(\Delta t^{p + 1}) \) comme \( t \rightarrow 0 \), alors on dit que c'est l'ordre \( p \). La m&#233;thode d&#8217;Euler est donc un sch&#233;ma d&#8217;int&#233;gration de premier ordre. <b>L'erreur globale</b> est l'erreur accumul&#233;e lorsque l'int&#233;gration est effectu&#233;e pendant une certaine dur&#233;e T. Le nombre d'&#233;tapes requis est \( n = T / \Delta t \) et chaque &#233;tape \( i~=~1...n \) accumule une erreur \( e_i \), nous nous attendons donc &#224; ce que l'erreur globale soit: -->
+<!-- !bt -->
+<!-- \begin{equation} -->
+<!-- E_n \le \sum_{i=1}^n e_i \le T \frac{N_0}{2 \tau^2} \Delta t -->
+<!-- <div id="eq:global_erreur"></div> -->
+<!-- \end{equation} -->
+<!-- !et -->
+<!-- puisque \( e_i \le \frac{N_0}{2 \tau^2} \Delta t^2 \). Notez que pour un sch&#233;ma d&#8217;int&#233;gration d'ordre \( p \), l'erreur sera \( \mathcal{O}(\Delta t^{p}) \); de plus, l'erreur grandit avec le temps \( T \). Pour la m&#233;thode d'Euler, l'erreur cro&#238;t de mani&#232;re approximativement lin&#233;aire avec \( T \) et avec \( \Delta t \), ce qui est ce que nous voyons sur la Figure <a href="#figout:desintegrationErr">figout:desintegrationErr</a>. -->
+<!--  -->
+<!-- !bnotice -->
+<!-- La m&#233;thode d'Euler n'est pas une m&#233;thode recommand&#233;e pour r&#233;soudre des &#233;quations diff&#233;rentielles ordinaires. S'agissant simplement du premier ordre, une pr&#233;cision souhait&#233;e n'est obtenue que pour de tr&#232;s petites valeurs de \( \Delta t \), de nombreuses &#233;tapes d'int&#233;gration sont donc n&#233;cessaires pour faire &#233;voluer le syst&#232;me pour une dur&#233;e donn&#233;e \( T \). Mais le co&#251;t en calcul de la m&#233;thode d&#8217;Euler n&#8217;est pas son seul inconv&#233;nient: elle n&#8217;est pas particuli&#232;rement stable non plus, comme nous le verrons plus loin dans ce chapitre.. -->
+<!-- !enotice -->
+<!--  -->
+<!--  -->
+<!-- ======= Mouvement d'un projectile ======= -->
+<!-- Un autre exemple d'&#233;quation diff&#233;rentielle ordinaire est celui du mouvement du projectile, pour lequel les &#233;quations du mouvement sont: -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- \frac{dx}{dt} &=v_x, & \frac{dv_x}{dt} &=0, \\ -->
+<!-- \frac{dy}{dt} &=v_y, & \frac{dv_y}{dt} &=-g, -->
+<!-- \end{align} -->
+<!-- !et -->
+<!-- o&#249; \( g \) est l'acc&#233;l&#233;ration de pesanteur. Nous pouvons utiliser la m&#233;thode d'Euler pour &#233;crire chaque d&#233;riv&#233;e sous une forme de diff&#233;rence finie convenant &#224; l'int&#233;gration num&#233;rique: -->
+<!--  -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- x_{i+1} &  =x_i + v_{x,i} \Delta t, &  v_{x,i+1} &= v_{x,i}, \\ -->
+<!-- y_{i+1} &  =y_i + v_{y,i} \Delta t, &  v_{y,i+1} &= v_{y,i} - g \Delta t, -->
+<!-- \end{align} -->
+<!-- !et -->
+<!-- Les trajectoires d'un projectile lanc&#233; avec une vitesse \( v_0~=~10~ \ m&nbsp;s^{-1} \) &#224; diff&#233;rents angles sont trac&#233;es par le programme <code>projectile.py</code> et sont trac&#233;es &#224; la Fig. <a href="#fig:projectile">fig:projectile</a>. -->
+<!-- @@@CODE scripts/projectile.py -->
+<!-- Nous voyons, comme pr&#233;vu, que la plus grande plage est atteinte pour un angle de lancement de \( 45^\circ \). -->
+<!--  -->
+<!-- FIGURE:[scripts/projectile, width=500 frac=0.7] R&#233;sultats de l'ex&#233;cution du programme <code>projectile.py</code>. On voit que la plus grande plage est atteinte avec un angle de lancement de \( \theta = 45^\circ \). <div id="fig:projectile"></div> -->
+<!--  -->
+<!-- Trouver la trajectoire d'un projectile compte tenu de ses conditions initiales, \( v_{x,i} \) et \( v_{x,i} \) ou de mani&#232;re &#233;quivalente \( v_0 \) et \( \theta \), est relativement simple. Cependant, supposons que nous voulons trouver l'angle de lancement \( \theta \) requis pour atteindre une cible &#224; une distance donn&#233;e avec une vitesse initiale \( v_0 \) donn&#233;e. Ceci est un exemple de probl&#232;me de la <em>valeur aux limites</em> &#224; deux points.Une approche pour r&#233;soudre un tel probl&#232;me est connue comme <em>m&#233;thode de tir</em>. -->
+<!--  -->
+<!-- L'id&#233;e est simple: devinez la valeur de \( \theta \), effectuez l'int&#233;gration, d&#233;terminez combien vous manquez votre note, puis affinez votre estimation de mani&#232;re it&#233;rative jusqu&#8217;&#224; ce que vous soyez suffisamment proche de la cible. Si \( \Delta x(\theta) \) est la quantit&#233; que vous manquez la cible avec l'angle de lancement \( \theta \) alors l'objectif est de r&#233;soudre l'&#233;quation: -->
+<!-- !bt -->
+<!-- \begin{equation} <div id="eq:theta"></div> -->
+<!-- \Delta x(\theta) = 0 -->
+<!-- \end{equation} -->
+<!-- !et -->
+<!-- pour \( \theta \). Ce probl&#232;me g&#233;n&#233;ral s'appelle <b>la recherche de racine</b>. Nous allons utiliser ici une m&#233;thode assez simple pour r&#233;soudre une racine appel&#233;e <em>m&#233;thode de bissection</em>. Supposons que nous savons que la racine de l'&#233;quation (<a href="#eq:theta">eq:theta</a>) se situe quelque part dans l'intervalle \( \theta_1 < \theta < \theta_2 \) et \( \Delta x(\theta_1) \) a le signe oppos&#233; de \( \Delta x(\theta_2) \) (c'est-&#224;-dire si \( \Delta x(\theta_1) <0 \) alors \( \Delta x(\theta_2)> 0 \), ou vice versa). On dit alors que \( \theta_1 \) et \( \theta_2 \) <em>encadrent</em> la racine. -->
+<!--  -->
+<!-- Commen&#231;ons par &#233;valuer \( \Delta x(\theta_1) \), \( \Delta x(\theta_2) \) et \( \Delta x(\theta_{deviner}) \) avec  \( \theta_{deviner} \) au milieu entre  \( \theta_1 \)  et  \( \theta_2 \) , \( \theta_{deviner} = \frac{1}{2} (\theta_1 + \theta_2) \). Si le signe de \( \Delta x(\theta_{deviner}) \) est identique au signe de \( \Delta x(\theta_1) \), alors nous savons que la racine doit &#234;tre comprise entre \( \theta_{deviner} \) et \( \theta_2 \), nous assignons donc \( \theta_1 \) &#224; \( \theta_{deviner} \) et faisons une nouvelle hypoth&#232;se &#224; mi-chemin entre les nouveaux \( \theta_1 \) et \( \theta_2 \). Sinon, si le signe de \( \Delta x(\theta_{deviner}) \) est identique au signe de \( \Delta x(\theta_2) \), nous savons que la racine doit &#234;tre comprise entre \( \theta_1 \) et \( \theta_{deviner} \). Nous affectons donc \( \theta_2 \) &#224; \( \theta_{deviner} \) et faisons une nouvelle hypoth&#232;se &#224; mi-chemin entre \( \theta_1 \) et le nouveau \( \theta_2 \). Nous continuons cette it&#233;ration jusqu'&#224; ce que nous soyons <em>suffisamment proche</em>, c'est-&#224;-dire \( | \Delta x(\theta_{deviner}) | < \epsilon \) pour une petite valeur de \( \epsilon \). -->
+<!--  -->
+<!-- Pour le probl&#232;me &#224; r&#233;soudre, la cible doit &#234;tre situ&#233;e &#224; une distance \( x_{cible} \) et le point o&#249; le projectile touche le sol lorsqu&#8217;il est lanc&#233; &#224; l'angle \( \theta \) est \( x_{sol}(\theta) \). D&#233;finir \( \Delta x(\theta) = x_{sol}(\theta) - x_{cible} \) de telle sorte que \( \Delta x(\theta) > 0 \) si nous avons tir&#233; trop loin et \( \Delta x(\theta) < 0 \) si nous avons tir&#233; trop pr&#232;s. Ensuite, si \( 0 <x_{cible} <x_{max} \) o&#249; nous connaissons \( x_{sol}(0^\circ) = 0 \) et \( x_{sol}(45^\circ) = x_{max} \), alors nous savons que \( \theta_1 = 0^\circ \) et \( \theta_2 = 45^\circ \) encadrent la racine. Le programme <code>tire.py</code> utilise la m&#233;thode de tir pour calculer la trajectoire d'un projectile lanc&#233; &#224; partir de \( x = 0 \) avec une vitesse fixe et atterrissant au point \( x = x_{sol} \). Le r&#233;sultat de ce programme ex&#233;cut&#233; avec une vitesse initiale \( v_0 = 10 \ m \ s^{-1} \) et un emplacement cible \( x_{cible} = 8 \ m \) est pr&#233;sent&#233; &#224; la Fig. <a href="#fig:tire">fig:tire</a>. -->
+<!--  -->
+<!-- @@@CODE scripts/tire.py -->
+<!--  -->
+<!-- FIGURE:[scripts/tire, width=500 frac=0.7] R&#233;sultats de l'ex&#233;cution du programme tire.py avec une vitesse initiale \( v_0 = 10 \ m \ s^{&#8722;1} \) et l'emplacement cible \( x_{cible} \) = 8 m. L'angle requis pour atteindre la cible est \( \theta = 25.84^\circ \). <div id="fig:tire"></div> -->
+
+<h1 id="___sec1" class="anchor">Convergence et de stabilit&#233; de la m&#233;thode d'Euler: Cas des syst&#232;mes lin&#233;aires </h1>
+En m&#233;canique classique, les &#233;quations du mouvement d'un syst&#232;me m&#233;canique (syst&#232;mes de points mat&#233;riels, syst&#232;me de solides) sont des &#233;quations diff&#233;rentielles du second ordre par rapport au temps. La connaissance des positions et des vitesses des points &#224; l'instant \( t=0 \) suffit &#224; d&#233;terminer le mouvement pour \( t>0 \).
+
+<p>
+Ces &#233;quations sont souvent non lin&#233;aires car les forces elles-m&#234;mes le sont (par exemple la force de gravitation) et car l'acc&#233;l&#233;ration est souvent une fonction non lin&#233;aire des degr&#233;s de libert&#233;. Dans ce cas, il est fr&#233;quent que l'on ne connaisse pas de solution analytique exacte. On est alors amen&#233; &#224; rechercher une solution approch&#233;e par une m&#233;thode num&#233;rique.
+
+<p>
+Cette partie du cours explique le principe de ce type d'int&#233;gration num&#233;rique. On prendra l'exemple de l'oscillateur harmonique (dont la solution exacte est connue) auquel on appliquera la m&#233;thode num&#233;rique d'Euler. On abordera les notions importantes de <em>convergence</em> et de <em>stabilit&#233;</em>.
+
+<p>
+On verra aussi des variantes de la m&#233;thode d'Euler, qui peuvent &#234;tre utilis&#233;es pour r&#233;soudre des syst&#232;mes conservatifs &#224; N corps, par exemple en dynamique mol&#233;culaire.
+
+<p>
+De mani&#232;re g&#233;n&#233;rale soit le syst&#232;me d'&#233;quations diff&#233;rentielles suivant:
+$$
+\label{eq:sysdiff1}
+\begin{align}
+\pmb{\dot{u}} &= f(\pmb{u})
+\end{align}
+$$
+
+O&#249; \( \pmb{u} \) peut &#234;tre un vecteur d'&#233;tat et \( f(\pmb{u}) \) peut &#234;tre lin&#233;aire ou non lin&#233;aire.
+
+<p>
+Soit \( f(\pmb{u}) = \pmb{A} \cdot \pmb{u} \) avec \( \pmb{A} \) une matrice. Donc on peut &#233;crire l'&#233;quation \eqref{eq:sysdiff1} comme suit:
+
+$$
+\label{eq:sysdiff2}
+\begin{align}
+\pmb{\dot{u}} &= \pmb{A} \cdot \pmb{u} \quad avec \ \pmb{u}(t=0)=\pmb{u}_0
+\end{align}
+$$
+
+La solution analytique exacte d'un tel syst&#232;me est de la forme:
+
+$$
+\label{eq:solexact1}
+\begin{align}
+\pmb{u}(t) &= e^{\pmb{A}t} \cdot \pmb{u}_0
+\end{align}
+$$
+
+<p>
+On se propose d'appliquer diff&#233;rentes m&#233;thodes d'Euler au syst&#232;me \eqref{eq:sysdiff2}.
+
+<h2 id="___sec2" class="anchor">La m&#233;thode d'Euler explicite (progressive) </h2>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Illustration d'une approximation par diff&#233;rence progressive de la d&#233;riv&#233;e. </p></center>
+<p><img src="imgs/fd_forward.png" align="bottom" width=500></p>
+</center>
+
+$$
+\begin{align}
+\frac{\pmb{u}_{k+1}-\pmb{u}_k}{\Delta t} &\approx \pmb{\dot{u}}_k = f(\pmb{u}_k)
+\label{_auto1}
+\end{align}
+$$
+
+
+$$
+\begin{align}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t  f(\pmb{u}_k)
+\label{_auto2}
+\end{align}
+$$
+
+<p>
+Si \( \pmb{\dot{u}} = \pmb{A} \cdot \pmb{u} \) alors;
+$$
+\begin{align}
+\label{eq:euler_exp}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_k = (\pmb{I} + \Delta t  \pmb{A}) \cdot \pmb{u}_k
+\end{align}
+$$
+
+<p>
+O&#249; \( \pmb{I} \) est la matrice identit&#233;.
+
+<h2 id="___sec3" class="anchor">La m&#233;thode d'Euler implicite (r&#233;trograde) </h2>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Illustration d'une approximation par diff&#233;rence r&#233;trograde de la d&#233;riv&#233;e. </p></center>
+<p><img src="imgs/fd_backward.png" align="bottom" width=500></p>
+</center>
+
+$$
+\begin{align}
+\frac{\pmb{u}_{k+1}-\pmb{u}_k}{\Delta t} &\approx \pmb{\dot{u}}_{k+1} = f(\pmb{u}_{k+1})
+\label{_auto3}
+\end{align}
+$$
+
+
+$$
+\begin{align}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t  f(\pmb{u}_{k+1})
+\label{_auto4}
+\end{align}
+$$
+
+<p>
+Si \( \pmb{\dot{u}} = \pmb{A} \cdot \pmb{u} \) alors;
+$$
+\begin{align}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_{k+1}
+\label{_auto5}
+\end{align}
+$$
+
+$$
+\begin{align}
+(\pmb{I} - \Delta t  \pmb{A}) \cdot \pmb{u}_{k+1}  &= \pmb{u}_k
+\label{_auto6}
+\end{align}
+$$
+
+
+$$
+\begin{align}
+\label{eq:euler_imp}
+\pmb{u}_{k+1}  &=(\pmb{I} - \Delta t  \pmb{A})^{-1}  \cdot \pmb{u}_k
+\end{align}
+$$
+
+<p>
+O&#249; \( \pmb{I} \) est la matrice identit&#233;.
+
+<h2 id="___sec4" class="anchor">Exemple: Oscillateur libre amorti [masse, ressort, amortisseur] </h2>
+Un bloc de masse \( m \) est li&#233; &#224; l'extr&#233;mit&#233; libre d'un ressort de raideur \( k \) , de longueur au repos \( l \), de masse n&#233;gligeable et d'&#233;lasticit&#233; parfaite, l'autre extr&#233;mit&#233; du ressort &#233;tant fixe. Le syst&#232;me est suppos&#233; dans l'espace (on n&#233;glige la force de pesanteur). Le seul mouvement possible pour le bloc est une translation suivant \( x \); on assimilera le bloc &#224; un point mat&#233;riel \( M \).
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Sch&#233;ma d'un syst&#232;me dynamique oscillant amorti unidimensionnel. </p></center>
+<p><img src="imgs/oscillator.png" align="bottom" width=500></p>
+</center>
+
+<h3 id="___sec5" class="anchor">Bilan des forces </h3>
+
+<ul>
+<li> La force de rappel \( \overrightarrow{F_r} = - k \overrightarrow{x} \) o&#249; \( k \) est un coefficient positif et \( \overrightarrow{x} \) le vecteur position de \( M \).</li>
+<li> Le syst&#232;me est amorti. L'amortissement de type visqueux est repr&#233;sent&#233; par un amortisseur qui exerce la force dissipative (ou force d'amortissement visqueux) \( \overrightarrow{F_a} = - b \overrightarrow{v} \) o&#249; \( b \) est un coefficient positif et \( \overrightarrow{v} \) le vecteur vitesse de \( M \).</li>
+</ul>
+
+<h3 id="___sec6" class="anchor">&#201;quation de mouvement </h3>
+
+La deuxi&#232;me loi de Newton pour le syst&#232;me peut &#234;tre &#233;crite avec l'acc&#233;l&#233;ration multipli&#233;e par la masse du c&#244;t&#233; gauche et la somme des forces du c&#244;t&#233; droit:
+$$
+\begin{align}
+  m \overrightarrow{a} &=  \overrightarrow{F_a} + \overrightarrow{F_r}
+\label{_auto7}
+\end{align}
+$$
+
+
+$$
+\begin{align}
+  m \ddot{x} &=  - b \dot{x} - kx
+\label{_auto8}
+\end{align}
+$$
+
+
+$$
+\begin{align}
+  m \ddot{x} + b \dot{x} + kx &= 0
+\label{_auto9}
+\end{align}
+$$
+
+On r&#233;&#233;crit cette &#233;quation sous la forme canonique suivante :
+
+$$
+\begin{align}
+\label{eq:ordre2}
+\ddot{x} + 2 \zeta \omega_0 \dot{x} + \omega_0^2 x &= 0
+\end{align}
+$$
+
+avec \( \omega_0 = \sqrt{\frac{k}{m}} \) d&#233;signe une <em>pulsation caract&#233;ristique</em> et \( \zeta = \frac{b}{2 \sqrt{km}} \) est une quantit&#233; positive sans dimension, appel&#233;e <em>taux d&#8217;amortissement</em>.
+
+<p>
+C'est une &#233;quation diff&#233;rentielle lin&#233;aire d'ordre 2 &#224; coefficients constants.
+
+<p>
+On peut trouver num&#233;riquement la solution de l'&#233;quation \eqref{eq:ordre2} &#224; l'aide des m&#233;thodes d'Euler &#224; partir du syst&#232;me d'&#233;quations diff&#233;rentielles ordinaires suivant:
+$$
+\begin{align}
+\dot{x} &= v
+\label{_auto10}\\
+\dot{v} &= - 2 \zeta \omega_0 v - \omega_0^2 x
+\label{_auto11}\\
+\label{_auto12}
+\end{align}
+$$
+
+
+$$
+\label{eq:linalg}
+\begin{align}
+\frac{d}{dt}
+\left(\begin{array}{c}
+x\\
+v
+\end{array}\right)
+&=
+\left(\begin{array}{cc}
+0 & 1\\
+- \omega_0^2 & - 2 \zeta \omega_0
+\end{array}\right) \cdot
+\left(\begin{array}{c}
+x\\
+v
+\end{array}\right)
+\end{align}$$
+
+L'&#233;quation \eqref{eq:linalg} est de la forme: \( \dot{\pmb{u}} = \pmb{A} \cdot \pmb{u} \) avec:
+$$ \pmb{A}= \left(\begin{array}{cc}0&1\\- \omega_0^2 & - 2 \zeta \omega_0 \end{array}\right)$$ et $$\pmb{u} = \left(\begin{array}{c} x\\ v \end{array}\right)$$
+
+<p>
+Supposons que nous voulions r&#233;soudre le probl&#232;me avec: \( \omega_0 = 2 \pi \), \( \zeta = 0.25 \), \( \pmb{u_0}= \left(\begin{array}{c} x(t=0)\\ v(t=0) \end{array}\right)= \left(\begin{array}{c} 2\\ 0 \end{array}\right) \), \( \Delta t = 0.01 \) pour \( t \in [0, 10] \). Ce sera une solution sinuso&#239;dale amortie.
+
+<h3 id="___sec7" class="anchor">Solution avec la m&#233;thode d'Euler explicite </h3>
+
+Nous impl&#233;mentons l'expression explicite d'Euler montr&#233;e dans \eqref{eq:euler_exp} dans le code python suivant:
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: OscillateurEulerExp.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+<span style="color: #408080; font-style: italic"># SYSTÈME: OSCILLATEUR LIBRE AMORTI</span>
+w <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi <span style="color: #408080; font-style: italic"># fréquence propre</span>
+a <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>    <span style="color: #408080; font-style: italic"># rapport d&#39;amotissement</span>
+A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>], [<span style="color: #666666">-</span>w<span style="color: #666666">**2</span>, <span style="color: #666666">-2*</span>a<span style="color: #666666">*</span>w]])
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.01</span> <span style="color: #408080; font-style: italic"># pas du temps</span>
+Tf <span style="color: #666666">=</span> <span style="color: #666666">10</span> <span style="color: #408080; font-style: italic"># temps finale de la simulation</span>
+nsteps <span style="color: #666666">=</span> <span style="color: #008000">int</span>(Tf<span style="color: #666666">/</span>dt)
+<span style="color: #408080; font-style: italic"># CONDITION INITIAL: à t = 0; x = 2, v = 0</span>
+u0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">2</span>,<span style="color: #666666">0</span>])
+<span style="color: #408080; font-style: italic">#%% ITÉRATION: EULER ExPLICITE</span>
+Texp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nsteps)
+Uexp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">2</span>, nsteps))
+Texp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+Uexp[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> u0
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nsteps<span style="color: #666666">-1</span>):
+    Texp[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> Texp[k] <span style="color: #666666">+</span> dt
+    Uexp[:,k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot((np<span style="color: #666666">.</span>eye(<span style="color: #666666">2</span>) <span style="color: #666666">+</span> dt <span style="color: #666666">*</span> A), Uexp[:,k])
+
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+<span style="color: #408080; font-style: italic"># PLOT POSITION vs TEMPS</span>
+plt<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&quot;Simulation d&#39;un oscillateur libre amorti avec un pas d&#39;intégration &quot;</span><span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$ \Delta t= </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>dt,
+             fontweight <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;bold&quot;</span>)
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(Texp,Uexp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>, color <span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Position&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Trajectoire de la mass M (Euler explicite)&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 2D</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(Uexp[<span style="color: #666666">0</span>,:],Uexp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>, color <span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Position&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Vitesse&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Trajectoire de phase (Euler explicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;EulerExp1D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;EulerExp1D.pdf&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 3D</span>
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(Texp, Uexp[<span style="color: #666666">0</span>,:],Uexp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>, color <span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>)
+ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;Temps&quot;</span>)
+ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Position&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&quot;Vitesse&quot;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Trajectoire de phase (Euler explicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;EulerExp3D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;EulerExp3D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<center> <!-- figure label: --> <div id="fig:EulerExp_3"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Simulation d'un syst&#232;me oscillant avec diff&#233;rents pas de temps; \( \Delta t = 0.01 \) et \( \Delta t = 0.1 \) et pour \( \zeta = 0.25 \).  <!-- caption label: fig:EulerExp_3 --> </p></center>
+<p><img src="scripts/EulerExp_3.png" align="bottom" width=500></p>
+</center>
+
+<p>
+La figure <a href="#fig:EulerExp_3">4</a> est g&#233;n&#233;r&#233;e par le code <code>OscillateurEulerExp.py</code>, montrant la divergence et l'instabilit&#233; de la m&#233;thode Euler explicite. En effet, le pas d'int&#233;gration \( \Delta t \) agit consid&#233;rablement sur la qualit&#233; de la simulation et donne un r&#233;sultat inacceptable physiquement.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:EulerExpGen"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  Simulation d'un syst&#232;me oscillant avec diff&#233;rentes valeurs de \( \zeta \) et pour \( \Delta t = 0.01 \).  <!-- caption label: fig:EulerExpGen --> </p></center>
+<p><img src="scripts/EulerExpGen.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Dans le cas d'int&#233;gration avec la m&#233;thode d'Euler explicite, la figure <a href="#fig:EulerExpGen">5</a> montre que nous avons un probl&#232;me d&#8217;augmentation d&#8217;amplitude dans le cas d&#8217;un oscillateur non amorti (courbe bleue pour \( \zeta = 0 \)). Plus le temps de simulation est long, plus l'amplitude augmente, ce qui n'est pas ce que nous attendons de l'&#233;volution du syst&#232;me dans le temps. En d&#8217;autres termes, l&#8217;amplitude devrait &#234;tre constante dans le temps pour un syst&#232;me oscillant non amorti.
+
+<h3 id="___sec8" class="anchor">Solution avec la m&#233;thode d'Euler implicite </h3>
+
+Nous impl&#233;mentons l'expression implicite d'Euler montr&#233;e dans \eqref{eq:euler_imp} dans le code python suivant:
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: OscillateurEulerImp.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.linalg</span> <span style="color: #008000; font-weight: bold">import</span> inv
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+<span style="color: #408080; font-style: italic"># SYSTÈME: OSCILLATEUR LIBRE AMORTI</span>
+w <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi <span style="color: #408080; font-style: italic"># fréquence propre</span>
+a <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>    <span style="color: #408080; font-style: italic"># rapport d&#39;amotissement</span>
+A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>], [<span style="color: #666666">-</span>w<span style="color: #666666">**2</span>, <span style="color: #666666">-2*</span>a<span style="color: #666666">*</span>w]])
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span> <span style="color: #408080; font-style: italic"># pas du temps</span>
+Tf <span style="color: #666666">=</span> <span style="color: #666666">10</span> <span style="color: #408080; font-style: italic"># temps finale de la simulation</span>
+nsteps <span style="color: #666666">=</span> <span style="color: #008000">int</span>(Tf<span style="color: #666666">/</span>dt)
+<span style="color: #408080; font-style: italic"># CONDITION INITIAL: à t = 0; x = 2, v = 0</span>
+u0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">2</span>,<span style="color: #666666">0</span>])
+<span style="color: #408080; font-style: italic">#%% ITÉRATION: EULER IMPLICITE</span>
+Timp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nsteps)
+Uimp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">2</span>, nsteps))
+Timp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+Uimp[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> u0
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nsteps<span style="color: #666666">-1</span>):
+    Timp[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> Timp[k] <span style="color: #666666">+</span> dt
+    Uimp[:,k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot(inv(np<span style="color: #666666">.</span>eye(<span style="color: #666666">2</span>) <span style="color: #666666">-</span> dt <span style="color: #666666">*</span> A), Uimp[:,k])
+
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+<span style="color: #408080; font-style: italic"># PLOT POSITION vs TEMPS</span>
+plt<span style="color: #666666">.</span>suptitle(<span style="color: #BA2121">&quot;Simulation d&#39;un oscillateur libre amorti avec un pas d&#39;intégration &quot;</span><span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$ \Delta t= </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>dt,
+             fontweight <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;bold&quot;</span>)
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(Timp,Uimp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>, color <span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Position&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Trajectoire de la mass M (Euler implicite)&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 2D</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(Uimp[<span style="color: #666666">0</span>,:],Uimp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>, color <span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Position&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Vitesse&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Trajectoire de phase (Euler implicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Eulerimp1D_2.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Eulerimp1D_2.pdf&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 3D</span>
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(Timp, Uimp[<span style="color: #666666">0</span>,:],Uimp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>, color <span style="color: #666666">=</span><span style="color: #BA2121">&#39;k&#39;</span>)
+ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;Temps&quot;</span>)
+ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Position&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&quot;Vitesse&quot;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Trajectoire de phase (Euler implicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Eulerimp3D_2.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Eulerimp3D_2.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<center> <!-- figure label: --> <div id="fig:Eulerimp_3"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  Simulation d'un syst&#232;me oscillant avec diff&#233;rents pas de temps; \( \Delta t = 0.01 \) et \( \Delta t = 0.1 \) et pour \( \zeta = 0.25 \).  <!-- caption label: fig:Eulerimp_3 --> </p></center>
+<p><img src="scripts/Eulerimp_3.png" align="bottom" width=500></p>
+</center>
+
+<p>
+La figure <a href="#fig:Eulerimp_3">6</a> est g&#233;n&#233;r&#233;e par le code <code>OscillateurEulerImp.py</code>, montrant que la m&#233;thode d'Euler implicite est plus stable que la m&#233;thode Euler explicite. Nous remarquons toujours qu' il y a un effet du changement du pas d'int&#233;gration \( \Delta t \) sur la qualit&#233; de la simulation mais le r&#233;sultat du calcul est d&#233;sormais acceptable physiquement.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:EulerExpGen2"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  Simulation d'un syst&#232;me oscillant avec diff&#233;rentes valeurs de \( \zeta \) et pour \( \Delta t = 0.01 \).  <!-- caption label: fig:EulerExpGen2 --> </p></center>
+<p><img src="scripts/EulerExpGen2.png" align="bottom" width=500></p>
+</center>
+
+<p>
+M&#234;me probl&#232;me avec l'amplitude pour le cas d'int&#233;gration avec la m&#233;thode implicite d'Euler, la figure <a href="#fig:EulerExpGen2">7</a> montre que nous avons un probl&#232;me de diminution d'amplitude dans le cas d'un oscillateur non amorti (courbe bleue pour \( \zeta = 0 \)). Comme indiqu&#233; ci-dessus, l'amplitude devrait &#234;tre constante dans le temps pour un syst&#232;me oscillant non amorti.
+
+<h2 id="___sec9" class="anchor">Conclusion </h2>
+La conclusion ici est que la m&#233;thode Euler implicite est plus stable que celle explicite. Les deux m&#233;thodes posent un probl&#232;me fondamental avec ses amplitudes croissantes et d&#233;croissantes, pour le cas d'oscillateur libre non amorti, et qu&#8217;un tr&#232;s petit \( \Delta t \) est n&#233;cessaire pour obtenir des r&#233;sultats satisfaisants. Plus la simulation est longue, plus \( \Delta t \) doit &#234;tre petit. Il est certainement temps de rechercher des m&#233;thodes num&#233;riques plus stables et plus efficaces tels que les m&#233;thodes de <a href="https://fr.wikipedia.org/wiki/M%C3%A9thodes_de_Runge-Kutta" target="_self">Runge-Kutta</a>.
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec10" class="anchor">La m&#233;thode de Runge-Kutta d'ordre 4 </h1>
+Les m&#233;thodes de Runge-Kutta (ou RK), l'ordre 2 ou 4, sont tr&#232;s couramment utilis&#233;es pour la r&#233;solution d'&#233;quations diff&#233;rentielles ordinaires (EDO). Ce sont des m&#233;thodes &#224; pas unique, directement d&#233;riv&#233;es de la m&#233;thode d'Euler, qui est une m&#233;thode RK1.
+
+<p>
+Elles ont l'avantage d'&#234;tre simples &#224; programmer et assez stables pour les fonctions courantes de la physique. Sur le plan de l'analyse num&#233;rique, elles ont surtout l'immense avantage de ne pas n&#233;cessiter autre chose que la connaissance des valeurs initiales.
+
+<h2 id="___sec11" class="anchor">Algorithme de Runge-Kutta d'ordre 4 </h2>
+On part de la formule d'Euler sous sa forme scalaire, qui donne : \( y_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + h \).
+
+<p>
+La m&#233;thode RK du deuxi&#232;me ordre produit deux coefficients \( k_1 \) et \( k_2 \), qui permettent d'&#233;crire :
+$$
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+y_{n+1} &= y_n + k_2 + O(h^3)
+\end{align*}
+$$
+
+Cette m&#233;thode exige donc deux &#233;valuations de \( f \). L'erreur de consistance est en \( O(h^3) \) et l'erreur globale de convergence est d'ordre \( O(h^2) \). Pour obtenir plus de pr&#233;cision, mais en doublant le temps de calcul puisqu'on proc&#232;de &#224; 4 &#233;valuations de \( f \), voici la m&#233;thode RK4 :
+$$
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+k_3 &= h*f(x_n + h/2, y_n + k_2/2 ) \\
+k4 &= h*f(x_n + h, y_n + k_3)\\
+y_{n+1} &= y_n + k_1/6 + k_2/3 + k_3/3 + k_4/6 + O(h^5)
+\end{align*}
+$$
+
+<h2 id="___sec12" class="anchor">Exemple: Syst&#232;me dynamique diff&#233;rentiel de Lorenz (attracteur de Lorenz) </h2>
+L'attracteur de Lorenz, connu aussi sous le nom de <em>"papillon de Lorenz"</em>, est sans doute le plus connu des syst&#232;mes dynamiques non lin&#233;aires, essentiellement pour son aspect esth&#233;tique!
+
+<p>
+Le probl&#232;me avec la pr&#233;diction m&#233;t&#233;orologique est l'interd&#233;pendance de tous les param&#232;tres de l'atmosph&#232;re. Pour prendre un exemple, lorsque vous avez une zone de d&#233;pression, il y a un d&#233;placement d'une masse d'air voisine. C'est ici une r&#233;action thermodynamique, l'atmosph&#232;re s'organise pour que son enthalpie soit minimum alors qu'en m&#234;me temps, le sol continue &#224; chauffer l'air cr&#233;ant de nouveau un d&#233;s&#233;quilibre. De m&#234;me, l'ensoleillement n'&#233;tant pas constant &#224; la surface de la Terre (d&#233;pendant de la situation g&#233;ographique et des saisons), nous avons donc formation de diverses cellules de convections qui se retrouvent interd&#233;pendantes. Une perturbation sur l'une de ces cellules peut &#234;tre retrouv&#233;e sous la forme d'une autre perturbation sur une autre cellule de convection. C'est ici l'id&#233;e qui s'est d&#233;gag&#233;e de la remarque de Lorenz: <em>"Le battement d'ailes d'un papillon au Br&#233;sil peut-il provoquer une tornade au Texas?"</em>
+
+<p>
+<br /><br /><center><p><img src="imgs/convection.jpg" align="bottom" width=500></p></center><br /><br />
+Lorsque Lorenz a d&#233;couvert cette th&#233;orie en 1963, il &#233;tudiait la m&#233;t&#233;orologie au MIT. Comme nous l'avons dit, il fut l'un des premiers a avoir pu utiliser un ordinateur! Bien s&#251;r, ce n'&#233;tait pas du tout les m&#234;mes machines que nous utilisons aujourd'hui! Ces derniers occupaient une salle enti&#232;re, chauffaient comme un diable et avaient une capacit&#233; de calcul inf&#233;rieure aux premiers smartphones commercialis&#233;s. Il fallait donc &#234;tre tr&#232;s patient lorsque vous vouliez faire une mod&#233;lisation et chaque erreur faisait perdre du temps &#224; vos coll&#232;gues (car &#224; cette &#233;poque, il n'y avait que quelques ordinateurs au MIT) et gaspillait &#233;norm&#233;ment d'&#233;nergie.
+
+<p>
+Le syst&#232;me diff&#233;rentiel r&#233;sulte d'une simplification assez drastique de l'ensemble des &#233;quations diff&#233;rentielles en jeu. C'est un syst&#232;me param&#233;trique dont voici l'expression :
+
+$$
+\begin{align*}
+\dfrac{dx}{dt} &=\sigma\left[ y(t)-x(t) \right]\\
+\dfrac{dy}{dt} &=\rho \ x(t) - y(t) - x(t) \ z(t)\\
+\dfrac{dz}{dt} &=x(t) \ y(t) - \beta \ z(t)
+\end{align*}
+$$
+
+\( \sigma \), \( \beta \) et \( \rho \) sont trois param&#232;tres strictement positifs, fix&#233;s.
+
+<ul>
+<li> \( \sigma \) d&#233;pend des propri&#233;t&#233;s du fluide (c'est la constante de Prandtl , qui caract&#233;rise la viscosit&#233; et la conductivit&#233; thermique du fluide),</li>
+<li> \( \beta \) varie avec la g&#233;om&#233;trie de la cellule de convection,</li>
+<li> \( \rho \) varie en fonction du gradient de temp&#233;rature dans la cellule.</li>
+</ul>
+
+Les variables dynamiques x, y et z repr&#233;sentent l'&#233;tat du syst&#232;me &#224; chaque instant:
+
+<ul>
+<li> x caract&#233;rise le taux de convection,</li>
+<li> y et z le gradient de temp&#233;rature, respectivement horizontal et vertical.</li>
+</ul>
+
+A vrai dire, la signification r&#233;elle des param&#232;tres et des variables importe peu pour l'&#233;tude de la dynamique du syst&#232;me de Lorenz. Il faut simplement savoir que l'on fixe g&#233;n&#233;ralement \( \sigma = 10 \) et \( \beta= 8/3 \) (les param&#232;tres physiques et g&#233;om&#233;triques) et que l'on &#233;tudie le comportement en fonction de la variation de \( \rho \) et des conditions initiales.
+
+<p>
+Le trac&#233; de la trajectoire dans l'espace de phase est obtenu avec le programme <code>AttracteurLorenzRK4.py</code>, qui est &#233;crit selon la m&#233;thode RK4 et avec les valeurs de param&#232;tres \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales pour [x0,y0,z0] sont [1,1,20].
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: AttracteurLorenzRK4.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+<span style="color: #408080; font-style: italic">#Initial values</span>
+sigma <span style="color: #666666">=</span> <span style="color: #666666">10</span>
+beta <span style="color: #666666">=</span> <span style="color: #666666">8.0/3.0</span>
+rho <span style="color: #666666">=</span> <span style="color: #666666">28.0</span>
+<span style="color: #408080; font-style: italic">#Compute the time-derivative of a Lorenz system.</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">xt</span>(x, y, z, t):
+    <span style="color: #008000; font-weight: bold">return</span> (sigma<span style="color: #666666">*</span>(y <span style="color: #666666">-</span> x))
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">yt</span>(x, y, z, t):
+    <span style="color: #008000; font-weight: bold">return</span> (rho<span style="color: #666666">*</span>x <span style="color: #666666">-</span> y <span style="color: #666666">-</span> x<span style="color: #666666">*</span>z)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">zt</span>(x, y, z, t):
+    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-1*</span>(beta<span style="color: #666666">*</span>z) <span style="color: #666666">+</span> x<span style="color: #666666">*</span>y)
+<span style="color: #408080; font-style: italic"># définition de la fonction RK4</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">RungeKutta4</span>(xt,yt,zt,n <span style="color: #666666">=</span> <span style="color: #666666">3500</span>, tf <span style="color: #666666">=</span> <span style="color: #666666">30</span>):
+    x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    z <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    x[<span style="color: #666666">0</span>],y[<span style="color: #666666">0</span>], z[<span style="color: #666666">0</span>], t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>, <span style="color: #666666">1.0</span>, <span style="color: #666666">20</span>, <span style="color: #666666">0</span>
+    dt <span style="color: #666666">=</span> tf<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
+    <span style="color: #408080; font-style: italic"># calculer la solution approximative RK4.</span>
+    <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span> (n<span style="color: #666666">-1</span>):
+        t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> t[k] <span style="color: #666666">+</span> dt
+        k1 <span style="color: #666666">=</span> xt(x[k], y[k], z[k], t[k])
+        l1 <span style="color: #666666">=</span> yt(x[k], y[k], z[k], t[k])
+        m1 <span style="color: #666666">=</span> zt(x[k], y[k], z[k], t[k])
+        
+        k2 <span style="color: #666666">=</span> xt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k1<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l1<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m1<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        l2 <span style="color: #666666">=</span> yt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k1<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l1<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m1<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        m2 <span style="color: #666666">=</span> zt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k1<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l1<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m1<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+
+        k3 <span style="color: #666666">=</span> xt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k2<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l2<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m2<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        l3 <span style="color: #666666">=</span> yt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k2<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l2<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m2<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        m3 <span style="color: #666666">=</span> zt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k2<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l2<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m2<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+
+        k4 <span style="color: #666666">=</span> xt((x[k] <span style="color: #666666">+</span> k3<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> l3<span style="color: #666666">*</span>dt), (z[k] <span style="color: #666666">+</span> m3<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt))
+        l4 <span style="color: #666666">=</span> yt((x[k] <span style="color: #666666">+</span> k3<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> l3<span style="color: #666666">*</span>dt), (z[k] <span style="color: #666666">+</span> m3<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt))
+        m4 <span style="color: #666666">=</span> zt((x[k] <span style="color: #666666">+</span> k3<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> l3<span style="color: #666666">*</span>dt), (z[k] <span style="color: #666666">+</span> m3<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt))
+
+        x[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> x[k] <span style="color: #666666">+</span> (dt<span style="color: #666666">*</span>(k1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>k2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>k3 <span style="color: #666666">+</span> k4) <span style="color: #666666">/</span> <span style="color: #666666">6</span>)
+        y[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> y[k] <span style="color: #666666">+</span> (dt<span style="color: #666666">*</span>(l1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>l2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>l3 <span style="color: #666666">+</span> l4) <span style="color: #666666">/</span> <span style="color: #666666">6</span>)
+        z[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> z[k] <span style="color: #666666">+</span> (dt<span style="color: #666666">*</span>(m1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>m2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>m3 <span style="color: #666666">+</span> m4) <span style="color: #666666">/</span> <span style="color: #666666">6</span>)
+    <span style="color: #008000; font-weight: bold">return</span> x, y, z, t
+
+x, y, z, t <span style="color: #666666">=</span> RungeKutta4(xt,yt,zt)
+
+plt<span style="color: #666666">.</span>figure (figsize <span style="color: #666666">=</span> (<span style="color: #666666">8</span>,<span style="color: #666666">5</span>))
+plt<span style="color: #666666">.</span>plot ( t, x, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span> ) 
+plt<span style="color: #666666">.</span>plot ( t, y, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;r&#39;</span> )
+plt<span style="color: #666666">.</span>plot ( t, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;g&#39;</span> )
+plt<span style="color: #666666">.</span>xlabel ( <span style="color: #BA2121">&#39;Temps&#39;</span> )
+plt<span style="color: #666666">.</span>ylabel ( <span style="color: #BA2121">&#39;x(t), y(t), z(t)&#39;</span> )
+plt<span style="color: #666666">.</span>title (<span style="color: #BA2121">&#39;Évolution des coordonnées x, y et z en fonction du temps&#39;</span> )
+plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;x(t)&#39;</span>,<span style="color: #BA2121">&#39;y(t)&#39;</span>,<span style="color: #BA2121">&#39;z(t)&#39;</span>], loc <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_components.png&#39;</span>); plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_components.pdf&#39;</span> )
+plt<span style="color: #666666">.</span>show ( )
+<span style="color: #408080; font-style: italic"># FIGURE 3d: ATTRACTEUR DE LORENZ</span>
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;3d&#39;</span> )
+ax<span style="color: #666666">.</span>plot ( x, y, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span> )
+ax<span style="color: #666666">.</span>set_xlabel (<span style="color: #BA2121">&#39;x(t)&#39;</span>)
+ax<span style="color: #666666">.</span>set_ylabel (<span style="color: #BA2121">&#39;y(t)&#39;</span>)
+ax<span style="color: #666666">.</span>set_zlabel (<span style="color: #BA2121">&#39;z(t)&#39;</span>)
+ax<span style="color: #666666">.</span>set_title (<span style="color: #BA2121">&#39;Attracteur de Lorenz pour &#39;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$\rho = </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rho)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_3d.png&#39;</span>); plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_3d.pdf&#39;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+ Voil&#224; ce que cela donne avec le programme <code>AttracteurLorenzRK4.py</code>:
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 8:  &#201;volution des coordonn&#233;es x, y et z en fonction du temps. \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20]. </p></center>
+<p><img src="scripts/lorenz_ode_components.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 9:  Attracteur de Lorenz pour \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20]. </p></center>
+<p><img src="scripts/lorenz_ode_3d.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Lorsque nous mod&#233;lisons ce syst&#232;me dans l'espace des phases, nous avons apparition d'une structure fractale que nous appelons "Attracteur de Lorenz". C'est cette construction math&#233;matique qui a probablement donn&#233; l'id&#233;e du papillon &#224; Lorenz pour illustrer sa m&#233;canique Chaotique lors de sa conf&#233;rence de 1963!
+
+<p>
+Nous remarquons que notre syst&#232;me va devenir chaotique lorsque \( \rho \) va d&#233;passer une valeur critique \( \rho_c = 19.44 \)
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 10:  Formation d'un deuxi&#232;me attracteur lorsque \( \rho \) d&#233;passe la valeur critique \( \rho_c = 19.44 \). </p></center>
+<p><img src="scripts/lorenz_ode_r.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Lorsque notre syst&#232;me n'est pas chaotique, nous avons la formation d'un seul attracteur, cependant, lorsque \( \rho \) d&#233;passe la valeur \( \rho_c \), notre papillon d&#233;ploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la pr&#233;sence d'un deuxi&#232;me attracteur venant perturber la trajectoire de notre syst&#232;me qui rester &#224; naviguer entre les deux puits de gravit&#233; de ces deux attracteurs. On qualifie &#233;galement cette figure "d'attracteur &#233;trange" car les trajectoires ne se coupent pas et semblent &#233;voluer au hasard.
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+
