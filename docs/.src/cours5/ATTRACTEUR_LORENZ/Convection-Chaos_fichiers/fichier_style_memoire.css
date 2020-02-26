@@ -1,0 +1,83 @@
+/* Mise en page de l'entete */
+header{
+	background-color: rgb(0, 0, 0);
+	text-align: center;
+	color: white;
+}
+
+/* Navigation */
+nav{
+	margin-bottom: 20px;
+}
+
+#menu ul{
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+#menu li{
+	display: inline-block;
+	margin-right: 20px;
+	margin-left:2px;
+	padding: 10px;
+}
+
+#menu ul li a{
+	display:block;
+	width: 200px;
+	background-color: rgb(0, 0, 0);
+	color: white;
+	text-decoration:none;
+	text-align: center;
+	padding:5px;
+	border:2px solid;
+}
+
+#menu ul li ul{
+	display:none;
+	position:absolute;
+	margin:0px;
+	padding:0px;
+}
+
+#menu ul li:hover ul{
+	display:block;
+}
+
+#menu li:hover ul li{
+	float:none;
+}
+
+#menu li ul {
+	position:absolute;
+}
+
+/* Corps du texte */
+body{
+	background-color: rgb(255, 255, 153);
+}
+
+#corps_texte{
+	text-align:justify;
+}
+
+#content {
+  border: 3px solid grey;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+/* Pied de page */
+
+footer{
+	background: black;
+	color: white;
+	font-size: small;
+	border: 3px solid black;
+}
+
+#footer_txt{
+	line-height:5px;
+}

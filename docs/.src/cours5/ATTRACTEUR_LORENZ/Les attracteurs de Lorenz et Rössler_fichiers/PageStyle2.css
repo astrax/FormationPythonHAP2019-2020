@@ -1,0 +1,239 @@
+/* Feuille de style des pages de TangenteX.com
+   TangenteX version 2 
+   Dominique Lefebvre décembre 2018
+*/
+
+
+a
+{
+   color: blue;
+   text-decoration: none;
+}
+
+a:hover
+{
+   text-decoration: underline;
+}
+
+h2
+{
+   font-family:  Arial,Tahoma, "Times New Roman", Courier;
+   text-align: center;
+   font-size: 36px;
+   background-color: blue;
+   color:rgb(210,210,210);
+}
+
+h3
+{
+   font-family:  Arial,Tahoma, "Times New Roman", Courier;
+   text-align: left;
+   font-size: 24px;
+   background-color: blue;
+   color:rgb(210,210,210);
+}
+
+h4
+{
+   border-bottom: solid blue 2px;
+   font-family:  Arial, Tahoma,"Times New Roman", Courier;
+   text-align: left;
+   font-size: 18px;
+   font-weight: bold;
+   color: blue;
+}
+
+h5
+{
+   font-family:  Arial, Tahoma, "Times New Roman", Courier;
+   text-align: left;
+   font-size: 16px;
+   font-weight: bold;
+   color: blue;
+}
+
+h6
+{
+   font-family:  Arial, Tahoma, "Times New Roman", Courier;
+   text-align: left;
+   font-size: 14px;
+   font-weight: bold;
+   color: blue;
+}
+
+h7
+{
+   font-family:  Arial, Tahoma,"Times New Roman", Courier;
+   text-align: left;
+   font-size: 16px;
+   font-weight: bold;
+   color: blue;
+}
+
+
+body
+{
+   /* width: 1115px; */
+   width: 100%
+   min-with : 1115px;
+   overflow-y: hidden;
+   margin-left: 10px;
+   margin-right: 10px;
+   padding:10px;
+   background-color: white;
+}
+
+#banniere
+{
+   position:absolute;
+   top:0px;
+   left:0px;
+   height: 30px;
+   width: 1110px;
+   border: 2px solid rgb(0,0,255);
+   background: url("images/HeaderTangenteX.png") no-repeat bottom center white;
+}
+
+#banniere p
+{
+   position: absolute;
+   top:-28px;
+   left: 900px;   
+   font-family: Tahoma,Arial;
+   font-size: 26px;
+   font-weight: bold; 
+   color: rgb(210,210,210);
+
+}
+
+
+#menu
+{
+   position:absolute;
+   top:35px;
+   left:0px;
+   width: 235px; 
+   height: 550px;
+   margin-top: 0px;
+   background: rgb(240,255,255);
+   border: 2px solid rgb(0,0,255);
+}
+
+#menu h2
+{
+   font-family:  Arial,Tahoma, "Times New Roman", Courier;
+   text-align: center;
+   font-size: 18px;
+   background-color: blue;
+   color: rgb(210,210,210);
+}
+
+#menu p
+{
+   font-family:  Arial,Tahoma;
+   line-height: normal;
+   text-align: left;
+   margin-left: 10px;
+   background: rgb(240,255,255);
+   font-weight: bold;
+   font-size: 12px;
+   color: white;
+}
+
+#menu a.button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    top: 480px;
+    left: 45px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    background-color: blue;
+    border: 2px solid blue;
+    text-decoration: none;
+    font-family:  Arial,Tahoma;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(210,210,210);
+}
+
+
+#corps
+{
+   position:absolute;
+   top:35px;
+   left:240px;   
+   width:850px;
+   height:530px;
+   overflow-y: scroll;
+   margin-top: 0px; 
+   margin-bottom: 0px;
+   padding: 10px;
+   border: 2px solid rgb(0,0,255);
+   color: black;
+   background-color: White;
+}
+
+#corps p
+{
+   font-family: Tahoma,Arial, "Times New Roman", Courier;
+   text-align: justify;
+   line-height: 2;
+   font-size: 14px;
+   color: black;
+}
+
+#corps ul, ol
+{
+   list-style-position: outside;
+   list-style-type: square;
+   font-family: Tahoma,Arial,"Times New Roman", Courier;
+   text-align: justify;
+   line-height: 2;
+   font-size: 14px;
+   color: black;
+}
+
+table, td,th
+{
+   border: 1px solid blue;
+   border-collapse: collapse;
+   margin: 0 auto;
+   font-family: Tahoma, Arial, "Times New Roman", Courier;
+   text-align: center;
+   font-size: 14px;
+   color: black;
+}
+
+
+#pied_page
+{
+   position:absolute;
+   top:590px;
+   left:0px;   
+   width: 1102px;
+   height: 45px;
+   margin-top: 1px;
+   padding: 4px;
+   background-color: White;
+   border: 2px solid rgb(0,0,255);
+   font-family: Tahoma,Arial;
+   font-size: 8px;
+   text-align: center;
+}
+
+#pied_page p
+{
+   font-family:  Arial,Tahoma;
+   text-align: center;
+   font-size: 10px;
+   font-weight: bold;
+   color: black;
+}
+
+
+
+
+
+

@@ -322,3 +322,77 @@ Même problème avec l'amplitude pour le cas d'intégration avec la méthode imp
 
 ===== Conclusion =====
 La conclusion ici est que la méthode Euler implicite est plus stable que celle explicite. Les deux méthodes posent un problème fondamental avec ses amplitudes croissantes et décroissantes, pour le cas d'oscillateur libre non amorti, et qu’un très petit $\Delta t$ est nécessaire pour obtenir des résultats satisfaisants. Plus la simulation est longue, plus $\Delta t$ doit être petit. Il est certainement temps de rechercher des méthodes numériques plus stables et plus efficaces tels que les méthodes de "Runge-Kutta":"https://fr.wikipedia.org/wiki/M%C3%A9thodes_de_Runge-Kutta".
+
+!split
+======= La méthode de Runge-Kutta d'ordre 4 =======
+Les méthodes de Runge-Kutta (ou RK), l'ordre 2 ou 4, sont très couramment utilisées pour la résolution d'équations différentielles ordinaires (EDO). Ce sont des méthodes à pas unique, directement dérivées de la méthode d'Euler, qui est une méthode RK1.
+
+Elles ont l'avantage d'être simples à programmer et assez stables pour les fonctions courantes de la physique. Sur le plan de l'analyse numérique, elles ont surtout l'immense avantage de ne pas nécessiter autre chose que la connaissance des valeurs initiales.
+
+===== Algorithme de Runge-Kutta d'ordre 4 =====
+On part de la formule d'Euler sous sa forme scalaire, qui donne : $y_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + h$.
+
+La méthode RK du deuxième ordre produit deux coefficients $k_1$ et $k_2$, qui permettent d'écrire :
+!bt
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+y_{n+1} &= y_n + k_2 + O(h^3)
+\end{align*}
+!et
+Cette méthode exige donc deux évaluations de $f$. L'erreur de consistance est en $O(h^3)$ et l'erreur globale de convergence est d'ordre $O(h^2)$. Pour obtenir plus de précision, mais en doublant le temps de calcul puisqu'on procède à 4 évaluations de $f$, voici la méthode RK4 :
+!bt
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+k_3 &= h*f(x_n + h/2, y_n + k_2/2 ) \\
+k4 &= h*f(x_n + h, y_n + k_3)\\
+y_{n+1} &= y_n + k_1/6 + k_2/3 + k_3/3 + k_4/6 + O(h^5)
+\end{align*}
+!et
+
+===== Exemple: Système dynamique différentiel de Lorenz (attracteur de Lorenz) =====
+L'attracteur de Lorenz, connu aussi sous le nom de *"papillon de Lorenz"*, est sans doute le plus connu des systèmes dynamiques non linéaires, essentiellement pour son aspect esthétique!
+
+Le problème avec la prédiction météorologique est l'interdépendance de tous les paramètres de l'atmosphère. Pour prendre un exemple, lorsque vous avez une zone de dépression, il y a un déplacement d'une masse d'air voisine. C'est ici une réaction thermodynamique, l'atmosphère s'organise pour que son enthalpie soit minimum alors qu'en même temps, le sol continue à chauffer l'air créant de nouveau un déséquilibre. De même, l'ensoleillement n'étant pas constant à la surface de la Terre (dépendant de la situation géographique et des saisons), nous avons donc formation de diverses cellules de convections qui se retrouvent interdépendantes. Une perturbation sur l'une de ces cellules peut être retrouvée sous la forme d'une autre perturbation sur une autre cellule de convection. C'est ici l'idée qui s'est dégagée de la remarque de Lorenz: *"Le battement d'ailes d'un papillon au Brésil peut-il provoquer une tornade au Texas?"*
+
+FIGURE:[imgs/convection, width=500 frac=0.7]
+Lorsque Lorenz a découvert cette théorie en 1963, il étudiait la météorologie au MIT. Comme nous l'avons dit, il fut l'un des premiers a avoir pu utiliser un ordinateur! Bien sûr, ce n'était pas du tout les mêmes machines que nous utilisons aujourd'hui! Ces derniers occupaient une salle entière, chauffaient comme un diable et avaient une capacité de calcul inférieure aux premiers smartphones commercialisés. Il fallait donc être très patient lorsque vous vouliez faire une modélisation et chaque erreur faisait perdre du temps à vos collègues (car à cette époque, il n'y avait que quelques ordinateurs au MIT) et gaspillait énormément d'énergie.
+
+Le système différentiel résulte d'une simplification assez drastique de l'ensemble des équations différentielles en jeu. C'est un système paramétrique dont voici l'expression :
+
+!bt
+\begin{align*}
+\dfrac{dx}{dt} &=\sigma\left[ y(t)-x(t) \right]\\
+\dfrac{dy}{dt} &=\rho \ x(t) - y(t) - x(t) \ z(t)\\
+\dfrac{dz}{dt} &=x(t) \ y(t) - \beta \ z(t)
+\end{align*}
+!et
+$\sigma$, $\beta$ et $\rho$ sont trois paramètres strictement positifs, fixés.
+* $\sigma$ dépend des propriétés du fluide (c'est la constante de Prandtl , qui caractérise la viscosité et la conductivité thermique du fluide),
+* $\beta$ varie avec la géométrie de la cellule de convection,
+* $\rho$ varie en fonction du gradient de température dans la cellule.
+
+Les variables dynamiques x, y et z représentent l'état du système à chaque instant:
+* x caractérise le taux de convection,
+* y et z le gradient de température, respectivement horizontal et vertical.
+
+A vrai dire, la signification réelle des paramètres et des variables importe peu pour l'étude de la dynamique du système de Lorenz. Il faut simplement savoir que l'on fixe généralement $\sigma = 10$ et $\beta= 8/3$ (les paramètres physiques et géométriques) et que l'on étudie le comportement en fonction de la variation de $\rho$ et des conditions initiales.
+
+Le tracé de la trajectoire dans l'espace de phase est obtenu avec le programme `AttracteurLorenzRK4.py`, qui est écrit selon la méthode RK4 et avec les valeurs de paramètres $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales pour [x0,y0,z0] sont [1,1,20].
+
+@@@CODE scripts/AttracteurLorenzRK4.py
+
+ Voilà ce que cela donne avec le programme `AttracteurLorenzRK4.py`:
+
+FIGURE:[scripts/lorenz_ode_components, width=500 frac=0.6] Évolution des coordonnées x, y et z en fonction du temps. $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].
+
+FIGURE:[scripts/lorenz_ode_3d, width=500 frac=0.7] Attracteur de Lorenz pour $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].
+
+Lorsque nous modélisons ce système dans l'espace des phases, nous avons apparition d'une structure fractale que nous appelons "Attracteur de Lorenz". C'est cette construction mathématique qui a probablement donné l'idée du papillon à Lorenz pour illustrer sa mécanique Chaotique lors de sa conférence de 1963!
+
+Nous remarquons que notre système va devenir chaotique lorsque $\rho$ va dépasser une valeur critique $\rho_c = 19.44$
+
+FIGURE:[scripts/lorenz_ode_r, width=500 frac=0.7] Formation d'un deuxième attracteur lorsque $\rho$ dépasse la valeur critique $\rho_c = 19.44$.
+
+Lorsque notre système n'est pas chaotique, nous avons la formation d'un seul attracteur, cependant, lorsque $\rho$ dépasse la valeur $\rho_c$, notre papillon déploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la présence d'un deuxième attracteur venant perturber la trajectoire de notre système qui rester à naviguer entre les deux puits de gravité de ces deux attracteurs. On qualifie également cette figure "d'attracteur étrange" car les trajectoires ne se coupent pas et semblent évoluer au hasard.

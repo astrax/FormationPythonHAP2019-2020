@@ -73,7 +73,14 @@ body { font-size:20px;line-height:1.5; }
                3,
                None,
                '___sec8'),
-              ('Conclusion', 2, None, '___sec9')]}
+              ('Conclusion', 2, None, '___sec9'),
+              ("La méthode de Runge-Kutta d'ordre 4", 1, None, '___sec10'),
+              ("Algorithme de Runge-Kutta d'ordre 4", 2, None, '___sec11'),
+              ('Exemple: Système dynamique différentiel de Lorenz (attracteur '
+               'de Lorenz)',
+               2,
+               None,
+               '___sec12')]}
 end of tocinfo -->
 
 <body>
@@ -122,6 +129,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution avec la méthode d'Euler explicite</a></li>
      <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution avec la méthode d'Euler implicite</a></li>
      <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusion</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;"><b>La méthode de Runge-Kutta d'ordre 4</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Algorithme de Runge-Kutta d'ordre 4</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exemple: Système dynamique différentiel de Lorenz (attracteur de Lorenz)</a></li>
 
         </ul>
       </li>
@@ -154,7 +164,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Feb 12, 2020</h4></center> <!-- date -->
+<center><h4>Feb 26, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -168,6 +178,9 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> La m&#233;thode d'Euler implicite (r&#233;trograde) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Exemple: Oscillateur libre amorti [masse, ressort, amortisseur] </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Conclusion </a><br>
+<a href="#___sec10"> La m&#233;thode de Runge-Kutta d'ordre 4 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Algorithme de Runge-Kutta d'ordre 4 </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Exemple: Syst&#232;me dynamique diff&#233;rentiel de Lorenz (attracteur de Lorenz) </a><br>
 </p>
 
 <h1 id="___sec0" class="anchor">Introduction </h1>
@@ -673,6 +686,194 @@ M&#234;me probl&#232;me avec l'amplitude pour le cas d'int&#233;gration avec la 
 
 <h2 id="___sec9" class="anchor">Conclusion </h2>
 La conclusion ici est que la m&#233;thode Euler implicite est plus stable que celle explicite. Les deux m&#233;thodes posent un probl&#232;me fondamental avec ses amplitudes croissantes et d&#233;croissantes, pour le cas d'oscillateur libre non amorti, et qu&#8217;un tr&#232;s petit \( \Delta t \) est n&#233;cessaire pour obtenir des r&#233;sultats satisfaisants. Plus la simulation est longue, plus \( \Delta t \) doit &#234;tre petit. Il est certainement temps de rechercher des m&#233;thodes num&#233;riques plus stables et plus efficaces tels que les m&#233;thodes de <a href="https://fr.wikipedia.org/wiki/M%C3%A9thodes_de_Runge-Kutta" target="_self">Runge-Kutta</a>.
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec10" class="anchor">La m&#233;thode de Runge-Kutta d'ordre 4 </h1>
+Les m&#233;thodes de Runge-Kutta (ou RK), l'ordre 2 ou 4, sont tr&#232;s couramment utilis&#233;es pour la r&#233;solution d'&#233;quations diff&#233;rentielles ordinaires (EDO). Ce sont des m&#233;thodes &#224; pas unique, directement d&#233;riv&#233;es de la m&#233;thode d'Euler, qui est une m&#233;thode RK1.
+
+<p>
+Elles ont l'avantage d'&#234;tre simples &#224; programmer et assez stables pour les fonctions courantes de la physique. Sur le plan de l'analyse num&#233;rique, elles ont surtout l'immense avantage de ne pas n&#233;cessiter autre chose que la connaissance des valeurs initiales.
+
+<h2 id="___sec11" class="anchor">Algorithme de Runge-Kutta d'ordre 4 </h2>
+On part de la formule d'Euler sous sa forme scalaire, qui donne : \( y_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + h \).
+
+<p>
+La m&#233;thode RK du deuxi&#232;me ordre produit deux coefficients \( k_1 \) et \( k_2 \), qui permettent d'&#233;crire :
+$$
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+y_{n+1} &= y_n + k_2 + O(h^3)
+\end{align*}
+$$
+
+Cette m&#233;thode exige donc deux &#233;valuations de \( f \). L'erreur de consistance est en \( O(h^3) \) et l'erreur globale de convergence est d'ordre \( O(h^2) \). Pour obtenir plus de pr&#233;cision, mais en doublant le temps de calcul puisqu'on proc&#232;de &#224; 4 &#233;valuations de \( f \), voici la m&#233;thode RK4 :
+$$
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+k_3 &= h*f(x_n + h/2, y_n + k_2/2 ) \\
+k4 &= h*f(x_n + h, y_n + k_3)\\
+y_{n+1} &= y_n + k_1/6 + k_2/3 + k_3/3 + k_4/6 + O(h^5)
+\end{align*}
+$$
+
+<h2 id="___sec12" class="anchor">Exemple: Syst&#232;me dynamique diff&#233;rentiel de Lorenz (attracteur de Lorenz) </h2>
+L'attracteur de Lorenz, connu aussi sous le nom de <em>"papillon de Lorenz"</em>, est sans doute le plus connu des syst&#232;mes dynamiques non lin&#233;aires, essentiellement pour son aspect esth&#233;tique!
+
+<p>
+Le probl&#232;me avec la pr&#233;diction m&#233;t&#233;orologique est l'interd&#233;pendance de tous les param&#232;tres de l'atmosph&#232;re. Pour prendre un exemple, lorsque vous avez une zone de d&#233;pression, il y a un d&#233;placement d'une masse d'air voisine. C'est ici une r&#233;action thermodynamique, l'atmosph&#232;re s'organise pour que son enthalpie soit minimum alors qu'en m&#234;me temps, le sol continue &#224; chauffer l'air cr&#233;ant de nouveau un d&#233;s&#233;quilibre. De m&#234;me, l'ensoleillement n'&#233;tant pas constant &#224; la surface de la Terre (d&#233;pendant de la situation g&#233;ographique et des saisons), nous avons donc formation de diverses cellules de convections qui se retrouvent interd&#233;pendantes. Une perturbation sur l'une de ces cellules peut &#234;tre retrouv&#233;e sous la forme d'une autre perturbation sur une autre cellule de convection. C'est ici l'id&#233;e qui s'est d&#233;gag&#233;e de la remarque de Lorenz: <em>"Le battement d'ailes d'un papillon au Br&#233;sil peut-il provoquer une tornade au Texas?"</em>
+
+<p>
+<br /><br /><center><p><img src="imgs/convection.jpg" align="bottom" width=500></p></center><br /><br />
+Lorsque Lorenz a d&#233;couvert cette th&#233;orie en 1963, il &#233;tudiait la m&#233;t&#233;orologie au MIT. Comme nous l'avons dit, il fut l'un des premiers a avoir pu utiliser un ordinateur! Bien s&#251;r, ce n'&#233;tait pas du tout les m&#234;mes machines que nous utilisons aujourd'hui! Ces derniers occupaient une salle enti&#232;re, chauffaient comme un diable et avaient une capacit&#233; de calcul inf&#233;rieure aux premiers smartphones commercialis&#233;s. Il fallait donc &#234;tre tr&#232;s patient lorsque vous vouliez faire une mod&#233;lisation et chaque erreur faisait perdre du temps &#224; vos coll&#232;gues (car &#224; cette &#233;poque, il n'y avait que quelques ordinateurs au MIT) et gaspillait &#233;norm&#233;ment d'&#233;nergie.
+
+<p>
+Le syst&#232;me diff&#233;rentiel r&#233;sulte d'une simplification assez drastique de l'ensemble des &#233;quations diff&#233;rentielles en jeu. C'est un syst&#232;me param&#233;trique dont voici l'expression :
+
+$$
+\begin{align*}
+\dfrac{dx}{dt} &=\sigma\left[ y(t)-x(t) \right]\\
+\dfrac{dy}{dt} &=\rho \ x(t) - y(t) - x(t) \ z(t)\\
+\dfrac{dz}{dt} &=x(t) \ y(t) - \beta \ z(t)
+\end{align*}
+$$
+
+\( \sigma \), \( \beta \) et \( \rho \) sont trois param&#232;tres strictement positifs, fix&#233;s.
+
+<ul>
+<li> \( \sigma \) d&#233;pend des propri&#233;t&#233;s du fluide (c'est la constante de Prandtl , qui caract&#233;rise la viscosit&#233; et la conductivit&#233; thermique du fluide),</li>
+<li> \( \beta \) varie avec la g&#233;om&#233;trie de la cellule de convection,</li>
+<li> \( \rho \) varie en fonction du gradient de temp&#233;rature dans la cellule.</li>
+</ul>
+
+Les variables dynamiques x, y et z repr&#233;sentent l'&#233;tat du syst&#232;me &#224; chaque instant:
+
+<ul>
+<li> x caract&#233;rise le taux de convection,</li>
+<li> y et z le gradient de temp&#233;rature, respectivement horizontal et vertical.</li>
+</ul>
+
+A vrai dire, la signification r&#233;elle des param&#232;tres et des variables importe peu pour l'&#233;tude de la dynamique du syst&#232;me de Lorenz. Il faut simplement savoir que l'on fixe g&#233;n&#233;ralement \( \sigma = 10 \) et \( \beta= 8/3 \) (les param&#232;tres physiques et g&#233;om&#233;triques) et que l'on &#233;tudie le comportement en fonction de la variation de \( \rho \) et des conditions initiales.
+
+<p>
+Le trac&#233; de la trajectoire dans l'espace de phase est obtenu avec le programme <code>AttracteurLorenzRK4.py</code>, qui est &#233;crit selon la m&#233;thode RK4 et avec les valeurs de param&#232;tres \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales pour [x0,y0,z0] sont [1,1,20].
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: AttracteurLorenzRK4.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+<span style="color: #408080; font-style: italic">#Initial values</span>
+sigma <span style="color: #666666">=</span> <span style="color: #666666">10</span>
+beta <span style="color: #666666">=</span> <span style="color: #666666">8.0/3.0</span>
+rho <span style="color: #666666">=</span> <span style="color: #666666">28.0</span>
+<span style="color: #408080; font-style: italic">#Compute the time-derivative of a Lorenz system.</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">xt</span>(x, y, z, t):
+    <span style="color: #008000; font-weight: bold">return</span> (sigma<span style="color: #666666">*</span>(y <span style="color: #666666">-</span> x))
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">yt</span>(x, y, z, t):
+    <span style="color: #008000; font-weight: bold">return</span> (rho<span style="color: #666666">*</span>x <span style="color: #666666">-</span> y <span style="color: #666666">-</span> x<span style="color: #666666">*</span>z)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">zt</span>(x, y, z, t):
+    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">-1*</span>(beta<span style="color: #666666">*</span>z) <span style="color: #666666">+</span> x<span style="color: #666666">*</span>y)
+<span style="color: #408080; font-style: italic"># définition de la fonction RK4</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">RungeKutta4</span>(xt,yt,zt,n <span style="color: #666666">=</span> <span style="color: #666666">3500</span>, tf <span style="color: #666666">=</span> <span style="color: #666666">30</span>):
+    x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    z <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    x[<span style="color: #666666">0</span>],y[<span style="color: #666666">0</span>], z[<span style="color: #666666">0</span>], t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>, <span style="color: #666666">1.0</span>, <span style="color: #666666">20</span>, <span style="color: #666666">0</span>
+    dt <span style="color: #666666">=</span> tf<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
+    <span style="color: #408080; font-style: italic"># calculer la solution approximative RK4.</span>
+    <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span> (n<span style="color: #666666">-1</span>):
+        t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> t[k] <span style="color: #666666">+</span> dt
+        k1 <span style="color: #666666">=</span> xt(x[k], y[k], z[k], t[k])
+        l1 <span style="color: #666666">=</span> yt(x[k], y[k], z[k], t[k])
+        m1 <span style="color: #666666">=</span> zt(x[k], y[k], z[k], t[k])
+        
+        k2 <span style="color: #666666">=</span> xt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k1<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l1<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m1<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        l2 <span style="color: #666666">=</span> yt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k1<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l1<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m1<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        m2 <span style="color: #666666">=</span> zt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k1<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l1<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m1<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+
+        k3 <span style="color: #666666">=</span> xt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k2<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l2<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m2<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        l3 <span style="color: #666666">=</span> yt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k2<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l2<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m2<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+        m3 <span style="color: #666666">=</span> zt((x[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>k2<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>l2<span style="color: #666666">*</span>dt), \
+                (z[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>m2<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt<span style="color: #666666">/2</span>))
+
+        k4 <span style="color: #666666">=</span> xt((x[k] <span style="color: #666666">+</span> k3<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> l3<span style="color: #666666">*</span>dt), (z[k] <span style="color: #666666">+</span> m3<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt))
+        l4 <span style="color: #666666">=</span> yt((x[k] <span style="color: #666666">+</span> k3<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> l3<span style="color: #666666">*</span>dt), (z[k] <span style="color: #666666">+</span> m3<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt))
+        m4 <span style="color: #666666">=</span> zt((x[k] <span style="color: #666666">+</span> k3<span style="color: #666666">*</span>dt), (y[k] <span style="color: #666666">+</span> l3<span style="color: #666666">*</span>dt), (z[k] <span style="color: #666666">+</span> m3<span style="color: #666666">*</span>dt), (t[k] <span style="color: #666666">+</span> dt))
+
+        x[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> x[k] <span style="color: #666666">+</span> (dt<span style="color: #666666">*</span>(k1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>k2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>k3 <span style="color: #666666">+</span> k4) <span style="color: #666666">/</span> <span style="color: #666666">6</span>)
+        y[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> y[k] <span style="color: #666666">+</span> (dt<span style="color: #666666">*</span>(l1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>l2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>l3 <span style="color: #666666">+</span> l4) <span style="color: #666666">/</span> <span style="color: #666666">6</span>)
+        z[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> z[k] <span style="color: #666666">+</span> (dt<span style="color: #666666">*</span>(m1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>m2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>m3 <span style="color: #666666">+</span> m4) <span style="color: #666666">/</span> <span style="color: #666666">6</span>)
+    <span style="color: #008000; font-weight: bold">return</span> x, y, z, t
+
+x, y, z, t <span style="color: #666666">=</span> RungeKutta4(xt,yt,zt)
+
+plt<span style="color: #666666">.</span>figure (figsize <span style="color: #666666">=</span> (<span style="color: #666666">8</span>,<span style="color: #666666">5</span>))
+plt<span style="color: #666666">.</span>plot ( t, x, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;b&#39;</span> ) 
+plt<span style="color: #666666">.</span>plot ( t, y, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;r&#39;</span> )
+plt<span style="color: #666666">.</span>plot ( t, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">1</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;g&#39;</span> )
+plt<span style="color: #666666">.</span>xlabel ( <span style="color: #BA2121">&#39;Temps&#39;</span> )
+plt<span style="color: #666666">.</span>ylabel ( <span style="color: #BA2121">&#39;x(t), y(t), z(t)&#39;</span> )
+plt<span style="color: #666666">.</span>title (<span style="color: #BA2121">&#39;Évolution des coordonnées x, y et z en fonction du temps&#39;</span> )
+plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;x(t)&#39;</span>,<span style="color: #BA2121">&#39;y(t)&#39;</span>,<span style="color: #BA2121">&#39;z(t)&#39;</span>], loc <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_components.png&#39;</span>); plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_components.pdf&#39;</span> )
+plt<span style="color: #666666">.</span>show ( )
+<span style="color: #408080; font-style: italic"># FIGURE 3d: ATTRACTEUR DE LORENZ</span>
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;3d&#39;</span> )
+ax<span style="color: #666666">.</span>plot ( x, y, z, linewidth <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>, color <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span> )
+ax<span style="color: #666666">.</span>set_xlabel (<span style="color: #BA2121">&#39;x(t)&#39;</span>)
+ax<span style="color: #666666">.</span>set_ylabel (<span style="color: #BA2121">&#39;y(t)&#39;</span>)
+ax<span style="color: #666666">.</span>set_zlabel (<span style="color: #BA2121">&#39;z(t)&#39;</span>)
+ax<span style="color: #666666">.</span>set_title (<span style="color: #BA2121">&#39;Attracteur de Lorenz pour &#39;</span> <span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$\rho = </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">$&quot;</span><span style="color: #666666">%</span>rho)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_3d.png&#39;</span>); plt<span style="color: #666666">.</span>savefig (<span style="color: #BA2121">&#39;lorenz_ode_3d.pdf&#39;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+ Voil&#224; ce que cela donne avec le programme <code>AttracteurLorenzRK4.py</code>:
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 8:  &#201;volution des coordonn&#233;es x, y et z en fonction du temps. \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20]. </p></center>
+<p><img src="scripts/lorenz_ode_components.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 9:  Attracteur de Lorenz pour \( \sigma = 10 \), \( \beta= 8/3 \) et \( \rho = 28 \). Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20]. </p></center>
+<p><img src="scripts/lorenz_ode_3d.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Lorsque nous mod&#233;lisons ce syst&#232;me dans l'espace des phases, nous avons apparition d'une structure fractale que nous appelons "Attracteur de Lorenz". C'est cette construction math&#233;matique qui a probablement donn&#233; l'id&#233;e du papillon &#224; Lorenz pour illustrer sa m&#233;canique Chaotique lors de sa conf&#233;rence de 1963!
+
+<p>
+Nous remarquons que notre syst&#232;me va devenir chaotique lorsque \( \rho \) va d&#233;passer une valeur critique \( \rho_c = 19.44 \)
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 10:  Formation d'un deuxi&#232;me attracteur lorsque \( \rho \) d&#233;passe la valeur critique \( \rho_c = 19.44 \). </p></center>
+<p><img src="scripts/lorenz_ode_r.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Lorsque notre syst&#232;me n'est pas chaotique, nous avons la formation d'un seul attracteur, cependant, lorsque \( \rho \) d&#233;passe la valeur \( \rho_c \), notre papillon d&#233;ploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la pr&#233;sence d'un deuxi&#232;me attracteur venant perturber la trajectoire de notre syst&#232;me qui rester &#224; naviguer entre les deux puits de gravit&#233; de ces deux attracteurs. On qualifie &#233;galement cette figure "d'attracteur &#233;trange" car les trajectoires ne se coupent pas et semblent &#233;voluer au hasard.
 
 <!-- ------------------- end of main content --------------- -->
 
