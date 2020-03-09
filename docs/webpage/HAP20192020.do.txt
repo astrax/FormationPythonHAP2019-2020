@@ -66,7 +66,15 @@ DATE: today
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours3/cours3-bs.html"
   * "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD3/TD3.html"
+!split
+===== Application : Diagramme de rayonnement =====
+* Notebook:
+  * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/antenne/antenne.ipynb"
+* PDF
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/antenne/antenne.pdf"
 
+* HTML:
+  * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/antenne/antenne-bs.html"
 ===== DS N°2 (Semestre 1) =====
 * Notebook:
   * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/exam/exam.ipynb"
@@ -98,8 +106,8 @@ DATE: today
 * PDF
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours5/cours5.pdf"
   * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD5/TD5.pdf"
-# * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD5/TD5_corr.pdf"
+  * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD5/TD5_corr.pdf"
 
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours5/cours5-bs.html"
-  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD5/TD5.html"
+  * "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD5/TD5.html"
