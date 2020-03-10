@@ -229,15 +229,92 @@ D&#233;finir une fonction <code>sol_exacte(t)</code> qui renvoie la solution exa
 <!-- --- end hint in exercise --- -->
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_3" style="font-size: 80%;"></a>
+<a href="#exer_1_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_3">
+
+<p>
+Le programme Python qui renvoie et trace la solution exacte de l'oscillateur harmonique est le suivant:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #408080; font-style: italic"># SYSTÈME: PENDULE SIMPLE</span>
+g <span style="color: #666666">=</span> <span style="color: #666666">9.8</span> <span style="color: #408080; font-style: italic"># accélération de pesanteur [m/s^2]</span>
+l <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #408080; font-style: italic"># longeur du pendule [m]</span>
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.01</span> <span style="color: #408080; font-style: italic"># pas du temps [s]</span>
+Tf <span style="color: #666666">=</span> <span style="color: #666666">10</span> <span style="color: #408080; font-style: italic"># temps finale de la simulation [s]</span>
+theta0 <span style="color: #666666">=</span> <span style="color: #666666">0.2</span> <span style="color: #408080; font-style: italic"># angle initiale [rad]</span>
+omega0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sqrt(g<span style="color: #666666">/</span>l) 
+<span style="color: #408080; font-style: italic"># SOLUTION EXACTE</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">pendule_exacte</span>(t):
+    <span style="color: #008000; font-weight: bold">return</span> theta0 <span style="color: #666666">*</span> np<span style="color: #666666">.</span>cos(omega0 <span style="color: #666666">*</span> t)
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0</span>, Tf, dt)
+
+plt<span style="color: #666666">.</span>plot(t, pendule_exacte(t), linewidth<span style="color: #666666">=2</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sol exacte&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+L'ex&#233;cution de ce programme donne la figure suivante:
+
+<p>
+<br /><br /><center><p><img src="scripts/sol_exacte.png" align="bottom" width=350></p></center><br /><br />
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 Rappeler l'expression de la m&#233;thode <em>d'Euler explicite</em> pour ce syst&#232;me.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_4" style="font-size: 80%;"></a>
+<a href="#exer_1_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_4">
+
+$$
+\begin{align}
+\label{eq:euler_exp}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_k = (\pmb{I} + \Delta t  \pmb{A}) \cdot \pmb{u}_k
+\end{align}
+$$
+
+<p>
+O&#249; \( \pmb{u}_k= \left(\begin{array}{c} \theta_k \\ \omega_k \end{array}\right) \), \( \pmb{A}= \left(\begin{array}{ll} 0&1 \\ - g/l& 0 \end{array}\right) \) et \( \pmb{I} \) est la matrice identit&#233;.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>c)</b>
 Calculer \( \pmb{u}= \left(\begin{array}{c} \theta (t) \\ \omega (t) \end{array}\right) \) avec la m&#233;thode d'Euler explicite pour \( t \in [0, 10] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.01 \) s.
@@ -283,15 +360,120 @@ ax<span style="color: #666666">.</span>plot(<span style="color: #666666">....</s
 <!-- --- end hint in exercise --- -->
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_5" style="font-size: 80%;"></a>
+<a href="#exer_1_5" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_5">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#%% EULER EXPLICITE</span>
+A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>], [<span style="color: #666666">-</span> omega0<span style="color: #666666">**2</span>, <span style="color: #666666">0</span>]])
+nsteps <span style="color: #666666">=</span> <span style="color: #008000">int</span>(Tf<span style="color: #666666">/</span>dt)
+<span style="color: #408080; font-style: italic"># CONDITIONS INITIALES: à t = 0; theta = theta0, omega = 0</span>
+u0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([theta0, <span style="color: #666666">0</span>])
+
+Texp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nsteps)
+Uexp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">2</span>, nsteps))
+Texp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+Uexp[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> u0
+<span style="color: #408080; font-style: italic"># ITÉRATION</span>
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nsteps<span style="color: #666666">-1</span>):
+    Texp[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> Texp[k] <span style="color: #666666">+</span> dt
+    Uexp[:,k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot((np<span style="color: #666666">.</span>eye(<span style="color: #666666">2</span>) <span style="color: #666666">+</span> dt <span style="color: #666666">*</span> A), Uexp[:,k])
+    
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+<span style="color: #408080; font-style: italic"># PLOT POSITION vs TEMPS</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(Texp,Uexp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique (Euler explicite)&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 2D</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(Uexp[<span style="color: #666666">0</span>,:],Uexp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Espace des phases (Euler explicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_EulerExp1D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_EulerExp1D.pdf&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 3D</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d.axes3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(Texp, Uexp[<span style="color: #666666">0</span>,:],Uexp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Espace des phases (Euler explicite)&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+L'ex&#233;cution de ce programme donne les figures suivantes:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_EulerExp1D.png" align="bottom" width=700></p></center><br /><br />
+
+<p>
+et la figure en 3D:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_EulerExp3D.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remarque.</b>
+Dans le cas d'int&#233;gration avec la m&#233;thode d'Euler explicite nous avons un probl&#232;me d&#8217;augmentation d&#8217;amplitude dans le cas d&#8217;un oscillateur libre non amorti. Plus le temps de simulation est long, plus l'amplitude augmente, ce qui n'est pas ce que nous attendons de l'&#233;volution du syst&#232;me dans le temps.
+</div>
+
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>d)</b>
 Rappeler l'expression de la m&#233;thode <em>d'Euler implicite</em> pour ce syst&#232;me.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_6" style="font-size: 80%;"></a>
+<a href="#exer_1_6" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_6">
+
+$$
+\begin{align}
+\label{eq:euler_imp}
+\pmb{u}_{k+1}  &=(\pmb{I} - \Delta t  \pmb{A})^{-1}  \cdot \pmb{u}_k
+\end{align}
+$$
+
+<p>
+O&#249; \( \pmb{u}_k= \left(\begin{array}{c} \theta_k \\ \omega_k \end{array}\right) \), \( \pmb{A}= \left(\begin{array}{ll} 0&1 \\ - g/l& 0 \end{array}\right) \) et \( \pmb{I} \) est la matrice identit&#233;.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>e)</b>
 Calculer \( \pmb{u}= \left(\begin{array}{c} \theta (t) \\ \omega (t) \end{array}\right) \) avec la m&#233;thode d'Euler implicite pour \( t \in [0, 10] \) et pour un pas d'integration \( \Delta t = 0.01 \) s.
@@ -307,8 +489,83 @@ Tracer:
 Que remarquez-vous pour le r&#233;sultat trouv&#233;?
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_7" style="font-size: 80%;"></a>
+<a href="#exer_1_7" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_7">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#%% EULER IMPLICITE</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.linalg</span> <span style="color: #008000; font-weight: bold">import</span> inv
+Timp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nsteps)
+Uimp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">2</span>, nsteps))
+Timp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+Uimp[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> u0
+<span style="color: #408080; font-style: italic"># ITÉRATION</span>
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nsteps<span style="color: #666666">-1</span>):
+    Timp[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> Timp[k] <span style="color: #666666">+</span> dt
+    Uimp[:,k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot(inv(np<span style="color: #666666">.</span>eye(<span style="color: #666666">2</span>) <span style="color: #666666">-</span> dt <span style="color: #666666">*</span> A), Uimp[:,k])
+    
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">10</span>,<span style="color: #666666">5</span>))
+<span style="color: #408080; font-style: italic"># PLOT POSITION vs TEMPS</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+plt<span style="color: #666666">.</span>plot(Timp,Uimp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique (Euler implicite)&quot;</span>)
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE</span>
+plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>plot(Uimp[<span style="color: #666666">0</span>,:],Uimp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Espace des phases (Euler implicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp1D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp1D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+<span style="color: #408080; font-style: italic"># DIAGRAMME DE PHASE 3D</span>
+plt<span style="color: #666666">.</span>figure()
+ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>axes(projection<span style="color: #666666">=</span><span style="color: #BA2121">&quot;3d&quot;</span>)
+ax<span style="color: #666666">.</span>plot(Timp, Uimp[<span style="color: #666666">0</span>,:],Uimp[<span style="color: #666666">1</span>,:], linewidth<span style="color: #666666">=2</span>)
+ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+ax<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&quot;Vitesse angulaire [rad/s]&quot;</span>)
+ax<span style="color: #666666">.</span>set_title(<span style="color: #BA2121">&quot;Espace des phases (Euler implicite)&quot;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp3D.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_Eulerimp3D.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+L'ex&#233;cution de ce programme donne les figures suivantes:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_Eulerimp1D.png" align="bottom" width=700></p></center><br /><br />
+
+<p>
+et la figure en 3D:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_Eulerimp3D.png" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remarque.</b>
+Dans le cas d'int&#233;gration avec la m&#233;thode d'Euler implicite nous avons un probl&#232;me de diminution d&#8217;amplitude dans le cas d&#8217;un oscillateur libre non amorti. Plus le temps de simulation est long, plus l'amplitude diminue, ce qui n'est pas ce que nous attendons de l'&#233;volution du syst&#232;me dans le temps.
+</div>
+
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>f)</b>
 Tracer dans un m&#234;me graphique pour \( t \in [0, 10] \) et avec un pas \( \Delta t = 0.01 \) s:
@@ -322,8 +579,61 @@ Tracer dans un m&#234;me graphique pour \( t \in [0, 10] \) et avec un pas \( \D
 Que remarquez-vous si nous modifions la valeur du pas d&#8217;int&#233;gration par \( \Delta&nbsp;t =~0.001 \)&nbsp;s? Expliquer le r&#233;sultat trouv&#233;.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_8" style="font-size: 80%;"></a>
+<a href="#exer_1_8" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_8">
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#%% ILLUSTRATION</span>
+plt<span style="color: #666666">.</span>figure()
+plt<span style="color: #666666">.</span>plot(t, pendule_exacte(t), linewidth<span style="color: #666666">=2</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;sol exact&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, Uexp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>, linestyle<span style="color: #666666">=</span><span style="color: #BA2121">&#39;--&#39;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Euler explicite&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, Uimp[<span style="color: #666666">0</span>,:], linewidth<span style="color: #666666">=2</span>, linestyle<span style="color: #666666">=</span><span style="color: #BA2121">&#39;--&#39;</span>, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Euler implicite&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Amplitude d&#39;oscillation [rad]&quot;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Oscillateur Harmonique avec &quot;</span><span style="color: #666666">+</span> <span style="color: #BA2121">r&quot;$\Delta t =$&quot;</span><span style="color: #666666">+</span><span style="color: #008000">str</span>(dt))
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_illustration.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Pendule_illustration.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+Pour \( \Delta t = 0.01 \), l'ex&#233;cution du code donne la figure suivante:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_illustration.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+Pour \( \Delta t = 0.001 \), l'ex&#233;cution du code donne la figure suivante:
+
+<p>
+<br /><br /><center><p><img src="scripts/Pendule_illustration1.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remarque.</b>
+Les deux m&#233;thodes d'Euler, explicite et implicite, posent un probl&#232;me fondamental avec ses amplitudes croissantes et d&#233;croissantes pour le cas d'oscillateur libre non amorti. Un tr&#232;s petit \( \Delta t \) est n&#233;cessaire pour obtenir des r&#233;sultats satisfaisants.
+
+<p>
+<em>Plus la simulation est longue, plus \( \Delta t \) doit &#234;tre petit.</em>
+</div>
+
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -354,29 +664,131 @@ $$
 D&#233;finir une fonction <code>sol_exacte(t, mu, z0)</code> qui renvoie la solution exacte donn&#233;e par l'&#233;quation \eqref{eq:solexacte2}. Tracer sur un m&#234;me graphique pour \( \mu= 1 \) et \( z_0 \in \{0, 1, 2\} \) ces solutions. Soit \( t \in [0,2] \) et pour un pas de \( \Delta t = 0.1 \) s.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<a href="#exer_2_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<ul>
+<li> Voir la partie qui commence par <code>#Question-a)</code> dans le code Python &#224; la fin de l'exercice.</li>
+<li> La figure ci-dessous est la sortie de cette partie du code:</li>
+</ul>
+
+<br /><br /><center><p><img src="scripts/Ex2_solexactemu1.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 M&#234;me questions pour \( \mu= 0.05 \) et \( z_0 \in \{0, 1, 2\} \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->On suppose dans cette question que \( \mu= 0.05 \) et que \( z_0  = 2 \).
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_2" style="font-size: 80%;"></a>
+<a href="#exer_2_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_2">
+
+<ul>
+<li> Voir la partie qui commence par <code>#Question-b)</code> dans le code Python &#224; la fin de l'exercice.</li>
+<li> La figure ci-dessous est la sortie de cette partie du code:</li>
+</ul>
+
+<br /><br /><center><p><img src="scripts/Ex2_solexactemu005.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+On suppose dans cette question que \( \mu= 0.05 \) et que \( z_0  = 2 \).
 <b>c)</b>
 Rappeler l'expression de la m&#233;thode <em>d'Euler explicite</em> pour ce probl&#232;me. Calculer \( z(t) \) avec la m&#233;thode <em>d&#8217;Euler explicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_3" style="font-size: 80%;"></a>
+<a href="#exer_2_3" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_3">
+
+<p>
+L'expression de la m&#233;thode <em>d'Euler explicite</em> sous sa forme scalaire s'&#233;crit:
+$$\frac{z_{n+1} - z_n}{\Delta t} = \dot{z_n} = f(z_n)$$
+Or d'apr&#232;s l'&#233;quation \eqref{eq:equdiffEx2} nous avons \( f(z_n) = 1 - \frac{z_n}{\mu} \), d'o&#249; le sch&#233;mas explicite d'Euler:
+$$z_{n+1} = z_n + \Delta t (1 - \frac{z_n}{\mu}) , \ n = 0, 1, 2, ..., N-1.$$
+
+<ul>
+<li> Voir la partie qui commence par <code>#Question-c) - EULER EXPLICITE</code> dans le code Python &#224; la fin de l'exercice.</li>
+</ul>
+
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>d)</b>
 Montrer que l'expression de la m&#233;thode <em>d'Euler implicite</em> est: $$z_{n+1} = \frac{z_n + \Delta t}{1 + \frac{\Delta t}{\mu}}, \ n = 0, 1, 2, ..., N-1.$$
 Calculer \( z(t) \) avec la m&#233;thode <em>d'Euler implicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_4" style="font-size: 80%;"></a>
+<a href="#exer_2_4" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_4">
+
+<p>
+L'expression de la m&#233;thode <em>d'Euler implicite</em> sous sa forme scalaire s'&#233;crit:
+$$\frac{z_{n+1} - z_n}{\Delta t} = \dot{z_n} = f(z_{n+1})$$
+Or d'apr&#232;s l'&#233;quation \eqref{eq:equdiffEx2} nous avons \( f(z_{n+1}) = 1 - \frac{z_{n+1}}{\mu} \), par la suite :
+$$z_{n+1} = z_n + \Delta t (1 - \frac{z_{n+1}}{\mu})$$
+d'o&#249; le sch&#233;mas implicite d'Euler:
+$$z_{n+1} = \frac{z_n + \Delta t}{1 + \frac{\Delta t}{\mu}}, \ n = 0, 1, 2, ..., N-1.$$
+
+<ul>
+<li> Voir la partie qui commence par <code>#Question-d) - EULER IMPLICITE</code> dans le code Python &#224; la fin de l'exercice.</li>
+</ul>
+
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>e)</b>
 Tracer dans un m&#234;me graphique pour \( t \in [0, 2] \) et avec des pas d'int&#233;gration
@@ -391,8 +803,105 @@ Tracer dans un m&#234;me graphique pour \( t \in [0, 2] \) et avec des pas d'int
 Que remarquez-vous pour les r&#233;sultats trouv&#233;s? Quelle est la m&#233;thode la plus proche de la solution exacte?
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_5" style="font-size: 80%;"></a>
+<a href="#exer_2_5" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_5">
+
+<p>
+La figure ci-dessous illustre l'importance du choix du pas d'int&#233;gration \( \Delta t \) pour obtenir une bonne approximation de la solution exacte.
+
+<p>
+<br /><br /><center><p><img src="scripts/illustrationEx2.png" align="bottom" width=400></p></center><br /><br />
+
+<ul>
+<li> pour \( \Delta t = 0.5 \) : Peu de points pour juger la stabilit&#233; des m&#233;thodes.</li>
+<li> pour \( \Delta t = 0.1 \) : Le sch&#233;ma d'Euler implicite donne une meilleure approximation tandis que le sch&#233;ma explicite montre un instabilit&#233; figur&#233; par des oscillations autour de la solution exacte exacte.</li>
+<li> pour \( \Delta t = 0.01 \) : Les deux sch&#233;mas donnent assez bonnes approximations. La solution exacte se trouve au milieu des solutions implicites et explicites.</li>
+<li> pour \( \Delta t = 0.001 \) : Les deux sch&#233;mas donnent des solutions qui sont maintenant confondues avec la solution exacte alors que le temps de calcul devient relativement important!</li>
+</ul>
+
+En conclusion, le sch&#233;ma d'Euler implicite est beaucoup plus stable que le sch&#233;ma explicite et donne toujours une bonne approximation.
+
+<ul>
+<li> Le code Python pour cet exercice est le suivant:</li>
+</ul>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: EulerEx2.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #408080; font-style: italic">#Question-a)</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sol_exacte</span>(t, mu, z0):
+    <span style="color: #008000; font-weight: bold">return</span> mu <span style="color: #666666">-</span> (mu<span style="color: #666666">-</span>z0)<span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>t<span style="color: #666666">/</span>mu)
+
+mu <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+z0 <span style="color: #666666">=</span> [<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>]
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.05</span>
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, dt)
+plt<span style="color: #666666">.</span>figure()
+<span style="color: #008000; font-weight: bold">for</span> zi <span style="color: #AA22FF; font-weight: bold">in</span> z0:
+    plt<span style="color: #666666">.</span>plot(t, sol_exacte(t, mu, zi),lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>, label<span style="color: #666666">=</span> <span style="color: #BA2121">&quot;z0 = &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(zi))
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Solution exacte pour mu = 1&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;z(t)&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>grid()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Ex2_solexactemu1.png&quot;</span>);plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Ex2_solexactemu1.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+<span style="color: #408080; font-style: italic">#Question-b)</span>
+mu <span style="color: #666666">=</span> <span style="color: #666666">0.05</span>
+plt<span style="color: #666666">.</span>figure()
+<span style="color: #008000; font-weight: bold">for</span> zi <span style="color: #AA22FF; font-weight: bold">in</span> z0:
+    plt<span style="color: #666666">.</span>plot(t, sol_exacte(t, mu, zi), lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>, label<span style="color: #666666">=</span> <span style="color: #BA2121">&quot;z0 = &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(zi))
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Solution exacte pour mu = 0.05&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;z(t)&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>grid()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Ex2_solexactemu005.png&quot;</span>);plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Ex2_solexactemu005.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+<span style="color: #408080; font-style: italic">#Question-c) - EULER EXPLICITE</span>
+z0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">len</span>(t)
+zexp <span style="color: #666666">=</span>np<span style="color: #666666">.</span>zeros(N)
+zexp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> z0
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N<span style="color: #666666">-1</span>):
+    zexp[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> zexp[n] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>(<span style="color: #666666">1-</span> zexp[n]<span style="color: #666666">/</span>mu)
+
+<span style="color: #408080; font-style: italic">#Question-d) - EULER IMPLICITE</span>
+zimp <span style="color: #666666">=</span>np<span style="color: #666666">.</span>zeros(N)
+zimp[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> z0
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N<span style="color: #666666">-1</span>):
+    zimp[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (zimp[n] <span style="color: #666666">+</span> dt)<span style="color: #666666">/</span>(<span style="color: #666666">1+</span> dt<span style="color: #666666">/</span>mu)
+<span style="color: #408080; font-style: italic">#Question-e) - COMPARAISON</span>
+plt<span style="color: #666666">.</span>figure()
+plt<span style="color: #666666">.</span>plot(t, sol_exacte(t, mu, z0), lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>, label<span style="color: #666666">=</span> <span style="color: #BA2121">&quot;solution exacte&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, zexp, lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>, label<span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Euler explicite&quot;</span>)
+plt<span style="color: #666666">.</span>plot(t, zimp, lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>, label<span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Euler implicite&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;z(t)&quot;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>grid()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 
@@ -428,15 +937,174 @@ o&#249; \( r \) et \( \theta \) sont les coordonn&#233;es polaires du vaisseau s
 D&#233;river les &#233;quations diff&#233;rentielles du premier ordre et les conditions initiales de la forme \( \dot{y} = F (t, y) \), \( y(0) = b \).
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_1" style="font-size: 80%;"></a>
+<a href="#exer_3_1" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_1">
+
+<p>
+Nous avons:
+$$ G M_T = (6.672 \times 10^{-11}) \ (5.9742 \times 10^{24}) = 3.9860 \times 10^{14} \ m^3/s^2 $$
+Soit:
+$$ y = \left[\begin{array}{c} y_0 \\ y_1 \\ y_2 \\ y_3 \end{array}\right] = \left[\begin{array}{c} r \\ \dot{r} \\ \theta \\ \dot{\theta} \end{array}\right]$$
+Les &#233;quations &#233;quivalentes du premier ordre deviennent:
+$$F(t, y) = \left[\begin{array}{c} \dot{y_0} \\ \dot{y_1} \\ \dot{y_2} \\ \dot{y_3} \end{array}\right] = \left[\begin{array}{c} y_1 \\ y_0 y_3^2 - 3.9860 \times 10^{14}/y_0^2 \\ y_3 \\ -2 y_1 y_3/y_0 \end{array}\right]$$
+et les conditions initiales sont:
+$$
+\begin{align*}
+r(0) &= R_T + H = (6378.14 + 772) \times 10^{3} = 7.15014 \times 10^{6} \ m \\
+\dot{r}(0) &= 0 \\
+\theta (0) &= 0 \\
+\dot{\theta}(0) &= v_0/r(0) = (6700)/(7.15014 \times 10^6) = 0.937045 \times 10^{-3} \ rad/s
+\end{align*}
+$$
+
+Ainsi,
+$$ y = \left[\begin{array}{c} 7.15014 \times 10^{6} \\ 0 \\ 0 \\ 0.937045 \times 10^{-3} \end{array}\right]$$
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <b>b)</b>
 Utiliser la m&#233;thode Runge-Kutta du quatri&#232;me ordre (RK4) pour int&#233;grer les &#233;quations depuis le lancement jusqu'&#224; ce que le vaisseau spatial touche la terre. D&#233;terminez \( \theta \) au site d'impact.
 
 <p>
-<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
- -->
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_2" style="font-size: 80%;"></a>
+<a href="#exer_3_2" data-toggle="collapse">
+<b>Solution.</b>
+</a>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_2">
+
+<p>
+Le code Python est le suivant:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: RK4Ex3.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">RK4</span>(F,t,y,h):
+    K0 <span style="color: #666666">=</span> h<span style="color: #666666">*</span>F(t,y)
+    K1 <span style="color: #666666">=</span> h<span style="color: #666666">*</span>F(t <span style="color: #666666">+</span> h<span style="color: #666666">/2.0</span>, y <span style="color: #666666">+</span> K0<span style="color: #666666">/2.0</span>)
+    K2 <span style="color: #666666">=</span> h<span style="color: #666666">*</span>F(t <span style="color: #666666">+</span> h<span style="color: #666666">/2.0</span>, y <span style="color: #666666">+</span> K1<span style="color: #666666">/2.0</span>)
+    K3 <span style="color: #666666">=</span> h<span style="color: #666666">*</span>F(t <span style="color: #666666">+</span> h, y <span style="color: #666666">+</span> K2)
+    <span style="color: #008000; font-weight: bold">return</span> (K0 <span style="color: #666666">+</span> <span style="color: #666666">2.0*</span>K1 <span style="color: #666666">+</span> <span style="color: #666666">2.0*</span>K2 <span style="color: #666666">+</span> K3)<span style="color: #666666">/6.0</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">F</span>(t,y):
+    F <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(<span style="color: #666666">4</span>)
+    F[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> y[<span style="color: #666666">1</span>]
+    F[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> y[<span style="color: #666666">0</span>]<span style="color: #666666">*</span>(y[<span style="color: #666666">3</span>]<span style="color: #666666">**2</span>) <span style="color: #666666">-</span> <span style="color: #666666">3.9860e14/</span>(y[<span style="color: #666666">0</span>]<span style="color: #666666">**2</span>)
+    F[<span style="color: #666666">2</span>] <span style="color: #666666">=</span> y[<span style="color: #666666">3</span>]
+    F[<span style="color: #666666">3</span>] <span style="color: #666666">=</span> <span style="color: #666666">-2.0*</span>y[<span style="color: #666666">1</span>]<span style="color: #666666">*</span>y[<span style="color: #666666">3</span>]<span style="color: #666666">/</span>y[<span style="color: #666666">0</span>]
+    <span style="color: #008000; font-weight: bold">return</span> F
+t <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+tStop <span style="color: #666666">=</span> <span style="color: #666666">1200.0</span>
+h <span style="color: #666666">=</span> <span style="color: #666666">50.0</span>
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">7.15014e6</span>, <span style="color: #666666">0.0</span>, <span style="color: #666666">0.0</span>, <span style="color: #666666">0.937045e-3</span>])
+T <span style="color: #666666">=</span> []
+Y <span style="color: #666666">=</span> []
+T<span style="color: #666666">.</span>append(t)
+Y<span style="color: #666666">.</span>append(y)
+<span style="color: #008000; font-weight: bold">while</span> t <span style="color: #666666">&lt;</span> tStop:
+    y <span style="color: #666666">=</span> y <span style="color: #666666">+</span> RK4(F,t,y,h)
+    t <span style="color: #666666">=</span> t <span style="color: #666666">+</span> h
+    T<span style="color: #666666">.</span>append(t)
+    Y<span style="color: #666666">.</span>append(y)
+    
+T,Y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(T),np<span style="color: #666666">.</span>array(Y)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;T      Y[0]       Y[1]      Y[2]       Y[3]&quot;</span>)
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(T)):
+    <span style="color: #008000; font-weight: bold">print</span>(T[i], <span style="color: #BA2121">&quot;{:2.4e}&quot;</span><span style="color: #666666">.</span>format(Y[i,<span style="color: #666666">0</span>]), <span style="color: #BA2121">&quot;{:2.4e}&quot;</span><span style="color: #666666">.</span>format(Y[i,<span style="color: #666666">1</span>]),
+          <span style="color: #BA2121">&quot;{:2.4e}&quot;</span><span style="color: #666666">.</span>format(Y[i,<span style="color: #666666">2</span>]), <span style="color: #BA2121">&quot;{:2.4e}&quot;</span><span style="color: #666666">.</span>format(Y[i,<span style="color: #666666">3</span>]))
+    
+plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">8</span>,<span style="color: #666666">5</span>))
+plt<span style="color: #666666">.</span>plot(T, Y[:,<span style="color: #666666">0</span>], <span style="color: #BA2121">&#39;-o&#39;</span>,lw <span style="color: #666666">=</span> <span style="color: #666666">2</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;temps [s]&quot;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;r [m]&quot;</span>)
+plt<span style="color: #666666">.</span>axhline(y<span style="color: #666666">=6.37814E6</span>, color<span style="color: #666666">=</span><span style="color: #BA2121">&quot;k&quot;</span>)
+<span style="color: #408080; font-style: italic"># plot point d&#39;impact</span>
+plt<span style="color: #666666">.</span>plot(<span style="color: #666666">1034.184</span>,<span style="color: #666666">6.37814E6</span>,<span style="color: #BA2121">&#39;rX&#39;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Ex3RK4.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Ex3RK4.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+La sortie du programme est :
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>T      Y[0]       Y[1]      Y[2]       Y[3]
+0.0 7.1501e+06 0.0000e+00 0.0000e+00 9.3704e-04
+50.0 7.1482e+06 -7.5908e+01 4.6861e-02 9.3754e-04
+100.0 7.1426e+06 -1.5173e+02 9.3771e-02 9.3904e-04
+150.0 7.1331e+06 -2.2738e+02 1.4078e-01 9.4153e-04
+200.0 7.1198e+06 -3.0276e+02 1.8794e-01 9.4504e-04
+250.0 7.1028e+06 -3.7779e+02 2.3530e-01 9.4958e-04
+300.0 7.0820e+06 -4.5236e+02 2.8292e-01 9.5515e-04
+350.0 7.0576e+06 -5.2638e+02 3.3084e-01 9.6179e-04
+400.0 7.0294e+06 -5.9973e+02 3.7911e-01 9.6951e-04
+450.0 6.9976e+06 -6.7229e+02 4.2780e-01 9.7834e-04
+500.0 6.9622e+06 -7.4393e+02 4.7697e-01 9.8832e-04
+550.0 6.9232e+06 -8.1452e+02 5.2666e-01 9.9947e-04
+600.0 6.8808e+06 -8.8389e+02 5.7693e-01 1.0118e-03
+650.0 6.8349e+06 -9.5189e+02 6.2786e-01 1.0255e-03
+700.0 6.7856e+06 -1.0183e+03 6.7950e-01 1.0404e-03
+750.0 6.7331e+06 -1.0830e+03 7.3193e-01 1.0567e-03
+800.0 6.6773e+06 -1.1456e+03 7.8520e-01 1.0744e-03
+850.0 6.6185e+06 -1.2060e+03 8.3940e-01 1.0936e-03
+900.0 6.5568e+06 -1.2639e+03 8.9459e-01 1.1143e-03
+950.0 6.4922e+06 -1.3189e+03 9.5085e-01 1.1366e-03
+1000.0 6.4250e+06 -1.3708e+03 1.0083e+00 1.1605e-03
+1050.0 6.3552e+06 -1.4191e+03 1.0669e+00 1.1861e-03
+1100.0 6.2831e+06 -1.4634e+03 1.1269e+00 1.2135e-03
+1150.0 6.2089e+06 -1.5034e+03 1.1883e+00 1.2427e-03
+1200.0 6.1329e+06 -1.5384e+03 1.2512e+00 1.2737e-03
+</pre></div>
+<p>
+Le vaisseau spatial frappe la terre lorsque r est &#233;gal &#224; \( R_T = 6.37814 \times 10^6 \ m \). Cela se produit entre \( t = 1000 \) et \( 1050 \) s.
+Laissant \( 1000 + \Delta t \) &#234;tre le moment de l'impact, nous pouvons &#233;crire:
+$$r(1000 + \Delta t ) = R_T$$
+En d&#233;veloppant \( r \) dans une s&#233;rie Taylor &#224; deux termes, nous obtenons:
+$$r(1000) + \dot{r}(1000) \Delta t = R_T$$
+$$6.4250 \times 10^6 - 1.3708 \times 10^3 \Delta t = 6378.14 \times 10^3 $$
+&#224; partir duquel:
+$$\Delta t= 34.184 \ s$$
+
+<p>
+La coordonn&#233;e \( \theta \) du site d'impact peut &#234;tre estim&#233;e de mani&#232;re similaire.
+
+<p>
+En utilisant &#224; nouveau deux termes de la s&#233;rie Taylor, nous avons:
+$$\theta (1000 + \Delta t ) = \theta (1000) + \dot{\theta} (1000) \Delta t = 1.0083 + 1.1605 \times 10^{-3} \times (34.184) = 1.0480 \ rad = 60.00^\circ$$
+
+<p>
+<br /><br /><center><p><img src="scripts/Ex3RK4.png" align="bottom" width=400></p></center><br /><br />
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
 <p>
 <!-- --- end exercise --- -->
 

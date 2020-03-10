@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  10 MAR 2020 22:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  10 MAR 2020 23:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1324,11 +1324,11 @@ runsystem(rm TD5_corr.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 14684 strings out of 494894
- 235184 string characters out of 6179473
+ 14680 strings out of 494894
+ 235140 string characters out of 6179473
  401173 words of memory out of 5000000
  17491 multiletter control sequences out of 15000+600000
- 60598 words of font info for 102 fonts, out of 8000000 for 9000
+ 60432 words of font info for 100 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,12n,43p,843b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
@@ -1349,7 +1349,7 @@ texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10
 .pfb>
-Output written on TD5_corr.pdf (18 pages, 660068 bytes).
+Output written on TD5_corr.pdf (18 pages, 660088 bytes).
 PDF statistics:
  670 PDF objects out of 1000 (max. 8388607)
  276 compressed objects within 3 object streams

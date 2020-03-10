@@ -67,7 +67,7 @@ pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 # HTML
-system doconce format html $name --html_style=bootswatch_journal $options $opt2
+system doconce format html $name --html_style=bootswatch_journal $options
 common_replacements $name.html
 
 # Publish
