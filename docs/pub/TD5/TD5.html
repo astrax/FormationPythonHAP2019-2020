@@ -128,7 +128,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Feb 26, 2020</h4></center> <!-- date -->
+<center><h4>Mar 10, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -336,8 +336,8 @@ Que remarquez-vous si nous modifions la valeur du pas d&#8217;int&#233;gration p
 On consid&#232;re le probl&#232;me de Cauchy:
 $$
 \begin{align}
+\label{eq:equdiffEx2}
 \frac{d z(t)}{dt} = 1 - \frac{t}{\mu}, \ t \in \Re, \ z(0) = z_0
-\label{_auto4}
 \end{align}
 $$
 
@@ -350,40 +350,35 @@ z(t) = \mu -(\mu - z_0) e^{-\frac{t}{\mu}}
 $$
 
 <p>
-1. D&#233;finir une fonction <code>sol_exacte(t, mu, z0)</code> qui renvoie la solution exacte donn&#233;e par l'&#233;quation \eqref{eq:solexacte2}. Tracer sur un m&#234;me graphique pour \( \mu= 1 \) et \( z_0 \in \{0, 1, 2\} \) ces solutions. Soit \( t \in [0,2] \) et pour un pas de \( \Delta t = 0.1 \) s.
-
-<p>
-2. M&#234;me questions pour \( \mu= 0.05 \) et \( z_0 \in \{0, 1, 2\} \).
-
-<p>
-3. On suppose dans cette question que \( \mu= 0.05 \) et que \( z_0  = 2 \).
-
-<p>
 <b>a)</b>
+D&#233;finir une fonction <code>sol_exacte(t, mu, z0)</code> qui renvoie la solution exacte donn&#233;e par l'&#233;quation \eqref{eq:solexacte2}. Tracer sur un m&#234;me graphique pour \( \mu= 1 \) et \( z_0 \in \{0, 1, 2\} \) ces solutions. Soit \( t \in [0,2] \) et pour un pas de \( \Delta t = 0.1 \) s.
 
-<ul>
-<li> Rappeler l'expression de la m&#233;thode <em>d'Euler explicite</em> pour ce probl&#232;me.</li>
-<li> Calculer \( z(t) \) avec la m&#233;thode <em>d&#8217;Euler explicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.</li>
-</ul>
-
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
 <b>b)</b>
+M&#234;me questions pour \( \mu= 0.05 \) et \( z_0 \in \{0, 1, 2\} \).
 
-<ul>
-<li> Montrer que l'expression de la m&#233;thode <em>d'Euler implicite</em> est:</li>
-</ul>
-
-$$
-\begin{align*}
-z_{n+1} = \frac{z_n + \Delta t}{1 + \frac{\Delta t}{\mu}}, \ n = 0, 1, 2, ..., N-1
-\end{align*}
-$$
-
-
-<ul>
-<li> Calculer \( z(t) \) avec la m&#233;thode <em>d&#8217;Euler implicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.</li>
-</ul>
-
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->On suppose dans cette question que \( \mu= 0.05 \) et que \( z_0  = 2 \).
 <b>c)</b>
+Rappeler l'expression de la m&#233;thode <em>d'Euler explicite</em> pour ce probl&#232;me. Calculer \( z(t) \) avec la m&#233;thode <em>d&#8217;Euler explicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>d)</b>
+Montrer que l'expression de la m&#233;thode <em>d'Euler implicite</em> est: $$z_{n+1} = \frac{z_n + \Delta t}{1 + \frac{\Delta t}{\mu}}, \ n = 0, 1, 2, ..., N-1.$$
+Calculer \( z(t) \) avec la m&#233;thode <em>d'Euler implicite</em> pour \( t \in [0, 2] \) et pour un pas d&#8217;int&#233;gration \( \Delta t = 0.1 \) s.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>e)</b>
 Tracer dans un m&#234;me graphique pour \( t \in [0, 2] \) et avec des pas d'int&#233;gration
  \( \Delta t = 0.5, 0.1, 0.05, 0.01, 0.005 \) s:
 
@@ -393,8 +388,11 @@ Tracer dans un m&#234;me graphique pour \( t \in [0, 2] \) et avec des pas d'int
  <li> \( z(t) \) calcul&#233;e par la m&#233;thode d'Euler explicite.</li>
 </ul>
 
- Que remarquez-vous pour les r&#233;sultats trouv&#233;s? Quelle est la m&#233;thode la plus proche de la solution exacte?
+Que remarquez-vous pour les r&#233;sultats trouv&#233;s? Quelle est la m&#233;thode la plus proche de la solution exacte?
 
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 
@@ -430,9 +428,15 @@ o&#249; \( r \) et \( \theta \) sont les coordonn&#233;es polaires du vaisseau s
 D&#233;river les &#233;quations diff&#233;rentielles du premier ordre et les conditions initiales de la forme \( \dot{y} = F (t, y) \), \( y(0) = b \).
 
 <p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
 <b>b)</b>
 Utiliser la m&#233;thode Runge-Kutta du quatri&#232;me ordre (RK4) pour int&#233;grer les &#233;quations depuis le lancement jusqu'&#224; ce que le vaisseau spatial touche la terre. D&#233;terminez \( \theta \) au site d'impact.
 
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
 <p>
 <!-- --- end exercise --- -->
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  26 FEB 2020 23:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.20)  10 MAR 2020 22:35
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1079,20 +1079,80 @@ Package pdftex.def Info: scripts/Pendule_illustration1.pdf  used on input line
 
 pdfTeX warning: pdflatex (file ./scripts/Pendule_illustration1.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
->] [10]
-<imgs/spacecraft.png, id=432, 107.9232pt x 75.1608pt>
+>]
+<scripts/Ex2_solexactemu1.pdf, id=421, 462.52798pt x 346.89601pt>
+File: scripts/Ex2_solexactemu1.pdf Graphic file (type pdf)
+<use scripts/Ex2_solexactemu1.pdf>
+Package pdftex.def Info: scripts/Ex2_solexactemu1.pdf  used on input line 850.
+(pdftex.def)             Requested size: 241.49895pt x 181.128pt.
+ [10 <./scripts/Ex2_solexactemu1.pdf>]
+<scripts/Ex2_solexactemu005.pdf, id=468, 462.52798pt x 346.89601pt>
+File: scripts/Ex2_solexactemu005.pdf Graphic file (type pdf)
+<use scripts/Ex2_solexactemu005.pdf>
+Package pdftex.def Info: scripts/Ex2_solexactemu005.pdf  used on input line 874
+.
+(pdftex.def)             Requested size: 241.49895pt x 181.128pt.
+ [11 <./scripts/Ex2_solexactemu005.pdf>]
+Overfull \hbox (3.00052pt too wide) in paragraph at lines 936--937
+ []\T1/lmr/bx/n/10 Solution.[] \T1/lmr/m/n/10 (-20) La fig-ure ci-dessous il-lu
+s-tre l'importance du choix du pas d'intégration
+ []
+
+<scripts/illustrationEx2.png, id=514, 1258.7025pt x 917.4275pt>
+File: scripts/illustrationEx2.png Graphic file (type png)
+<use scripts/illustrationEx2.png>
+Package pdftex.def Info: scripts/illustrationEx2.png  used on input line 943.
+(pdftex.def)             Requested size: 345.0pt x 251.46042pt.
+[12]
+\openout3 = `TD5_corr.pyg'.
+
+
+(./_minted-TD5_corr/CCFEF3AF4199D0BF3880B12F1A4D33D97A0D7272CFCBA82C27F1E879306
+83520.pygtex) [13 <./scripts/illustrationEx2.png>]
+<imgs/spacecraft.png, id=529, 107.9232pt x 75.1608pt>
 File: imgs/spacecraft.png Graphic file (type png)
 <use imgs/spacecraft.png>
-Package pdftex.def Info: imgs/spacecraft.png  used on input line 894.
+Package pdftex.def Info: imgs/spacecraft.png  used on input line 1050.
 (pdftex.def)             Requested size: 137.9979pt x 96.1057pt.
- (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-34.def
+ [14]
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-34.def
 File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 928.
- [11 <./imgs/spacecraft.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 928.
+) [15 <./imgs/spacecraft.png>]
+\openout3 = `TD5_corr.pyg'.
+
+
+(./_minted-TD5_corr/B3826D3819821813D7F6E4F38EA3B0887A0D7272CFCBA82C27F1E879306
+83520.pygtex
+Package microtype Info: Character `texttrademark ' is missing
+(microtype)             in font `TS1/lmtt/m/it/9'.
+(microtype)             Ignoring protrusion settings for this character.
+) [16]
+\openout3 = `TD5_corr.pyg'.
+
+
+(./_minted-TD5_corr/B1C2F751ADB863E5DE43B57255DC8054E8A1F50CD3F6D419979E1A6174E
+C9C65.pygtex)
+Overfull \hbox (53.86464pt too wide) detected at line 1197
+\OML/lmm/m/it/10 ^^R\OT1/lmr/m/n/10 (1000 + ^^A\OML/lmm/m/it/10 t\OT1/lmr/m/n/1
+0 ) = \OML/lmm/m/it/10 ^^R\OT1/lmr/m/n/10 (1000) + [](1000)^^A\OML/lmm/m/it/10 
+t \OT1/lmr/m/n/10 = 1\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 0083 + 1\OML/lmm/m/it/10
+ :\OT1/lmr/m/n/10 1605 \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 10[] \OMS/lmsy/m/n/
+10 ^^B \OT1/lmr/m/n/10 (34\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 184) = 1\OML/lmm/m/
+it/10 :\OT1/lmr/m/n/10 0480 \OML/lmm/m/it/10 rad \OT1/lmr/m/n/10 = 60\OML/lmm/m
+/it/10 :\OT1/lmr/m/n/10 00[]
+ []
+
+<scripts/Ex3RK4.pdf, id=550, 578.16pt x 361.35pt>
+File: scripts/Ex3RK4.pdf Graphic file (type pdf)
+<use scripts/Ex3RK4.pdf>
+Package pdftex.def Info: scripts/Ex3RK4.pdf  used on input line 1204.
+(pdftex.def)             Requested size: 345.0pt x 215.6207pt.
+[17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1219.
+ [18 <./scripts/Ex3RK4.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1219.
  (./TD5_corr.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 928.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1219.
 
 
  *File List*
@@ -1242,45 +1302,57 @@ _minted-TD5_corr/71DB5B355A428EB6E498C8A108EB47BE7A0D7272CFCBA82C27F1E879306835
 20.pygtex
 scripts/Pendule_illustration.pdf
 scripts/Pendule_illustration1.pdf
+scripts/Ex2_solexactemu1.pdf
+scripts/Ex2_solexactemu005.pdf
+scripts/illustrationEx2.png
+_minted-TD5_corr/CCFEF3AF4199D0BF3880B12F1A4D33D97A0D7272CFCBA82C27F1E879306835
+20.pygtex
 imgs/spacecraft.png
   uni-34.def    2013/05/13 UCS: Unicode data U+2200..U+22FF
+_minted-TD5_corr/B3826D3819821813D7F6E4F38EA3B0887A0D7272CFCBA82C27F1E879306835
+20.pygtex
+_minted-TD5_corr/B1C2F751ADB863E5DE43B57255DC8054E8A1F50CD3F6D419979E1A6174EC9C
+65.pygtex
+scripts/Ex3RK4.pdf
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 928.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1219.
+
 Package rerunfilecheck Info: File `TD5_corr.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(rm TD5_corr.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 14611 strings out of 494894
- 232831 string characters out of 6179473
- 397419 words of memory out of 5000000
- 17458 multiletter control sequences out of 15000+600000
- 59876 words of font info for 96 fonts, out of 8000000 for 9000
+ 14684 strings out of 494894
+ 235184 string characters out of 6179473
+ 401173 words of memory out of 5000000
+ 17491 multiletter control sequences out of 15000+600000
+ 60598 words of font info for 102 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,12n,43p,843b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
-m-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texlive
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/shar
+e/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
+m-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/
 lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmtti10.pfb>
-Output written on TD5_corr.pdf (11 pages, 481609 bytes).
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10
+.pfb>
+Output written on TD5_corr.pdf (18 pages, 660068 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 217 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 22574 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 23106 words of extra memory for PDF output out of 24883 (max. 10000000)
 
