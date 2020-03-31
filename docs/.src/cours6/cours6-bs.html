@@ -1,0 +1,753 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Résolution des équations aux dérivées partielles">
+
+<title>Résolution des équations aux dérivées partielles</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+<script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Équation de diffusion thermique', 1, None, '___sec1'),
+              ('La conduction thermique dans les solides', 2, None, '___sec2'),
+              ("Notion de flux d'énergie", 2, None, '___sec3'),
+              ("L'expression de la loi de Fourier", 2, None, '___sec4'),
+              ('Comment obtenir cette équation?', 2, None, '___sec5'),
+              ("Résolution numérique de l'équation de diffusion thermique",
+               2,
+               None,
+               '___sec6'),
+              ('Le modèle physique', 3, None, '___sec7'),
+              ('Principe de la résolution numérique', 3, None, '___sec8'),
+              ('Discrétisation du terme $\\dfrac{\\partial T}{\\partial t}$',
+               3,
+               None,
+               '___sec9'),
+              ('Discrétisation du terme $\\dfrac{\\partial^2 T}{\\partial '
+               'x^2}$',
+               3,
+               None,
+               '___sec10'),
+              ('Code Python', 3, None, '___sec11')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours6-bs.html">Résolution des équations aux dérivées partielles</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Équation de diffusion thermique</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La conduction thermique dans les solides</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notion de flux d'énergie</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'expression de la loi de Fourier</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comment obtenir cette équation?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Résolution numérique de l'équation de diffusion thermique</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le modèle physique</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principe de la résolution numérique</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discrétisation du terme \( \dfrac{\partial T}{\partial t} \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discrétisation du terme \( \dfrac{\partial^2 T}{\partial x^2} \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Code Python</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>R&#233;solution des &#233;quations aux d&#233;riv&#233;es partielles</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Mar 31, 2020</h4></center> <!-- date -->
+<br>
+<p>
+<!-- TOC: on -->
+
+
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0" class="anchor">Introduction </h1>
+Il existe trois types d'&#233;quations aux d&#233;riv&#233;es partielles.
+
+<ul>
+<li> Des &#233;quations telles que l'&#233;quation d'onde,</li>
+</ul>
+
+$$
+\begin{align}
+\frac{\partial^2 u}{\partial t^2} &=  c^2 \frac{\partial^2 u}{\partial x^2}
+\label{_auto1}
+\end{align}
+$$
+
+<p>
+o&#249; \( u (t, x) \) est une fonction de d&#233;placement et \( c \) une vitesse constante, sont connues sous le nom d'&#233;quations hyperboliques.
+
+<ul>
+<li> Des &#233;quations telles que l'&#233;quation de diffusion,</li>
+</ul>
+
+$$
+\begin{align}
+\frac{\partial u}{\partial t} &=  \frac{\partial}{\partial x} \left( D \frac{\partial u}{\partial x}\right)
+\label{_auto2}
+\end{align}
+$$
+
+o&#249; \( u (t, x) \) est le champ de densit&#233; et \( D \) le coefficient de diffusion sont appel&#233;s &#233;quations paraboliques. L'&#233;quation de Schr&#246;dinger en fonction du temps est un autre exemple d'&#233;quation parabolique.
+
+<ul>
+<li> Des &#233;quations telles que l'&#233;quation de Poisson,</li>
+</ul>
+
+$$
+\begin{align}
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} &= - \frac{\rho(x, y, z)}{\epsilon_0}
+\label{_auto3}
+\end{align}
+$$
+
+o&#249; \( u (x, y, z) \) est une fonction potentielle et \( \rho/ \epsilon_0 \) est une source, appel&#233;es &#233;quations elliptiques. L'&#233;quation de Schr&#246;dinger ind&#233;pendante du temps est un autre exemple d'&#233;quation elliptique.
+
+<p>
+On trouve des &#233;quations hyperboliques ou paraboliques dans les probl&#232;mes de valeurs initiales: la configuration du champ \( u (t, x) \) est sp&#233;cifi&#233;e &#224; un moment initial et &#233;volue dans le temps. Les &#233;quations elliptiques se retrouvent dans les probl&#232;mes de valeur limite: la valeur du champ \( u (x, y, z) \) est sp&#233;cifi&#233;e sur la limite d'une r&#233;gion et nous cherchons la solution &#224; travers l'int&#233;rieur.
+
+<h1 id="___sec1" class="anchor">&#201;quation de diffusion thermique </h1>
+
+<p>
+L'&#233;quation de diffusion thermique est historiquement li&#233;e &#224; Joseph Fourier. Ce dernier naquit en 1768 &#224; Auxerre, o&#249; il &#233;tudie dans une &#233;cole militaire. Fin 1794, il est &#233;l&#232;ve &#224; Normale Sup et en 1795-1796, il enseigne la physique &#224; Normale Sup et &#224; l'X. Il d&#233;bute ses travaux sur la chaleur en 1802 lorsqu'il est nomm&#233; pr&#233;fet de l'Is&#232;re par Napol&#233;on. Il publie sa th&#233;orie sur la chaleur (et l'analyse de Fourier) en 1822. Il est &#233;lu &#224; l'Acad&#233;mie fran&#231;aise en 1826 et d&#233;c&#233;d&#233; &#224; Paris en 1830.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Gravure du math&#233;maticien Jean Baptiste Joseph Fourier (1768-1830). 
+<!-- begin inline comment -->
+<font color="red">(<b>source 1</b>: Article de <b>CNRS Le journal</b>, <a href="https://lejournal.cnrs.fr/articles/joseph-fourier-transforme-toujours-la-science" target="_self">Joseph Fourier transforme toujours la science</a>)</font>
+<!-- end inline comment -->
+ </p></center>
+<p><img src="imgs/JFourier.jpg" align="bottom" width=600></p>
+</center>
+
+<h2 id="___sec2" class="anchor">La conduction thermique dans les solides </h2>
+Dans les solides, les mol&#233;cules ou les atomes sont fig&#233;s dans un r&#233;seau maill&#233; qui emp&#234;chent les grands d&#233;placements. Le seul mouvement possible est un mouvement de vibration autour de leur position d'&#233;quilibre dans le r&#233;seau. Le transfert thermique d'&#233;nergie se traduit par une augmentation plus ou moins grande de l'amplitude de ces vibrations. Lorsque l'&#233;nergie apport&#233;e est suffisante pour que l'amplitude de la vibration d&#233;passe une certaine valeur d&#233;pendante du r&#233;seau, alors les mol&#233;cules se lib&#232;rent du r&#233;seau et le solide fond et s'&#233;vapore...
+
+<p>
+Le cas des m&#233;taux est un peu particulier : eux poss&#232;dent des &#233;lectrons de conduction, qui circulent librement sur le r&#233;seau du solide. Ces &#233;lectrons se comportent comme les mol&#233;cules d'un gaz (on parle de gaz d'&#233;lectrons) et dans ce cas, &#224; l'augmentation de l'amplitude des vibrations sur le r&#233;seau s'ajoute le transfert d'&#233;nergie cin&#233;tique des &#233;lectrons rapides, "chauds" vers les &#233;lectrons lents, "froids".
+
+<h2 id="___sec3" class="anchor">Notion de flux d'&#233;nergie </h2>
+La notion de flux d'&#233;nergie est tr&#232;s courante en physique. Nous l'avons d&#233;j&#224; rencontr&#233; sous le nom d'intensit&#233; du courant &#233;lectrique. Dans ce cas, il s'agit du flux de charges &#233;lectriques qui traversent une surface unitaire donn&#233;e par unit&#233; de temps. Nous l'avons not&#233;:
+$$
+\begin{align}
+I_q = \dfrac{dQ}{dt}
+\label{_auto4}
+\end{align}
+$$
+
+Par analogie, on d&#233;finit le flux thermique, plus exactement le flux d'&#233;nergie interne par \( I_u = \dfrac{dU}{dt} \). C'est la quantit&#233; d'&#233;nergie interne U qui traverse, sans travail, une surface unitaire par unit&#233; de temps.
+
+<p>
+Pour l'exprimer plus pr&#233;cis&#233;ment, on introduit un nouvel objet par analogie avec le courant &#233;lectrique. Il s'agit du vecteur de courant volumique d'&#233;nergie interne sans travail not&#233; classiquement \( \vec{J_u} \) et souvent nomm&#233; improprement "vecteur courant thermique", ce qui nous permet d'&#233;crire l'expression du flux de ce vecteur &#224; travers une surface dS orient&#233;e vers l'ext&#233;rieur par le vecteur normal \( \vec{n} \) , ce qui nous donne \( I_u = \int_S \vec{J_u} . \vec{n} dS \). Le signe de \( I_u \) d&#233;pend du sens du flux &#224; travers la surface. Il est n&#233;gatif pour le flux entrant et positif pour le flux sortant (pensez au signe du produit scalaire sous l'int&#233;grale...).
+
+<h2 id="___sec4" class="anchor">L'expression de la loi de Fourier </h2>
+Apr&#232;s ces pr&#233;ambules utiles, venons en &#224; la loi de Fourier proprement dite. La conduction thermique est un transfert thermique spontan&#233; d'une r&#233;gion de temp&#233;rature &#233;lev&#233;e vers une r&#233;gion de temp&#233;rature plus basse, et est d&#233;crite par la loi dite de Fourier &#233;tablie math&#233;matiquement par Jean-Baptiste Biot en 1804 puis exp&#233;rimentalement par Fourier en 1822 : la densit&#233; de flux de chaleur est proportionnelle au gradient de temp&#233;rature.
+
+<p>
+Pour faire simple, ici et dans la suite, on va se placer dans le cadre d'un probl&#232;me unidimensionnel, c'est &#224; dire que le transfert thermique d'&#233;nergie se fait sur une dimension \( Ox \).
+
+<p>
+La loi de Fourier relie, apr&#232;s constat exp&#233;rimental, le vecteur de courant volumique d'&#233;nergie interne sans travail \( \vec{J_u} \) avec le gradient de temp&#233;rature \( \vec{grad} T \). La relation est lin&#233;aire et s'&#233;crit \( \vec{J_u} = - \kappa \ \vec{grad} T \). La lin&#233;arit&#233; de l'&#233;quation n'est due qu'aux approximations que nous avons fix&#233; &#224; son domaine de validit&#233;, comme pour la loi d'Ohm.
+
+<p>
+Le param&#232;tre \( \kappa \) est appel&#233; conductivit&#233; thermique, toujours positif, de dimension \( W.m^{-1}.K^{-1} \). Notez la pr&#233;sence du signe \( - \), qui r&#233;sulte du second principe de la thermodynamique : le flux d'&#233;nergie va des r&#233;gions aux temp&#233;ratures les plus hautes vers les r&#233;gions aux temp&#233;ratures les plus basses.
+
+<p>
+Dans notre hypoth&#232;se d'un probl&#232;me unidimensionnel, en d&#233;veloppant le gradient, on obtient l'&#233;quation \( \vec{J_u} = - \kappa \dfrac{\partial T}{\partial x}\vec{u} \), soit en projetant sur \( Ox \), \( J_u(x,t) = - \kappa \dfrac{\partial T(x,t)}{\partial x} \) Nous obtenons une &#233;quation &#224; deux variables, la position x et le temps t, avec une d&#233;riv&#233;e partielle.
+
+<h2 id="___sec5" class="anchor">Comment obtenir cette &#233;quation? </h2>
+Nous allons l'&#233;tablir en utilisant la loi de Fourier d&#233;crite ci-dessus et le principe de conservation d'&#233;nergie. Nous resterons dans le cadre du probl&#232;me unidimensionnel, sachant que l'extension en dimension 2 ou 3 n'est pas tr&#232;s compliqu&#233;e, mais trop lourde pour notre &#233;tude.
+
+<p>
+Consid&#233;rons un &#233;l&#233;ment de volume dV orient&#233; selon l'axe \( Ox \) de propagation du flux d'&#233;nergie, limit&#233; par deux surfaces dS, l'une entrante et l'autre sortante, et d'&#233;paisseur \( dx \). Appelons \( \vec{J_uE} \) le vecteur de courant d'&#233;nergie volumique entrant et \( \vec{J_uS} \) le vecteur de courant d'&#233;nergie volumique sortant. Supposons que ces deux vecteurs soient normaux aux surfaces entrantes et sortantes.
+
+<p>
+Cet &#233;l&#233;ment de volume \( dV \) est immobile et son &#233;nergie potentielle n'est pas modifi&#233;e par hypoth&#232;se. Selon le premier principe de la thermodynamique, la variation d'&#233;nergie interne dU n'est donc attribuable qu'&#224; la variation \( dQ \), le transfert thermique d'&#233;nergie.
+
+<p>
+Calculons la variation d'&#233;nergie interne dans ce volume dV, de masse volumique \( \rho \), en utilisant la d&#233;finition de \( \vec{J_u} \) donn&#233;e plus haut dans le cas unidimensionnel. Nous obtenons apr&#232;s simplification, en &#233;galant \( dU \) et \( dQ \) :
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t}dx = -J_{u,x}(x + dx,t) + J_{u,x}(x,t)
+\label{_auto5}
+\end{align}
+$$
+
+En remarquant que \( J_{u,x}(x + dx,t) - J_{u,x}(x,t)= \dfrac{\partial J_{u,x}}{\partial x}dx \), on obtient finalement :
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t} = - \dfrac{\partial J_{u,x}}{\partial x}
+\label{_auto6}
+\end{align}
+$$
+
+Dans cette derni&#232;re &#233;quation, rempla&#231;ons dans le terme de droite \( J_{u,x} \) par sa d&#233;finition donn&#233;e par la loi de Fourier, on obtient :
+
+<p>
+\( \dfrac{\partial(\rho u)}{\partial t} = - \dfrac{\partial}{\partial x}(- \kappa \dfrac{\partial T}{\partial x}) \) ou en condensant l'&#233;criture :
+
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t} = \kappa \dfrac{\partial^2 T}{\partial x^2}
+\label{_auto7}
+\end{align}
+$$
+
+Vous aurez not&#233; ici, si vous &#234;tes attentifs, que j'ai consid&#233;r&#233; que \( \kappa \) &#233;tait constant puisque je l'ai sorti de la d&#233;riv&#233;e sans autre forme de proc&#232;s! C'est un peu os&#233;, et vrai seulement si le milieu est isotrope (le mat&#233;riaux est homog&#232;ne) et si l'on ne chauffe pas trop fort ou trop vite, parce que sinon, il devient d&#233;pendant de la temp&#233;rature.
+
+<p>
+Reste maintenant &#224; traiter le terme de gauche. Pour ce faire, je vais faire appel &#224; l'expression de la capacit&#233; calorique qui relie les variations de l'&#233;nergie avec les variations de temp&#233;rature. On peut donc &#233;crire que, si \( \rho u \) d&#233;signe l'&#233;nergie interne volumique :
+
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t} = \rho c_v \dfrac{\partial
+        T}{\partial t}
+\label{_auto8}
+\end{align}
+$$
+
+avec \( c_v \) la capacit&#233; thermique massique &#224; volume constant.
+
+<p>
+En reportant cette expression dans le terme de gauche de notre &#233;quation, j'obtiens :
+
+$$
+\begin{align}
+\rho c_v \dfrac{\partial T}{\partial t} = \kappa \dfrac{\partial^2
+        T}{\partial x^2}
+\label{_auto9}
+\end{align}
+$$
+
+soit en regroupant les termes constants &#224; droite de l'&#233;quation :
+$$
+\begin{align}
+\dfrac{\partial T}{\partial t} = \dfrac{\kappa}{\rho c_v}
+        \dfrac{\partial^2 T}{\partial x^2}
+\label{_auto10}
+\end{align}
+$$
+
+Pour simplifier l'&#233;criture, je vais appeler \( D \) le rapport \( \dfrac{\kappa}{\rho c_v} \). Ce param&#232;tre est la diffusivit&#233; thermique du mat&#233;riau constituant notre &#233;l&#233;ment de volume. La dimension de \( D \) est \( m^2.s^{-1} \). Finalement, j'obtiens l'&#233;quation :
+$$
+\begin{align}
+\label{eq:diffT}
+\dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2}
+\end{align}
+$$
+
+qui constitue l'&#233;quation de diffusion thermique!
+
+<h2 id="___sec6" class="anchor">R&#233;solution num&#233;rique de l'&#233;quation de diffusion thermique </h2>
+
+<h3 id="___sec7" class="anchor">Le mod&#232;le physique </h3>
+
+Nous allons consid&#233;rer une barre m&#233;tallique homog&#232;ne de faible diam&#232;tre, de telle sorte que nous puissions n&#233;gliger ses dimensions spatiales autre que sa longueur. Autrement dit, je m'arrange pour avoir un mod&#232;le approximativement 1D.
+
+<p>
+Nous allons consid&#233;rer que cette barre solide de longueur \( L = 1m \) de coefficient de diffusion thermique \( D \approx 0.5 \ m^2.s^{-1} \). La barre est initialement pr&#233;par&#233;e dans un &#233;tat de temp&#233;rature \( T(x, t < 0) = T_0(x) = 100 C^\circ \).
+
+<p>
+&#192; l'instant \( t \ge 0 \), les extr&#233;mit&#233;s de la barre spnt misent en contact avec deux sources de temp&#233;ratures identiques \( T_{extr} = 0 c^\circ \), donc nous aurons:
+$$
+\begin{align*}
+T(x = 0, t \ge 0) = T(x = L, t \ge 0) = T_{extr}
+\end{align*}
+$$
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Choc thermique sur une barre de longueur L. </p></center>
+<p><img src="imgs/fig1.png" align="bottom" width=600></p>
+</center>
+
+<p>
+La temp&#233;rature \( T(x, t) \) de la barre est solution de l'&#233;quation \eqref{eq:diffT} de la diffusion thermique &#224; 1D
+
+<h3 id="___sec8" class="anchor">Principe de la r&#233;solution num&#233;rique </h3>
+
+On recherche une solution num&#233;rique &#224; ce probl&#232;me par la classique m&#233;thode des <em>diff&#233;rences finies</em>.
+
+<p>
+Supposons que nous cherchions l'&#233;volution de \( T(x,t) \) sur une dur&#233;e totale \( \tau = 1 s \):
+
+<ul>
+<li> La barre est spatialement discr&#233;tis&#233;e en \( N_x \) tron&#231;ons de longueur &#233;gale \( \Delta x = \dfrac{L}{N_x} \). Ainsi, l'abscisse discr&#232;te \( x_m \) est: \( x_m = m * \Delta x \) avec \( m \in [0, N_x] \).</li>
+<li> De m&#234;me, la dur&#233;e totale de l'&#233;volution est discr&#233;tis&#233;e en \( N_t \) intervalles de dur&#233;e \( \Delta t = \dfrac{\tau}{N_t} \). Ainsi, l'instant "discret" \( t_n \) est: \( t_n = n * \Delta t \) avec \( n \in [0, N_t] \).</li>
+</ul>
+
+On peut, par cons&#233;quent, poser la temp&#233;rature discr&#233;tis&#233;e:
+
+$$
+\begin{align*}
+T_{m,n} = T(m*\Delta x, n* \Delta t)
+\end{align*}
+$$
+
+<h3 id="___sec9" class="anchor">Discr&#233;tisation du terme \( \dfrac{\partial T}{\partial t} \) </h3>
+
+<p>
+Pour \( x \) fixe (\( x=x_m \)), \( T(x_m, t) \) est de classe \( C^1  \) sur \( [0, \tau] \) par rapport au temps.
+
+<p>
+Soit le d&#233;veloppement de Taylor &#224; l'ordre 1:
+$$
+\begin{align*}
+T(x_m, t_{n+1}) &= T(x_m, t_n+ \Delta t) \\
+ &\approx T(x_m, t_n) + \Delta t \dfrac{\partial T(x_m, t_n)}{\partial t} + \mathcal{O}(\Delta t^2)
+\end{align*}
+$$
+
+Nous revenons &#224; l'expression explicite d'Euler d&#233;j&#224; abord&#233;e dans le chapitre pr&#233;c&#233;dent. On peut donc avoir l'expression discr&#233;tis&#233;e du terme \( \dfrac{\partial T}{\partial t} \):
+
+$$
+\begin{align}
+\label{eq:terme1}
+\dfrac{\partial T(x_m, t_n)}{\partial t} &= \dfrac{T(x_m, t_{n+1}) - T(x_m, t_n)}{\Delta t}
+\end{align}
+$$
+
+<h3 id="___sec10" class="anchor">Discr&#233;tisation du terme \( \dfrac{\partial^2 T}{\partial x^2} \) </h3>
+
+<p>
+Pour \( t \) fixe (\( t=t_n \)), \( T(x, t_n) \) est de classe \( C^2  \) sur \( [0, L] \) par rapport &#224; \( x \).
+
+<p>
+Soit le d&#233;veloppement de Taylor &#224; l'ordre 2:
+$$
+\begin{align*}
+T(x_{m+1}, t_n) &= T(x_m + \Delta x, t_n) \\
+ &\approx T(x_m, t_n) + \Delta x \dfrac{\partial T(x_m, t_n)}{\partial x} + \dfrac{\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+\end{align*}
+$$
+
+<p>
+La d&#233;riv&#233;e premi&#232;re \( \dfrac{\partial T(x_m, t_n)}{\partial x} \) ne figure pas dans l'&#233;quation initiale (Eq. \eqref{eq:diffT}), il faut donc l'&#233;liminer!
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+L'id&#233;e est de faire une addition des d&#233;veloppements en (\( x_m + \Delta x \)) et en (\( x_m - \Delta x \)).
+</div>
+</div>
+
+$$
+\begin{align*}
+T(x_{m-1}, t_n) &= T(x_m - \Delta x, t_n) \\
+ &\approx T(x_m, t_n) - \Delta x \dfrac{\partial T(x_m, t_n)}{\partial x} + \dfrac{\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+\end{align*}
+$$
+
+
+$$
+\begin{align*}
+T(x_{m+1}, t_n) + T(x_{m-1}, t_n) &\approx 2 T(x_m, t_n) + \dfrac{2\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+\end{align*}
+$$
+
+D'o&#249; l'expression discr&#233;tis&#233;e du terme \( \dfrac{\partial^2 T}{\partial x^2} \):
+
+$$
+\begin{align}
+\label{eq:terme2}
+\dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} = \dfrac{T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n)}{\Delta x^2}
+\end{align}
+$$
+
+<p>
+Rempla&#231;ons les &#233;quations \eqref{eq:terme1} et \eqref{eq:terme2} dans l'&#233;quation \eqref{eq:diffT} de la diffusion thermique. Ainsi l'&#233;quation de la diffusion thermique 1D discr&#233;tis&#233;e s'&#233;crit:
+
+$$
+\begin{align}
+\dfrac{T(x_m, t_{n+1}) - T(x_m, t_n)}{\Delta t} \approx D \dfrac{T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n)}{\Delta x^2}
+\label{_auto11}
+\end{align}
+$$
+
+D'o&#249; l'on tire finalement la relation de r&#233;currence permettant d'obtenir la temp&#233;rature en \( x_m \) &#224; l'instant \( t_{n+1} \) en fonction des temp&#233;ratures \( T_{m,n} \), \( T_{m+1,n} \) et \( T_{m-1,n} \) calcul&#233;es &#224; l'instant \( t_n \):
+
+$$
+\begin{align}
+\label{eq:diffTFinal}
+T(x_m, t_{n+1}) \approx T(x_m, t_n) + D \dfrac{\Delta t}{\Delta x^2} \left[T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n) \right]
+\end{align}
+$$
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+On peut &#233;crire l'expression \eqref{eq:diffTFinal} avec la notation suivante:
+$$
+\begin{align*}
+T_{m,n+1} \approx T_{m,n} + D \dfrac{\Delta t}{\Delta x^2} \left[T_{m+1,n} - 2 T_{m,n} + T_{m-1,n} \right]
+\end{align*}
+$$
+</div>
+</div>
+
+
+<h3 id="___sec11" class="anchor">Code Python </h3>
+
+<p>
+Le programme Python pour ce probl&#232;me est:
+
+<p>
+<!-- @@@CODE scripts/EDP_DiffChal.py -->
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+## NOM DU PROGRAMME: EDP_DiffChal.py
+#% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+# DONNÉES NUMÉRIQUES
+L = 1 # Longueur de la barre [m]
+Nx = 100 # Nombre de tronçons
+tau = 1 # Durée totale de l'évolution [s]
+Nt = 10000 # Nombre d'intervalles de temps
+dx = L/Nx # Longueur du tronçon
+dt = tau/Nt # Intervalle élémentaire de temps
+D = 0.5 # Coefficient de diffusion thermique
+Tb = 100 # Température initiale de la barre
+Textr = 0 # Température des extrémités
+# Construction de axe des abscisses (variable espace x)
+x = np.linspace(0, L, Nx)
+# Construction CI ,CL (2 exemples pour la CI)
+T = [Textr] + (Nx - 2)*[Tb] + [Textr] # Echelon de temperature
+#T=Textr + (Tb-Textr ) * np.sin(np.pi*x/L) # Arche sinusoidale temperature
+# Construction du tableau vierge des accroissements de temperature
+accroissT = np.zeros(Nx)
+T[0] = 0
+plt.figure(figsize=(8, 6)) # Créer le graphique
+# Corps de la résolution
+for n in range(Nt): # Boucle d'évolution de temps pas à pas
+    for m in range(1, Nx-1): #boucle de calcul de accroissement de temperature pour chaque abscisse
+        accroissT[m] = ((dt*D)/(dx**2))*(T[m-1]-2*T[m]+T[m+1])
+    for m in range(1, Nx-1): # Boucle de calcul de T instant  suivant
+        T[m] += accroissT[m]
+    #Trace tous les 1000 intervalles de temps
+    if (n%1000 == 0):
+        plotlabel ="t=%1.2f s"%(n*dt)
+        plt.plot(x, T, label=plotlabel,lw = 4, color = plt.get_cmap('jet')(1-n/Nt))
+
+plt.grid()
+plt.xlabel("x [m]", fontsize=14)
+plt.ylabel("T [C]", fontsize=14)
+plt.title("Évolution de la température après le choc thermique", weight ="bold")
+plt.legend(loc=1)
+plt.savefig("chaleur.png"); plt.savefig("chaleur.pdf")
+plt.tight_layout()
+plt.show()
+
+
+</script></div>
+<p>
+<!-- Lors de l'ex&#233;cution de ce code, nous aurons comme sortie la figure ci-dessous: -->
+<!--  -->
+<!-- FIGURE:[scripts/chaleur, width=700 frac=0.8] -->
+
+<p>
+Nous pouvons modifier le code ci-dessus pour cr&#233;er une animation de l'&#233;volution du syst&#232;me dans le temps:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: EDP_DiffChalAnim.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #408080; font-style: italic"># DONNÉES NUMÉRIQUES</span>
+L <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #408080; font-style: italic"># Longueur de la barre [m]</span>
+Nx <span style="color: #666666">=</span> <span style="color: #666666">100</span> <span style="color: #408080; font-style: italic"># Nombre de tronçons</span>
+tau <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #408080; font-style: italic"># Durée totale de l&#39;évolution [s]</span>
+Nt <span style="color: #666666">=</span> <span style="color: #666666">10000</span> <span style="color: #408080; font-style: italic"># Nombre d&#39;intervalles de temps</span>
+dx <span style="color: #666666">=</span> L<span style="color: #666666">/</span>Nx <span style="color: #408080; font-style: italic"># Longueur du tronçon</span>
+dt <span style="color: #666666">=</span> tau<span style="color: #666666">/</span>Nt <span style="color: #408080; font-style: italic"># Intervalle élémentaire de temps</span>
+D <span style="color: #666666">=</span> <span style="color: #666666">0.5</span> <span style="color: #408080; font-style: italic"># Coefficient de diffusion thermique</span>
+Tb <span style="color: #666666">=</span> <span style="color: #666666">100</span> <span style="color: #408080; font-style: italic"># Température initiale de la barre</span>
+Textr <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># Température des extrémités</span>
+<span style="color: #408080; font-style: italic"># Construction de axe des abscisses (variable espace x)</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, L, Nx)
+<span style="color: #408080; font-style: italic"># Construction CI ,CL (2 exemples pour la CI)</span>
+T <span style="color: #666666">=</span> [Textr] <span style="color: #666666">+</span> (Nx <span style="color: #666666">-</span> <span style="color: #666666">2</span>)<span style="color: #666666">*</span>[Tb] <span style="color: #666666">+</span> [Textr] <span style="color: #408080; font-style: italic"># Echelon de temperature</span>
+<span style="color: #408080; font-style: italic">#T=Textr + (Tb-Textr ) * np.sin(np.pi*x/L) # Arche sinusoidale temperature</span>
+<span style="color: #408080; font-style: italic"># Construction du tableau vierge des accroissements de temperature</span>
+accroissT <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+T[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+
+<span style="color: #408080; font-style: italic"># Corps de la résolution</span>
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Nt): <span style="color: #408080; font-style: italic"># Boucle d&#39;évolution de temps pas à pas</span>
+    plt<span style="color: #666666">.</span>clf()
+    <span style="color: #008000; font-weight: bold">for</span> m <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, Nx<span style="color: #666666">-1</span>): <span style="color: #408080; font-style: italic">#boucle de calcul de accroissement de temperature pour chaque abscisse</span>
+        accroissT[m] <span style="color: #666666">=</span> ((dt<span style="color: #666666">*</span>D)<span style="color: #666666">/</span>(dx<span style="color: #666666">**2</span>))<span style="color: #666666">*</span>(T[m<span style="color: #666666">-1</span>]<span style="color: #666666">-2*</span>T[m]<span style="color: #666666">+</span>T[m<span style="color: #666666">+1</span>])
+    <span style="color: #008000; font-weight: bold">for</span> m <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, Nx<span style="color: #666666">-1</span>): <span style="color: #408080; font-style: italic"># Boucle de calcul de T instant  suivant</span>
+        T[m] <span style="color: #666666">+=</span> accroissT[m]  
+    <span style="color: #008000; font-weight: bold">if</span> (n<span style="color: #666666">%100</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>):    
+        plt<span style="color: #666666">.</span>figure(<span style="color: #666666">1</span>)
+        plotlabel <span style="color: #666666">=</span><span style="color: #BA2121">&quot;t=</span><span style="color: #BB6688; font-weight: bold">%1.2f</span><span style="color: #BA2121"> s&quot;</span><span style="color: #666666">%</span>(n<span style="color: #666666">*</span>dt)
+        plt<span style="color: #666666">.</span>plot(x, T, lw <span style="color: #666666">=</span> <span style="color: #666666">4</span>, label<span style="color: #666666">=</span>plotlabel, color <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>get_cmap(<span style="color: #BA2121">&#39;jet&#39;</span>)(<span style="color: #666666">1-</span>n<span style="color: #666666">/</span>Nt))
+            
+        plt<span style="color: #666666">.</span>grid()
+        plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;x [m]&quot;</span>, fontsize<span style="color: #666666">=14</span>)
+        plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;T [C]&quot;</span>, fontsize<span style="color: #666666">=14</span>)
+        plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Évolution de la température après le choc thermique&quot;</span>, weight <span style="color: #666666">=</span><span style="color: #BA2121">&quot;bold&quot;</span>)
+        plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=1</span>)
+        plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L,<span style="color: #666666">0</span>,<span style="color: #666666">100</span>])
+        
+        plt<span style="color: #666666">.</span>tight_layout()
+        plt<span style="color: #666666">.</span>show()
+
+        plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+</pre></div>
+<p>
+Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="scripts/anim/myimage.gif" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<!-- ======= L'&#233;quation de Schr&#246;dinger "time-dependent" ======= -->
+<!--  -->
+<!-- Soit une particule, un &#233;lectron pour fixer les id&#233;es, qui se d&#233;place dans un espace unidimensionnel. Pour &#233;tudier son mouvement, nous allons fixer un r&#233;f&#233;rentiel. L'apparition de ce mot "r&#233;f&#233;rentiel" devrait vous interpeler : la relativit&#233; n'est pas loin ! On ne va pas se compliquer la vie et on consid&#233;rera que la vitesse de la particule est petite devant c, un &#233;lectron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schr&#246;dinger... -->
+<!--  -->
+<!-- Cet &#233;lectron bouge dans un espace o&#249; il peut subir des interactions avec d'autres syst&#232;mes physiques. Dans ce cas, on mod&#233;lisera ces interactions par une &#233;nergie potentielle not&#233;e U(x,t). Si l'&#233;lectron ne subit aucune interaction, U(x,t) sera nulle et notre &#233;lectron sera dit "libre". -->
+<!--  -->
+<!-- L'&#233;quation, analogue &#224; notre deuxi&#232;me loi de Newton, qui d&#233;crit le mouvement de l'&#233;lectron dans l'espace et le temps est l'&#233;quation de Schr&#246;dinger. Plus pr&#233;cis&#233;ment, elle d&#233;crit l'&#233;volution de la fonction d'onde qui elle-m&#234;me d&#233;crit l'&#233;tat quantique de l'&#233;lectron. Sa forme unidimensionnelle s'&#233;crit : -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- i\hbar \dfrac{\partial \Psi -->
+<!-- (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi -->
+<!-- (x,t)}{\partial x^2} + U(x)\Psi(x,t) -->
+<!-- \end{align} -->
+<!-- !et -->
+<!-- avec \( m_e \) la masse de l'&#233;lectron et \( \hbar \) la constante de Planck r&#233;duite. Je choisis d'utiliser une fonction potentiel U stationnaire (ind&#233;pendante du temps). -->
+<!--  -->
+<!-- C'est une &#233;quation lin&#233;aire de premier ordre par rapport au temps. Lin&#233;aire, c'est &#224; dire que toute combinaison lin&#233;aire de solutions particuli&#232;res de l'&#233;quation est aussi solution de l'&#233;quation. De premier ordre par rapport au temps, c'est &#224; dire que la connaissance de l'&#233;tat quantique de la particule &#224; un instant donn&#233;, consid&#233;r&#233; comme l'instant initial \( t_0 \), permet de calculer son &#233;tat quantique &#224; n'importe quel instant post&#233;rieur &#224; \( t_0 \). -->
+<!-- ===== L'&#233;nonc&#233; du probl&#232;me ===== -->
+<!-- On enferme un &#233;lectron dans une boite quantique, c'est &#224; dire qu'on se cantonne dans un espace ferm&#233; par des barri&#232;res de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le sch&#233;ma suivant de bo&#238;te : -->
+<!--  -->
+<!-- FIGURE:[imgs/Schro1D_4, width=500 frac=0.8] -->
+<!--  -->
+<!-- Dans cette bo&#238;te, nous d&#233;posons un &#233;lectron et nous voulons d&#233;terminer son mouvement. Pour l'instant, notre &#233;lectron ne rencontre aucune barri&#232;re de potentiel dans sa bo&#238;te. Il est libre... dans sa bo&#238;te ! La fonction U(x) est donc constante et nulle dans la bo&#238;te. -->
+<!--  -->
+<!-- ===== La simulation de l'&#233;volution d'un &#233;lectron libre U(x) = 0 ===== -->
+<!--  -->
+<!-- L'&#233;quation de Schr&#246;dinger 1D avec U(x) = 0, que l'on &#233;crit \( i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} \) st parfaitement int&#233;grable analytiquement! D'ailleurs, je vous invite &#224; la comparer avec une autre &#233;quation que nous avons d&#233;j&#224; rencontr&#233;: \( \dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2} \), <a href="https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1" target="_self">l'&#233;quation de diffusion thermique!</a>  Dans les deux cas, la transform&#233;e de Fourier est l'outil privil&#233;gi&#233; pour ces calculs. -->
+<!--  -->
+<!-- === La discr&#233;tisation de Schr&#246;dinger === -->
+<!-- La premi&#232;re &#233;tape consiste &#224; discr&#233;tiser l'&#233;quation de Schr&#246;dinger. Reprenons donc notre &#233;quation de Schr&#246;dinger time-dependent dans un espace unidimensionnel : -->
+<!--  -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar -->
+<!-- ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t) -->
+<!-- \end{align} -->
+<!-- !et -->
+<!-- La fonction \( \Psi(x,t) \) est une fonction complexe. Je vais la d&#233;composer en sa partie r&#233;elle \( \Psi_R(x,t) \) et sa partie imaginaire \( \Psi_I(x,t) \) et &#233;crire deux &#233;quations l'une portant sur sa partie r&#233;elle et l'autre sur sa partie imaginaire, ce qui, en r&#233;organisant notre &#233;quation de Schr&#246;dinger pour isoler &#224; gauche la d&#233;riv&#233;e partielle temporelle, nous donne le couple d'&#233;quations : -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- \dfrac{\partial \Psi_R (x,t)}{\partial t} &= -\dfrac{\hbar}{2m} -->
+<!-- \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} + -->
+<!-- \dfrac{1}{\hbar}U(x)\Psi_I(x,t) \\ -->
+<!--  -->
+<!-- \dfrac{\partial \Psi_I (x,t)}{\partial t} &= \dfrac{\hbar}{2m} -->
+<!-- \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} - -->
+<!-- \dfrac{1}{\hbar}U(x)\Psi_R(x,t) -->
+<!-- \end{align} -->
+<!-- !et -->
+<!--  -->
+<!-- Comme d'habitude je vais discr&#233;tiser les d&#233;riv&#233;es partielles en faisant un DL d'ordre 1 : -->
+<!--  -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- \dfrac{\partial \Psi(x,t)}{\partial t} &\approx \dfrac{\Psi(x, -->
+<!-- t+\Delta t) - \Psi(x,t)}{\Delta t} \\ -->
+<!--  -->
+<!-- \dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &\approx -->
+<!-- \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta -->
+<!-- x}^2} -->
+<!-- \end{align} -->
+<!-- !et -->
+<!--  -->
+<!-- Nous obtenons finalement les &#233;quations discr&#232;tes, avec \( i \) l'indice sur le vecteur \( x \) : -->
+<!-- !bt -->
+<!-- \begin{align} -->
+<!-- \Psi_R(i)  &= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta -->
+<!-- x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e -->
+<!-- \Delta t}{\hbar}  U(i) \Psi_I(i) \\ -->
+<!--  -->
+<!-- \Psi_I(i)  &= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta -->
+<!-- x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e -->
+<!-- \Delta t}{\hbar}  U(i) \Psi_R(i) -->
+<!-- \end{align} -->
+<!-- !et -->
+<!--  -->
+<!-- Une petite remarque : j'ai introduit la charge &#233;l&#233;mentaire e dans la valeur du coefficient affectant l'&#233;nergie potentielle U : c'est parce que j'exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule. -->
+<!--  -->
+<!-- Dans mon code, j'ai d&#233;fini \( a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1 \), il faut bien faire un choix, ce qui me donne la contrainte sur \( \Delta t \) suivante, cod&#233;e dans la variable <code>dt : dt = a2*2*m_e*dx**2/hbar</code>. -->
+<!--  -->
+<!-- === Le code Python === -->
+<!--  -->
+<!-- __La propagation du paquet d'ondes__ -->
+<!--  -->
+<!-- Le programme Python pour ce probl&#232;me est: -->
+<!--  -->
+<!-- @@@CODE scripts/Schrodinger_1DLibre.py -->
+<!--  -->
+<!-- Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous: -->
+<!--  -->
+<!-- FIGURE:[scripts/anim2/myimage, width=500 frac=0.8] -->
+<!--  -->
+<!-- __Cas d'une barri&#232;re de potentiel__ -->
+<!-- Le programme Python pour ce probl&#232;me est: -->
+<!--  -->
+<!-- @@@CODE scripts/Schrodinger_1DBar.py -->
+<!--  -->
+<!-- Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous: -->
+<!--  -->
+<!-- FIGURE:[scripts/anim3/myimage, width=500 frac=0.8] -->
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

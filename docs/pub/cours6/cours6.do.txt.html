@@ -1,0 +1,406 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: Résolution des équations aux dérivées partielles</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #228B22">#TOC: on</span>
+<span style="color: #000080; font-weight: bold">======= Introduction =======</span>
+Il existe trois types d&#39;équations aux dérivées partielles.
+* Des équations telles que l&#39;équation d&#39;onde,
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{\partial^2 u}{\partial t^2} &amp;=  c^2 \frac{\partial^2 u}{\partial x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+où $u (t, x)$ est une fonction de déplacement et $c$ une vitesse constante, sont connues sous le nom d&#39;équations hyperboliques.
+* Des équations telles que l&#39;équation de diffusion,
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{\partial u}{\partial t} &amp;=  \frac{\partial}{\partial x} \left( D \frac{\partial u}{\partial x}\right)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $u (t, x)$ est le champ de densité et $D$ le coefficient de diffusion sont appelés équations paraboliques. L&#39;équation de Schrödinger en fonction du temps est un autre exemple d&#39;équation parabolique.
+* Des équations telles que l&#39;équation de Poisson,
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} &amp;= - \frac{\rho(x, y, z)}{\epsilon_0}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+où $u (x, y, z)$ est une fonction potentielle et $\rho/ \epsilon_0$ est une source, appelées équations elliptiques. L&#39;équation de Schrödinger indépendante du temps est un autre exemple d&#39;équation elliptique.
+
+On trouve des équations hyperboliques ou paraboliques dans les problèmes de valeurs initiales: la configuration du champ $u (t, x)$ est spécifiée à un moment initial et évolue dans le temps. Les équations elliptiques se retrouvent dans les problèmes de valeur limite: la valeur du champ $u (x, y, z)$ est spécifiée sur la limite d&#39;une région et nous cherchons la solution à travers l&#39;intérieur.
+
+<span style="color: #000080; font-weight: bold">======= Équation de diffusion thermique =======</span>
+
+L&#39;équation de diffusion thermique est historiquement liée à Joseph Fourier. Ce dernier naquit en 1768 à Auxerre, où il étudie dans une école militaire. Fin 1794, il est élève à Normale Sup et en 1795-1796, il enseigne la physique à Normale Sup et à l&#39;X. Il débute ses travaux sur la chaleur en 1802 lorsqu&#39;il est nommé préfet de l&#39;Isère par Napoléon. Il publie sa théorie sur la chaleur (et l&#39;analyse de Fourier) en 1822. Il est élu à l&#39;Académie française en 1826 et décédé à Paris en 1830.
+
+<span style="color: #658b00">FIGURE:[imgs/JFourier, width=600 frac=0.7] Gravure du mathématicien Jean Baptiste Joseph Fourier (1768-1830). [source: Article de _CNRS Le journal_, &quot;Joseph Fourier transforme toujours la science&quot;:&quot;https://lejournal.cnrs.fr/articles/joseph-fourier-transforme-toujours-la-science&quot;]</span>
+
+<span style="color: #000080; font-weight: bold">===== La conduction thermique dans les solides =====</span>
+Dans les solides, les molécules ou les atomes sont figés dans un réseau maillé qui empêchent les grands déplacements. Le seul mouvement possible est un mouvement de vibration autour de leur position d&#39;équilibre dans le réseau. Le transfert thermique d&#39;énergie se traduit par une augmentation plus ou moins grande de l&#39;amplitude de ces vibrations. Lorsque l&#39;énergie apportée est suffisante pour que l&#39;amplitude de la vibration dépasse une certaine valeur dépendante du réseau, alors les molécules se libèrent du réseau et le solide fond et s&#39;évapore...
+
+Le cas des métaux est un peu particulier : eux possèdent des électrons de conduction, qui circulent librement sur le réseau du solide. Ces électrons se comportent comme les molécules d&#39;un gaz (on parle de gaz d&#39;électrons) et dans ce cas, à l&#39;augmentation de l&#39;amplitude des vibrations sur le réseau s&#39;ajoute le transfert d&#39;énergie cinétique des électrons rapides, &quot;chauds&quot; vers les électrons lents, &quot;froids&quot;.
+<span style="color: #000080; font-weight: bold">===== Notion de flux d&#39;énergie =====</span>
+La notion de flux d&#39;énergie est très courante en physique. Nous l&#39;avons déjà rencontré sous le nom d&#39;intensité du courant électrique. Dans ce cas, il s&#39;agit du flux de charges électriques qui traversent une surface unitaire donnée par unité de temps. Nous l&#39;avons noté:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+I_q = \dfrac{dQ}{dt}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Par analogie, on définit le flux thermique, plus exactement le flux d&#39;énergie interne par $I_u = \dfrac{dU}{dt}$. C&#39;est la quantité d&#39;énergie interne U qui traverse, sans travail, une surface unitaire par unité de temps.
+
+Pour l&#39;exprimer plus précisément, on introduit un nouvel objet par analogie avec le courant électrique. Il s&#39;agit du vecteur de courant volumique d&#39;énergie interne sans travail noté classiquement $\vec{J_u}$ et souvent nommé improprement &quot;vecteur courant thermique&quot;, ce qui nous permet d&#39;écrire l&#39;expression du flux de ce vecteur à travers une surface dS orientée vers l&#39;extérieur par le vecteur normal $\vec{n}$ , ce qui nous donne $I_u = \int_S \vec{J_u} . \vec{n} dS$. Le signe de $I_u$ dépend du sens du flux à travers la surface. Il est négatif pour le flux entrant et positif pour le flux sortant (pensez au signe du produit scalaire sous l&#39;intégrale...).
+
+<span style="color: #000080; font-weight: bold">===== L&#39;expression de la loi de Fourier =====</span>
+Après ces préambules utiles, venons en à la loi de Fourier proprement dite. La conduction thermique est un transfert thermique spontané d&#39;une région de température élevée vers une région de température plus basse, et est décrite par la loi dite de Fourier établie mathématiquement par Jean-Baptiste Biot en 1804 puis expérimentalement par Fourier en 1822 : la densité de flux de chaleur est proportionnelle au gradient de température.
+
+Pour faire simple, ici et dans la suite, on va se placer dans le cadre d&#39;un problème unidimensionnel, c&#39;est à dire que le transfert thermique d&#39;énergie se fait sur une dimension $Ox$.
+
+La loi de Fourier relie, après constat expérimental, le vecteur de courant volumique d&#39;énergie interne sans travail $\vec{J_u}$ avec le gradient de température $\vec{grad} T$. La relation est linéaire et s&#39;écrit $\vec{J_u} = - \kappa \ \vec{grad} T$. La linéarité de l&#39;équation n&#39;est due qu&#39;aux approximations que nous avons fixé à son domaine de validité, comme pour la loi d&#39;Ohm.
+
+Le paramètre $\kappa$ est appelé conductivité thermique, toujours positif, de dimension $W.m^{-1}.K^{-1}$. Notez la présence du signe $-$, qui résulte du second principe de la thermodynamique : le flux d&#39;énergie va des régions aux températures les plus hautes vers les régions aux températures les plus basses.
+
+Dans notre hypothèse d&#39;un problème unidimensionnel, en développant le gradient, on obtient l&#39;équation $\vec{J_u} = - \kappa \dfrac{\partial T}{\partial x}\vec{u}$, soit en projetant sur $Ox$, $J_u(x,t) = - \kappa \dfrac{\partial T(x,t)}{\partial x}$ Nous obtenons une équation à deux variables, la position x et le temps t, avec une dérivée partielle.
+
+<span style="color: #000080; font-weight: bold">===== Comment obtenir cette équation? =====</span>
+Nous allons l&#39;établir en utilisant la loi de Fourier décrite ci-dessus et le principe de conservation d&#39;énergie. Nous resterons dans le cadre du problème unidimensionnel, sachant que l&#39;extension en dimension 2 ou 3 n&#39;est pas très compliquée, mais trop lourde pour notre étude.
+
+Considérons un élément de volume dV orienté selon l&#39;axe $Ox$ de propagation du flux d&#39;énergie, limité par deux surfaces dS, l&#39;une entrante et l&#39;autre sortante, et d&#39;épaisseur $dx$. Appelons $\vec{J_uE}$ le vecteur de courant d&#39;énergie volumique entrant et $\vec{J_uS}$ le vecteur de courant d&#39;énergie volumique sortant. Supposons que ces deux vecteurs soient normaux aux surfaces entrantes et sortantes.
+
+Cet élément de volume $dV$ est immobile et son énergie potentielle n&#39;est pas modifiée par hypothèse. Selon le premier principe de la thermodynamique, la variation d&#39;énergie interne dU n&#39;est donc attribuable qu&#39;à la variation $dQ$, le transfert thermique d&#39;énergie.
+
+Calculons la variation d&#39;énergie interne dans ce volume dV, de masse volumique $\rho$, en utilisant la définition de $\vec{J_u}$ donnée plus haut dans le cas unidimensionnel. Nous obtenons après simplification, en égalant $dU$ et $dQ$ :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial(\rho u)}{\partial t}dx = -J_{u,x}(x + dx,t) + J_{u,x}(x,t)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+En remarquant que $J_{u,x}(x + dx,t) - J_{u,x}(x,t)= \dfrac{\partial J_{u,x}}{\partial x}dx$, on obtient finalement :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial(\rho u)}{\partial t} = - \dfrac{\partial J_{u,x}}{\partial x}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Dans cette dernière équation, remplaçons dans le terme de droite $J_{u,x}$ par sa définition donnée par la loi de Fourier, on obtient :
+
+$\dfrac{\partial(\rho u)}{\partial t} = - \dfrac{\partial}{\partial x}(- \kappa \dfrac{\partial T}{\partial x})$ ou en condensant l&#39;écriture :
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial(\rho u)}{\partial t} = \kappa \dfrac{\partial^2 T}{\partial x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Vous aurez noté ici, si vous êtes attentifs, que j&#39;ai considéré que $\kappa$ était constant puisque je l&#39;ai sorti de la dérivée sans autre forme de procès! C&#39;est un peu osé, et vrai seulement si le milieu est isotrope (le matériaux est homogène) et si l&#39;on ne chauffe pas trop fort ou trop vite, parce que sinon, il devient dépendant de la température.
+
+Reste maintenant à traiter le terme de gauche. Pour ce faire, je vais faire appel à l&#39;expression de la capacité calorique qui relie les variations de l&#39;énergie avec les variations de température. On peut donc écrire que, si $\rho u$ désigne l&#39;énergie interne volumique :
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial(\rho u)}{\partial t} = \rho c_v \dfrac{\partial
+        T}{\partial t}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $c_v$ la capacité thermique massique à volume constant.
+
+En reportant cette expression dans le terme de gauche de notre équation, j&#39;obtiens :
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\rho c_v \dfrac{\partial T}{\partial t} = \kappa \dfrac{\partial^2
+        T}{\partial x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+soit en regroupant les termes constants à droite de l&#39;équation :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial T}{\partial t} = \dfrac{\kappa}{\rho c_v}
+        \dfrac{\partial^2 T}{\partial x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Pour simplifier l&#39;écriture, je vais appeler $D$ le rapport $\dfrac{\kappa}{\rho c_v}$. Ce paramètre est la diffusivité thermique du matériau constituant notre élément de volume. La dimension de $D$ est $m^2.s^{-1}$. Finalement, j&#39;obtiens l&#39;équation :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:diffT}
+\dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+qui constitue l&#39;équation de diffusion thermique!
+
+<span style="color: #000080; font-weight: bold">===== Résolution numérique de l&#39;équation de diffusion thermique =====</span>
+<span style="color: #000080; font-weight: bold">=== Le modèle physique ===</span>
+Nous allons considérer une barre métallique homogène de faible diamètre, de telle sorte que nous puissions négliger ses dimensions spatiales autre que sa longueur. Autrement dit, je m&#39;arrange pour avoir un modèle approximativement 1D.
+
+Nous allons considérer que cette barre solide de longueur $L = 1m$ de coefficient de diffusion thermique $D \approx 0.5 \ m^2.s^{-1}$. La barre est initialement préparée dans un état de température $T(x, t&lt;0) = T_0(x) = 100 C^\circ$.
+
+À l&#39;instant $t \ge 0$, les extrémités de la barre spnt misent en contact avec deux sources de températures identiques $T_{extr} = 0 c^\circ$, donc nous aurons:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T(x = 0, t \ge 0) = T(x = L, t \ge 0) = T_{extr}
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #658b00">FIGURE:[imgs/fig1, width=600 frac=0.7] Choc thermique sur une barre de longueur L.</span>
+
+La température $T(x, t)$ de la barre est solution de l&#39;équation (ref{eq:diffT}) de la diffusion thermique à 1D
+
+<span style="color: #000080; font-weight: bold">=== Principe de la résolution numérique ===</span>
+On recherche une solution numérique à ce problème par la classique méthode des *différences finies*.
+
+Supposons que nous cherchions l&#39;évolution de $T(x,t)$ sur une durée totale $\tau = 1 s$:
+* La barre est spatialement discrétisée en $N_x$ tronçons de longueur égale $\Delta x = \dfrac{L}{N_x}$. Ainsi, l&#39;abscisse discrète $x_m$ est: $x_m = m * \Delta x$ avec $m \in [0, N_x]$.
+* De même, la durée totale de l&#39;évolution est discrétisée en $N_t$ intervalles de durée $\Delta t = \dfrac{\tau}{N_t}$. Ainsi, l&#39;instant &quot;discret&quot; $t_n$ est: $t_n = n * \Delta t$ avec $n \in [0, N_t]$.
+
+On peut, par conséquent, poser la température discrétisée:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T_{m,n} = T(m*\Delta x, n* \Delta t)
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #000080; font-weight: bold">=== Discrétisation du terme $\dfrac{\partial T}{\partial t}$ ===</span>
+
+Pour $x$ fixe ($x=x_m$), $T(x_m, t)$ est de classe $C^1 $ sur $[0, \tau]$ par rapport au temps.
+
+Soit le développement de Taylor à l&#39;ordre 1:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T(x_m, t_{n+1}) &amp;= T(x_m, t_n+ \Delta t) \\
+ &amp;\approx T(x_m, t_n) + \Delta t \dfrac{\partial T(x_m, t_n)}{\partial t} + \mathcal{O}(\Delta t^2)
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Nous revenons à l&#39;expression explicite d&#39;Euler déjà abordée dans le chapitre précédent. On peut donc avoir l&#39;expression discrétisée du terme $\dfrac{\partial T}{\partial t}$:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:terme1}
+\dfrac{\partial T(x_m, t_n)}{\partial t} &amp;= \dfrac{T(x_m, t_{n+1}) - T(x_m, t_n)}{\Delta t}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #000080; font-weight: bold">=== Discrétisation du terme $\dfrac{\partial^2 T}{\partial x^2}$ ===</span>
+
+Pour $t$ fixe ($t=t_n$), $T(x, t_n)$ est de classe $C^2 $ sur $[0, L]$ par rapport à $x$.
+
+Soit le développement de Taylor à l&#39;ordre 2:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T(x_{m+1}, t_n) &amp;= T(x_m + \Delta x, t_n) \\
+ &amp;\approx T(x_m, t_n) + \Delta x \dfrac{\partial T(x_m, t_n)}{\partial x} + \dfrac{\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+La dérivée première $\dfrac{\partial T(x_m, t_n)}{\partial x}$ ne figure pas dans l&#39;équation initiale (Eq. (ref{eq:diffT})), il faut donc l&#39;éliminer!
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+L&#39;idée est de faire une addition des développements en ($x_m + \Delta x$) et en ($x_m - \Delta x$).
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T(x_{m-1}, t_n) &amp;= T(x_m - \Delta x, t_n) \\
+ &amp;\approx T(x_m, t_n) - \Delta x \dfrac{\partial T(x_m, t_n)}{\partial x} + \dfrac{\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T(x_{m+1}, t_n) + T(x_{m-1}, t_n) &amp;\approx 2 T(x_m, t_n) + \dfrac{2\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+D&#39;où l&#39;expression discrétisée du terme $\dfrac{\partial^2 T}{\partial x^2}$:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:terme2}
+\dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} = \dfrac{T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n)}{\Delta x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Remplaçons les équations (ref{eq:terme1}) et (ref{eq:terme2}) dans l&#39;équation (ref{eq:diffT}) de la diffusion thermique. Ainsi l&#39;équation de la diffusion thermique 1D discrétisée s&#39;écrit:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{T(x_m, t_{n+1}) - T(x_m, t_n)}{\Delta t} \approx D \dfrac{T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n)}{\Delta x^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+D&#39;où l&#39;on tire finalement la relation de récurrence permettant d&#39;obtenir la température en $x_m$ à l&#39;instant $t_{n+1}$ en fonction des températures $T_{m,n}$, $T_{m+1,n}$ et $T_{m-1,n}$ calculées à l&#39;instant $t_n$:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\label{eq:diffTFinal}
+T(x_m, t_{n+1}) \approx T(x_m, t_n) + D \dfrac{\Delta t}{\Delta x^2} \left[T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n) \right]
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+On peut écrire l&#39;expression (ref{eq:diffTFinal}) avec la notation suivante:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+T_{m,n+1} \approx T_{m,n} + D \dfrac{\Delta t}{\Delta x^2} \left[T_{m+1,n} - 2 T_{m,n} + T_{m-1,n} \right]
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+
+<span style="color: #000080; font-weight: bold">=== Code Python ===</span>
+
+Le programme Python pour ce problème est:
+
+<span style="color: #228B22">#@@@CODE scripts/EDP_DiffChal.py</span>
+<span style="color: #8B008B; font-weight: bold">!bc</span> pyscpro
+<span style="color: #228B22">## NOM DU PROGRAMME: EDP_DiffChal.py</span>
+<span style="color: #228B22">#% IMPORTATION</span>
+import numpy as np
+import matplotlib.pyplot as plt
+<span style="color: #228B22"># DONNÉES NUMÉRIQUES</span>
+L = 1 # Longueur de la barre [m]
+Nx = 100 # Nombre de tronçons
+tau = 1 # Durée totale de l&#39;évolution [s]
+Nt = 10000 # Nombre d&#39;intervalles de temps
+dx = L/Nx # Longueur du tronçon
+dt = tau/Nt # Intervalle élémentaire de temps
+D = 0.5 # Coefficient de diffusion thermique
+Tb = 100 # Température initiale de la barre
+Textr = 0 # Température des extrémités
+<span style="color: #228B22"># Construction de axe des abscisses (variable espace x)</span>
+x = np.linspace(0, L, Nx)
+<span style="color: #228B22"># Construction CI ,CL (2 exemples pour la CI)</span>
+T = [Textr] + (Nx - 2)*[Tb] + [Textr] # Echelon de temperature
+<span style="color: #228B22">#T=Textr + (Tb-Textr ) * np.sin(np.pi*x/L) # Arche sinusoidale temperature</span>
+<span style="color: #228B22"># Construction du tableau vierge des accroissements de temperature</span>
+accroissT = np.zeros(Nx)
+T[0] = 0
+plt.figure(figsize=(8, 6)) # Créer le graphique
+<span style="color: #228B22"># Corps de la résolution</span>
+for n in range(Nt): # Boucle d&#39;évolution de temps pas à pas
+    for m in range(1, Nx-1): #boucle de calcul de accroissement de temperature pour chaque abscisse
+        accroissT[m] = ((dt*D)/(dx**2))*(T[m-1]-2*T[m]+T[m+1])
+    for m in range(1, Nx-1): # Boucle de calcul de T instant  suivant
+        T[m] += accroissT[m]
+    #Trace tous les 1000 intervalles de temps
+    if (n%1000 == 0):
+        plotlabel =&quot;t=%1.2f s&quot;%(n*dt)
+        plt.plot(x, T, label=plotlabel,lw = 4, color = plt.get_cmap(&#39;jet&#39;)(1-n/Nt))
+
+plt.grid()
+plt.xlabel(&quot;x [m]&quot;, fontsize=14)
+plt.ylabel(&quot;T [C]&quot;, fontsize=14)
+plt.title(&quot;Évolution de la température après le choc thermique&quot;, weight =&quot;bold&quot;)
+plt.legend(loc=1)
+plt.savefig(&quot;chaleur.png&quot;); plt.savefig(&quot;chaleur.pdf&quot;)
+plt.tight_layout()
+plt.show()
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #228B22"># Lors de l&#39;exécution de ce code, nous aurons comme sortie la figure ci-dessous:</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># FIGURE:[scripts/chaleur, width=700 frac=0.8]</span>
+
+Nous pouvons modifier le code ci-dessus pour créer une animation de l&#39;évolution du système dans le temps:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/EDP_DiffChalAnim.py</span>
+
+Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:
+
+<span style="color: #658b00">FIGURE:[scripts/anim/myimage, width=500 frac=0.8]</span>
+
+<span style="color: #228B22"># ======= L&#39;équation de Schrödinger &quot;time-dependent&quot; =======</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Soit une particule, un électron pour fixer les idées, qui se déplace dans un espace unidimensionnel. Pour étudier son mouvement, nous allons fixer un référentiel. L&#39;apparition de ce mot &quot;référentiel&quot; devrait vous interpeler : la relativité n&#39;est pas loin ! On ne va pas se compliquer la vie et on considérera que la vitesse de la particule est petite devant c, un électron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schrödinger...</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Cet électron bouge dans un espace où il peut subir des interactions avec d&#39;autres systèmes physiques. Dans ce cas, on modélisera ces interactions par une énergie potentielle notée U(x,t). Si l&#39;électron ne subit aucune interaction, U(x,t) sera nulle et notre électron sera dit &quot;libre&quot;.</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># L&#39;équation, analogue à notre deuxième loi de Newton, qui décrit le mouvement de l&#39;électron dans l&#39;espace et le temps est l&#39;équation de Schrödinger. Plus précisément, elle décrit l&#39;évolution de la fonction d&#39;onde qui elle-même décrit l&#39;état quantique de l&#39;électron. Sa forme unidimensionnelle s&#39;écrit :</span>
+<span style="color: #228B22"># !bt</span>
+<span style="color: #228B22"># \begin{align}</span>
+<span style="color: #228B22"># i\hbar \dfrac{\partial \Psi</span>
+<span style="color: #228B22">#         (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi</span>
+<span style="color: #228B22">#         (x,t)}{\partial x^2} + U(x)\Psi(x,t)</span>
+<span style="color: #228B22"># \end{align}</span>
+<span style="color: #228B22"># !et</span>
+<span style="color: #228B22"># avec $m_e$ la masse de l&#39;électron et $\hbar$ la constante de Planck réduite. Je choisis d&#39;utiliser une fonction potentiel U stationnaire (indépendante du temps).</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># C&#39;est une équation linéaire de premier ordre par rapport au temps. Linéaire, c&#39;est à dire que toute combinaison linéaire de solutions particulières de l&#39;équation est aussi solution de l&#39;équation. De premier ordre par rapport au temps, c&#39;est à dire que la connaissance de l&#39;état quantique de la particule à un instant donné, considéré comme l&#39;instant initial $t_0$, permet de calculer son état quantique à n&#39;importe quel instant postérieur à $t_0$.</span>
+<span style="color: #228B22"># ===== L&#39;énoncé du problème =====</span>
+<span style="color: #228B22"># On enferme un électron dans une boite quantique, c&#39;est à dire qu&#39;on se cantonne dans un espace fermé par des barrières de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le schéma suivant de boîte :</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># FIGURE:[imgs/Schro1D_4, width=500 frac=0.8]</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Dans cette boîte, nous déposons un électron et nous voulons déterminer son mouvement. Pour l&#39;instant, notre électron ne rencontre aucune barrière de potentiel dans sa boîte. Il est libre... dans sa boîte ! La fonction U(x) est donc constante et nulle dans la boîte.</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># ===== La simulation de l&#39;évolution d&#39;un électron libre U(x) = 0 =====</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># L&#39;équation de Schrödinger 1D avec U(x) = 0, que l&#39;on écrit $i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2}$ st parfaitement intégrable analytiquement! D&#39;ailleurs, je vous invite à la comparer avec une autre équation que nous avons déjà rencontré: $\dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2}$, &quot;l&#39;équation de diffusion thermique!&quot;: &quot;https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1&quot;  Dans les deux cas, la transformée de Fourier est l&#39;outil privilégié pour ces calculs.</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># === La discrétisation de Schrödinger ===</span>
+<span style="color: #228B22"># La première étape consiste à discrétiser l&#39;équation de Schrödinger. Reprenons donc notre équation de Schrödinger time-dependent dans un espace unidimensionnel :</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># !bt</span>
+<span style="color: #228B22"># \begin{align}</span>
+<span style="color: #228B22"># i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar</span>
+<span style="color: #228B22">#         ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t)</span>
+<span style="color: #228B22"># \end{align}</span>
+<span style="color: #228B22"># !et</span>
+<span style="color: #228B22"># La fonction $\Psi(x,t)$ est une fonction complexe. Je vais la décomposer en sa partie réelle $\Psi_R(x,t)$ et sa partie imaginaire $\Psi_I(x,t)$ et écrire deux équations l&#39;une portant sur sa partie réelle et l&#39;autre sur sa partie imaginaire, ce qui, en réorganisant notre équation de Schrödinger pour isoler à gauche la dérivée partielle temporelle, nous donne le couple d&#39;équations :</span>
+<span style="color: #228B22"># !bt</span>
+<span style="color: #228B22"># \begin{align}</span>
+<span style="color: #228B22"># \dfrac{\partial \Psi_R (x,t)}{\partial t} &amp;= -\dfrac{\hbar}{2m}</span>
+<span style="color: #228B22">#         \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} +</span>
+<span style="color: #228B22">#         \dfrac{1}{\hbar}U(x)\Psi_I(x,t) \\</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># \dfrac{\partial \Psi_I (x,t)}{\partial t} &amp;= \dfrac{\hbar}{2m}</span>
+<span style="color: #228B22">#                 \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} -</span>
+<span style="color: #228B22">#                 \dfrac{1}{\hbar}U(x)\Psi_R(x,t)</span>
+<span style="color: #228B22"># \end{align}</span>
+<span style="color: #228B22"># !et</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Comme d&#39;habitude je vais discrétiser les dérivées partielles en faisant un DL d&#39;ordre 1 :</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># !bt</span>
+<span style="color: #228B22"># \begin{align}</span>
+<span style="color: #228B22"># \dfrac{\partial \Psi(x,t)}{\partial t} &amp;\approx \dfrac{\Psi(x,</span>
+<span style="color: #228B22">#         t+\Delta t) - \Psi(x,t)}{\Delta t} \\</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># \dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &amp;\approx</span>
+<span style="color: #228B22">#                 \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta</span>
+<span style="color: #228B22">#                 x}^2}</span>
+<span style="color: #228B22"># \end{align}</span>
+<span style="color: #228B22"># !et</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Nous obtenons finalement les équations discrètes, avec $i$ l&#39;indice sur le vecteur $x$ :</span>
+<span style="color: #228B22"># !bt</span>
+<span style="color: #228B22"># \begin{align}</span>
+<span style="color: #228B22"># \Psi_R(i)  &amp;= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta</span>
+<span style="color: #228B22">#         x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e</span>
+<span style="color: #228B22">#         \Delta t}{\hbar}  U(i) \Psi_I(i) \\</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># \Psi_I(i)  &amp;= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta</span>
+<span style="color: #228B22">#                 x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e</span>
+<span style="color: #228B22">#                 \Delta t}{\hbar}  U(i) \Psi_R(i)</span>
+<span style="color: #228B22"># \end{align}</span>
+<span style="color: #228B22"># !et</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Une petite remarque : j&#39;ai introduit la charge élémentaire e dans la valeur du coefficient affectant l&#39;énergie potentielle U : c&#39;est parce que j&#39;exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule.</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Dans mon code, j&#39;ai défini $a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1$, il faut bien faire un choix, ce qui me donne la contrainte sur $\Delta t$ suivante, codée dans la variable `dt : dt = a2*2*m_e*dx**2/hbar`.</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># === Le code Python ===</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># __La propagation du paquet d&#39;ondes__</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Le programme Python pour ce problème est:</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># @@@CODE scripts/Schrodinger_1DLibre.py</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># FIGURE:[scripts/anim2/myimage, width=500 frac=0.8]</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># __Cas d&#39;une barrière de potentiel__</span>
+<span style="color: #228B22"># Le programme Python pour ce problème est:</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># @@@CODE scripts/Schrodinger_1DBar.py</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:</span>
+<span style="color: #228B22">#</span>
+<span style="color: #228B22"># FIGURE:[scripts/anim3/myimage, width=500 frac=0.8]</span>
+</pre></div>
