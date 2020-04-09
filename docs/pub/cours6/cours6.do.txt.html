@@ -303,104 +303,106 @@ Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:
 
 <span style="color: #658b00">FIGURE:[scripts/anim/myimage, width=500 frac=0.8]</span>
 
-<span style="color: #228B22"># ======= L&#39;équation de Schrödinger &quot;time-dependent&quot; =======</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Soit une particule, un électron pour fixer les idées, qui se déplace dans un espace unidimensionnel. Pour étudier son mouvement, nous allons fixer un référentiel. L&#39;apparition de ce mot &quot;référentiel&quot; devrait vous interpeler : la relativité n&#39;est pas loin ! On ne va pas se compliquer la vie et on considérera que la vitesse de la particule est petite devant c, un électron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schrödinger...</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Cet électron bouge dans un espace où il peut subir des interactions avec d&#39;autres systèmes physiques. Dans ce cas, on modélisera ces interactions par une énergie potentielle notée U(x,t). Si l&#39;électron ne subit aucune interaction, U(x,t) sera nulle et notre électron sera dit &quot;libre&quot;.</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># L&#39;équation, analogue à notre deuxième loi de Newton, qui décrit le mouvement de l&#39;électron dans l&#39;espace et le temps est l&#39;équation de Schrödinger. Plus précisément, elle décrit l&#39;évolution de la fonction d&#39;onde qui elle-même décrit l&#39;état quantique de l&#39;électron. Sa forme unidimensionnelle s&#39;écrit :</span>
-<span style="color: #228B22"># !bt</span>
-<span style="color: #228B22"># \begin{align}</span>
-<span style="color: #228B22"># i\hbar \dfrac{\partial \Psi</span>
-<span style="color: #228B22">#         (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi</span>
-<span style="color: #228B22">#         (x,t)}{\partial x^2} + U(x)\Psi(x,t)</span>
-<span style="color: #228B22"># \end{align}</span>
-<span style="color: #228B22"># !et</span>
-<span style="color: #228B22"># avec $m_e$ la masse de l&#39;électron et $\hbar$ la constante de Planck réduite. Je choisis d&#39;utiliser une fonction potentiel U stationnaire (indépendante du temps).</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># C&#39;est une équation linéaire de premier ordre par rapport au temps. Linéaire, c&#39;est à dire que toute combinaison linéaire de solutions particulières de l&#39;équation est aussi solution de l&#39;équation. De premier ordre par rapport au temps, c&#39;est à dire que la connaissance de l&#39;état quantique de la particule à un instant donné, considéré comme l&#39;instant initial $t_0$, permet de calculer son état quantique à n&#39;importe quel instant postérieur à $t_0$.</span>
-<span style="color: #228B22"># ===== L&#39;énoncé du problème =====</span>
-<span style="color: #228B22"># On enferme un électron dans une boite quantique, c&#39;est à dire qu&#39;on se cantonne dans un espace fermé par des barrières de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le schéma suivant de boîte :</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># FIGURE:[imgs/Schro1D_4, width=500 frac=0.8]</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Dans cette boîte, nous déposons un électron et nous voulons déterminer son mouvement. Pour l&#39;instant, notre électron ne rencontre aucune barrière de potentiel dans sa boîte. Il est libre... dans sa boîte ! La fonction U(x) est donc constante et nulle dans la boîte.</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># ===== La simulation de l&#39;évolution d&#39;un électron libre U(x) = 0 =====</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># L&#39;équation de Schrödinger 1D avec U(x) = 0, que l&#39;on écrit $i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2}$ st parfaitement intégrable analytiquement! D&#39;ailleurs, je vous invite à la comparer avec une autre équation que nous avons déjà rencontré: $\dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2}$, &quot;l&#39;équation de diffusion thermique!&quot;: &quot;https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1&quot;  Dans les deux cas, la transformée de Fourier est l&#39;outil privilégié pour ces calculs.</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># === La discrétisation de Schrödinger ===</span>
-<span style="color: #228B22"># La première étape consiste à discrétiser l&#39;équation de Schrödinger. Reprenons donc notre équation de Schrödinger time-dependent dans un espace unidimensionnel :</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># !bt</span>
-<span style="color: #228B22"># \begin{align}</span>
-<span style="color: #228B22"># i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar</span>
-<span style="color: #228B22">#         ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t)</span>
-<span style="color: #228B22"># \end{align}</span>
-<span style="color: #228B22"># !et</span>
-<span style="color: #228B22"># La fonction $\Psi(x,t)$ est une fonction complexe. Je vais la décomposer en sa partie réelle $\Psi_R(x,t)$ et sa partie imaginaire $\Psi_I(x,t)$ et écrire deux équations l&#39;une portant sur sa partie réelle et l&#39;autre sur sa partie imaginaire, ce qui, en réorganisant notre équation de Schrödinger pour isoler à gauche la dérivée partielle temporelle, nous donne le couple d&#39;équations :</span>
-<span style="color: #228B22"># !bt</span>
-<span style="color: #228B22"># \begin{align}</span>
-<span style="color: #228B22"># \dfrac{\partial \Psi_R (x,t)}{\partial t} &amp;= -\dfrac{\hbar}{2m}</span>
-<span style="color: #228B22">#         \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} +</span>
-<span style="color: #228B22">#         \dfrac{1}{\hbar}U(x)\Psi_I(x,t) \\</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># \dfrac{\partial \Psi_I (x,t)}{\partial t} &amp;= \dfrac{\hbar}{2m}</span>
-<span style="color: #228B22">#                 \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} -</span>
-<span style="color: #228B22">#                 \dfrac{1}{\hbar}U(x)\Psi_R(x,t)</span>
-<span style="color: #228B22"># \end{align}</span>
-<span style="color: #228B22"># !et</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Comme d&#39;habitude je vais discrétiser les dérivées partielles en faisant un DL d&#39;ordre 1 :</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># !bt</span>
-<span style="color: #228B22"># \begin{align}</span>
-<span style="color: #228B22"># \dfrac{\partial \Psi(x,t)}{\partial t} &amp;\approx \dfrac{\Psi(x,</span>
-<span style="color: #228B22">#         t+\Delta t) - \Psi(x,t)}{\Delta t} \\</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># \dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &amp;\approx</span>
-<span style="color: #228B22">#                 \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta</span>
-<span style="color: #228B22">#                 x}^2}</span>
-<span style="color: #228B22"># \end{align}</span>
-<span style="color: #228B22"># !et</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Nous obtenons finalement les équations discrètes, avec $i$ l&#39;indice sur le vecteur $x$ :</span>
-<span style="color: #228B22"># !bt</span>
-<span style="color: #228B22"># \begin{align}</span>
-<span style="color: #228B22"># \Psi_R(i)  &amp;= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta</span>
-<span style="color: #228B22">#         x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e</span>
-<span style="color: #228B22">#         \Delta t}{\hbar}  U(i) \Psi_I(i) \\</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># \Psi_I(i)  &amp;= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta</span>
-<span style="color: #228B22">#                 x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e</span>
-<span style="color: #228B22">#                 \Delta t}{\hbar}  U(i) \Psi_R(i)</span>
-<span style="color: #228B22"># \end{align}</span>
-<span style="color: #228B22"># !et</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Une petite remarque : j&#39;ai introduit la charge élémentaire e dans la valeur du coefficient affectant l&#39;énergie potentielle U : c&#39;est parce que j&#39;exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule.</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Dans mon code, j&#39;ai défini $a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1$, il faut bien faire un choix, ce qui me donne la contrainte sur $\Delta t$ suivante, codée dans la variable `dt : dt = a2*2*m_e*dx**2/hbar`.</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># === Le code Python ===</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># __La propagation du paquet d&#39;ondes__</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Le programme Python pour ce problème est:</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># @@@CODE scripts/Schrodinger_1DLibre.py</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># FIGURE:[scripts/anim2/myimage, width=500 frac=0.8]</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># __Cas d&#39;une barrière de potentiel__</span>
-<span style="color: #228B22"># Le programme Python pour ce problème est:</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># @@@CODE scripts/Schrodinger_1DBar.py</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:</span>
-<span style="color: #228B22">#</span>
-<span style="color: #228B22"># FIGURE:[scripts/anim3/myimage, width=500 frac=0.8]</span>
+<span style="color: #000080; font-weight: bold">======= L&#39;équation de Schrödinger &quot;time-dependent&quot; =======</span>
+
+Soit une particule, un électron pour fixer les idées, qui se déplace dans un espace unidimensionnel. Pour étudier son mouvement, nous allons fixer un référentiel. L&#39;apparition de ce mot &quot;référentiel&quot; devrait vous interpeller : la relativité n&#39;est pas loin ! On ne va pas se compliquer la vie et on considérera que la vitesse de la particule est petite devant c, un électron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schrödinger...
+
+Cet électron bouge dans un espace où il peut subir des interactions avec d&#39;autres systèmes physiques. Dans ce cas, on modélisera ces interactions par une énergie potentielle notée U(x,t). Si l&#39;électron ne subit aucune interaction, U(x,t) sera nulle et notre électron sera dit &quot;libre&quot;.
+
+L&#39;équation, analogue à notre deuxième loi de Newton, qui décrit le mouvement de l&#39;électron dans l&#39;espace et le temps est l&#39;équation de Schrödinger. Plus précisément, elle décrit l&#39;évolution de la fonction d&#39;onde qui elle-même décrit l&#39;état quantique de l&#39;électron. Sa forme unidimensionnelle s&#39;écrit :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+i\hbar \dfrac{\partial \Psi
+        (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi
+        (x,t)}{\partial x^2} + U(x)\Psi(x,t)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+avec $m_e$ la masse de l&#39;électron et $\hbar$ la constante de Planck réduite. Je choisis d&#39;utiliser une fonction potentiel U stationnaire (indépendante du temps).
+<span style="color: #658b00">FIGURE:[imgs/schrodinger, width=600 frac=0.4] Erwin Schrödinger (1887-1961).Physicien théoricien de nationalité autrichienne. Il a reçu un prix Nobel de physique 1933 partagé avec Paul Adrien Maurice Dirac &quot;pour la découverte de nouvelles formes productives de la théorie atomique.&quot;</span>
+
+
+C&#39;est une équation linéaire de premier ordre par rapport au temps. Linéaire, c&#39;est à dire que toute combinaison linéaire de solutions particulières de l&#39;équation est aussi solution de l&#39;équation. De premier ordre par rapport au temps, c&#39;est à dire que la connaissance de l&#39;état quantique de la particule à un instant donné, considéré comme l&#39;instant initial $t_0$, permet de calculer son état quantique à n&#39;importe quel instant postérieur à $t_0$.
+<span style="color: #000080; font-weight: bold">===== L&#39;énoncé du problème =====</span>
+On enferme un électron dans une boite quantique, c&#39;est à dire qu&#39;on se cantonne dans un espace fermé par des barrières de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le schéma suivant de boîte :
+
+<span style="color: #658b00">FIGURE:[imgs/Schro1D_4, width=400 frac=0.7] Le potentiel est nul dans la boîte et infini ailleurs.</span>
+
+Dans cette boîte, nous déposons un électron et nous voulons déterminer son mouvement. Pour l&#39;instant, notre électron ne rencontre aucune barrière de potentiel dans sa boîte. Il est libre... dans sa boîte ! La fonction U(x) est donc constante et nulle dans la boîte.
+
+<span style="color: #000080; font-weight: bold">===== La simulation de l&#39;évolution d&#39;un électron libre U(x) = 0 =====</span>
+
+L&#39;équation de Schrödinger 1D avec U(x) = 0, que l&#39;on écrit $i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2}$ st parfaitement intégrable analytiquement! D&#39;ailleurs, je vous invite à la comparer avec une autre équation que nous avons déjà rencontré: $\dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2}$, &quot;l&#39;équation de diffusion thermique!&quot;: &quot;https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1&quot;  Dans les deux cas, la transformée de Fourier est l&#39;outil privilégié pour ces calculs.
+
+<span style="color: #000080; font-weight: bold">=== La discrétisation de Schrödinger ===</span>
+La première étape consiste à discrétiser l&#39;équation de Schrödinger. Reprenons donc notre équation de Schrödinger time-dependent dans un espace unidimensionnel :
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar
+        ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+La fonction $\Psi(x,t)$ est une fonction complexe. Je vais la décomposer en sa partie réelle $\Psi_R(x,t)$ et sa partie imaginaire $\Psi_I(x,t)$ et écrire deux équations l&#39;une portant sur sa partie réelle et l&#39;autre sur sa partie imaginaire, ce qui, en réorganisant notre équation de Schrödinger pour isoler à gauche la dérivée partielle temporelle, nous donne le couple d&#39;équations :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial \Psi_R (x,t)}{\partial t} &amp;= -\dfrac{\hbar}{2m}
+        \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} +
+        \dfrac{1}{\hbar}U(x)\Psi_I(x,t) \\
+
+\dfrac{\partial \Psi_I (x,t)}{\partial t} &amp;= \dfrac{\hbar}{2m}
+                \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} -
+                \dfrac{1}{\hbar}U(x)\Psi_R(x,t)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Comme d&#39;habitude je vais discrétiser les dérivées partielles en faisant un DL d&#39;ordre 1 :
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial \Psi(x,t)}{\partial t} &amp;\approx \dfrac{\Psi(x,
+        t+\Delta t) - \Psi(x,t)}{\Delta t} \\
+
+\dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &amp;\approx
+                \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta
+                x}^2}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Nous obtenons finalement les équations discrètes, avec $i$ l&#39;indice sur le vecteur $x$ :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\Psi_R(i)  &amp;= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta
+        x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e
+        \Delta t}{\hbar}  U(i) \Psi_I(i) \\
+
+\Psi_I(i)  &amp;= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta
+                x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e
+                \Delta t}{\hbar}  U(i) \Psi_R(i)
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+Une petite remarque : j&#39;ai introduit la charge élémentaire e dans la valeur du coefficient affectant l&#39;énergie potentielle U : c&#39;est parce que j&#39;exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule.
+
+Dans mon code, j&#39;ai défini $a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1$, il faut bien faire un choix, ce qui me donne la contrainte sur $\Delta t$ suivante, codée dans la variable `dt : dt = a2*2*m_e*dx**2/hbar`.
+
+<span style="color: #000080; font-weight: bold">=== Le code Python ===</span>
+
+<span style="color: #800080; font-weight: bold">__La propagation du paquet d&#39;ondes__</span>
+
+Le programme Python pour ce problème est:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/Schrodinger_1DLibre.py</span>
+
+Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:
+
+<span style="color: #658b00">FIGURE:[scripts/anim2/myimage, width=500 frac=0.8]</span>
+
+<span style="color: #800080; font-weight: bold">__Cas d&#39;une barrière de potentiel__</span>
+Le programme Python pour ce problème est:
+
+<span style="color: #800080; font-weight: bold">@@@CODE scripts/Schrodinger_1DBar.py</span>
+
+Lors de l&#39;exécution de ce code, nous aurons l&#39;animation ci-dessous:
+
+<span style="color: #658b00">FIGURE:[scripts/anim3/myimage, width=500 frac=0.8]</span>
 </pre></div>

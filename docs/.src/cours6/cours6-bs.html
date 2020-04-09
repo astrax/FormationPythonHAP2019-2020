@@ -79,7 +79,18 @@ $(function () {
                3,
                None,
                '___sec10'),
-              ('Code Python', 3, None, '___sec11')]}
+              ('Code Python', 3, None, '___sec11'),
+              ('L\'équation de Schrödinger "time-dependent"',
+               1,
+               None,
+               '___sec12'),
+              ("L'énoncé du problème", 2, None, '___sec13'),
+              ("La simulation de l'évolution d'un électron libre U(x) = 0",
+               2,
+               None,
+               '___sec14'),
+              ('La discrétisation de Schrödinger', 3, None, '___sec15'),
+              ('Le code Python', 3, None, '___sec16')]}
 end of tocinfo -->
 
 <body>
@@ -129,6 +140,11 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discrétisation du terme \( \dfrac{\partial T}{\partial t} \)</a></li>
      <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discrétisation du terme \( \dfrac{\partial^2 T}{\partial x^2} \)</a></li>
      <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Code Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;"><b>L'équation de Schrödinger "time-dependent"</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'énoncé du problème</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La simulation de l'évolution d'un électron libre U(x) = 0</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La discrétisation de Schrödinger</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le code Python</a></li>
 
         </ul>
       </li>
@@ -161,7 +177,7 @@ MathJax.Hub.Config({
 <center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
 <br>
 <p>
-<center><h4>Mar 31, 2020</h4></center> <!-- date -->
+<center><h4>Apr 9, 2020</h4></center> <!-- date -->
 <br>
 <p>
 <!-- TOC: on -->
@@ -626,107 +642,300 @@ Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
 <p>
 <br /><br /><center><p><img src="scripts/anim/myimage.gif" align="bottom" width=500></p></center><br /><br />
 
+<h1 id="___sec12" class="anchor">L'&#233;quation de Schr&#246;dinger "time-dependent" </h1>
+
 <p>
-<!-- ======= L'&#233;quation de Schr&#246;dinger "time-dependent" ======= -->
-<!--  -->
-<!-- Soit une particule, un &#233;lectron pour fixer les id&#233;es, qui se d&#233;place dans un espace unidimensionnel. Pour &#233;tudier son mouvement, nous allons fixer un r&#233;f&#233;rentiel. L'apparition de ce mot "r&#233;f&#233;rentiel" devrait vous interpeler : la relativit&#233; n'est pas loin ! On ne va pas se compliquer la vie et on consid&#233;rera que la vitesse de la particule est petite devant c, un &#233;lectron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schr&#246;dinger... -->
-<!--  -->
-<!-- Cet &#233;lectron bouge dans un espace o&#249; il peut subir des interactions avec d'autres syst&#232;mes physiques. Dans ce cas, on mod&#233;lisera ces interactions par une &#233;nergie potentielle not&#233;e U(x,t). Si l'&#233;lectron ne subit aucune interaction, U(x,t) sera nulle et notre &#233;lectron sera dit "libre". -->
-<!--  -->
-<!-- L'&#233;quation, analogue &#224; notre deuxi&#232;me loi de Newton, qui d&#233;crit le mouvement de l'&#233;lectron dans l'espace et le temps est l'&#233;quation de Schr&#246;dinger. Plus pr&#233;cis&#233;ment, elle d&#233;crit l'&#233;volution de la fonction d'onde qui elle-m&#234;me d&#233;crit l'&#233;tat quantique de l'&#233;lectron. Sa forme unidimensionnelle s'&#233;crit : -->
-<!-- !bt -->
-<!-- \begin{align} -->
-<!-- i\hbar \dfrac{\partial \Psi -->
-<!-- (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi -->
-<!-- (x,t)}{\partial x^2} + U(x)\Psi(x,t) -->
-<!-- \end{align} -->
-<!-- !et -->
-<!-- avec \( m_e \) la masse de l'&#233;lectron et \( \hbar \) la constante de Planck r&#233;duite. Je choisis d'utiliser une fonction potentiel U stationnaire (ind&#233;pendante du temps). -->
-<!--  -->
-<!-- C'est une &#233;quation lin&#233;aire de premier ordre par rapport au temps. Lin&#233;aire, c'est &#224; dire que toute combinaison lin&#233;aire de solutions particuli&#232;res de l'&#233;quation est aussi solution de l'&#233;quation. De premier ordre par rapport au temps, c'est &#224; dire que la connaissance de l'&#233;tat quantique de la particule &#224; un instant donn&#233;, consid&#233;r&#233; comme l'instant initial \( t_0 \), permet de calculer son &#233;tat quantique &#224; n'importe quel instant post&#233;rieur &#224; \( t_0 \). -->
-<!-- ===== L'&#233;nonc&#233; du probl&#232;me ===== -->
-<!-- On enferme un &#233;lectron dans une boite quantique, c'est &#224; dire qu'on se cantonne dans un espace ferm&#233; par des barri&#232;res de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le sch&#233;ma suivant de bo&#238;te : -->
-<!--  -->
-<!-- FIGURE:[imgs/Schro1D_4, width=500 frac=0.8] -->
-<!--  -->
-<!-- Dans cette bo&#238;te, nous d&#233;posons un &#233;lectron et nous voulons d&#233;terminer son mouvement. Pour l'instant, notre &#233;lectron ne rencontre aucune barri&#232;re de potentiel dans sa bo&#238;te. Il est libre... dans sa bo&#238;te ! La fonction U(x) est donc constante et nulle dans la bo&#238;te. -->
-<!--  -->
-<!-- ===== La simulation de l'&#233;volution d'un &#233;lectron libre U(x) = 0 ===== -->
-<!--  -->
-<!-- L'&#233;quation de Schr&#246;dinger 1D avec U(x) = 0, que l'on &#233;crit \( i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} \) st parfaitement int&#233;grable analytiquement! D'ailleurs, je vous invite &#224; la comparer avec une autre &#233;quation que nous avons d&#233;j&#224; rencontr&#233;: \( \dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2} \), <a href="https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1" target="_self">l'&#233;quation de diffusion thermique!</a>  Dans les deux cas, la transform&#233;e de Fourier est l'outil privil&#233;gi&#233; pour ces calculs. -->
-<!--  -->
-<!-- === La discr&#233;tisation de Schr&#246;dinger === -->
-<!-- La premi&#232;re &#233;tape consiste &#224; discr&#233;tiser l'&#233;quation de Schr&#246;dinger. Reprenons donc notre &#233;quation de Schr&#246;dinger time-dependent dans un espace unidimensionnel : -->
-<!--  -->
-<!-- !bt -->
-<!-- \begin{align} -->
-<!-- i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar -->
-<!-- ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t) -->
-<!-- \end{align} -->
-<!-- !et -->
-<!-- La fonction \( \Psi(x,t) \) est une fonction complexe. Je vais la d&#233;composer en sa partie r&#233;elle \( \Psi_R(x,t) \) et sa partie imaginaire \( \Psi_I(x,t) \) et &#233;crire deux &#233;quations l'une portant sur sa partie r&#233;elle et l'autre sur sa partie imaginaire, ce qui, en r&#233;organisant notre &#233;quation de Schr&#246;dinger pour isoler &#224; gauche la d&#233;riv&#233;e partielle temporelle, nous donne le couple d'&#233;quations : -->
-<!-- !bt -->
-<!-- \begin{align} -->
-<!-- \dfrac{\partial \Psi_R (x,t)}{\partial t} &= -\dfrac{\hbar}{2m} -->
-<!-- \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} + -->
-<!-- \dfrac{1}{\hbar}U(x)\Psi_I(x,t) \\ -->
-<!--  -->
-<!-- \dfrac{\partial \Psi_I (x,t)}{\partial t} &= \dfrac{\hbar}{2m} -->
-<!-- \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} - -->
-<!-- \dfrac{1}{\hbar}U(x)\Psi_R(x,t) -->
-<!-- \end{align} -->
-<!-- !et -->
-<!--  -->
-<!-- Comme d'habitude je vais discr&#233;tiser les d&#233;riv&#233;es partielles en faisant un DL d'ordre 1 : -->
-<!--  -->
-<!-- !bt -->
-<!-- \begin{align} -->
-<!-- \dfrac{\partial \Psi(x,t)}{\partial t} &\approx \dfrac{\Psi(x, -->
-<!-- t+\Delta t) - \Psi(x,t)}{\Delta t} \\ -->
-<!--  -->
-<!-- \dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &\approx -->
-<!-- \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta -->
-<!-- x}^2} -->
-<!-- \end{align} -->
-<!-- !et -->
-<!--  -->
-<!-- Nous obtenons finalement les &#233;quations discr&#232;tes, avec \( i \) l'indice sur le vecteur \( x \) : -->
-<!-- !bt -->
-<!-- \begin{align} -->
-<!-- \Psi_R(i)  &= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta -->
-<!-- x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e -->
-<!-- \Delta t}{\hbar}  U(i) \Psi_I(i) \\ -->
-<!--  -->
-<!-- \Psi_I(i)  &= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta -->
-<!-- x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e -->
-<!-- \Delta t}{\hbar}  U(i) \Psi_R(i) -->
-<!-- \end{align} -->
-<!-- !et -->
-<!--  -->
-<!-- Une petite remarque : j'ai introduit la charge &#233;l&#233;mentaire e dans la valeur du coefficient affectant l'&#233;nergie potentielle U : c'est parce que j'exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule. -->
-<!--  -->
-<!-- Dans mon code, j'ai d&#233;fini \( a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1 \), il faut bien faire un choix, ce qui me donne la contrainte sur \( \Delta t \) suivante, cod&#233;e dans la variable <code>dt : dt = a2*2*m_e*dx**2/hbar</code>. -->
-<!--  -->
-<!-- === Le code Python === -->
-<!--  -->
-<!-- __La propagation du paquet d'ondes__ -->
-<!--  -->
-<!-- Le programme Python pour ce probl&#232;me est: -->
-<!--  -->
-<!-- @@@CODE scripts/Schrodinger_1DLibre.py -->
-<!--  -->
-<!-- Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous: -->
-<!--  -->
-<!-- FIGURE:[scripts/anim2/myimage, width=500 frac=0.8] -->
-<!--  -->
-<!-- __Cas d'une barri&#232;re de potentiel__ -->
-<!-- Le programme Python pour ce probl&#232;me est: -->
-<!--  -->
-<!-- @@@CODE scripts/Schrodinger_1DBar.py -->
-<!--  -->
-<!-- Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous: -->
-<!--  -->
-<!-- FIGURE:[scripts/anim3/myimage, width=500 frac=0.8] -->
+Soit une particule, un &#233;lectron pour fixer les id&#233;es, qui se d&#233;place dans un espace unidimensionnel. Pour &#233;tudier son mouvement, nous allons fixer un r&#233;f&#233;rentiel. L'apparition de ce mot "r&#233;f&#233;rentiel" devrait vous interpeller : la relativit&#233; n'est pas loin ! On ne va pas se compliquer la vie et on consid&#233;rera que la vitesse de la particule est petite devant c, un &#233;lectron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schr&#246;dinger...
+
+<p>
+Cet &#233;lectron bouge dans un espace o&#249; il peut subir des interactions avec d'autres syst&#232;mes physiques. Dans ce cas, on mod&#233;lisera ces interactions par une &#233;nergie potentielle not&#233;e U(x,t). Si l'&#233;lectron ne subit aucune interaction, U(x,t) sera nulle et notre &#233;lectron sera dit "libre".
+
+<p>
+L'&#233;quation, analogue &#224; notre deuxi&#232;me loi de Newton, qui d&#233;crit le mouvement de l'&#233;lectron dans l'espace et le temps est l'&#233;quation de Schr&#246;dinger. Plus pr&#233;cis&#233;ment, elle d&#233;crit l'&#233;volution de la fonction d'onde qui elle-m&#234;me d&#233;crit l'&#233;tat quantique de l'&#233;lectron. Sa forme unidimensionnelle s'&#233;crit :
+$$
+\begin{align}
+i\hbar \dfrac{\partial \Psi
+        (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi
+        (x,t)}{\partial x^2} + U(x)\Psi(x,t)
+\label{_auto12}
+\end{align}
+$$
+
+avec \( m_e \) la masse de l'&#233;lectron et \( \hbar \) la constante de Planck r&#233;duite. Je choisis d'utiliser une fonction potentiel U stationnaire (ind&#233;pendante du temps).
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Erwin Schr&#246;dinger (1887-1961).Physicien th&#233;oricien de nationalit&#233; autrichienne. Il a re&#231;u un prix Nobel de physique 1933 partag&#233; avec Paul Adrien Maurice Dirac "pour la d&#233;couverte de nouvelles formes productives de la th&#233;orie atomique." </p></center>
+<p><img src="imgs/schrodinger.jpg" align="bottom" width=600></p>
+</center>
+
+<p>
+C'est une &#233;quation lin&#233;aire de premier ordre par rapport au temps. Lin&#233;aire, c'est &#224; dire que toute combinaison lin&#233;aire de solutions particuli&#232;res de l'&#233;quation est aussi solution de l'&#233;quation. De premier ordre par rapport au temps, c'est &#224; dire que la connaissance de l'&#233;tat quantique de la particule &#224; un instant donn&#233;, consid&#233;r&#233; comme l'instant initial \( t_0 \), permet de calculer son &#233;tat quantique &#224; n'importe quel instant post&#233;rieur &#224; \( t_0 \).
+
+<h2 id="___sec13" class="anchor">L'&#233;nonc&#233; du probl&#232;me </h2>
+On enferme un &#233;lectron dans une boite quantique, c'est &#224; dire qu'on se cantonne dans un espace ferm&#233; par des barri&#232;res de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le sch&#233;ma suivant de bo&#238;te :
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Le potentiel est nul dans la bo&#238;te et infini ailleurs. </p></center>
+<p><img src="imgs/Schro1D_4.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Dans cette bo&#238;te, nous d&#233;posons un &#233;lectron et nous voulons d&#233;terminer son mouvement. Pour l'instant, notre &#233;lectron ne rencontre aucune barri&#232;re de potentiel dans sa bo&#238;te. Il est libre... dans sa bo&#238;te ! La fonction U(x) est donc constante et nulle dans la bo&#238;te.
+
+<h2 id="___sec14" class="anchor">La simulation de l'&#233;volution d'un &#233;lectron libre U(x) = 0 </h2>
+
+<p>
+L'&#233;quation de Schr&#246;dinger 1D avec U(x) = 0, que l'on &#233;crit \( i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} \) st parfaitement int&#233;grable analytiquement! D'ailleurs, je vous invite &#224; la comparer avec une autre &#233;quation que nous avons d&#233;j&#224; rencontr&#233;: \( \dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2} \), <a href="https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1" target="_self">l'&#233;quation de diffusion thermique!</a>  Dans les deux cas, la transform&#233;e de Fourier est l'outil privil&#233;gi&#233; pour ces calculs.
+
+<h3 id="___sec15" class="anchor">La discr&#233;tisation de Schr&#246;dinger </h3>
+
+La premi&#232;re &#233;tape consiste &#224; discr&#233;tiser l'&#233;quation de Schr&#246;dinger. Reprenons donc notre &#233;quation de Schr&#246;dinger time-dependent dans un espace unidimensionnel :
+
+$$
+\begin{align}
+i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar
+        ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t)
+\label{_auto13}
+\end{align}
+$$
+
+La fonction \( \Psi(x,t) \) est une fonction complexe. Je vais la d&#233;composer en sa partie r&#233;elle \( \Psi_R(x,t) \) et sa partie imaginaire \( \Psi_I(x,t) \) et &#233;crire deux &#233;quations l'une portant sur sa partie r&#233;elle et l'autre sur sa partie imaginaire, ce qui, en r&#233;organisant notre &#233;quation de Schr&#246;dinger pour isoler &#224; gauche la d&#233;riv&#233;e partielle temporelle, nous donne le couple d'&#233;quations :
+$$
+\begin{align}
+\dfrac{\partial \Psi_R (x,t)}{\partial t} &= -\dfrac{\hbar}{2m}
+        \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} +
+        \dfrac{1}{\hbar}U(x)\Psi_I(x,t) 
+\label{_auto14}\\
+\dfrac{\partial \Psi_I (x,t)}{\partial t} &= \dfrac{\hbar}{2m}
+                \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} -
+                \dfrac{1}{\hbar}U(x)\Psi_R(x,t)
+\label{_auto15}
+\end{align}
+$$
+
+<p>
+Comme d'habitude je vais discr&#233;tiser les d&#233;riv&#233;es partielles en faisant un DL d'ordre 1 :
+
+$$
+\begin{align}
+\dfrac{\partial \Psi(x,t)}{\partial t} &\approx \dfrac{\Psi(x,
+        t+\Delta t) - \Psi(x,t)}{\Delta t} 
+\label{_auto16}\\
+\dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &\approx
+                \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta
+                x}^2}
+\label{_auto17}
+\end{align}
+$$
+
+<p>
+Nous obtenons finalement les &#233;quations discr&#232;tes, avec \( i \) l'indice sur le vecteur \( x \) :
+$$
+\begin{align}
+\Psi_R(i)  &= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta
+        x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e
+        \Delta t}{\hbar}  U(i) \Psi_I(i) 
+\label{_auto18}\\
+\Psi_I(i)  &= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta
+                x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e
+                \Delta t}{\hbar}  U(i) \Psi_R(i)
+\label{_auto19}
+\end{align}
+$$
+
+<p>
+Une petite remarque : j'ai introduit la charge &#233;l&#233;mentaire e dans la valeur du coefficient affectant l'&#233;nergie potentielle U : c'est parce que j'exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule.
+
+<p>
+Dans mon code, j'ai d&#233;fini \( a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1 \), il faut bien faire un choix, ce qui me donne la contrainte sur \( \Delta t \) suivante, cod&#233;e dans la variable <code>dt : dt = a2*2*m_e*dx**2/hbar</code>.
+
+<h3 id="___sec16" class="anchor">Le code Python </h3>
+
+<p>
+<b>La propagation du paquet d'ondes</b>
+
+<p>
+Le programme Python pour ce probl&#232;me est:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: Schrodinger_1DLibre.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">Définition des constantes</span>
+<span style="color: #BA2121; font-style: italic">-------------------------</span>
+<span style="color: #BA2121; font-style: italic">Les constantes physiques standards sont tirées </span>
+<span style="color: #BA2121; font-style: italic">du package scipy.constants</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.constants</span> <span style="color: #008000; font-weight: bold">import</span> h, hbar, e, m_e
+
+DeuxPi <span style="color: #666666">=</span> <span style="color: #666666">2.0*</span>np<span style="color: #666666">.</span>pi
+L <span style="color: #666666">=</span> <span style="color: #666666">5.0e-9</span>   <span style="color: #408080; font-style: italic"># dimension de la boite quantique (USI)  </span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du domaine spatial et temporel</span>
+Nx <span style="color: #666666">=</span> <span style="color: #666666">1000</span>    <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine spatial</span>
+xmin <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+xmax <span style="color: #666666">=</span> L
+dx <span style="color: #666666">=</span> (xmax<span style="color: #666666">-</span>xmin)<span style="color: #666666">/</span>Nx
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0.0</span>,L,dx)
+Nt <span style="color: #666666">=</span> <span style="color: #666666">30000</span>   <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine temporel </span>
+a2 <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+dt <span style="color: #666666">=</span> a2<span style="color: #666666">*2*</span>m_e<span style="color: #666666">*</span>dx<span style="color: #666666">**2/</span>hbar
+a3 <span style="color: #666666">=</span> e<span style="color: #666666">*</span>dt<span style="color: #666666">/</span>hbar
+
+<span style="color: #408080; font-style: italic">#%% Définition des paramètres du paquet d&#39;onde inital</span>
+x0 <span style="color: #666666">=</span> x[<span style="color: #008000">int</span>(Nx<span style="color: #666666">/2</span>)]  <span style="color: #408080; font-style: italic"># position initiale du paquet</span>
+sigma <span style="color: #666666">=</span> <span style="color: #666666">2.0e-10</span>    <span style="color: #408080; font-style: italic"># largeur du paquet en m</span>
+Lambda <span style="color: #666666">=</span> <span style="color: #666666">1.5e-10</span>   <span style="color: #408080; font-style: italic"># longeur d&#39;onde de de Broglie l&#39;électron (en m)</span>
+Ec <span style="color: #666666">=</span> (h<span style="color: #666666">/</span>Lambda)<span style="color: #666666">**2/</span>(<span style="color: #666666">2*</span>m_e<span style="color: #666666">*</span>e) <span style="color: #408080; font-style: italic"># énergie cinétique théorique de l&#39;électron (en eV)</span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du potentiel</span>
+U <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)  <span style="color: #408080; font-style: italic"># électron libre dans le puit</span>
+
+<span style="color: #408080; font-style: italic">#%% Initialisation des buffers de calcul aux conditions initiales</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Prob <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+
+<span style="color: #408080; font-style: italic">#%% calcul et affichage de la fonction d&#39;onde initiale</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+<span style="color: #408080; font-style: italic"># Normalisation du paquet d&#39;onde</span>
+Psi_Prob <span style="color: #666666">=</span> Psi_Real<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag<span style="color: #666666">**2</span>
+<span style="color: #408080; font-style: italic">## FIGURE ---&gt; Test</span>
+<span style="color: #408080; font-style: italic">#plt.figure()</span>
+<span style="color: #408080; font-style: italic">#pl1, pl2, pl3 = plt.plot(x, Psi_Real, x, Psi_Imag, x, Psi_Prob)</span>
+<span style="color: #408080; font-style: italic">#plt.legend((pl1, pl2,pl3), (&quot;PSI R&quot;, &quot;PSI Imag&quot;, &quot;Psi Prob&quot;))</span>
+<span style="color: #408080; font-style: italic">#plt.show()</span>
+
+<span style="color: #408080; font-style: italic">#%% Boucle de calcul et d&#39;affichage de l&#39;évolution</span>
+<span style="color: #008000; font-weight: bold">for</span> t <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Nt):
+    plt<span style="color: #666666">.</span>clf()
+    Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">-</span> a2<span style="color: #666666">*</span>(Psi_Imag[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Imag[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">+</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> a2<span style="color: #666666">*</span>(Psi_Real[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Real[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">-</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Prob[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span>
+    <span style="color: #008000; font-weight: bold">if</span> t <span style="color: #666666">%</span> <span style="color: #666666">1000</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+        
+        plt<span style="color: #666666">.</span>figure(<span style="color: #666666">1</span>)
+        plt<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Real,<span style="color: #BA2121">&#39;blue&#39;</span>)
+        plt<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Imag,<span style="color: #BA2121">&#39;red&#39;</span>)
+        plt<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Prob,<span style="color: #BA2121">&#39;green&#39;</span>)
+        plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L<span style="color: #666666">*1.e9</span>,<span style="color: #666666">-1</span>,<span style="color: #666666">1</span>])
+        plt<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
+        plt<span style="color: #666666">.</span>tight_layout()
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim2/&quot;</span><span style="color: #666666">+</span><span style="color: #008000">str</span>(<span style="color: #008000">int</span>(t<span style="color: #666666">%</span>Nt<span style="color: #666666">/1000</span>))<span style="color: #666666">.</span>rjust(<span style="color: #666666">2</span>, <span style="color: #BA2121">&#39;0&#39;</span>)<span style="color: #666666">+</span><span style="color: #BA2121">&quot;.png&quot;</span>)
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim2/myimage.pdf&quot;</span>)
+        plt<span style="color: #666666">.</span>show()
+        plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+</pre></div>
+<p>
+Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="scripts/anim2/myimage.gif" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<b>Cas d'une barri&#232;re de potentiel</b>
+Le programme Python pour ce probl&#232;me est:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: Schrodinger_1DBar.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">Définition des constantes</span>
+<span style="color: #BA2121; font-style: italic">-------------------------</span>
+<span style="color: #BA2121; font-style: italic">Les constantes physiques standards sont tirées </span>
+<span style="color: #BA2121; font-style: italic">du package scipy.constants</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.constants</span> <span style="color: #008000; font-weight: bold">import</span> h, hbar, e, m_e
+
+DeuxPi <span style="color: #666666">=</span> <span style="color: #666666">2.0*</span>np<span style="color: #666666">.</span>pi
+L <span style="color: #666666">=</span> <span style="color: #666666">5.0e-9</span>   <span style="color: #408080; font-style: italic"># dimension de la boite quantique (USI)  </span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du domaine spatial et temporel</span>
+Nx <span style="color: #666666">=</span> <span style="color: #666666">1000</span>    <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine spatial</span>
+xmin <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+xmax <span style="color: #666666">=</span> L
+dx <span style="color: #666666">=</span> (xmax<span style="color: #666666">-</span>xmin)<span style="color: #666666">/</span>Nx
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0.0</span>,L,dx)
+Nt <span style="color: #666666">=</span> <span style="color: #666666">50000</span>   <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine temporel </span>
+a2 <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+dt <span style="color: #666666">=</span> a2<span style="color: #666666">*2*</span>m_e<span style="color: #666666">*</span>dx<span style="color: #666666">**2/</span>hbar
+a3 <span style="color: #666666">=</span> e<span style="color: #666666">*</span>dt<span style="color: #666666">/</span>hbar
+
+<span style="color: #408080; font-style: italic">#%% Définition des paramètres du paquet d&#39;onde inital</span>
+x0 <span style="color: #666666">=</span> x[<span style="color: #008000">int</span>(Nx<span style="color: #666666">/4</span>)]  <span style="color: #408080; font-style: italic"># position initiale du paquet</span>
+sigma <span style="color: #666666">=</span> <span style="color: #666666">2.0e-10</span>    <span style="color: #408080; font-style: italic"># largeur du paquet en m</span>
+Lambda <span style="color: #666666">=</span> <span style="color: #666666">1.5e-10</span>   <span style="color: #408080; font-style: italic"># longeur d&#39;onde de de Broglie l&#39;électron (en m)</span>
+Ec <span style="color: #666666">=</span> (h<span style="color: #666666">/</span>Lambda)<span style="color: #666666">**2/</span>(<span style="color: #666666">2*</span>m_e<span style="color: #666666">*</span>e) <span style="color: #408080; font-style: italic"># énergie cinétique théorique de l&#39;électron (en eV)</span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du potentiel</span>
+U0 <span style="color: #666666">=</span> <span style="color: #666666">80</span>    <span style="color: #408080; font-style: italic"># en eV</span>
+U <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+<span style="color: #408080; font-style: italic">#U[int(Nx/2):] = U0  # définition d&#39;une marche de potentiel</span>
+EppBar <span style="color: #666666">=</span> <span style="color: #666666">30</span> <span style="color: #408080; font-style: italic"># largeur de la barrière en nombre de pas dx (0.15 nm)</span>
+U[<span style="color: #008000">int</span>(Nx<span style="color: #666666">/2</span>):<span style="color: #008000">int</span>(Nx<span style="color: #666666">/2+</span>EppBar)] <span style="color: #666666">=</span> U0 <span style="color: #408080; font-style: italic"># définition d&#39;une barrière de potentiel</span>
+<span style="color: #408080; font-style: italic">#%% Initialisation des buffers de calcul aux conditions initiales</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Prob <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+
+<span style="color: #408080; font-style: italic">#%% calcul et affichage de la fonction d&#39;onde initiale</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+<span style="color: #408080; font-style: italic"># Normalisation du paquet d&#39;onde</span>
+Psi_Prob <span style="color: #666666">=</span> Psi_Real<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag<span style="color: #666666">**2</span>
+<span style="color: #408080; font-style: italic">## FIGURE ---&gt; Test</span>
+<span style="color: #408080; font-style: italic">#plt.figure()</span>
+<span style="color: #408080; font-style: italic">#pl1, pl2, pl3 = plt.plot(x, Psi_Real, x, Psi_Imag, x, Psi_Prob)</span>
+<span style="color: #408080; font-style: italic">#plt.legend((pl1, pl2,pl3), (&quot;PSI R&quot;, &quot;PSI Imag&quot;, &quot;Psi Prob&quot;))</span>
+<span style="color: #408080; font-style: italic">#plt.show()</span>
+
+<span style="color: #408080; font-style: italic">#%% Boucle de calcul et d&#39;affichage de l&#39;évolution</span>
+<span style="color: #008000; font-weight: bold">for</span> t <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Nt):
+    plt<span style="color: #666666">.</span>clf()
+    Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">-</span> a2<span style="color: #666666">*</span>(Psi_Imag[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Imag[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">+</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> a2<span style="color: #666666">*</span>(Psi_Real[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Real[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">-</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Prob[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span>
+    <span style="color: #008000; font-weight: bold">if</span> t <span style="color: #666666">%</span> <span style="color: #666666">1000</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+        
+        fig, ax1 <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplots(num<span style="color: #666666">=1</span>)
+        ax1<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Prob,<span style="color: #BA2121">&#39;green&#39;</span>)
+        ax1<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L<span style="color: #666666">*1.e9</span>,<span style="color: #666666">0</span>,<span style="color: #666666">1</span>])
+        ax1<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&#39;x [nanometre]&#39;</span>)
+        ax1<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;Densite de proba. de detection [m-1]&#39;</span>)
+        ax1<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
+        
+        ax2 <span style="color: #666666">=</span> ax1<span style="color: #666666">.</span>twinx()
+        ax2<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,U,<span style="color: #BA2121">&#39;blue&#39;</span>)
+        ax2<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;U [eV]&#39;</span>)
+        ax2<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L<span style="color: #666666">*1.e9</span>,<span style="color: #666666">0</span>,<span style="color: #666666">90</span>])
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim3/&quot;</span><span style="color: #666666">+</span><span style="color: #008000">str</span>(<span style="color: #008000">int</span>(t<span style="color: #666666">%</span>Nt<span style="color: #666666">/1000</span>))<span style="color: #666666">.</span>rjust(<span style="color: #666666">2</span>, <span style="color: #BA2121">&#39;0&#39;</span>)<span style="color: #666666">+</span><span style="color: #BA2121">&quot;.png&quot;</span>)
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim3/myimage.pdf&quot;</span>)
+        plt<span style="color: #666666">.</span>tight_layout()
+        plt<span style="color: #666666">.</span>show()
+        plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+</pre></div>
+<p>
+Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="scripts/anim3/myimage.gif" align="bottom" width=500></p></center><br /><br />
 
 <!-- ------------------- end of main content --------------- -->
 
