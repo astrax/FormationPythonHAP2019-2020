@@ -305,6 +305,8 @@ FIGURE:[scripts/anim/myimage, width=500 frac=0.8]
 
 ======= L'équation de Schrödinger "time-dependent" =======
 
+MOVIE: [https://www.youtube.com/embed/A7CDdnQ11Hs, width=720 height=415]
+
 Soit une particule, un électron pour fixer les idées, qui se déplace dans un espace unidimensionnel. Pour étudier son mouvement, nous allons fixer un référentiel. L'apparition de ce mot "référentiel" devrait vous interpeller : la relativité n'est pas loin ! On ne va pas se compliquer la vie et on considérera que la vitesse de la particule est petite devant c, un électron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schrödinger...
 
 Cet électron bouge dans un espace où il peut subir des interactions avec d'autres systèmes physiques. Dans ce cas, on modélisera ces interactions par une énergie potentielle notée U(x,t). Si l'électron ne subit aucune interaction, U(x,t) sera nulle et notre électron sera dit "libre".
