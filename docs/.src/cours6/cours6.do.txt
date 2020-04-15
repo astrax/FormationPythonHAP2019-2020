@@ -397,7 +397,7 @@ Le programme Python pour ce problème est:
 
 Lors de l'exécution de ce code, nous aurons l'animation ci-dessous:
 
-FIGURE:[scripts/anim2/myimage, width=500 frac=0.8]
+FIGURE:[scripts/anim2/myimage, width=500 frac=1]
 
 __Cas d'une barrière de potentiel__
 Le programme Python pour ce problème est:
@@ -406,4 +406,248 @@ Le programme Python pour ce problème est:
 
 Lors de l'exécution de ce code, nous aurons l'animation ci-dessous:
 
-FIGURE:[scripts/anim3/myimage, width=500 frac=0.8]
+FIGURE:[scripts/anim3/myimage, width=500 frac=1]
+
+!split
+======= L'équation de Laplace =======
+Nous considérons maintenant les équations elliptiques. L'équation de Poisson en trois dimensions est :
+
+!bt
+\begin{align}
+\dfrac{\partial^2 u(x, y, z)}{\partial x^2} + \dfrac{\partial^2 u(x, y, z)}{\partial y^2} + \dfrac{\partial^2 u(x, y, z)}{\partial z^2} &= - \dfrac{\rho(x,y,z)}{\epsilon_0}
+\end{align}
+!et
+où $u(x, y, z)$ est le champ de potentiel électrique et $\rho(x, y, z)$ est la densité de charge. Par souci de simplicité, cependant, nous étudierons l'équation de Laplace en deux dimensions :
+!bt
+\begin{align}
+\dfrac{\partial^2 u(x, y)}{\partial x^2} + \dfrac{\partial^2 u(x, y)}{\partial y^2}  &= 0
+\end{align}
+!et
+sur le carré $0 ≤ x ≤ L$ et $0 ≤ y ≤ L$ avec une paroi du carré maintenue (la paroi à $y = L$) à un potentiel de $V_0 = 1V$ et les autres parois mises à la terre à $0V$.
+
+FIGURE:[imgs/laplace2D, width=400 frac=0.5] Exemple de problème de valeur limite pour l'équation de Laplace en deux dimensions.
+
+Nous utilisons la séparation des variables
+!bt
+\begin{align}
+u(x, y) &= X(x)Y(y)
+\end{align}
+!et
+pour exprimer l'équation de Laplace comme les équations différentielles ordinaires
+!bt
+\begin{align}
+- \dfrac{X"}{X} &= \dfrac{Y"}{Y} = k^2
+\end{align}
+!et
+où $k$ est une constante de séparation. Les conditions aux limites sont $X (0) = 0$, $X (L) = 0$, $Y (0) = 0$ et $Y (L) = V_0$. Les solutions pour $X$ avec ces conditions aux limites sont
+!bt
+\begin{align}
+X(x) \propto sin(\dfrac{n \pi x}{L}) \quad pour \ n = 1,2,3,\dots
+\end{align}
+!et
+et les constantes de séparation autorisées sont $k_n = n \pi /L$. Les solutions pour $Y$ seront une combinaison linéaire des fonctions sinus hyperbolique et cosinus hyperbolique, mais comme seule la fonction sinus hyperbolique disparaît à $x = 0$, notre solution est de la forme
+!bt
+\begin{align}
+u(x,y) = \sum_{n=1}^{\infty} c_n sin(\dfrac{n \pi x}{L}) sinh(\dfrac{n \pi y}{L})
+\end{align}
+!et
+La condition aux limites finale, $u (x, L) = V_0$, détermine alors les coefficients $c_n$ : on a
+!bt
+\begin{align}
+\sum_{n=1}^{\infty} c_n sinh(n \pi) sin(\dfrac{n \pi x}{L}) &=V_0
+\end{align}
+!et
+Nous multiplions les deux côtés par $sin (m \pi x = L)$ et intégrons de $x = 0$ à $x = L$ pour obtenir
+!bt
+\begin{equation}
+\dfrac{L}{2} sinh(m \pi) = \begin{cases} \dfrac{2LV_0}{m \pi} & \text{pour m impair}\\
+0 & \text{autrement.}
+\end{cases}
+\end{equation}
+!et
+Nous avons donc
+!bt
+\begin{equation}
+c_m = \begin{cases} \dfrac{4V_0}{m \pi \ sinh(m \pi)} & \text{pour m impair}\\
+0 & \text{autrement.}
+\end{cases}
+\end{equation}
+!et
+et la solution de l'équation de Laplace est
+!bt
+\begin{equation}
+u(x,y) = 4 V_0 \sum_{\substack{n=1 \\ n \ impair}}^{\infty} \dfrac{sin(n \pi x/L)}{n \pi} \dfrac{sinh(n \pi y/L)}{sinh(n \pi)}
+\end{equation}
+!et
+Un grand nombre de termes dans cette série sont nécessaires pour calculer avec précision le champ près du mur près de $y = L$ (et surtout aux coins).
+
+La méthode de relaxation peut être utilisée pour les équations elliptiques de la forme
+!bt
+\begin{equation}
+\hat{L} u = \rho
+\end{equation}
+!et
+où $\hat{L}$ est un opérateur elliptique et $\rho$ est un terme source. L'approche consiste à prendre une distribution initiale $u$ qui ne résout pas nécessairement l'équation elliptique et à lui permettre de se détendre à la solution de l'équation en faisant évoluer l'équation de diffusion
+!bt
+\begin{equation}
+\dfrac{\partial u}{\partial t}= \hat{L} u - \rho
+\end{equation}
+!et
+Aux temps tardifs, $t \rightarrow 0$, la solution s'approchera asymptotiquement de la solution stationnaire de l'équation elliptique.
+Pour le problème en question ($\rho = 0$ et $\hat{L}$ est l'opérateur laplacien bidimensionnel), la méthode FTCS appliquée à l'équation de diffusion conduit à
+!bt
+\begin{equation}
+u_{j,k}^{n+1} = u_{j,k}^{n} + \left[ \dfrac{u_{j+1,k}^{n} - 2 u_{j,k}^{n} + u_{j-1,k}^{n}}{(\Delta x)^2} + \dfrac{u_{j,k+1}^{n} - 2 u_{j,k}^{n} + u_{j,k-1}^{n}}{(\Delta y)^2}\right] \Delta t
+\end{equation}
+!et
+où $u_{j,k}^{n} = u^{n}(j \Delta x, k \Delta y)$ et $n$ indique l'itération. Pour simplifier, nous prenons $\Delta x = \Delta y = \Delta$ donc nous avons
+!bt
+\begin{equation}
+u_{j,k}^{n+1} = (1 - \omega) u_{j,k}^{n} + \dfrac{\omega}{4}(u_{j+1,k}^{n} + u_{j-1,k}^{n} + u_{j,k+1}^{n} + u_{j,k-1}^{n}) \label{eq:laplaceFTCS}
+\end{equation}
+!et
+où $\omega = 4 \Delta t /\Delta^2$.
+La stabilité de l'équation de diffusion limite l'ampleur des $\omega$. Nous pouvons déterminer la valeur maximale de $\omega$ en utilisant une analyse de stabilité de von Neumann, mais maintenant nous nous limiterons aux modes propres spatiaux qui satisfont aux conditions aux limites de Dirichlet pour la partie homogène de la solution. Notre approche est donc
+
+!bt
+\begin{equation}
+u_{j,k}^{n} = u^0 \zeta^n(m_x, m_y) sin(\dfrac{m_x \pi j \Delta}{L}) sin(\dfrac{m_y \pi k \Delta}{L}) label{eq:approche}
+\end{equation}
+!et
+où $m_x$ et $m_y$ sont respectivement les numéros de mode dans les directions $x$ et $y$. En substituant cette approche à l'Eq. (ref{eq:laplaceFTCS}) on trouve
+!bt
+\begin{equation}
+\zeta(m_x, m_y) = 1 - \omega + \dfrac{\omega}{2} \left( cos(\dfrac{m_x \pi \Delta}{L}) + cos(\dfrac{m_y \pi \Delta}{L}) \right) \label{eq:zeta}
+\end{equation}
+!et
+et nous voyons que la stabilité est atteinte, c'est-à-dire que $| \zeta(m_x, m_y) | \le 1$ pour tout mode donné par $(m_x, m_y)$, si $\omega \le 1$. Si nous prenons maintenant la plus grande valeur de $\Delta t = \Delta^2 / 4$ permise pour une itération stable correspondant à $\omega = 1$, nous obtenons l'itération suivante schème:
+!bt
+\begin{equation}
+u_{j,k}^{n+1} = \dfrac{1}{4} (u_{j+1,k}^{n}+u_{j-1,k}^{n}+u_{j,k+1}^{n}+u_{j,k-1}^{n})
+\end{equation}
+!et
+On voit ici que la valeur du champ à un point de réseau donné $(j, k)$ à l'étape $n + 1$ est égale à la moyenne des valeurs du champ aux points voisins à l'étape $n$. Ceci est connu comme *la méthode de Jacobi*.
+
+Le programme `Laplace_relax.py` implémente la méthode de Jacobi pour notre problème de modèle. Le nombre de points de grille de chaque côté, $N$, est entré. Les résultats obtenus pour $N = 20$ points sont présentés sur la figure ref{fig:`Laplace_relax}.
+
+@@@CODE scripts/Laplace_relax.py
+
+#FIGURE:[scripts/anim4/output, width=400 frac=1]
+
+FIGURE:[scripts/Laplace_relax, width=500 frac=.7] Résultats de l'exécution du programme `Laplace_relax.py` avec les paramètres N = 20 points de grille de chaque côté. La solution est obtenue après 386 itérations. label{fig:`Laplace_relax}
+
+Dans le programme `Laplace_relax.py`, l'itération s'est poursuivie jusqu'à ce que l'erreur moyenne par point de maillage soit inférieure à $\epsilon = 10^{-5}$ où l'erreur a été estimée en prenant la différence entre l'ancienne valeur à l'étape $n$ et la nouvelle valeur à l'étape $n + 1$. Le nombre d'itérations nécessaires à la convergence dépend du mode propre en décomposition le plus lent de l'itération. Le module du mode de décomposition le plus lent est connu sous le nom de *rayon spectral*
+!bt
+\begin{equation}
+\rho = max_{m_x, m_y} |\zeta(m_x, m_y)|.
+\end{equation}
+!et
+De l'Eq. (ref{eq:zeta}) nous voyons que pour la méthode de Jacobi avec $\omega = 1$ nous avons
+!bt
+\begin{equation}
+\rho = \rho_J = cos(\dfrac{\pi \Delta}{L}).
+\end{equation}
+!et
+ce qui correspond au mode $m_x = m_y = 1$. Chaque itération multiplie l'erreur résiduelle dans ce mode le moins amorti par un facteur de module $\rho$ et donc le nombre d'itérations nécessaires pour atteindre la tolérance d'erreur souhaitée $\epsilon$ sera
+!bt
+\begin{equation}
+n = \dfrac{ln \epsilon}{ln \rho}.
+\end{equation}
+!et
+Pour la méthode Jacobi, $\rho_J = 1 - \dfrac{1}{2} (\pi/N)$ et ainsi
+!bt
+\begin{equation}
+n \approx \dfrac{2 |ln \epsilon|}{\pi^2} N^2.
+\end{equation}
+!et
+Notez que si nous doublons le nombre de points de grille $N$, nous avons besoin de quatre fois plus d'itérations pour converger. Pour les problèmes pratiques, la méthode de Jacobi converge trop lentement pour être utile.
+
+Pour progresser, considérons à nouveau l'Eq. (ref{eq:laplaceFTCS}) et notons que si nous imaginons que notre grille de calcul est divisée en points clairs et sombres décalés, comme le montre la figure ref{fig:lattice}, puis pour mettre à jour la valeur d'un point blanc, nous n'avons besoin que de la valeur actuelle à ce point blanc et des valeurs des points sombres voisins et vice versa pour mettre à jour la valeur d'un point sombre.
+
+FIGURE:[imgs/lattice, width=400 frac=.5] Un réseau décalé de points sombres et clairs pour une utilisation en sur-relaxation successive. Les points gris font partie de la frontière et ne sont pas évolués. Pour mettre à jour un point blanc ne nécessite que la valeur précédente du point blanc et des points sombres environnants et de même pour mettre à jour un point noir ne nécessite que la valeur précédente des points noirs et des points clairs environnants. label{fig:lattice}
+
+Ainsi, nous pouvons adopter une approche échelonnée où nous mettons à jour tous les points blancs, puis nous mettons à jour tous les points noirs et les deux étapes peuvent être effectuées sur place. Pour les étapes où $n$ est un entier, nous calculons les valeurs des points blancs en utilisant la formule
+
+!bt
+\begin{equation}
+u_{j,k}^{n+1} = (1 - \omega) u_{j,k}^{n} + \dfrac{\omega}{4}(u_{j+1,k}^{n+1/2} + u_{j-1,k}^{n+1/2} + u_{j,k+1}^{n+1/2} + u_{j,k-1}^{n+1/2}) \label{eq:surrelax2D}
+\end{equation}
+!et
+puis pour les étapes où n est un demi-entier, nous utilisons la même formule pour calculer les valeurs des points noirs. Nous pouvons répéter l'analyse de stabilité en utilisant l'approche de l'équation. (ref{eq:approche}) et nous trouvons
+!bt
+\begin{equation}
+\zeta^{1/2}(m_x, m_y) = \dfrac{\omega c \pm \sqrt{\omega^2 c^2 - 4(\omega -1)}}{2}
+\end{equation}
+!et
+où
+!bt
+\begin{equation}
+c =\dfrac{1}{2} (cos(\dfrac{m_x \pi \Delta}{L}) + cos(\dfrac{m_y \pi \Delta}{L}))
+\end{equation}
+!et
+Cela révèle que le schéma de l'Eq. (ref{eq:surrelax2D}) est stable pour $0 < \omega < 2$. Lorsque $\omega = 1$, la méthode est connue sous le nom de méthode Gauss-Seidel, qui converge un peu plus rapidement que la méthode Jacobi. Pour $\omega> 1$, nous avons accéléré la convergence (par rapport à la relaxation) qui est connue sous le nom de sur-relaxation successive ou SOR (Successive Over-Relaxation, en anglais). Le paramètre $\omega$ est connu comme le paramètre de sur-relaxation.
+
+Il existe une valeur optimale pour le paramètre de sur-relaxation pour lequel le rayon spectral est minimisé. Si nous nous concentrons sur le mode le moins amorti pour lequel $m_x = m_y = 1$, nous avons $c = \rho_J$ et donc le rayon spectral en fonction de $\omega$ peut être écrit comme
+
+!bt
+\begin{equation}
+\rho(\omega) = \begin{cases} \left[ \dfrac{1}{2} \omega \rho_J + \dfrac{1}{2} \sqrt{\omega^2 \rho_J^2 - 4(\omega - 1)} \right]^2 & \quad pour \ 0 < \omega \le \omega_{opt}\\
+\omega -1 & \quad pour  \ \omega_{opt} \le \omega <2
+\end{cases}
+\end{equation}
+!et
+où $\omega_{opt}$ est le choix optimal qui minimise $\rho$,
+!bt
+\begin{equation}
+\omega_{opt} = \dfrac{2}{1 + \sqrt{1 - \rho_J^2}} =  \dfrac{2}{1 + sin(\pi \Delta/L)} \quad pour \ \rho_J = cos(\pi \Delta/L).
+\end{equation}
+!et
+Ainsi, ou le choix optimal du paramètre de sur-relaxation, $\omega = \omega_{opt} \approx \pi = N$, le rayon spectral est
+!bt
+\begin{equation}
+\rho(\omega_{opt})= \rho_{opt} =  \dfrac{1 - sin(\pi \Delta/L)}{1 + sin(\pi \Delta/L)} \approx 1 - \dfrac{2\pi}{N}
+\end{equation}
+!et
+et le nombre d'itérations nécessaires pour réduire l'erreur à une certaine tolérance $\epsilon$ est
+!bt
+\begin{equation}
+n \approx \dfrac{ln \epsilon}{ln \rho_{opt}} \approx \dfrac{|ln \epsilon|}{2 \pi} N.
+\end{equation}
+!et
+Maintenant, le nombre d'itérations est proportionnel à $N$ plutôt qu'à $N^2$, donc la convergence est atteinte beaucoup plus rapidement pour les grandes valeurs de $N$.
+
+Le programme `Laplace_surrelax.py` est une modification de `Laplace_relax.py` qui implémente une sur-relaxation successive. Le programme diffère dans de nombreux endroits, il est donc répertorié dans son intégralité. Les résultats pour $N = 100$ points le long d'un côté sont affichés sur la figure ref{fig:`Laplace_surrelax}. La convergence se produit en 137 itérations.
+
+@@@CODE scripts/Laplace_surrelax.py
+
+#FIGURE:[scripts/anim5/output, width=400 frac=1]
+
+FIGURE:[scripts/Laplace_surrelax, width=500 frac=.7] Résultats de l'exécution du programme `LaplaceJacobi_surrelax.py` avec les paramètres N = 100 points de grille le long de chaque côté. La solution est obtenue après 137 itérations. label{fig:`Laplace_surrelax}
+
+Comme dernier exemple, résolvons le potentiel électrique produit par une charge ponctuelle centrée dans un cube avec des bords de longueur $2L$ dans laquelle les faces du cube sont mises à la terre comme le montre la figure ref{fig:laplace3D}.
+
+FIGURE:[imgs/laplace3D, width=400 frac=.5] Exemple de problème de valeur limite pour l'équation de Poisson : une charge ponctuelle $q$ est située au centre d'un cube de longueur d'arête $2L$ dont les faces sont mises à la terre. label{fig:laplace3D}
+
+Il s'agit maintenant d'un problème tridimensionnel que nous pouvons à nouveau résoudre en utilisant une sur-relaxation successive, et notre équation d'itération comprend désormais également un terme source:
+!bt
+\begin{equation}
+u_{i,j,k}^{n+1} = (1 - \omega) u_{i,j,k}^{n} + \dfrac{\omega}{6}(u_{i+1,j,k}^{n+1/2} + u_{i-1,j,k}^{n+1/2} + u_{i,j+1,k}^{n+1/2} + u_{i,j-1,k}^{n+1/2} + u_{i,j,k+1}^{n+1/2} + u_{i,j,k-1}^{n+1/2}) + \dfrac{\omega}{6} \dfrac{\rho_{i,j,k}}{\epsilon_0} \label{eq:surrelax3D}
+\end{equation}
+!et
+Encore une fois, nous divisons le réseau de points de la grille en pixels «blancs» et «noirs» alternés et résolvons les pixels blancs sur les pas entiers et les pixels noirs sur les pas demi-entiers. La charge ponctuelle nous donne une densité de charge que nous considérons comme étant
+!bt
+\begin{equation}
+\rho_{i,j,k} = \begin{cases} \dfrac{q}{\Delta^3} & \quad pour \ i = j = k = (N-1)/2\\
+ 0 & \text{autrement}
+\end{cases}
+\end{equation}
+!et
+et nous devons être sûrs de choisir une valeur impaire pour $N$ afin qu'il y ait un point de grille au centre exact de la boîte.
+
+Le programme `charge.py` répertorié ci-dessous calcule le champ de potentiel électrique dans la boîte mise à la terre pour une unité $q = \epsilon_0 = 1$ charge. Les résultats sont présentés sur la figure ref{fig:charge}.
+
+@@@CODE scripts/charge.py
+
+#FIGURE:[scripts/anim6/output, width=400 frac=1]
+
+FIGURE:[scripts/charge, width=500 frac=.7] Résultats de l'exécution du programme `charge.py` avec des paramètres N = 50 points de grille le long de chaque côté. label{fig:charge}
