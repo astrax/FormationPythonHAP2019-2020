@@ -1,0 +1,331 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="TD N°6 : Résolution des équations aux dérivées partielles">
+
+<title>TD N°6 : Résolution des équations aux dérivées partielles</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+<script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Table des matières',
+               2,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Exercice 1: Équation de la chaleur 2D', 2, None, '___sec0'),
+              ('Exercice 2: Condensateur plan', 2, None, '___sec1')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="TD6.html">TD N°6 : Résolution des équations aux dérivées partielles</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table des matières</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Exercice 1: Équation de la chaleur 2D</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Exercice 2: Condensateur plan</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>TD N&#176;6 : R&#233;solution des &#233;quations aux d&#233;riv&#233;es partielles</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Apr 22, 2020</h4></center> <!-- date -->
+<br>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table des matières</h2>
+
+<p>
+<a href="#___sec0"> Exercice 1: &#201;quation de la chaleur 2D </a><br>
+<a href="#___sec1"> Exercice 2: Condensateur plan </a><br>
+</p>
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec0" class="anchor">Exercice 1: &#201;quation de la chaleur 2D </h2>
+
+<p>
+On consid&#232;re une plaque de fer carr&#233;e de c&#244;t&#233; L = 10 mm, de coefficient de diffusion D = 4 \( mm^2.s^{-1} \).
+
+<p>
+L'&#233;quation de diffusion bidimensionnelle est
+$$
+\begin{equation}
+\frac{\partial U}{\partial t} = D\left(\frac{\partial^2U}{\partial x^2} + \frac{\partial^2U}{\partial y^2} \right)
+\label{_auto1}
+\end{equation}
+$$
+
+Consid&#233;rons l'&#233;quation de diffusion appliqu&#233;e &#224; une plaque m&#233;tallique carr&#233;e de c&#244;t&#233; L = 10 mm, de coefficient de diffusion D = 4 \( mm^2.s^{-1} \). La plaque est initialement &#224; la temp&#233;rature \( T_{froid} = 300 \ K \) en dehors d'un disque (centr&#233; sur \( x_c \) = 5, \( y_c \) =5 et de rayon r = 2 mm) qui est &#224; la temp&#233;rature \( T_{chaud} = 1000 \ K \). Nous supposons que les bords de la plaque sont maintenus fixes &#224; \( T_{froid} \).
+
+<p>
+<b>a)</b>
+Rappeler la d&#233;finition d'un sch&#233;ma FTCS et donner l&#8217;approximation num&#233;rique de l'&#233;quation de chaleur 2D.
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>b)</b>
+Quelle est la valeur du temps maximum \( \Delta t \) que nous pouvons autoriser sans que le processus ne devienne instable?
+
+<p>
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
+ -->
+<p>
+<b>c)</b>
+Terminer lorsqu'il y a des points d'interrogation (\( ??? \)) dans le script Python <code>EquDiff2D.py</code> ci-dessous afin d'obtenir la sortie comme indiqu&#233; dans la figure <a href="#fig:EquDiff2D">1</a>.
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+## NOM DU PROGRAMME: EquDiff2D.py
+#% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+# taille de la plaque, en [mm]
+L = 10.
+# intervalles dans les directions x, y, en [mm]
+dx = dy = 0.1
+# Coefficient de diffusion thermique de l'acier, en [mm2.s-1]
+D = 4.
+Tfroid, Tchaud = 300, 1000
+# Nombre de pas de temps
+nsteps = 250
+nx, ny = int(L/dx), int(L/dy)
+dx2, dy2 = dx*dx, dy*dy
+# pas de temps maximum, dans question b)
+dt = ???
+u = Tfroid * np.ones((nx, ny))
+# Conditions initiales - disque de rayon r, centrée sur (cx, cy), en [mm]
+r, cx, cy = 2, 5, 5
+r2 = r**2
+for i in range(nx):
+    for j in range(ny):
+        p2 = ???
+        if p2 < r2:
+            u[i,j] = Tchaud
+# Sortie de 4 graphiques à quatre instants dans l'intervalle de temps
+mfig = [0, 50, 100, 200]
+fignum = 0 # initialisation
+fig = plt.figure()
+# implémentation du schéma FTCS
+for m in range(nsteps):
+    for i in range(1, nx-1):
+        for j in range(1, ny-1):
+            uxx = ???
+            uyy = ???
+            u[i,j] += ???
+    if m in mfig:
+        fignum += 1
+        print(m, fignum)
+        ax = fig.add_subplot(220 + fignum)
+        im = ax.imshow(u, cmap=plt.get_cmap('hot'), vmin=Tfroid,vmax=Tchaud)
+        ax.set_axis_off()
+        ax.set_title('{:.1f} ms'.format(m*dt*1000))
+fig.subplots_adjust(right=0.85)
+cbar_ax = fig.add_axes([0.9, 0.15, 0.03, 0.7])
+cbar_ax.set_xlabel('T [K]', labelpad=20)
+fig.colorbar(im, cax=cbar_ax)
+plt.savefig("EquDiff2D.png"); plt.savefig("EquDiff2D.pdf")
+plt.show()
+
+</script></div>
+<p>
+<center> <!-- figure label: --> <div id="fig:EquDiff2D"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:   <!-- caption label: fig:EquDiff2D --> </p></center>
+<p><img src="scripts/EquDiff2D.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<!-- !split -->
+<!-- ===== Exercice:  Une &#233;quation d&#8217;onde en deux dimensions ===== -->
+<!-- Modifiez l&#8217;exemple d&#8217;int&#233;gration en temps explicite de l&#8217;&#233;quation de la chaleur en deux dimensions (vu ci-dessus) pour traiter (toujours en deux dimensions) l&#8217;&#233;quation d&#8217;ondes suivante -->
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- !split -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="___sec1" class="anchor">Exercice 2: Condensateur plan </h2>
+
+<p>
+R&#233;soudre l'&#233;quation de Laplace en deux dimensions pour le potentiel dans un condensateur plan
+$$
+\begin{align}
+\dfrac{\partial^2 u(x, y)}{\partial x^2} + \dfrac{\partial^2 u(x, y)}{\partial y^2}  &= 0
+\label{_auto4}
+\end{align}
+$$
+
+Soit un condensateur &#224; plaques parall&#232;les avec des potentiels V = \( \pm \) 1 V contenus dans une r&#233;gion carr&#233;e mise &#224; la terre de longueur lat&#233;rale L comme indiqu&#233; sur la figure <a href="#fig:laplace2DExercice">2</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:laplace2DExercice"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:   <!-- caption label: fig:laplace2DExercice --> </p></center>
+<p><img src="imgs/laplace2DExercice.png" align="bottom" width=400></p>
+</center>
+
+<p>
+<b>a)</b>
+Rappeler la d&#233;finition de la m&#233;thode Gauss-Seidel et donner l&#8217;approximation num&#233;rique de l'&#233;quation de Laplace 2D.
+
+<p>
+<b>b)</b>
+Adapter le script <code>Laplace_surrelax.py</code> &#233;tudi&#233; dans le cours afin d'avoir les r&#233;sultats sur les figures <a href="#fig:Laplace_condensateur2D">3</a> et <a href="#fig:Laplace_condensateur3D">4</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:Laplace_condensateur2D"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:   <!-- caption label: fig:Laplace_condensateur2D --> </p></center>
+<p><img src="scripts/Laplace_condensateur2D.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<center> <!-- figure label: --> <div id="fig:Laplace_condensateur3D"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:   <!-- caption label: fig:Laplace_condensateur3D --> </p></center>
+<p><img src="scripts/Laplace_condensateur3D.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<!-- --- end exercise --- -->
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+

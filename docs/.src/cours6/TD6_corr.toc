@@ -1,0 +1,7 @@
+\contentsline {paragraph}{a)}{1}{section*.3}
+\contentsline {paragraph}{Solution.}{1}{section*.4}
+\contentsline {paragraph}{b)}{2}{section*.5}
+\contentsline {paragraph}{Solution.}{2}{section*.6}
+\contentsline {paragraph}{c)}{2}{section*.7}
+\contentsline {paragraph}{a)}{3}{section*.9}
+\contentsline {paragraph}{b)}{3}{section*.10}

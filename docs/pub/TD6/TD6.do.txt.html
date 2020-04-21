@@ -1,0 +1,127 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: TD N°6 : Résolution des équations aux dérivées partielles</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise:  Équation de la chaleur 2D =====</span>
+On considère une plaque de fer carrée de côté L = 10 mm, de coefficient de diffusion D = 4 $mm^2.s^{-1}$.
+
+L&#39;équation de diffusion bidimensionnelle est
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\frac{\partial U}{\partial t} = D\left(\frac{\partial^2U}{\partial x^2} + \frac{\partial^2U}{\partial y^2} \right)
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Considérons l&#39;équation de diffusion appliquée à une plaque métallique carrée de côté L = 10 mm, de coefficient de diffusion D = 4 $mm^2.s^{-1}$. La plaque est initialement à la température $T_{froid} = 300 \ K$ en dehors d&#39;un disque (centré sur $x_c$ = 5, $y_c$ =5 et de rayon r = 2 mm) qui est à la température $T_{chaud} = 1000 \ K$. Nous supposons que les bords de la plaque sont maintenus fixes à $T_{froid}$.
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Rappeler la définition d&#39;un schéma FTCS et donner l’approximation numérique de l&#39;équation de chaleur 2D.
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+Le schéma FTCS (Forward Time Centred Space) est un schéma explicite d&#39;ordre 1 en temps et d&#39;ordre 2 en espace. Il s&#39;agit de discrétiser les deux dérivées partielles en utilisant un développement de Taylor. Le membre de gauche peut donc s&#39;écrire en approximant :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+u_{i,j}^{(n+1)} = u_{i,j}^{(n)} + D\Delta t\left[ \frac{u_{i+1,j}^{(n)} - 2u_{i,j}^{(n)} + u_{i-1,j}^{(n)}}{(\Delta x)^2} + \frac{u_{i,j+1}^{(n)} - 2u_{i,j}^{(n)} + u_{i,j-1}^{(n)}}{(\Delta y)^2} \right].
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Quelle est la valeur du temps maximum $\Delta t$ que nous pouvons autoriser sans que le processus ne devienne instable?
+<span style="color: #8B008B; font-weight: bold">!bsol</span>
+On peut montrer que le pas de temps maximum, $\Delta t$ que nous pouvons autoriser sans que le processus ne devienne instable est :
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+\Delta t = \frac{1}{2D}\frac{(\Delta x\Delta y)^2}{(\Delta x)^2 + (\Delta y)^2}.
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!esol</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Terminer lorsqu&#39;il y a des points d&#39;interrogation ($???$) dans le script Python `EquDiff2D.py` ci-dessous afin d&#39;obtenir la sortie comme indiqué dans la figure ref{fig:EquDiff2D}.
+<span style="color: #8B008B; font-weight: bold">!bc</span> pyscpro
+<span style="color: #228B22">## NOM DU PROGRAMME: EquDiff2D.py</span>
+<span style="color: #228B22">#% IMPORTATION</span>
+import numpy as np
+import matplotlib.pyplot as plt
+<span style="color: #228B22"># taille de la plaque, en [mm]</span>
+L = 10.
+<span style="color: #228B22"># intervalles dans les directions x, y, en [mm]</span>
+dx = dy = 0.1
+<span style="color: #228B22"># Coefficient de diffusion thermique de l&#39;acier, en [mm2.s-1]</span>
+D = 4.
+Tfroid, Tchaud = 300, 1000
+<span style="color: #228B22"># Nombre de pas de temps</span>
+nsteps = 250
+nx, ny = int(L/dx), int(L/dy)
+dx2, dy2 = dx*dx, dy*dy
+<span style="color: #228B22"># pas de temps maximum, dans question b)</span>
+dt = ???
+u = Tfroid * np.ones((nx, ny))
+<span style="color: #228B22"># Conditions initiales - disque de rayon r, centrée sur (cx, cy), en [mm]</span>
+r, cx, cy = 2, 5, 5
+r2 = r**2
+for i in range(nx):
+    for j in range(ny):
+        p2 = ???
+        if p2 &lt; r2:
+            u[i,j] = Tchaud
+<span style="color: #228B22"># Sortie de 4 graphiques à quatre instants dans l&#39;intervalle de temps</span>
+mfig = [0, 50, 100, 200]
+fignum = 0 # initialisation
+fig = plt.figure()
+<span style="color: #228B22"># implémentation du schéma FTCS</span>
+for m in range(nsteps):
+    for i in range(1, nx-1):
+        for j in range(1, ny-1):
+            uxx = ???
+            uyy = ???
+            u[i,j] += ???
+    if m in mfig:
+        fignum += 1
+        print(m, fignum)
+        ax = fig.add_subplot(220 + fignum)
+        im = ax.imshow(u, cmap=plt.get_cmap(&#39;hot&#39;), vmin=Tfroid,vmax=Tchaud)
+        ax.set_axis_off()
+        ax.set_title(&#39;{:.1f} ms&#39;.format(m*dt*1000))
+fig.subplots_adjust(right=0.85)
+cbar_ax = fig.add_axes([0.9, 0.15, 0.03, 0.7])
+cbar_ax.set_xlabel(&#39;T [K]&#39;, labelpad=20)
+fig.colorbar(im, cax=cbar_ax)
+plt.savefig(&quot;EquDiff2D.png&quot;); plt.savefig(&quot;EquDiff2D.pdf&quot;)
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+<span style="color: #658b00">FIGURE:[scripts/EquDiff2D, width=500 frac=0.8] label{fig:EquDiff2D}</span>
+
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+<span style="color: #228B22"># !split</span>
+<span style="color: #228B22"># ===== Exercise:  Une équation d’onde en deux dimensions =====</span>
+<span style="color: #228B22"># Modifiez l’exemple d’intégration en temps explicite de l’équation de la chaleur en deux dimensions (vu ci-dessus) pour traiter (toujours en deux dimensions) l’équation d’ondes suivante</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Exercise:  Condensateur plan =====</span>
+Résoudre l&#39;équation de Laplace en deux dimensions pour le potentiel dans un condensateur plan
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\dfrac{\partial^2 u(x, y)}{\partial x^2} + \dfrac{\partial^2 u(x, y)}{\partial y^2}  &amp;= 0
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Soit un condensateur à plaques parallèles avec des potentiels V = $\pm$ 1 V contenus dans une région carrée mise à la terre de longueur latérale L comme indiqué sur la figure ref{fig:laplace2DExercice}.
+
+<span style="color: #658b00">FIGURE:[imgs/laplace2DExercice, width=400 frac=0.5] label{fig:laplace2DExercice}</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Rappeler la définition de la méthode Gauss-Seidel et donner l’approximation numérique de l&#39;équation de Laplace 2D.
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+
+<span style="color: #8B008B; font-weight: bold">!bsubex</span>
+Adapter le script `Laplace_surrelax.py` étudié dans le cours afin d&#39;avoir les résultats sur les figures ref{fig:Laplace_condensateur2D} et ref{fig:Laplace_condensateur3D}.
+
+<span style="color: #658b00">FIGURE:[scripts/Laplace_condensateur2D, width=500 frac=1] label{fig:Laplace_condensateur2D}</span>
+
+<span style="color: #658b00">FIGURE:[scripts/Laplace_condensateur3D, width=500 frac=1] label{fig:Laplace_condensateur3D}</span>
+<span style="color: #8B008B; font-weight: bold">!esubex</span>
+</pre></div>

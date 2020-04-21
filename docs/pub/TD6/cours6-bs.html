@@ -1,0 +1,1495 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Résolution des équations aux dérivées partielles">
+
+<title>Résolution des équations aux dérivées partielles</title>
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:60px;      /* fixed header height for style bootswatch_journal */
+  margin:-60px 0 0; /* negative fixed header height */
+}
+
+body { font-size:20px;line-height:1.5; }
+</style>
+
+
+<script src="https://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Équation de diffusion thermique', 1, None, '___sec1'),
+              ('La conduction thermique dans les solides', 2, None, '___sec2'),
+              ("Notion de flux d'énergie", 2, None, '___sec3'),
+              ("L'expression de la loi de Fourier", 2, None, '___sec4'),
+              ('Comment obtenir cette équation?', 2, None, '___sec5'),
+              ("Résolution numérique de l'équation de diffusion thermique",
+               2,
+               None,
+               '___sec6'),
+              ('Le modèle physique', 3, None, '___sec7'),
+              ('Principe de la résolution numérique', 3, None, '___sec8'),
+              ('Discrétisation du terme $\\dfrac{\\partial T}{\\partial t}$',
+               3,
+               None,
+               '___sec9'),
+              ('Discrétisation du terme $\\dfrac{\\partial^2 T}{\\partial '
+               'x^2}$',
+               3,
+               None,
+               '___sec10'),
+              ('Code Python', 3, None, '___sec11'),
+              ('L\'équation de Schrödinger "time-dependent"',
+               1,
+               None,
+               '___sec12'),
+              ("L'énoncé du problème", 2, None, '___sec13'),
+              ("La simulation de l'évolution d'un électron libre U(x) = 0",
+               2,
+               None,
+               '___sec14'),
+              ('La discrétisation de Schrödinger', 3, None, '___sec15'),
+              ('Le code Python', 3, None, '___sec16'),
+              ("L'équation de Laplace", 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="cours6-bs.html">Résolution des équations aux dérivées partielles</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contenu <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Équation de diffusion thermique</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La conduction thermique dans les solides</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notion de flux d'énergie</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'expression de la loi de Fourier</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comment obtenir cette équation?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Résolution numérique de l'équation de diffusion thermique</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le modèle physique</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principe de la résolution numérique</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discrétisation du terme \( \dfrac{\partial T}{\partial t} \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discrétisation du terme \( \dfrac{\partial^2 T}{\partial x^2} \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Code Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;"><b>L'équation de Schrödinger "time-dependent"</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;L'énoncé du problème</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;La simulation de l'évolution d'un électron libre U(x) = 0</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La discrétisation de Schrödinger</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Le code Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><b>L'équation de Laplace</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>R&#233;solution des &#233;quations aux d&#233;riv&#233;es partielles</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Ahmed Ammar -->
+
+<center>
+<b>Ahmed Ammar</b>  (<tt>ahmed.ammar at fst.utm.tn</tt>)
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Institut Pr&#233;paratoire aux &#201;tudes Scientifiques et Techniques, Universit&#233; de Carthage.</b></center>
+<br>
+<p>
+<center><h4>Apr 15, 2020</h4></center> <!-- date -->
+<br>
+<p>
+<!-- TOC: on -->
+
+
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0" class="anchor">Introduction </h1>
+Il existe trois types d'&#233;quations aux d&#233;riv&#233;es partielles.
+
+<ul>
+<li> Des &#233;quations telles que l'&#233;quation d'onde,</li>
+</ul>
+
+$$
+\begin{align}
+\frac{\partial^2 u}{\partial t^2} &=  c^2 \frac{\partial^2 u}{\partial x^2}
+\label{_auto1}
+\end{align}
+$$
+
+<p>
+o&#249; \( u (t, x) \) est une fonction de d&#233;placement et \( c \) une vitesse constante, sont connues sous le nom d'&#233;quations hyperboliques.
+
+<ul>
+<li> Des &#233;quations telles que l'&#233;quation de diffusion,</li>
+</ul>
+
+$$
+\begin{align}
+\frac{\partial u}{\partial t} &=  \frac{\partial}{\partial x} \left( D \frac{\partial u}{\partial x}\right)
+\label{_auto2}
+\end{align}
+$$
+
+o&#249; \( u (t, x) \) est le champ de densit&#233; et \( D \) le coefficient de diffusion sont appel&#233;s &#233;quations paraboliques. L'&#233;quation de Schr&#246;dinger en fonction du temps est un autre exemple d'&#233;quation parabolique.
+
+<ul>
+<li> Des &#233;quations telles que l'&#233;quation de Poisson,</li>
+</ul>
+
+$$
+\begin{align}
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} &= - \frac{\rho(x, y, z)}{\epsilon_0}
+\label{_auto3}
+\end{align}
+$$
+
+o&#249; \( u (x, y, z) \) est une fonction potentielle et \( \rho/ \epsilon_0 \) est une source, appel&#233;es &#233;quations elliptiques. L'&#233;quation de Schr&#246;dinger ind&#233;pendante du temps est un autre exemple d'&#233;quation elliptique.
+
+<p>
+On trouve des &#233;quations hyperboliques ou paraboliques dans les probl&#232;mes de valeurs initiales: la configuration du champ \( u (t, x) \) est sp&#233;cifi&#233;e &#224; un moment initial et &#233;volue dans le temps. Les &#233;quations elliptiques se retrouvent dans les probl&#232;mes de valeur limite: la valeur du champ \( u (x, y, z) \) est sp&#233;cifi&#233;e sur la limite d'une r&#233;gion et nous cherchons la solution &#224; travers l'int&#233;rieur.
+
+<h1 id="___sec1" class="anchor">&#201;quation de diffusion thermique </h1>
+
+<p>
+L'&#233;quation de diffusion thermique est historiquement li&#233;e &#224; Joseph Fourier. Ce dernier naquit en 1768 &#224; Auxerre, o&#249; il &#233;tudie dans une &#233;cole militaire. Fin 1794, il est &#233;l&#232;ve &#224; Normale Sup et en 1795-1796, il enseigne la physique &#224; Normale Sup et &#224; l'X. Il d&#233;bute ses travaux sur la chaleur en 1802 lorsqu'il est nomm&#233; pr&#233;fet de l'Is&#232;re par Napol&#233;on. Il publie sa th&#233;orie sur la chaleur (et l'analyse de Fourier) en 1822. Il est &#233;lu &#224; l'Acad&#233;mie fran&#231;aise en 1826 et d&#233;c&#233;d&#233; &#224; Paris en 1830.
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Gravure du math&#233;maticien Jean Baptiste Joseph Fourier (1768-1830). 
+<!-- begin inline comment -->
+<font color="red">(<b>source 1</b>: Article de <b>CNRS Le journal</b>, <a href="https://lejournal.cnrs.fr/articles/joseph-fourier-transforme-toujours-la-science" target="_self">Joseph Fourier transforme toujours la science</a>)</font>
+<!-- end inline comment -->
+ </p></center>
+<p><img src="imgs/JFourier.jpg" align="bottom" width=600></p>
+</center>
+
+<h2 id="___sec2" class="anchor">La conduction thermique dans les solides </h2>
+Dans les solides, les mol&#233;cules ou les atomes sont fig&#233;s dans un r&#233;seau maill&#233; qui emp&#234;chent les grands d&#233;placements. Le seul mouvement possible est un mouvement de vibration autour de leur position d'&#233;quilibre dans le r&#233;seau. Le transfert thermique d'&#233;nergie se traduit par une augmentation plus ou moins grande de l'amplitude de ces vibrations. Lorsque l'&#233;nergie apport&#233;e est suffisante pour que l'amplitude de la vibration d&#233;passe une certaine valeur d&#233;pendante du r&#233;seau, alors les mol&#233;cules se lib&#232;rent du r&#233;seau et le solide fond et s'&#233;vapore...
+
+<p>
+Le cas des m&#233;taux est un peu particulier : eux poss&#232;dent des &#233;lectrons de conduction, qui circulent librement sur le r&#233;seau du solide. Ces &#233;lectrons se comportent comme les mol&#233;cules d'un gaz (on parle de gaz d'&#233;lectrons) et dans ce cas, &#224; l'augmentation de l'amplitude des vibrations sur le r&#233;seau s'ajoute le transfert d'&#233;nergie cin&#233;tique des &#233;lectrons rapides, "chauds" vers les &#233;lectrons lents, "froids".
+
+<h2 id="___sec3" class="anchor">Notion de flux d'&#233;nergie </h2>
+La notion de flux d'&#233;nergie est tr&#232;s courante en physique. Nous l'avons d&#233;j&#224; rencontr&#233; sous le nom d'intensit&#233; du courant &#233;lectrique. Dans ce cas, il s'agit du flux de charges &#233;lectriques qui traversent une surface unitaire donn&#233;e par unit&#233; de temps. Nous l'avons not&#233;:
+$$
+\begin{align}
+I_q = \dfrac{dQ}{dt}
+\label{_auto4}
+\end{align}
+$$
+
+Par analogie, on d&#233;finit le flux thermique, plus exactement le flux d'&#233;nergie interne par \( I_u = \dfrac{dU}{dt} \). C'est la quantit&#233; d'&#233;nergie interne U qui traverse, sans travail, une surface unitaire par unit&#233; de temps.
+
+<p>
+Pour l'exprimer plus pr&#233;cis&#233;ment, on introduit un nouvel objet par analogie avec le courant &#233;lectrique. Il s'agit du vecteur de courant volumique d'&#233;nergie interne sans travail not&#233; classiquement \( \vec{J_u} \) et souvent nomm&#233; improprement "vecteur courant thermique", ce qui nous permet d'&#233;crire l'expression du flux de ce vecteur &#224; travers une surface dS orient&#233;e vers l'ext&#233;rieur par le vecteur normal \( \vec{n} \) , ce qui nous donne \( I_u = \int_S \vec{J_u} . \vec{n} dS \). Le signe de \( I_u \) d&#233;pend du sens du flux &#224; travers la surface. Il est n&#233;gatif pour le flux entrant et positif pour le flux sortant (pensez au signe du produit scalaire sous l'int&#233;grale...).
+
+<h2 id="___sec4" class="anchor">L'expression de la loi de Fourier </h2>
+Apr&#232;s ces pr&#233;ambules utiles, venons en &#224; la loi de Fourier proprement dite. La conduction thermique est un transfert thermique spontan&#233; d'une r&#233;gion de temp&#233;rature &#233;lev&#233;e vers une r&#233;gion de temp&#233;rature plus basse, et est d&#233;crite par la loi dite de Fourier &#233;tablie math&#233;matiquement par Jean-Baptiste Biot en 1804 puis exp&#233;rimentalement par Fourier en 1822 : la densit&#233; de flux de chaleur est proportionnelle au gradient de temp&#233;rature.
+
+<p>
+Pour faire simple, ici et dans la suite, on va se placer dans le cadre d'un probl&#232;me unidimensionnel, c'est &#224; dire que le transfert thermique d'&#233;nergie se fait sur une dimension \( Ox \).
+
+<p>
+La loi de Fourier relie, apr&#232;s constat exp&#233;rimental, le vecteur de courant volumique d'&#233;nergie interne sans travail \( \vec{J_u} \) avec le gradient de temp&#233;rature \( \vec{grad} T \). La relation est lin&#233;aire et s'&#233;crit \( \vec{J_u} = - \kappa \ \vec{grad} T \). La lin&#233;arit&#233; de l'&#233;quation n'est due qu'aux approximations que nous avons fix&#233; &#224; son domaine de validit&#233;, comme pour la loi d'Ohm.
+
+<p>
+Le param&#232;tre \( \kappa \) est appel&#233; conductivit&#233; thermique, toujours positif, de dimension \( W.m^{-1}.K^{-1} \). Notez la pr&#233;sence du signe \( - \), qui r&#233;sulte du second principe de la thermodynamique : le flux d'&#233;nergie va des r&#233;gions aux temp&#233;ratures les plus hautes vers les r&#233;gions aux temp&#233;ratures les plus basses.
+
+<p>
+Dans notre hypoth&#232;se d'un probl&#232;me unidimensionnel, en d&#233;veloppant le gradient, on obtient l'&#233;quation \( \vec{J_u} = - \kappa \dfrac{\partial T}{\partial x}\vec{u} \), soit en projetant sur \( Ox \), \( J_u(x,t) = - \kappa \dfrac{\partial T(x,t)}{\partial x} \) Nous obtenons une &#233;quation &#224; deux variables, la position x et le temps t, avec une d&#233;riv&#233;e partielle.
+
+<h2 id="___sec5" class="anchor">Comment obtenir cette &#233;quation? </h2>
+Nous allons l'&#233;tablir en utilisant la loi de Fourier d&#233;crite ci-dessus et le principe de conservation d'&#233;nergie. Nous resterons dans le cadre du probl&#232;me unidimensionnel, sachant que l'extension en dimension 2 ou 3 n'est pas tr&#232;s compliqu&#233;e, mais trop lourde pour notre &#233;tude.
+
+<p>
+Consid&#233;rons un &#233;l&#233;ment de volume dV orient&#233; selon l'axe \( Ox \) de propagation du flux d'&#233;nergie, limit&#233; par deux surfaces dS, l'une entrante et l'autre sortante, et d'&#233;paisseur \( dx \). Appelons \( \vec{J_uE} \) le vecteur de courant d'&#233;nergie volumique entrant et \( \vec{J_uS} \) le vecteur de courant d'&#233;nergie volumique sortant. Supposons que ces deux vecteurs soient normaux aux surfaces entrantes et sortantes.
+
+<p>
+Cet &#233;l&#233;ment de volume \( dV \) est immobile et son &#233;nergie potentielle n'est pas modifi&#233;e par hypoth&#232;se. Selon le premier principe de la thermodynamique, la variation d'&#233;nergie interne dU n'est donc attribuable qu'&#224; la variation \( dQ \), le transfert thermique d'&#233;nergie.
+
+<p>
+Calculons la variation d'&#233;nergie interne dans ce volume dV, de masse volumique \( \rho \), en utilisant la d&#233;finition de \( \vec{J_u} \) donn&#233;e plus haut dans le cas unidimensionnel. Nous obtenons apr&#232;s simplification, en &#233;galant \( dU \) et \( dQ \) :
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t}dx = -J_{u,x}(x + dx,t) + J_{u,x}(x,t)
+\label{_auto5}
+\end{align}
+$$
+
+En remarquant que \( J_{u,x}(x + dx,t) - J_{u,x}(x,t)= \dfrac{\partial J_{u,x}}{\partial x}dx \), on obtient finalement :
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t} = - \dfrac{\partial J_{u,x}}{\partial x}
+\label{_auto6}
+\end{align}
+$$
+
+Dans cette derni&#232;re &#233;quation, rempla&#231;ons dans le terme de droite \( J_{u,x} \) par sa d&#233;finition donn&#233;e par la loi de Fourier, on obtient :
+
+<p>
+\( \dfrac{\partial(\rho u)}{\partial t} = - \dfrac{\partial}{\partial x}(- \kappa \dfrac{\partial T}{\partial x}) \) ou en condensant l'&#233;criture :
+
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t} = \kappa \dfrac{\partial^2 T}{\partial x^2}
+\label{_auto7}
+\end{align}
+$$
+
+Vous aurez not&#233; ici, si vous &#234;tes attentifs, que j'ai consid&#233;r&#233; que \( \kappa \) &#233;tait constant puisque je l'ai sorti de la d&#233;riv&#233;e sans autre forme de proc&#232;s! C'est un peu os&#233;, et vrai seulement si le milieu est isotrope (le mat&#233;riaux est homog&#232;ne) et si l'on ne chauffe pas trop fort ou trop vite, parce que sinon, il devient d&#233;pendant de la temp&#233;rature.
+
+<p>
+Reste maintenant &#224; traiter le terme de gauche. Pour ce faire, je vais faire appel &#224; l'expression de la capacit&#233; calorique qui relie les variations de l'&#233;nergie avec les variations de temp&#233;rature. On peut donc &#233;crire que, si \( \rho u \) d&#233;signe l'&#233;nergie interne volumique :
+
+$$
+\begin{align}
+\dfrac{\partial(\rho u)}{\partial t} = \rho c_v \dfrac{\partial
+        T}{\partial t}
+\label{_auto8}
+\end{align}
+$$
+
+avec \( c_v \) la capacit&#233; thermique massique &#224; volume constant.
+
+<p>
+En reportant cette expression dans le terme de gauche de notre &#233;quation, j'obtiens :
+
+$$
+\begin{align}
+\rho c_v \dfrac{\partial T}{\partial t} = \kappa \dfrac{\partial^2
+        T}{\partial x^2}
+\label{_auto9}
+\end{align}
+$$
+
+soit en regroupant les termes constants &#224; droite de l'&#233;quation :
+$$
+\begin{align}
+\dfrac{\partial T}{\partial t} = \dfrac{\kappa}{\rho c_v}
+        \dfrac{\partial^2 T}{\partial x^2}
+\label{_auto10}
+\end{align}
+$$
+
+Pour simplifier l'&#233;criture, je vais appeler \( D \) le rapport \( \dfrac{\kappa}{\rho c_v} \). Ce param&#232;tre est la diffusivit&#233; thermique du mat&#233;riau constituant notre &#233;l&#233;ment de volume. La dimension de \( D \) est \( m^2.s^{-1} \). Finalement, j'obtiens l'&#233;quation :
+$$
+\begin{align}
+\label{eq:diffT}
+\dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2}
+\end{align}
+$$
+
+qui constitue l'&#233;quation de diffusion thermique!
+
+<h2 id="___sec6" class="anchor">R&#233;solution num&#233;rique de l'&#233;quation de diffusion thermique </h2>
+
+<h3 id="___sec7" class="anchor">Le mod&#232;le physique </h3>
+
+Nous allons consid&#233;rer une barre m&#233;tallique homog&#232;ne de faible diam&#232;tre, de telle sorte que nous puissions n&#233;gliger ses dimensions spatiales autre que sa longueur. Autrement dit, je m'arrange pour avoir un mod&#232;le approximativement 1D.
+
+<p>
+Nous allons consid&#233;rer que cette barre solide de longueur \( L = 1m \) de coefficient de diffusion thermique \( D \approx 0.5 \ m^2.s^{-1} \). La barre est initialement pr&#233;par&#233;e dans un &#233;tat de temp&#233;rature \( T(x, t < 0) = T_0(x) = 100 C^\circ \).
+
+<p>
+&#192; l'instant \( t \ge 0 \), les extr&#233;mit&#233;s de la barre spnt misent en contact avec deux sources de temp&#233;ratures identiques \( T_{extr} = 0 c^\circ \), donc nous aurons:
+$$
+\begin{align*}
+T(x = 0, t \ge 0) = T(x = L, t \ge 0) = T_{extr}
+\end{align*}
+$$
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Choc thermique sur une barre de longueur L. </p></center>
+<p><img src="imgs/fig1.png" align="bottom" width=600></p>
+</center>
+
+<p>
+La temp&#233;rature \( T(x, t) \) de la barre est solution de l'&#233;quation \eqref{eq:diffT} de la diffusion thermique &#224; 1D
+
+<h3 id="___sec8" class="anchor">Principe de la r&#233;solution num&#233;rique </h3>
+
+On recherche une solution num&#233;rique &#224; ce probl&#232;me par la classique m&#233;thode des <em>diff&#233;rences finies</em>.
+
+<p>
+Supposons que nous cherchions l'&#233;volution de \( T(x,t) \) sur une dur&#233;e totale \( \tau = 1 s \):
+
+<ul>
+<li> La barre est spatialement discr&#233;tis&#233;e en \( N_x \) tron&#231;ons de longueur &#233;gale \( \Delta x = \dfrac{L}{N_x} \). Ainsi, l'abscisse discr&#232;te \( x_m \) est: \( x_m = m * \Delta x \) avec \( m \in [0, N_x] \).</li>
+<li> De m&#234;me, la dur&#233;e totale de l'&#233;volution est discr&#233;tis&#233;e en \( N_t \) intervalles de dur&#233;e \( \Delta t = \dfrac{\tau}{N_t} \). Ainsi, l'instant "discret" \( t_n \) est: \( t_n = n * \Delta t \) avec \( n \in [0, N_t] \).</li>
+</ul>
+
+On peut, par cons&#233;quent, poser la temp&#233;rature discr&#233;tis&#233;e:
+
+$$
+\begin{align*}
+T_{m,n} = T(m*\Delta x, n* \Delta t)
+\end{align*}
+$$
+
+<h3 id="___sec9" class="anchor">Discr&#233;tisation du terme \( \dfrac{\partial T}{\partial t} \) </h3>
+
+<p>
+Pour \( x \) fixe (\( x=x_m \)), \( T(x_m, t) \) est de classe \( C^1  \) sur \( [0, \tau] \) par rapport au temps.
+
+<p>
+Soit le d&#233;veloppement de Taylor &#224; l'ordre 1:
+$$
+\begin{align*}
+T(x_m, t_{n+1}) &= T(x_m, t_n+ \Delta t) \\
+ &\approx T(x_m, t_n) + \Delta t \dfrac{\partial T(x_m, t_n)}{\partial t} + \mathcal{O}(\Delta t^2)
+\end{align*}
+$$
+
+Nous revenons &#224; l'expression explicite d'Euler d&#233;j&#224; abord&#233;e dans le chapitre pr&#233;c&#233;dent. On peut donc avoir l'expression discr&#233;tis&#233;e du terme \( \dfrac{\partial T}{\partial t} \):
+
+$$
+\begin{align}
+\label{eq:terme1}
+\dfrac{\partial T(x_m, t_n)}{\partial t} &= \dfrac{T(x_m, t_{n+1}) - T(x_m, t_n)}{\Delta t}
+\end{align}
+$$
+
+<h3 id="___sec10" class="anchor">Discr&#233;tisation du terme \( \dfrac{\partial^2 T}{\partial x^2} \) </h3>
+
+<p>
+Pour \( t \) fixe (\( t=t_n \)), \( T(x, t_n) \) est de classe \( C^2  \) sur \( [0, L] \) par rapport &#224; \( x \).
+
+<p>
+Soit le d&#233;veloppement de Taylor &#224; l'ordre 2:
+$$
+\begin{align*}
+T(x_{m+1}, t_n) &= T(x_m + \Delta x, t_n) \\
+ &\approx T(x_m, t_n) + \Delta x \dfrac{\partial T(x_m, t_n)}{\partial x} + \dfrac{\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+\end{align*}
+$$
+
+<p>
+La d&#233;riv&#233;e premi&#232;re \( \dfrac{\partial T(x_m, t_n)}{\partial x} \) ne figure pas dans l'&#233;quation initiale (Eq. \eqref{eq:diffT}), il faut donc l'&#233;liminer!
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+L'id&#233;e est de faire une addition des d&#233;veloppements en (\( x_m + \Delta x \)) et en (\( x_m - \Delta x \)).
+</div>
+</div>
+
+$$
+\begin{align*}
+T(x_{m-1}, t_n) &= T(x_m - \Delta x, t_n) \\
+ &\approx T(x_m, t_n) - \Delta x \dfrac{\partial T(x_m, t_n)}{\partial x} + \dfrac{\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+\end{align*}
+$$
+
+
+$$
+\begin{align*}
+T(x_{m+1}, t_n) + T(x_{m-1}, t_n) &\approx 2 T(x_m, t_n) + \dfrac{2\Delta x^2}{2!} \dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} + \mathcal{O}(\Delta t^3)
+\end{align*}
+$$
+
+D'o&#249; l'expression discr&#233;tis&#233;e du terme \( \dfrac{\partial^2 T}{\partial x^2} \):
+
+$$
+\begin{align}
+\label{eq:terme2}
+\dfrac{\partial^2 T(x_m, t_n)}{\partial x^2} = \dfrac{T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n)}{\Delta x^2}
+\end{align}
+$$
+
+<p>
+Rempla&#231;ons les &#233;quations \eqref{eq:terme1} et \eqref{eq:terme2} dans l'&#233;quation \eqref{eq:diffT} de la diffusion thermique. Ainsi l'&#233;quation de la diffusion thermique 1D discr&#233;tis&#233;e s'&#233;crit:
+
+$$
+\begin{align}
+\dfrac{T(x_m, t_{n+1}) - T(x_m, t_n)}{\Delta t} \approx D \dfrac{T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n)}{\Delta x^2}
+\label{_auto11}
+\end{align}
+$$
+
+D'o&#249; l'on tire finalement la relation de r&#233;currence permettant d'obtenir la temp&#233;rature en \( x_m \) &#224; l'instant \( t_{n+1} \) en fonction des temp&#233;ratures \( T_{m,n} \), \( T_{m+1,n} \) et \( T_{m-1,n} \) calcul&#233;es &#224; l'instant \( t_n \):
+
+$$
+\begin{align}
+\label{eq:diffTFinal}
+T(x_m, t_{n+1}) \approx T(x_m, t_n) + D \dfrac{\Delta t}{\Delta x^2} \left[T(x_{m+1}, t_n) - 2 T(x_m, t_n) + T(x_{m-1}, t_n) \right]
+\end{align}
+$$
+
+<p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Note</h3>
+  </div>
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
+On peut &#233;crire l'expression \eqref{eq:diffTFinal} avec la notation suivante:
+$$
+\begin{align*}
+T_{m,n+1} \approx T_{m,n} + D \dfrac{\Delta t}{\Delta x^2} \left[T_{m+1,n} - 2 T_{m,n} + T_{m-1,n} \right]
+\end{align*}
+$$
+</div>
+</div>
+
+
+<h3 id="___sec11" class="anchor">Code Python </h3>
+
+<p>
+Le programme Python pour ce probl&#232;me est:
+
+<p>
+<!-- @@@CODE scripts/EDP_DiffChal.py -->
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+## NOM DU PROGRAMME: EDP_DiffChal.py
+#% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+# DONNÉES NUMÉRIQUES
+L = 1 # Longueur de la barre [m]
+Nx = 100 # Nombre de tronçons
+tau = 1 # Durée totale de l'évolution [s]
+Nt = 10000 # Nombre d'intervalles de temps
+dx = L/Nx # Longueur du tronçon
+dt = tau/Nt # Intervalle élémentaire de temps
+D = 0.5 # Coefficient de diffusion thermique
+Tb = 100 # Température initiale de la barre
+Textr = 0 # Température des extrémités
+# Construction de axe des abscisses (variable espace x)
+x = np.linspace(0, L, Nx)
+# Construction CI ,CL (2 exemples pour la CI)
+T = [Textr] + (Nx - 2)*[Tb] + [Textr] # Echelon de temperature
+#T=Textr + (Tb-Textr ) * np.sin(np.pi*x/L) # Arche sinusoidale temperature
+# Construction du tableau vierge des accroissements de temperature
+accroissT = np.zeros(Nx)
+T[0] = 0
+plt.figure(figsize=(8, 6)) # Créer le graphique
+# Corps de la résolution
+for n in range(Nt): # Boucle d'évolution de temps pas à pas
+    for m in range(1, Nx-1): #boucle de calcul de accroissement de temperature pour chaque abscisse
+        accroissT[m] = ((dt*D)/(dx**2))*(T[m-1]-2*T[m]+T[m+1])
+    for m in range(1, Nx-1): # Boucle de calcul de T instant  suivant
+        T[m] += accroissT[m]
+    #Trace tous les 1000 intervalles de temps
+    if (n%1000 == 0):
+        plotlabel ="t=%1.2f s"%(n*dt)
+        plt.plot(x, T, label=plotlabel,lw = 4, color = plt.get_cmap('jet')(1-n/Nt))
+
+plt.grid()
+plt.xlabel("x [m]", fontsize=14)
+plt.ylabel("T [C]", fontsize=14)
+plt.title("Évolution de la température après le choc thermique", weight ="bold")
+plt.legend(loc=1)
+plt.savefig("chaleur.png"); plt.savefig("chaleur.pdf")
+plt.tight_layout()
+plt.show()
+
+
+</script></div>
+<p>
+<!-- Lors de l'ex&#233;cution de ce code, nous aurons comme sortie la figure ci-dessous: -->
+<!--  -->
+<!-- FIGURE:[scripts/chaleur, width=700 frac=0.8] -->
+
+<p>
+Nous pouvons modifier le code ci-dessus pour cr&#233;er une animation de l'&#233;volution du syst&#232;me dans le temps:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: EDP_DiffChalAnim.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #408080; font-style: italic"># DONNÉES NUMÉRIQUES</span>
+L <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #408080; font-style: italic"># Longueur de la barre [m]</span>
+Nx <span style="color: #666666">=</span> <span style="color: #666666">100</span> <span style="color: #408080; font-style: italic"># Nombre de tronçons</span>
+tau <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #408080; font-style: italic"># Durée totale de l&#39;évolution [s]</span>
+Nt <span style="color: #666666">=</span> <span style="color: #666666">10000</span> <span style="color: #408080; font-style: italic"># Nombre d&#39;intervalles de temps</span>
+dx <span style="color: #666666">=</span> L<span style="color: #666666">/</span>Nx <span style="color: #408080; font-style: italic"># Longueur du tronçon</span>
+dt <span style="color: #666666">=</span> tau<span style="color: #666666">/</span>Nt <span style="color: #408080; font-style: italic"># Intervalle élémentaire de temps</span>
+D <span style="color: #666666">=</span> <span style="color: #666666">0.5</span> <span style="color: #408080; font-style: italic"># Coefficient de diffusion thermique</span>
+Tb <span style="color: #666666">=</span> <span style="color: #666666">100</span> <span style="color: #408080; font-style: italic"># Température initiale de la barre</span>
+Textr <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># Température des extrémités</span>
+<span style="color: #408080; font-style: italic"># Construction de axe des abscisses (variable espace x)</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, L, Nx)
+<span style="color: #408080; font-style: italic"># Construction CI ,CL (2 exemples pour la CI)</span>
+T <span style="color: #666666">=</span> [Textr] <span style="color: #666666">+</span> (Nx <span style="color: #666666">-</span> <span style="color: #666666">2</span>)<span style="color: #666666">*</span>[Tb] <span style="color: #666666">+</span> [Textr] <span style="color: #408080; font-style: italic"># Echelon de temperature</span>
+<span style="color: #408080; font-style: italic">#T=Textr + (Tb-Textr ) * np.sin(np.pi*x/L) # Arche sinusoidale temperature</span>
+<span style="color: #408080; font-style: italic"># Construction du tableau vierge des accroissements de temperature</span>
+accroissT <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+T[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+
+<span style="color: #408080; font-style: italic"># Corps de la résolution</span>
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Nt): <span style="color: #408080; font-style: italic"># Boucle d&#39;évolution de temps pas à pas</span>
+    plt<span style="color: #666666">.</span>clf()
+    <span style="color: #008000; font-weight: bold">for</span> m <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, Nx<span style="color: #666666">-1</span>): <span style="color: #408080; font-style: italic">#boucle de calcul de accroissement de temperature pour chaque abscisse</span>
+        accroissT[m] <span style="color: #666666">=</span> ((dt<span style="color: #666666">*</span>D)<span style="color: #666666">/</span>(dx<span style="color: #666666">**2</span>))<span style="color: #666666">*</span>(T[m<span style="color: #666666">-1</span>]<span style="color: #666666">-2*</span>T[m]<span style="color: #666666">+</span>T[m<span style="color: #666666">+1</span>])
+    <span style="color: #008000; font-weight: bold">for</span> m <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, Nx<span style="color: #666666">-1</span>): <span style="color: #408080; font-style: italic"># Boucle de calcul de T instant  suivant</span>
+        T[m] <span style="color: #666666">+=</span> accroissT[m]  
+    <span style="color: #008000; font-weight: bold">if</span> (n<span style="color: #666666">%100</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>):    
+        plt<span style="color: #666666">.</span>figure(<span style="color: #666666">1</span>)
+        plotlabel <span style="color: #666666">=</span><span style="color: #BA2121">&quot;t=</span><span style="color: #BB6688; font-weight: bold">%1.2f</span><span style="color: #BA2121"> s&quot;</span><span style="color: #666666">%</span>(n<span style="color: #666666">*</span>dt)
+        plt<span style="color: #666666">.</span>plot(x, T, lw <span style="color: #666666">=</span> <span style="color: #666666">4</span>, label<span style="color: #666666">=</span>plotlabel, color <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>get_cmap(<span style="color: #BA2121">&#39;jet&#39;</span>)(<span style="color: #666666">1-</span>n<span style="color: #666666">/</span>Nt))
+            
+        plt<span style="color: #666666">.</span>grid()
+        plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;x [m]&quot;</span>, fontsize<span style="color: #666666">=14</span>)
+        plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;T [C]&quot;</span>, fontsize<span style="color: #666666">=14</span>)
+        plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Évolution de la température après le choc thermique&quot;</span>, weight <span style="color: #666666">=</span><span style="color: #BA2121">&quot;bold&quot;</span>)
+        plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=1</span>)
+        plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L,<span style="color: #666666">0</span>,<span style="color: #666666">100</span>])
+        
+        plt<span style="color: #666666">.</span>tight_layout()
+        plt<span style="color: #666666">.</span>show()
+
+        plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+</pre></div>
+<p>
+Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="scripts/anim/myimage.gif" align="bottom" width=500></p></center><br /><br />
+
+<h1 id="___sec12" class="anchor">L'&#233;quation de Schr&#246;dinger "time-dependent" </h1>
+
+<p>
+
+<iframe width="720" height="415" src="https://www.youtube.com/embed/A7CDdnQ11Hs" frameborder="0" allowfullscreen></iframe>
+
+<p>
+Soit une particule, un &#233;lectron pour fixer les id&#233;es, qui se d&#233;place dans un espace unidimensionnel. Pour &#233;tudier son mouvement, nous allons fixer un r&#233;f&#233;rentiel. L'apparition de ce mot "r&#233;f&#233;rentiel" devrait vous interpeller : la relativit&#233; n'est pas loin ! On ne va pas se compliquer la vie et on consid&#233;rera que la vitesse de la particule est petite devant c, un &#233;lectron non relativiste. Pour rappel, si la particule est relativiste, ne surtout pas utiliser Schr&#246;dinger...
+
+<p>
+Cet &#233;lectron bouge dans un espace o&#249; il peut subir des interactions avec d'autres syst&#232;mes physiques. Dans ce cas, on mod&#233;lisera ces interactions par une &#233;nergie potentielle not&#233;e U(x,t). Si l'&#233;lectron ne subit aucune interaction, U(x,t) sera nulle et notre &#233;lectron sera dit "libre".
+
+<p>
+L'&#233;quation, analogue &#224; notre deuxi&#232;me loi de Newton, qui d&#233;crit le mouvement de l'&#233;lectron dans l'espace et le temps est l'&#233;quation de Schr&#246;dinger. Plus pr&#233;cis&#233;ment, elle d&#233;crit l'&#233;volution de la fonction d'onde qui elle-m&#234;me d&#233;crit l'&#233;tat quantique de l'&#233;lectron. Sa forme unidimensionnelle s'&#233;crit :
+$$
+\begin{align}
+i\hbar \dfrac{\partial \Psi
+        (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m_e} \dfrac{\partial^2 \Psi
+        (x,t)}{\partial x^2} + U(x)\Psi(x,t)
+\label{_auto12}
+\end{align}
+$$
+
+avec \( m_e \) la masse de l'&#233;lectron et \( \hbar \) la constante de Planck r&#233;duite. Je choisis d'utiliser une fonction potentiel U stationnaire (ind&#233;pendante du temps).
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Erwin Schr&#246;dinger (1887-1961).Physicien th&#233;oricien de nationalit&#233; autrichienne. Il a re&#231;u un prix Nobel de physique 1933 partag&#233; avec Paul Adrien Maurice Dirac "pour la d&#233;couverte de nouvelles formes productives de la th&#233;orie atomique." </p></center>
+<p><img src="imgs/schrodinger.jpg" align="bottom" width=600></p>
+</center>
+
+<p>
+C'est une &#233;quation lin&#233;aire de premier ordre par rapport au temps. Lin&#233;aire, c'est &#224; dire que toute combinaison lin&#233;aire de solutions particuli&#232;res de l'&#233;quation est aussi solution de l'&#233;quation. De premier ordre par rapport au temps, c'est &#224; dire que la connaissance de l'&#233;tat quantique de la particule &#224; un instant donn&#233;, consid&#233;r&#233; comme l'instant initial \( t_0 \), permet de calculer son &#233;tat quantique &#224; n'importe quel instant post&#233;rieur &#224; \( t_0 \).
+
+<h2 id="___sec13" class="anchor">L'&#233;nonc&#233; du probl&#232;me </h2>
+On enferme un &#233;lectron dans une boite quantique, c'est &#224; dire qu'on se cantonne dans un espace ferm&#233; par des barri&#232;res de potentiel infini. Nous resterons dans un espace unidimensionnel, ce qui nous donne le sch&#233;ma suivant de bo&#238;te :
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Le potentiel est nul dans la bo&#238;te et infini ailleurs. </p></center>
+<p><img src="imgs/Schro1D_4.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Dans cette bo&#238;te, nous d&#233;posons un &#233;lectron et nous voulons d&#233;terminer son mouvement. Pour l'instant, notre &#233;lectron ne rencontre aucune barri&#232;re de potentiel dans sa bo&#238;te. Il est libre... dans sa bo&#238;te ! La fonction U(x) est donc constante et nulle dans la bo&#238;te.
+
+<h2 id="___sec14" class="anchor">La simulation de l'&#233;volution d'un &#233;lectron libre U(x) = 0 </h2>
+
+<p>
+L'&#233;quation de Schr&#246;dinger 1D avec U(x) = 0, que l'on &#233;crit \( i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} \) st parfaitement int&#233;grable analytiquement! D'ailleurs, je vous invite &#224; la comparer avec une autre &#233;quation que nous avons d&#233;j&#224; rencontr&#233;: \( \dfrac{\partial T}{\partial t} = D \dfrac{\partial^2 T}{\partial x^2} \), <a href="https://codetunisia.github.io/SN2HAP2019/cours2/cours2-bs.html#___sec1" target="_self">l'&#233;quation de diffusion thermique!</a>  Dans les deux cas, la transform&#233;e de Fourier est l'outil privil&#233;gi&#233; pour ces calculs.
+
+<h3 id="___sec15" class="anchor">La discr&#233;tisation de Schr&#246;dinger </h3>
+
+La premi&#232;re &#233;tape consiste &#224; discr&#233;tiser l'&#233;quation de Schr&#246;dinger. Reprenons donc notre &#233;quation de Schr&#246;dinger time-dependent dans un espace unidimensionnel :
+
+$$
+\begin{align}
+i\hbar \dfrac{\partial \Psi (x,t)}{\partial t} = -\dfrac{\hbar
+        ^2}{2m} \dfrac{\partial^2 \Psi (x,t)}{\partial x^2} + U(x)\Psi(x,t)
+\label{_auto13}
+\end{align}
+$$
+
+La fonction \( \Psi(x,t) \) est une fonction complexe. Je vais la d&#233;composer en sa partie r&#233;elle \( \Psi_R(x,t) \) et sa partie imaginaire \( \Psi_I(x,t) \) et &#233;crire deux &#233;quations l'une portant sur sa partie r&#233;elle et l'autre sur sa partie imaginaire, ce qui, en r&#233;organisant notre &#233;quation de Schr&#246;dinger pour isoler &#224; gauche la d&#233;riv&#233;e partielle temporelle, nous donne le couple d'&#233;quations :
+$$
+\begin{align}
+\dfrac{\partial \Psi_R (x,t)}{\partial t} &= -\dfrac{\hbar}{2m}
+        \dfrac{\partial^2 \Psi_I (x,t)}{\partial x^2} +
+        \dfrac{1}{\hbar}U(x)\Psi_I(x,t) 
+\label{_auto14}\\
+\dfrac{\partial \Psi_I (x,t)}{\partial t} &= \dfrac{\hbar}{2m}
+                \dfrac{\partial^2 \Psi_R (x,t)}{\partial x^2} -
+                \dfrac{1}{\hbar}U(x)\Psi_R(x,t)
+\label{_auto15}
+\end{align}
+$$
+
+<p>
+Comme d'habitude je vais discr&#233;tiser les d&#233;riv&#233;es partielles en faisant un DL d'ordre 1 :
+
+$$
+\begin{align}
+\dfrac{\partial \Psi(x,t)}{\partial t} &\approx \dfrac{\Psi(x,
+        t+\Delta t) - \Psi(x,t)}{\Delta t} 
+\label{_auto16}\\
+\dfrac{\partial^2 \Psi(x,t)}{\partial x^2} &\approx
+                \dfrac{\Psi(x+\Delta x,t) - 2\Psi(x,t) + \Psi(x - \Delta x,t)}{{\Delta
+                x}^2}
+\label{_auto17}
+\end{align}
+$$
+
+<p>
+Nous obtenons finalement les &#233;quations discr&#232;tes, avec \( i \) l'indice sur le vecteur \( x \) :
+$$
+\begin{align}
+\Psi_R(i)  &= \Psi_R(i) - \dfrac{\hbar \Delta t }{2m{\Delta
+        x}^2}\left( \Psi_I(i+1) - 2\Psi_I(i) + \Psi_I(i-1)  \right)  + \dfrac{e
+        \Delta t}{\hbar}  U(i) \Psi_I(i) 
+\label{_auto18}\\
+\Psi_I(i)  &= \Psi_I(i) + \dfrac{\hbar \Delta t }{2m{\Delta
+                x}^2}\left( \Psi_R(i+1) - 2\Psi_R(i) + \Psi_R(i-1)  \right)  - \dfrac{e
+                \Delta t}{\hbar}  U(i) \Psi_R(i)
+\label{_auto19}
+\end{align}
+$$
+
+<p>
+Une petite remarque : j'ai introduit la charge &#233;l&#233;mentaire e dans la valeur du coefficient affectant l'&#233;nergie potentielle U : c'est parce que j'exprime dans mon code U en eV, il faut donc effectuer la conversion eV/Joule.
+
+<p>
+Dans mon code, j'ai d&#233;fini \( a_2 = \dfrac{\hbar \Delta t}{2m{\Delta x}^2} = 0.1 \), il faut bien faire un choix, ce qui me donne la contrainte sur \( \Delta t \) suivante, cod&#233;e dans la variable <code>dt : dt = a2*2*m_e*dx**2/hbar</code>.
+
+<h3 id="___sec16" class="anchor">Le code Python </h3>
+
+<p>
+<b>La propagation du paquet d'ondes</b>
+
+<p>
+Le programme Python pour ce probl&#232;me est:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: Schrodinger_1DLibre.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">Définition des constantes</span>
+<span style="color: #BA2121; font-style: italic">-------------------------</span>
+<span style="color: #BA2121; font-style: italic">Les constantes physiques standards sont tirées </span>
+<span style="color: #BA2121; font-style: italic">du package scipy.constants</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.constants</span> <span style="color: #008000; font-weight: bold">import</span> h, hbar, e, m_e
+
+DeuxPi <span style="color: #666666">=</span> <span style="color: #666666">2.0*</span>np<span style="color: #666666">.</span>pi
+L <span style="color: #666666">=</span> <span style="color: #666666">5.0e-9</span>   <span style="color: #408080; font-style: italic"># dimension de la boite quantique (USI)  </span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du domaine spatial et temporel</span>
+Nx <span style="color: #666666">=</span> <span style="color: #666666">1000</span>    <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine spatial</span>
+xmin <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+xmax <span style="color: #666666">=</span> L
+dx <span style="color: #666666">=</span> (xmax<span style="color: #666666">-</span>xmin)<span style="color: #666666">/</span>Nx
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0.0</span>,L,dx)
+Nt <span style="color: #666666">=</span> <span style="color: #666666">30000</span>   <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine temporel </span>
+a2 <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+dt <span style="color: #666666">=</span> a2<span style="color: #666666">*2*</span>m_e<span style="color: #666666">*</span>dx<span style="color: #666666">**2/</span>hbar
+a3 <span style="color: #666666">=</span> e<span style="color: #666666">*</span>dt<span style="color: #666666">/</span>hbar
+
+<span style="color: #408080; font-style: italic">#%% Définition des paramètres du paquet d&#39;onde inital</span>
+x0 <span style="color: #666666">=</span> x[<span style="color: #008000">int</span>(Nx<span style="color: #666666">/2</span>)]  <span style="color: #408080; font-style: italic"># position initiale du paquet</span>
+sigma <span style="color: #666666">=</span> <span style="color: #666666">2.0e-10</span>    <span style="color: #408080; font-style: italic"># largeur du paquet en m</span>
+Lambda <span style="color: #666666">=</span> <span style="color: #666666">1.5e-10</span>   <span style="color: #408080; font-style: italic"># longeur d&#39;onde de de Broglie l&#39;électron (en m)</span>
+Ec <span style="color: #666666">=</span> (h<span style="color: #666666">/</span>Lambda)<span style="color: #666666">**2/</span>(<span style="color: #666666">2*</span>m_e<span style="color: #666666">*</span>e) <span style="color: #408080; font-style: italic"># énergie cinétique théorique de l&#39;électron (en eV)</span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du potentiel</span>
+U <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)  <span style="color: #408080; font-style: italic"># électron libre dans le puit</span>
+
+<span style="color: #408080; font-style: italic">#%% Initialisation des buffers de calcul aux conditions initiales</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Prob <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+
+<span style="color: #408080; font-style: italic">#%% calcul et affichage de la fonction d&#39;onde initiale</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+<span style="color: #408080; font-style: italic"># Normalisation du paquet d&#39;onde</span>
+Psi_Prob <span style="color: #666666">=</span> Psi_Real<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag<span style="color: #666666">**2</span>
+<span style="color: #408080; font-style: italic">## FIGURE ---&gt; Test</span>
+<span style="color: #408080; font-style: italic">#plt.figure()</span>
+<span style="color: #408080; font-style: italic">#pl1, pl2, pl3 = plt.plot(x, Psi_Real, x, Psi_Imag, x, Psi_Prob)</span>
+<span style="color: #408080; font-style: italic">#plt.legend((pl1, pl2,pl3), (&quot;PSI R&quot;, &quot;PSI Imag&quot;, &quot;Psi Prob&quot;))</span>
+<span style="color: #408080; font-style: italic">#plt.show()</span>
+
+<span style="color: #408080; font-style: italic">#%% Boucle de calcul et d&#39;affichage de l&#39;évolution</span>
+<span style="color: #008000; font-weight: bold">for</span> t <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Nt):
+    plt<span style="color: #666666">.</span>clf()
+    Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">-</span> a2<span style="color: #666666">*</span>(Psi_Imag[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Imag[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">+</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> a2<span style="color: #666666">*</span>(Psi_Real[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Real[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">-</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Prob[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span>
+    <span style="color: #008000; font-weight: bold">if</span> t <span style="color: #666666">%</span> <span style="color: #666666">1000</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+        
+        plt<span style="color: #666666">.</span>figure(<span style="color: #666666">1</span>)
+        plt<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Real,<span style="color: #BA2121">&#39;blue&#39;</span>)
+        plt<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Imag,<span style="color: #BA2121">&#39;red&#39;</span>)
+        plt<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Prob,<span style="color: #BA2121">&#39;green&#39;</span>)
+        plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L<span style="color: #666666">*1.e9</span>,<span style="color: #666666">-1</span>,<span style="color: #666666">1</span>])
+        plt<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
+        plt<span style="color: #666666">.</span>tight_layout()
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim2/&quot;</span><span style="color: #666666">+</span><span style="color: #008000">str</span>(<span style="color: #008000">int</span>(t<span style="color: #666666">%</span>Nt<span style="color: #666666">/1000</span>))<span style="color: #666666">.</span>rjust(<span style="color: #666666">2</span>, <span style="color: #BA2121">&#39;0&#39;</span>)<span style="color: #666666">+</span><span style="color: #BA2121">&quot;.png&quot;</span>)
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim2/myimage.pdf&quot;</span>)
+        plt<span style="color: #666666">.</span>show()
+        plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+</pre></div>
+<p>
+Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="scripts/anim2/myimage.gif" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<b>Cas d'une barri&#232;re de potentiel</b>
+Le programme Python pour ce probl&#232;me est:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: Schrodinger_1DBar.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #BA2121; font-style: italic">Définition des constantes</span>
+<span style="color: #BA2121; font-style: italic">-------------------------</span>
+<span style="color: #BA2121; font-style: italic">Les constantes physiques standards sont tirées </span>
+<span style="color: #BA2121; font-style: italic">du package scipy.constants</span>
+<span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.constants</span> <span style="color: #008000; font-weight: bold">import</span> h, hbar, e, m_e
+
+DeuxPi <span style="color: #666666">=</span> <span style="color: #666666">2.0*</span>np<span style="color: #666666">.</span>pi
+L <span style="color: #666666">=</span> <span style="color: #666666">5.0e-9</span>   <span style="color: #408080; font-style: italic"># dimension de la boite quantique (USI)  </span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du domaine spatial et temporel</span>
+Nx <span style="color: #666666">=</span> <span style="color: #666666">1000</span>    <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine spatial</span>
+xmin <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+xmax <span style="color: #666666">=</span> L
+dx <span style="color: #666666">=</span> (xmax<span style="color: #666666">-</span>xmin)<span style="color: #666666">/</span>Nx
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0.0</span>,L,dx)
+Nt <span style="color: #666666">=</span> <span style="color: #666666">50000</span>   <span style="color: #408080; font-style: italic"># nombre de pas d&#39;intégration sur le domaine temporel </span>
+a2 <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+dt <span style="color: #666666">=</span> a2<span style="color: #666666">*2*</span>m_e<span style="color: #666666">*</span>dx<span style="color: #666666">**2/</span>hbar
+a3 <span style="color: #666666">=</span> e<span style="color: #666666">*</span>dt<span style="color: #666666">/</span>hbar
+
+<span style="color: #408080; font-style: italic">#%% Définition des paramètres du paquet d&#39;onde inital</span>
+x0 <span style="color: #666666">=</span> x[<span style="color: #008000">int</span>(Nx<span style="color: #666666">/4</span>)]  <span style="color: #408080; font-style: italic"># position initiale du paquet</span>
+sigma <span style="color: #666666">=</span> <span style="color: #666666">2.0e-10</span>    <span style="color: #408080; font-style: italic"># largeur du paquet en m</span>
+Lambda <span style="color: #666666">=</span> <span style="color: #666666">1.5e-10</span>   <span style="color: #408080; font-style: italic"># longeur d&#39;onde de de Broglie l&#39;électron (en m)</span>
+Ec <span style="color: #666666">=</span> (h<span style="color: #666666">/</span>Lambda)<span style="color: #666666">**2/</span>(<span style="color: #666666">2*</span>m_e<span style="color: #666666">*</span>e) <span style="color: #408080; font-style: italic"># énergie cinétique théorique de l&#39;électron (en eV)</span>
+
+<span style="color: #408080; font-style: italic">#%% Définition du potentiel</span>
+U0 <span style="color: #666666">=</span> <span style="color: #666666">80</span>    <span style="color: #408080; font-style: italic"># en eV</span>
+U <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+<span style="color: #408080; font-style: italic">#U[int(Nx/2):] = U0  # définition d&#39;une marche de potentiel</span>
+EppBar <span style="color: #666666">=</span> <span style="color: #666666">30</span> <span style="color: #408080; font-style: italic"># largeur de la barrière en nombre de pas dx (0.15 nm)</span>
+U[<span style="color: #008000">int</span>(Nx<span style="color: #666666">/2</span>):<span style="color: #008000">int</span>(Nx<span style="color: #666666">/2+</span>EppBar)] <span style="color: #666666">=</span> U0 <span style="color: #408080; font-style: italic"># définition d&#39;une barrière de potentiel</span>
+<span style="color: #408080; font-style: italic">#%% Initialisation des buffers de calcul aux conditions initiales</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+Psi_Prob <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(Nx)
+
+<span style="color: #408080; font-style: italic">#%% calcul et affichage de la fonction d&#39;onde initiale</span>
+Psi_Real <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+Psi_Imag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>sigma)<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(DeuxPi<span style="color: #666666">*</span>(x<span style="color: #666666">-</span>x0)<span style="color: #666666">/</span>Lambda)
+<span style="color: #408080; font-style: italic"># Normalisation du paquet d&#39;onde</span>
+Psi_Prob <span style="color: #666666">=</span> Psi_Real<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag<span style="color: #666666">**2</span>
+<span style="color: #408080; font-style: italic">## FIGURE ---&gt; Test</span>
+<span style="color: #408080; font-style: italic">#plt.figure()</span>
+<span style="color: #408080; font-style: italic">#pl1, pl2, pl3 = plt.plot(x, Psi_Real, x, Psi_Imag, x, Psi_Prob)</span>
+<span style="color: #408080; font-style: italic">#plt.legend((pl1, pl2,pl3), (&quot;PSI R&quot;, &quot;PSI Imag&quot;, &quot;Psi Prob&quot;))</span>
+<span style="color: #408080; font-style: italic">#plt.show()</span>
+
+<span style="color: #408080; font-style: italic">#%% Boucle de calcul et d&#39;affichage de l&#39;évolution</span>
+<span style="color: #008000; font-weight: bold">for</span> t <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Nt):
+    plt<span style="color: #666666">.</span>clf()
+    Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">-</span> a2<span style="color: #666666">*</span>(Psi_Imag[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Imag[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">+</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> a2<span style="color: #666666">*</span>(Psi_Real[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> <span style="color: #666666">2*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> Psi_Real[:<span style="color: #666666">-2</span>]) \
+                     <span style="color: #666666">-</span> a3<span style="color: #666666">*</span>U[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+    Psi_Prob[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> Psi_Real[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span> <span style="color: #666666">+</span> Psi_Imag[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]<span style="color: #666666">**2</span>
+    <span style="color: #008000; font-weight: bold">if</span> t <span style="color: #666666">%</span> <span style="color: #666666">1000</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+        
+        fig, ax1 <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplots(num<span style="color: #666666">=1</span>)
+        ax1<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,Psi_Prob,<span style="color: #BA2121">&#39;green&#39;</span>)
+        ax1<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L<span style="color: #666666">*1.e9</span>,<span style="color: #666666">0</span>,<span style="color: #666666">1</span>])
+        ax1<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&#39;x [nanometre]&#39;</span>)
+        ax1<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;Densite de proba. de detection [m-1]&#39;</span>)
+        ax1<span style="color: #666666">.</span>grid(<span style="color: #008000">True</span>)
+        
+        ax2 <span style="color: #666666">=</span> ax1<span style="color: #666666">.</span>twinx()
+        ax2<span style="color: #666666">.</span>plot(x<span style="color: #666666">*1.e9</span>,U,<span style="color: #BA2121">&#39;blue&#39;</span>)
+        ax2<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;U [eV]&#39;</span>)
+        ax2<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,L<span style="color: #666666">*1.e9</span>,<span style="color: #666666">0</span>,<span style="color: #666666">90</span>])
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim3/&quot;</span><span style="color: #666666">+</span><span style="color: #008000">str</span>(<span style="color: #008000">int</span>(t<span style="color: #666666">%</span>Nt<span style="color: #666666">/1000</span>))<span style="color: #666666">.</span>rjust(<span style="color: #666666">2</span>, <span style="color: #BA2121">&#39;0&#39;</span>)<span style="color: #666666">+</span><span style="color: #BA2121">&quot;.png&quot;</span>)
+        plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;anim3/myimage.pdf&quot;</span>)
+        plt<span style="color: #666666">.</span>tight_layout()
+        plt<span style="color: #666666">.</span>show()
+        plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+</pre></div>
+<p>
+Lors de l'ex&#233;cution de ce code, nous aurons l'animation ci-dessous:
+
+<p>
+<br /><br /><center><p><img src="scripts/anim3/myimage.gif" align="bottom" width=500></p></center><br /><br />
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec17" class="anchor">L'&#233;quation de Laplace </h1>
+Nous consid&#233;rons maintenant les &#233;quations elliptiques. L'&#233;quation de Poisson en trois dimensions est :
+
+$$
+\begin{align}
+\dfrac{\partial^2 u(x, y, z)}{\partial x^2} + \dfrac{\partial^2 u(x, y, z)}{\partial y^2} + \dfrac{\partial^2 u(x, y, z)}{\partial z^2} &= - \dfrac{\rho(x,y,z)}{\epsilon_0}
+\label{_auto20}
+\end{align}
+$$
+
+o&#249; \( u(x, y, z) \) est le champ de potentiel &#233;lectrique et \( \rho(x, y, z) \) est la densit&#233; de charge. Par souci de simplicit&#233;, cependant, nous &#233;tudierons l'&#233;quation de Laplace en deux dimensions :
+$$
+\begin{align}
+\dfrac{\partial^2 u(x, y)}{\partial x^2} + \dfrac{\partial^2 u(x, y)}{\partial y^2}  &= 0
+\label{_auto21}
+\end{align}
+$$
+
+sur le carr&#233; \( 0 &#8804; x &#8804; L \) et \( 0 &#8804; y &#8804; L \) avec une paroi du carr&#233; maintenue (la paroi &#224; \( y = L \)) &#224; un potentiel de \( V_0 = 1V \) et les autres parois mises &#224; la terre &#224; \( 0V \).
+
+<p>
+<center>  <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  Exemple de probl&#232;me de valeur limite pour l'&#233;quation de Laplace en deux dimensions. </p></center>
+<p><img src="imgs/laplace2D.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Nous utilisons la s&#233;paration des variables
+$$
+\begin{align}
+u(x, y) &= X(x)Y(y)
+\label{_auto22}
+\end{align}
+$$
+
+pour exprimer l'&#233;quation de Laplace comme les &#233;quations diff&#233;rentielles ordinaires
+$$
+\begin{align}
+- \dfrac{X"}{X} &= \dfrac{Y"}{Y} = k^2
+\label{_auto23}
+\end{align}
+$$
+
+o&#249; \( k \) est une constante de s&#233;paration. Les conditions aux limites sont \( X (0) = 0 \), \( X (L) = 0 \), \( Y (0) = 0 \) et \( Y (L) = V_0 \). Les solutions pour \( X \) avec ces conditions aux limites sont
+$$
+\begin{align}
+X(x) \propto sin(\dfrac{n \pi x}{L}) \quad pour \ n = 1,2,3,\dots
+\label{_auto24}
+\end{align}
+$$
+
+et les constantes de s&#233;paration autoris&#233;es sont \( k_n = n \pi /L \). Les solutions pour \( Y \) seront une combinaison lin&#233;aire des fonctions sinus hyperbolique et cosinus hyperbolique, mais comme seule la fonction sinus hyperbolique dispara&#238;t &#224; \( x = 0 \), notre solution est de la forme
+$$
+\begin{align}
+u(x,y) = \sum_{n=1}^{\infty} c_n sin(\dfrac{n \pi x}{L}) sinh(\dfrac{n \pi y}{L})
+\label{_auto25}
+\end{align}
+$$
+
+La condition aux limites finale, \( u (x, L) = V_0 \), d&#233;termine alors les coefficients \( c_n \) : on a
+$$
+\begin{align}
+\sum_{n=1}^{\infty} c_n sinh(n \pi) sin(\dfrac{n \pi x}{L}) &=V_0
+\label{_auto26}
+\end{align}
+$$
+
+Nous multiplions les deux c&#244;t&#233;s par \( sin (m \pi x = L) \) et int&#233;grons de \( x = 0 \) &#224; \( x = L \) pour obtenir
+$$
+\begin{equation}
+\dfrac{L}{2} sinh(m \pi) = \begin{cases} \dfrac{2LV_0}{m \pi} & \text{pour m impair}\\
+0 & \text{autrement.}
+\end{cases}
+\label{_auto27}
+\end{equation}
+$$
+
+Nous avons donc
+$$
+\begin{equation}
+c_m = \begin{cases} \dfrac{4V_0}{m \pi \ sinh(m \pi)} & \text{pour m impair}\\
+0 & \text{autrement.}
+\end{cases}
+\label{_auto28}
+\end{equation}
+$$
+
+et la solution de l'&#233;quation de Laplace est
+$$
+\begin{equation}
+u(x,y) = 4 V_0 \sum_{\substack{n=1 \\ n \ impair}}^{\infty} \dfrac{sin(n \pi x/L)}{n \pi} \dfrac{sinh(n \pi y/L)}{sinh(n \pi)}
+\label{_auto29}
+\end{equation}
+$$
+
+Un grand nombre de termes dans cette s&#233;rie sont n&#233;cessaires pour calculer avec pr&#233;cision le champ pr&#232;s du mur pr&#232;s de \( y = L \) (et surtout aux coins).
+
+<p>
+La m&#233;thode de relaxation peut &#234;tre utilis&#233;e pour les &#233;quations elliptiques de la forme
+$$
+\begin{equation}
+\hat{L} u = \rho
+\label{_auto30}
+\end{equation}
+$$
+
+o&#249; \( \hat{L} \) est un op&#233;rateur elliptique et \( \rho \) est un terme source. L'approche consiste &#224; prendre une distribution initiale \( u \) qui ne r&#233;sout pas n&#233;cessairement l'&#233;quation elliptique et &#224; lui permettre de se d&#233;tendre &#224; la solution de l'&#233;quation en faisant &#233;voluer l'&#233;quation de diffusion
+$$
+\begin{equation}
+\dfrac{\partial u}{\partial t}= \hat{L} u - \rho
+\label{_auto31}
+\end{equation}
+$$
+
+Aux temps tardifs, \( t \rightarrow 0 \), la solution s'approchera asymptotiquement de la solution stationnaire de l'&#233;quation elliptique.
+Pour le probl&#232;me en question (\( \rho = 0 \) et \( \hat{L} \) est l'op&#233;rateur laplacien bidimensionnel), la m&#233;thode FTCS appliqu&#233;e &#224; l'&#233;quation de diffusion conduit &#224;
+$$
+\begin{equation}
+u_{j,k}^{n+1} = u_{j,k}^{n} + \left[ \dfrac{u_{j+1,k}^{n} - 2 u_{j,k}^{n} + u_{j-1,k}^{n}}{(\Delta x)^2} + \dfrac{u_{j,k+1}^{n} - 2 u_{j,k}^{n} + u_{j,k-1}^{n}}{(\Delta y)^2}\right] \Delta t
+\label{_auto32}
+\end{equation}
+$$
+
+o&#249; \( u_{j,k}^{n} = u^{n}(j \Delta x, k \Delta y) \) et \( n \) indique l'it&#233;ration. Pour simplifier, nous prenons \( \Delta x = \Delta y = \Delta \) donc nous avons
+$$
+\begin{equation}
+u_{j,k}^{n+1} = (1 - \omega) u_{j,k}^{n} + \dfrac{\omega}{4}(u_{j+1,k}^{n} + u_{j-1,k}^{n} + u_{j,k+1}^{n} + u_{j,k-1}^{n}) \label{eq:laplaceFTCS}
+\end{equation}
+$$
+
+o&#249; \( \omega = 4 \Delta t /\Delta^2 \).
+La stabilit&#233; de l'&#233;quation de diffusion limite l'ampleur des \( \omega \). Nous pouvons d&#233;terminer la valeur maximale de \( \omega \) en utilisant une analyse de stabilit&#233; de von Neumann, mais maintenant nous nous limiterons aux modes propres spatiaux qui satisfont aux conditions aux limites de Dirichlet pour la partie homog&#232;ne de la solution. Notre approche est donc
+
+$$
+\begin{equation}
+u_{j,k}^{n} = u^0 \zeta^n(m_x, m_y) sin(\dfrac{m_x \pi j \Delta}{L}) sin(\dfrac{m_y \pi k \Delta}{L}) \label{eq:approche}
+\end{equation}
+$$
+
+o&#249; \( m_x \) et \( m_y \) sont respectivement les num&#233;ros de mode dans les directions \( x \) et \( y \). En substituant cette approche &#224; l'Eq. \eqref{eq:laplaceFTCS} on trouve
+$$
+\begin{equation}
+\zeta(m_x, m_y) = 1 - \omega + \dfrac{\omega}{2} \left( cos(\dfrac{m_x \pi \Delta}{L}) + cos(\dfrac{m_y \pi \Delta}{L}) \right) \label{eq:zeta}
+\end{equation}
+$$
+
+et nous voyons que la stabilit&#233; est atteinte, c'est-&#224;-dire que \( | \zeta(m_x, m_y) | \le 1 \) pour tout mode donn&#233; par \( (m_x, m_y) \), si \( \omega \le 1 \). Si nous prenons maintenant la plus grande valeur de \( \Delta t = \Delta^2 / 4 \) permise pour une it&#233;ration stable correspondant &#224; \( \omega = 1 \), nous obtenons l'it&#233;ration suivante sch&#232;me:
+$$
+\begin{equation}
+u_{j,k}^{n+1} = \dfrac{1}{4} (u_{j+1,k}^{n}+u_{j-1,k}^{n}+u_{j,k+1}^{n}+u_{j,k-1}^{n})
+\label{_auto33}
+\end{equation}
+$$
+
+On voit ici que la valeur du champ &#224; un point de r&#233;seau donn&#233; \( (j, k) \) &#224; l'&#233;tape \( n + 1 \) est &#233;gale &#224; la moyenne des valeurs du champ aux points voisins &#224; l'&#233;tape \( n \). Ceci est connu comme <em>la m&#233;thode de Jacobi</em>.
+
+<p>
+Le programme <code>Laplace_relax.py</code> impl&#233;mente la m&#233;thode de Jacobi pour notre probl&#232;me de mod&#232;le. Le nombre de points de grille de chaque c&#244;t&#233;, \( N \), est entr&#233;. Les r&#233;sultats obtenus pour \( N = 20 \) points sont pr&#233;sent&#233;s sur la figure <a href="#fig:`Laplace_relax">6</a>.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: Laplace_relax.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span>
+eps <span style="color: #666666">=</span> <span style="color: #666666">1e-5</span> <span style="color: #408080; font-style: italic"># erreur fractionnaire autorisée</span>
+L <span style="color: #666666">=</span> <span style="color: #666666">1.0</span> <span style="color: #408080; font-style: italic"># longueur de chaque côté</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;nombre de points de grille sur un côté -&gt; &#39;</span>))
+dy <span style="color: #666666">=</span> dx <span style="color: #666666">=</span> L<span style="color: #666666">/</span>(N<span style="color: #666666">-1.0</span>)
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dx
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dy
+(x, y) <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(x, y)
+u0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((N, N))
+u1 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((N, N))
+<span style="color: #408080; font-style: italic"># conditions aux limites</span>
+<span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N):
+    u1[j,N<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> u0[j,N<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>
+    
+<span style="color: #408080; font-style: italic"># préparer l&#39;animation</span>
+image <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(u0<span style="color: #666666">.</span>T, origin<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower&#39;</span>, extent<span style="color: #666666">=</span>(<span style="color: #666666">0.0</span>, L, <span style="color: #666666">0.0</span>, L))
+n <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># nombre d&#39;itérations</span>
+err <span style="color: #666666">=</span> <span style="color: #666666">1.0</span> <span style="color: #408080; font-style: italic"># erreur moyenne par site</span>
+<span style="color: #008000; font-weight: bold">while</span> err <span style="color: #666666">&gt;</span> eps:
+    <span style="color: #408080; font-style: italic"># mettre à jour le tracé animé</span>
+    image<span style="color: #666666">.</span>set_data(u0<span style="color: #666666">.</span>T)
+    plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;itération </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">%</span>n)
+    plt<span style="color: #666666">.</span>tight_layout()
+    plt<span style="color: #666666">.</span>show()
+    plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+    <span style="color: #408080; font-style: italic"># prochaine itération en raffinement</span>
+    n <span style="color: #666666">=</span> n<span style="color: #666666">+1</span>
+    err <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>):
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>):
+            u1[j,k] <span style="color: #666666">=</span> (u0[j<span style="color: #666666">-1</span>,k]<span style="color: #666666">+</span>u0[j<span style="color: #666666">+1</span>,k]<span style="color: #666666">+</span>u0[j,k<span style="color: #666666">-1</span>]<span style="color: #666666">+</span>u0[j,k<span style="color: #666666">+1</span>])<span style="color: #666666">/4.0</span>
+            err <span style="color: #666666">+=</span> <span style="color: #008000">abs</span>(u1[j,k]<span style="color: #666666">-</span>u0[j,k])
+    err <span style="color: #666666">/=</span> N<span style="color: #666666">**2</span>
+    <span style="color: #408080; font-style: italic"># permutez les anciens et les nouveaux tableaux pour la prochaine itération</span>
+    (u0, u1) <span style="color: #666666">=</span> (u1, u0)
+    
+<span style="color: #408080; font-style: italic"># tracé de surface de la solution finale</span>
+
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
+axis <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>gca(projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>, azim<span style="color: #666666">=-60</span>, elev<span style="color: #666666">=20</span>)
+surf <span style="color: #666666">=</span> axis<span style="color: #666666">.</span>plot_surface(x, y, u0<span style="color: #666666">.</span>T, rstride<span style="color: #666666">=1</span>, cstride<span style="color: #666666">=1</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;viridis&#39;</span>)
+wire <span style="color: #666666">=</span> axis<span style="color: #666666">.</span>plot_wireframe(x, y, u0<span style="color: #666666">.</span>T, rstride<span style="color: #666666">=1+</span>N<span style="color: #666666">//50</span>, cstride<span style="color: #666666">=1+</span>N<span style="color: #666666">//50</span>,
+                           color <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;r&quot;</span>, linewidth<span style="color: #666666">=0.5</span>, alpha <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>)
+axis<span style="color: #666666">.</span>contour(x, y, u0<span style="color: #666666">.</span>T, <span style="color: #666666">10</span>, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;z&#39;</span>, offset<span style="color: #666666">=-1.0</span>)
+axis<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&#39;x&#39;</span>)
+axis<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+axis<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&#39;u&#39;</span>)
+axis<span style="color: #666666">.</span>set_zlim(<span style="color: #666666">-1.0</span>, <span style="color: #666666">1.0</span>)
+fig<span style="color: #666666">.</span>colorbar(surf)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Laplace_relax.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Laplace_relax.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<br /><br /><center><p><img src="scripts/anim4/output.gif" align="bottom" width=400></p></center><br /><br />
+
+<p>
+<center> <!-- figure label: --> <div id="fig:`Laplace_relax"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  R&#233;sultats de l'ex&#233;cution du programme <code>Laplace_relax.py</code> avec les param&#232;tres N = 20 points de grille de chaque c&#244;t&#233;. La solution est obtenue apr&#232;s 386 it&#233;rations.  <!-- caption label: fig:`Laplace_relax --> </p></center>
+<p><img src="scripts/Laplace_relax.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Dans le programme <code>Laplace_relax.py</code>, l'it&#233;ration s'est poursuivie jusqu'&#224; ce que l'erreur moyenne par point de maillage soit inf&#233;rieure &#224; \( \epsilon = 10^{-5} \) o&#249; l'erreur a &#233;t&#233; estim&#233;e en prenant la diff&#233;rence entre l'ancienne valeur &#224; l'&#233;tape \( n \) et la nouvelle valeur &#224; l'&#233;tape \( n + 1 \). Le nombre d'it&#233;rations n&#233;cessaires &#224; la convergence d&#233;pend du mode propre en d&#233;composition le plus lent de l'it&#233;ration. Le module du mode de d&#233;composition le plus lent est connu sous le nom de <em>rayon spectral</em>
+$$
+\begin{equation}
+\rho = max_{m_x, m_y} |\zeta(m_x, m_y)|.
+\label{_auto34}
+\end{equation}
+$$
+
+De l'Eq. \eqref{eq:zeta} nous voyons que pour la m&#233;thode de Jacobi avec \( \omega = 1 \) nous avons
+$$
+\begin{equation}
+\rho = \rho_J = cos(\dfrac{\pi \Delta}{L}).
+\label{_auto35}
+\end{equation}
+$$
+
+ce qui correspond au mode \( m_x = m_y = 1 \). Chaque it&#233;ration multiplie l'erreur r&#233;siduelle dans ce mode le moins amorti par un facteur de module \( \rho \) et donc le nombre d'it&#233;rations n&#233;cessaires pour atteindre la tol&#233;rance d'erreur souhait&#233;e \( \epsilon \) sera
+$$
+\begin{equation}
+n = \dfrac{ln \epsilon}{ln \rho}.
+\label{_auto36}
+\end{equation}
+$$
+
+Pour la m&#233;thode Jacobi, \( \rho_J = 1 - \dfrac{1}{2} (\pi/N) \) et ainsi
+$$
+\begin{equation}
+n \approx \dfrac{2 |ln \epsilon|}{\pi^2} N^2.
+\label{_auto37}
+\end{equation}
+$$
+
+Notez que si nous doublons le nombre de points de grille \( N \), nous avons besoin de quatre fois plus d'it&#233;rations pour converger. Pour les probl&#232;mes pratiques, la m&#233;thode de Jacobi converge trop lentement pour &#234;tre utile.
+
+<p>
+Pour progresser, consid&#233;rons &#224; nouveau l'Eq. \eqref{eq:laplaceFTCS} et notons que si nous imaginons que notre grille de calcul est divis&#233;e en points clairs et sombres d&#233;cal&#233;s, comme le montre la figure <a href="#fig:lattice">7</a>, puis pour mettre &#224; jour la valeur d'un point blanc, nous n'avons besoin que de la valeur actuelle &#224; ce point blanc et des valeurs des points sombres voisins et vice versa pour mettre &#224; jour la valeur d'un point sombre.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:lattice"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  Un r&#233;seau d&#233;cal&#233; de points sombres et clairs pour une utilisation en sur-relaxation successive. Les points gris font partie de la fronti&#232;re et ne sont pas &#233;volu&#233;s. Pour mettre &#224; jour un point blanc ne n&#233;cessite que la valeur pr&#233;c&#233;dente du point blanc et des points sombres environnants et de m&#234;me pour mettre &#224; jour un point noir ne n&#233;cessite que la valeur pr&#233;c&#233;dente des points noirs et des points clairs environnants.  <!-- caption label: fig:lattice --> </p></center>
+<p><img src="imgs/lattice.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Ainsi, nous pouvons adopter une approche &#233;chelonn&#233;e o&#249; nous mettons &#224; jour tous les points blancs, puis nous mettons &#224; jour tous les points noirs et les deux &#233;tapes peuvent &#234;tre effectu&#233;es sur place. Pour les &#233;tapes o&#249; \( n \) est un entier, nous calculons les valeurs des points blancs en utilisant la formule
+
+$$
+\begin{equation}
+u_{j,k}^{n+1} = (1 - \omega) u_{j,k}^{n} + \dfrac{\omega}{4}(u_{j+1,k}^{n+1/2} + u_{j-1,k}^{n+1/2} + u_{j,k+1}^{n+1/2} + u_{j,k-1}^{n+1/2}) \label{eq:surrelax2D}
+\end{equation}
+$$
+
+puis pour les &#233;tapes o&#249; n est un demi-entier, nous utilisons la m&#234;me formule pour calculer les valeurs des points noirs. Nous pouvons r&#233;p&#233;ter l'analyse de stabilit&#233; en utilisant l'approche de l'&#233;quation. \eqref{eq:approche} et nous trouvons
+$$
+\begin{equation}
+\zeta^{1/2}(m_x, m_y) = \dfrac{\omega c \pm \sqrt{\omega^2 c^2 - 4(\omega -1)}}{2}
+\label{_auto38}
+\end{equation}
+$$
+
+o&#249;
+$$
+\begin{equation}
+c =\dfrac{1}{2} (cos(\dfrac{m_x \pi \Delta}{L}) + cos(\dfrac{m_y \pi \Delta}{L}))
+\label{_auto39}
+\end{equation}
+$$
+
+Cela r&#233;v&#232;le que le sch&#233;ma de l'Eq. \eqref{eq:surrelax2D} est stable pour \( 0 < \omega < 2 \). Lorsque \( \omega = 1 \), la m&#233;thode est connue sous le nom de m&#233;thode Gauss-Seidel, qui converge un peu plus rapidement que la m&#233;thode Jacobi. Pour \( \omega> 1 \), nous avons acc&#233;l&#233;r&#233; la convergence (par rapport &#224; la relaxation) qui est connue sous le nom de sur-relaxation successive ou SOR (Successive Over-Relaxation, en anglais). Le param&#232;tre \( \omega \) est connu comme le param&#232;tre de sur-relaxation.
+
+<p>
+Il existe une valeur optimale pour le param&#232;tre de sur-relaxation pour lequel le rayon spectral est minimis&#233;. Si nous nous concentrons sur le mode le moins amorti pour lequel \( m_x = m_y = 1 \), nous avons \( c = \rho_J \) et donc le rayon spectral en fonction de \( \omega \) peut &#234;tre &#233;crit comme
+
+$$
+\begin{equation}
+\rho(\omega) = \begin{cases} \left[ \dfrac{1}{2} \omega \rho_J + \dfrac{1}{2} \sqrt{\omega^2 \rho_J^2 - 4(\omega - 1)} \right]^2 & \quad pour \ 0 < \omega \le \omega_{opt}\\
+\omega -1 & \quad pour  \ \omega_{opt} \le \omega < 2
+\end{cases}
+\label{_auto40}
+\end{equation}
+$$
+
+o&#249; \( \omega_{opt} \) est le choix optimal qui minimise \( \rho \),
+$$
+\begin{equation}
+\omega_{opt} = \dfrac{2}{1 + \sqrt{1 - \rho_J^2}} =  \dfrac{2}{1 + sin(\pi \Delta/L)} \quad pour \ \rho_J = cos(\pi \Delta/L).
+\label{_auto41}
+\end{equation}
+$$
+
+Ainsi, ou le choix optimal du param&#232;tre de sur-relaxation, \( \omega = \omega_{opt} \approx \pi = N \), le rayon spectral est
+$$
+\begin{equation}
+\rho(\omega_{opt})= \rho_{opt} =  \dfrac{1 - sin(\pi \Delta/L)}{1 + sin(\pi \Delta/L)} \approx 1 - \dfrac{2\pi}{N}
+\label{_auto42}
+\end{equation}
+$$
+
+et le nombre d'it&#233;rations n&#233;cessaires pour r&#233;duire l'erreur &#224; une certaine tol&#233;rance \( \epsilon \) est
+$$
+\begin{equation}
+n \approx \dfrac{ln \epsilon}{ln \rho_{opt}} \approx \dfrac{|ln \epsilon|}{2 \pi} N.
+\label{_auto43}
+\end{equation}
+$$
+
+Maintenant, le nombre d'it&#233;rations est proportionnel &#224; \( N \) plut&#244;t qu'&#224; \( N^2 \), donc la convergence est atteinte beaucoup plus rapidement pour les grandes valeurs de \( N \).
+
+<p>
+Le programme <code>Laplace_surrelax.py</code> est une modification de <code>Laplace_relax.py</code> qui impl&#233;mente une sur-relaxation successive. Le programme diff&#232;re dans de nombreux endroits, il est donc r&#233;pertori&#233; dans son int&#233;gralit&#233;. Les r&#233;sultats pour \( N = 100 \) points le long d'un c&#244;t&#233; sont affich&#233;s sur la figure <a href="#fig:`Laplace_surrelax">8</a>. La convergence se produit en 137 it&#233;rations.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: Laplace_surrelax.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span>
+eps <span style="color: #666666">=</span> <span style="color: #666666">1e-5</span> <span style="color: #408080; font-style: italic"># erreur fractionnaire autorisée</span>
+L <span style="color: #666666">=</span> <span style="color: #666666">1.0</span> <span style="color: #408080; font-style: italic"># longueur de chaque côté</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;nombre de points de grille sur un côté -&gt; &#39;</span>))
+dy <span style="color: #666666">=</span> dx <span style="color: #666666">=</span> L<span style="color: #666666">/</span>(N<span style="color: #666666">-1.0</span>)
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dx
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dy
+(x, y) <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(x, y)
+u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((N, N))
+<span style="color: #408080; font-style: italic"># conditions aux limites</span>
+<span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N):
+    u[j,N<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>
+<span style="color: #408080; font-style: italic"># calculer le paramètre de sur-relaxation</span>
+omega <span style="color: #666666">=</span> <span style="color: #666666">2.0/</span>(<span style="color: #666666">1.0+</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>dx<span style="color: #666666">/</span>L))
+<span style="color: #408080; font-style: italic"># pixels blancs et noirs: les blancs ont j+k pairs; les noirs ont j+k impairs</span>
+blanc <span style="color: #666666">=</span> [(j, k) <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">if</span> (j<span style="color: #666666">+</span>k)<span style="color: #666666">%2</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>]
+noir <span style="color: #666666">=</span> [(j, k) <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">if</span> (j<span style="color: #666666">+</span>k)<span style="color: #666666">%2</span> <span style="color: #666666">==</span> <span style="color: #666666">1</span>]
+<span style="color: #408080; font-style: italic"># préparer l&#39;animation</span>
+image <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(u<span style="color: #666666">.</span>T, origin<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower&#39;</span>, extent<span style="color: #666666">=</span>(<span style="color: #666666">0.0</span>, L, <span style="color: #666666">0.0</span>, L))
+n <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># nombre d&#39;itérations</span>
+err <span style="color: #666666">=</span> <span style="color: #666666">1.0</span> <span style="color: #408080; font-style: italic"># erreur moyenne par site</span>
+<span style="color: #008000; font-weight: bold">while</span> err <span style="color: #666666">&gt;</span> eps:
+    <span style="color: #408080; font-style: italic"># mettre à jour le tracé animé</span>
+    image<span style="color: #666666">.</span>set_data(u<span style="color: #666666">.</span>T)
+    plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;itération </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">%</span>n)
+    plt<span style="color: #666666">.</span>tight_layout()
+    plt<span style="color: #666666">.</span>show()
+    plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+    <span style="color: #408080; font-style: italic"># prochaine itération en raffinement</span>
+    n <span style="color: #666666">=</span> n<span style="color: #666666">+1</span>
+    err <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #008000; font-weight: bold">for</span> (j, k) <span style="color: #AA22FF; font-weight: bold">in</span> blanc<span style="color: #666666">+</span>noir: <span style="color: #408080; font-style: italic"># boucle sur pixels blancs puis pixels noirs</span>
+        du <span style="color: #666666">=</span> (u[j<span style="color: #666666">-1</span>,k]<span style="color: #666666">+</span>u[j<span style="color: #666666">+1</span>,k]<span style="color: #666666">+</span>u[j,k<span style="color: #666666">-1</span>]<span style="color: #666666">+</span>u[j,k<span style="color: #666666">+1</span>])<span style="color: #666666">/4.0-</span>u[j,k]
+        u[j,k] <span style="color: #666666">+=</span> omega<span style="color: #666666">*</span>du
+        err <span style="color: #666666">+=</span> <span style="color: #008000">abs</span>(du)
+    err <span style="color: #666666">/=</span> N<span style="color: #666666">**2</span>
+<span style="color: #408080; font-style: italic"># tracé de surface de la solution finale</span>
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
+axis <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>gca(projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>, azim<span style="color: #666666">=-60</span>, elev<span style="color: #666666">=20</span>)
+surf <span style="color: #666666">=</span> axis<span style="color: #666666">.</span>plot_surface(x, y, u<span style="color: #666666">.</span>T, rstride<span style="color: #666666">=1</span>, cstride<span style="color: #666666">=1</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;viridis&#39;</span>)
+wire <span style="color: #666666">=</span> axis<span style="color: #666666">.</span>plot_wireframe(x, y, u<span style="color: #666666">.</span>T, rstride<span style="color: #666666">=1+</span>N<span style="color: #666666">//50</span>, cstride<span style="color: #666666">=1+</span>N<span style="color: #666666">//50</span>,
+                           color <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;r&quot;</span>, linewidth<span style="color: #666666">=0.5</span>, alpha <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>)
+axis<span style="color: #666666">.</span>contour(x, y, u<span style="color: #666666">.</span>T, <span style="color: #666666">10</span>, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;z&#39;</span>, offset<span style="color: #666666">=-1.0</span>)
+axis<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&#39;x&#39;</span>)
+axis<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+axis<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&#39;u&#39;</span>)
+axis<span style="color: #666666">.</span>set_zlim(<span style="color: #666666">-1.0</span>, <span style="color: #666666">1.0</span>)
+fig<span style="color: #666666">.</span>colorbar(surf)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Laplace_surrelax.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;Laplace_surrelax.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<br /><br /><center><p><img src="scripts/anim5/output.gif" align="bottom" width=400></p></center><br /><br />
+
+<p>
+<center> <!-- figure label: --> <div id="fig:`Laplace_surrelax"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 8:  R&#233;sultats de l'ex&#233;cution du programme <code>LaplaceJacobi_surrelax.py</code> avec les param&#232;tres N = 100 points de grille le long de chaque c&#244;t&#233;. La solution est obtenue apr&#232;s 137 it&#233;rations.  <!-- caption label: fig:`Laplace_surrelax --> </p></center>
+<p><img src="scripts/Laplace_surrelax.png" align="bottom" width=500></p>
+</center>
+
+<p>
+Comme dernier exemple, r&#233;solvons le potentiel &#233;lectrique produit par une charge ponctuelle centr&#233;e dans un cube avec des bords de longueur \( 2L \) dans laquelle les faces du cube sont mises &#224; la terre comme le montre la figure <a href="#fig:laplace3D">9</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:laplace3D"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 9:  Exemple de probl&#232;me de valeur limite pour l'&#233;quation de Poisson : une charge ponctuelle \( q \) est situ&#233;e au centre d'un cube de longueur d'ar&#234;te \( 2L \) dont les faces sont mises &#224; la terre.  <!-- caption label: fig:laplace3D --> </p></center>
+<p><img src="imgs/laplace3D.png" align="bottom" width=400></p>
+</center>
+
+<p>
+Il s'agit maintenant d'un probl&#232;me tridimensionnel que nous pouvons &#224; nouveau r&#233;soudre en utilisant une sur-relaxation successive, et notre &#233;quation d'it&#233;ration comprend d&#233;sormais &#233;galement un terme source:
+$$
+\begin{equation}
+u_{i,j,k}^{n+1} = (1 - \omega) u_{i,j,k}^{n} + \dfrac{\omega}{6}(u_{i+1,j,k}^{n+1/2} + u_{i-1,j,k}^{n+1/2} + u_{i,j+1,k}^{n+1/2} + u_{i,j-1,k}^{n+1/2} + u_{i,j,k+1}^{n+1/2} + u_{i,j,k-1}^{n+1/2}) + \dfrac{\omega}{6} \dfrac{\rho_{i,j,k}}{\epsilon_0} \label{eq:surrelax3D}
+\end{equation}
+$$
+
+Encore une fois, nous divisons le r&#233;seau de points de la grille en pixels &#171;blancs&#187; et &#171;noirs&#187; altern&#233;s et r&#233;solvons les pixels blancs sur les pas entiers et les pixels noirs sur les pas demi-entiers. La charge ponctuelle nous donne une densit&#233; de charge que nous consid&#233;rons comme &#233;tant
+$$
+\begin{equation}
+\rho_{i,j,k} = \begin{cases} \dfrac{q}{\Delta^3} & \quad pour \ i = j = k = (N-1)/2\\
+ 0 & \text{autrement}
+\end{cases}
+\label{_auto44}
+\end{equation}
+$$
+
+et nous devons &#234;tre s&#251;rs de choisir une valeur impaire pour \( N \) afin qu'il y ait un point de grille au centre exact de la bo&#238;te.
+
+<p>
+Le programme <code>charge.py</code> r&#233;pertori&#233; ci-dessous calcule le champ de potentiel &#233;lectrique dans la bo&#238;te mise &#224; la terre pour une unit&#233; \( q = \epsilon_0 = 1 \) charge. Les r&#233;sultats sont pr&#233;sent&#233;s sur la figure <a href="#fig:charge">10</a>.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## NOM DU PROGRAMME: charge.py</span>
+<span style="color: #408080; font-style: italic">#% IMPORTATION</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span>
+eps <span style="color: #666666">=</span> <span style="color: #666666">1e-5</span> <span style="color: #408080; font-style: italic"># erreur fractionnaire autorisée</span>
+L <span style="color: #666666">=</span> <span style="color: #666666">1.0</span> <span style="color: #408080; font-style: italic"># longueur de chaque côté</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&#39;nombre de points de grille sur un côté -&gt; &#39;</span>))
+dz <span style="color: #666666">=</span> dy <span style="color: #666666">=</span> dx <span style="color: #666666">=</span> <span style="color: #666666">2.0*</span>L<span style="color: #666666">/</span>(N<span style="color: #666666">-1.0</span>)
+x <span style="color: #666666">=</span> <span style="color: #666666">-</span>L <span style="color: #666666">+</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dx
+y <span style="color: #666666">=</span> <span style="color: #666666">-</span>L <span style="color: #666666">+</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dy
+z <span style="color: #666666">=</span> <span style="color: #666666">-</span>L <span style="color: #666666">+</span> np<span style="color: #666666">.</span>array(<span style="color: #008000">range</span>(N))<span style="color: #666666">*</span>dz
+u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((N, N, N))
+rho <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((N, N, N))
+<span style="color: #408080; font-style: italic"># source</span>
+q <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>
+rho[(N<span style="color: #666666">-1</span>)<span style="color: #666666">//2</span>,(N<span style="color: #666666">-1</span>)<span style="color: #666666">//2</span>,(N<span style="color: #666666">-1</span>)<span style="color: #666666">//2</span>] <span style="color: #666666">=</span> q<span style="color: #666666">/</span>(dx<span style="color: #666666">*</span>dy<span style="color: #666666">*</span>dz)
+<span style="color: #408080; font-style: italic"># préparer l&#39;animation</span>
+s <span style="color: #666666">=</span> u[:,:,(N<span style="color: #666666">-1</span>)<span style="color: #666666">//2</span>]
+image <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(s<span style="color: #666666">.</span>T, origin<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower&#39;</span>, extent<span style="color: #666666">=</span>(<span style="color: #666666">-</span>L, L, <span style="color: #666666">-</span>L, L), vmax<span style="color: #666666">=1.0</span>)
+<span style="color: #408080; font-style: italic"># calculer le paramètre de sur-relaxation</span>
+omega <span style="color: #666666">=</span> <span style="color: #666666">2.0/</span>(<span style="color: #666666">1.0+</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>dx<span style="color: #666666">/</span>L))
+<span style="color: #408080; font-style: italic"># pixels blancs et noirs: les blancs ont i+j+k pairs; les noirs ont i+j+k impairs</span>
+blanc <span style="color: #666666">=</span> [(i, j, k) <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) \
+         <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">if</span> (i<span style="color: #666666">+</span>j<span style="color: #666666">+</span>k)<span style="color: #666666">%2</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>]
+noir <span style="color: #666666">=</span> [(i, j, k) <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) \
+         <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">-1</span>) <span style="color: #008000; font-weight: bold">if</span> (i<span style="color: #666666">+</span>j<span style="color: #666666">+</span>k)<span style="color: #666666">%2</span> <span style="color: #666666">==</span> <span style="color: #666666">1</span>]
+n <span style="color: #666666">=</span> <span style="color: #666666">0</span> <span style="color: #408080; font-style: italic"># nombre d&#39;itérations</span>
+err <span style="color: #666666">=</span> <span style="color: #666666">1.0</span> <span style="color: #408080; font-style: italic"># erreur moyenne par site</span>
+<span style="color: #008000; font-weight: bold">while</span> err <span style="color: #666666">&gt;</span> eps:
+    image<span style="color: #666666">.</span>set_data(s<span style="color: #666666">.</span>T)
+    plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;itération </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">%</span>n)
+    plt<span style="color: #666666">.</span>tight_layout()
+    plt<span style="color: #666666">.</span>show()
+    plt<span style="color: #666666">.</span>pause(<span style="color: #666666">0.001</span>)
+    <span style="color: #408080; font-style: italic"># prochaine itération en raffinement</span>
+    n <span style="color: #666666">=</span> n<span style="color: #666666">+1</span>
+    err <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #408080; font-style: italic"># lboucle sur pixels blancs puis pixels noirs</span>
+    <span style="color: #008000; font-weight: bold">for</span> (i, j, k) <span style="color: #AA22FF; font-weight: bold">in</span> blanc<span style="color: #666666">+</span>noir:
+        du <span style="color: #666666">=</span> (u[i<span style="color: #666666">-1</span>,j,k] <span style="color: #666666">+</span> u[i<span style="color: #666666">+1</span>,j,k] <span style="color: #666666">+</span> u[i,j<span style="color: #666666">-1</span>,k] <span style="color: #666666">+</span> u[i,j<span style="color: #666666">+1</span>,k] <span style="color: #666666">+</span> u[i,j,k<span style="color: #666666">-1</span>] \
+              <span style="color: #666666">+</span> u[i,j,k<span style="color: #666666">+1</span>] <span style="color: #666666">+</span> dx<span style="color: #666666">**2*</span>rho[i,j,k])<span style="color: #666666">/6.0</span> <span style="color: #666666">-</span> u[i,j,k]
+        u[i,j,k] <span style="color: #666666">+=</span> omega<span style="color: #666666">*</span>du
+        err <span style="color: #666666">+=</span> <span style="color: #008000">abs</span>(du)
+    err <span style="color: #666666">/=</span> N<span style="color: #666666">**3</span>
+<span style="color: #408080; font-style: italic"># tracé de surface de la solution finale</span>
+(x, y) <span style="color: #666666">=</span> np<span style="color: #666666">.</span>meshgrid(x, y)
+s <span style="color: #666666">=</span> s<span style="color: #666666">.</span>clip(eps, <span style="color: #666666">1.0</span>)
+levels <span style="color: #666666">=</span> [<span style="color: #666666">10**</span>(l<span style="color: #666666">/2.0</span>) <span style="color: #008000; font-weight: bold">for</span> l <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">-5</span>, <span style="color: #666666">0</span>)]
+fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
+axis <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>gca(projection<span style="color: #666666">=</span><span style="color: #BA2121">&#39;3d&#39;</span>, azim<span style="color: #666666">=-60</span>, elev<span style="color: #666666">=20</span>)
+surf <span style="color: #666666">=</span> axis<span style="color: #666666">.</span>plot_surface(x, y, s<span style="color: #666666">.</span>T, rstride<span style="color: #666666">=1</span>, cstride<span style="color: #666666">=1</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;viridis&#39;</span>)
+wire <span style="color: #666666">=</span> axis<span style="color: #666666">.</span>plot_wireframe(x, y, s<span style="color: #666666">.</span>T, rstride<span style="color: #666666">=1+</span>N<span style="color: #666666">//50</span>, cstride<span style="color: #666666">=1+</span>N<span style="color: #666666">//50</span>,
+                           color <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;r&quot;</span>, linewidth<span style="color: #666666">=0.5</span>, alpha <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>)
+axis<span style="color: #666666">.</span>contour(x, y, s<span style="color: #666666">.</span>T, levels, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;z&#39;</span>, offset<span style="color: #666666">=-1.0</span>)
+axis<span style="color: #666666">.</span>contourf(x, y, s<span style="color: #666666">.</span>T, <span style="color: #666666">4</span>, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;x&#39;</span>, offset<span style="color: #666666">=-</span>L)
+axis<span style="color: #666666">.</span>contourf(x, y, s<span style="color: #666666">.</span>T, <span style="color: #666666">4</span>, zdir<span style="color: #666666">=</span><span style="color: #BA2121">&#39;y&#39;</span>, offset<span style="color: #666666">=</span>L)
+axis<span style="color: #666666">.</span>set_zlim(<span style="color: #666666">-1.0</span>, <span style="color: #666666">1.0</span>)
+axis<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&#39;x&#39;</span>)
+axis<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+axis<span style="color: #666666">.</span>set_zlabel(<span style="color: #BA2121">&#39;u&#39;</span>)
+fig<span style="color: #666666">.</span>colorbar(surf)
+plt<span style="color: #666666">.</span>tight_layout()
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;charge.png&quot;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&quot;charge.pdf&quot;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<br /><br /><center><p><img src="scripts/anim6/output.gif" align="bottom" width=400></p></center><br /><br />
+
+<p>
+<center> <!-- figure label: --> <div id="fig:charge"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 10:  R&#233;sultats de l'ex&#233;cution du programme <code>charge.py</code> avec des param&#232;tres N = 50 points de grille le long de chaque c&#244;t&#233;.  <!-- caption label: fig:charge --> </p></center>
+<p><img src="scripts/charge.png" align="bottom" width=500></p>
+</center>
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2020, Ahmed Ammar. Released under CC Attribution 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+
