@@ -118,9 +118,9 @@ DATE: today
   * "jupyter/ipython" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours6/cours6.ipynb"
 * PDF
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours6/cours6.pdf"
-# * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD6/TD6.pdf"
+  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD6/TD6.pdf"
 # * "TD (corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD6/TD6_corr.pdf"
 
 * HTML:
   * "Cours" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/cours6/cours6-bs.html"
-#* "TD (énoncé + corrigé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD6/TD6.html"
+  * "TD (énoncé)" : "https://astrax.github.io/FormationPythonHAP2019-2020/pub/TD6/TD6.html"
