@@ -112,4 +112,4 @@ mkdir $dest
 fi
 cp -r imgs scripts *.pdf *.html *.ipynb *.tar.gz $dest
 
-./clean.sh
+# ./clean.sh

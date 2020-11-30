@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} NOM DU PROGRAMME: desintegration.py}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} IMPORTATION}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} SOLUTION EXACTE}
+\PYG{k}{def} \PYG{n+nf}{n\PYGZus{}exact}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{noyaux0}\PYG{p}{,} \PYG{n}{tau}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{noyaux0}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{t}\PYG{o}{/}\PYG{n}{tau}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} ENTRÉES}
+\PYG{n}{noyaux0} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}nombre initial de noyaux: \PYGZdq{}}\PYG{p}{))}
+\PYG{n}{tau} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}constante de temps de décroissance: \PYGZsq{}}\PYG{p}{))}
+\PYG{n}{dt} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}pas de temps: \PYGZsq{}}\PYG{p}{))}
+\PYG{n}{tmax} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}temps de fin de la simulation: \PYGZsq{}}\PYG{p}{))}
+\PYG{n}{nsteps} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{tmax}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{)}
+\PYG{n}{noyaux} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{nsteps}\PYG{p}{)}
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{nsteps}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} VLEURS INITIALES}
+\PYG{n}{t}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.0}
+\PYG{n}{noyaux}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=}\PYG{n}{noyaux0}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} BOUCLE PRINCIPALE: MÉTHODE D\PYGZsq{}EULER}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{nsteps}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+    \PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}
+    \PYG{n}{noyaux}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{noyaux}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{noyaux}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/}\PYG{n}{tau}\PYG{o}{*}\PYG{n}{dt}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} TRAÇAGE DU GRAPHIQUE}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{noyaux}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}r\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Solution: Euler\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{n\PYGZus{}exact}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{noyaux0}\PYG{p}{,} \PYG{n}{tau}\PYG{p}{),} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}b\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Solution exacte\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}temps\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}N(t)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Désintégration radioactive\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}desintegration.png\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}desintegration.pdf\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

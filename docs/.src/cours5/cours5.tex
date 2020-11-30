@@ -1,0 +1,1237 @@
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+% #define PREAMBLE
+
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+oneside,                 % oneside: electronic viewing, twoside: printing
+final,                   % draft: marks overfull hboxes, figures with paths
+10pt]{article}
+
+\listfiles               %  print all files needed to compile this document
+
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb}
+\usepackage[table]{xcolor}
+\usepackage{bm,ltablex,microtype}
+
+\usepackage[pdftex]{graphicx}
+
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+%\setlength{\fboxsep}{-1.5mm}  % adjust cod_vpad/pro_vpad background box
+
+%% Background for code blocks (parameter is color name)
+
+%% pro/cod_vpad: gives some vertical padding before and after the text
+%% (but has more simplistic code than _cod/pro_tight+cod/pro).
+%% pro/cod_vpad can be used to enclose Verbatim or lst begin/end for code.
+%% pro/cod calls _pro/cod_tight and has very little vertical padding,
+%% used to enclose Verbatim and other begin/end for code.
+%% (pro/cod is what the ptex2tex program could produce with the
+%% Blue/BlueBar definitions in .ptex2tex.cfg.)
+
+\newenvironment{cod_vpad}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+
+\newenvironment{_cod_tight}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{cod}[1]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_cod_tight}{#1}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_cod_tight}\egroup}
+
+%% Background for complete program blocks (parameter 1 is color name
+%% for background, parameter 2 is color for left bar)
+\newenvironment{pro_vpad}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+
+\newenvironment{_pro_tight}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\advance\hsize-2mm\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{pro}[2]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_pro_tight}{#1}{#2}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_pro_tight}\egroup}
+
+\usepackage{minted}
+\usemintedstyle{default}
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+    }
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % levels in table of contents
+
+% Tricks for having figures close to where they are defined:
+% 1. define less restrictive rules for where to put figures
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
+% 2. ensure all figures are flushed before next section
+\usepackage[section]{placeins}
+% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
+%\usepackage{float}\restylefloat{figure}
+
+% --- fancyhdr package for fancy headers ---
+\usepackage{fancyhdr}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[LE,RO]{\thepage}
+% Ensure copyright on titlepage (article style) and chapter pages (book style)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize \copyright\ 2020, Ahmed Ammar. Released under CC Attribution 4.0 license}}
+%  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+% Ensure copyright on titlepages with \thispagestyle{empty}
+\fancypagestyle{empty}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize \copyright\ 2020, Ahmed Ammar. Released under CC Attribution 4.0 license}}
+  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+
+\pagestyle{fancy}
+
+
+\usepackage{framed,wrapfig}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "grayicon" has colored background, no frame, and an icon
+% Admon "notice"
+\definecolor{grayicon_notice_background}{rgb}{0.91,0.91,0.91}
+% \fboxsep sets the space between the text and the box
+\newenvironment{noticeshaded}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_notice_background}}
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
+
+\newenvironment{notice_grayiconadmon}[1][Note]{
+\begin{noticeshaded}
+\noindent
+\begin{wrapfigure}{l}{0.07\textwidth}
+\vspace{-13pt}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_notice}
+\end{wrapfigure} \textbf{#1}\par
+\nobreak\noindent\ignorespaces
+}
+{
+\end{noticeshaded}
+}
+
+% Admonition style "grayicon" has colored background, no frame, and an icon
+% Admon "summary"
+\definecolor{grayicon_summary_background}{rgb}{0.91,0.91,0.91}
+% \fboxsep sets the space between the text and the box
+\newenvironment{summaryshaded}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_summary_background}}
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
+
+\newenvironment{summary_grayiconadmon}[1][Résumé]{
+\begin{summaryshaded}
+\noindent
+\begin{wrapfigure}{l}{0.07\textwidth}
+\vspace{-13pt}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_summary}
+\end{wrapfigure} \textbf{#1}\par
+\nobreak\noindent\ignorespaces
+}
+{
+\end{summaryshaded}
+}
+
+% Admonition style "grayicon" has colored background, no frame, and an icon
+% Admon "warning"
+\definecolor{grayicon_warning_background}{rgb}{0.91,0.91,0.91}
+% \fboxsep sets the space between the text and the box
+\newenvironment{warningshaded}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_warning_background}}
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
+
+\newenvironment{warning_grayiconadmon}[1][Avertissement]{
+\begin{warningshaded}
+\noindent
+\begin{wrapfigure}{l}{0.07\textwidth}
+\vspace{-13pt}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_warning}
+\end{wrapfigure} \textbf{#1}\par
+\nobreak\noindent\ignorespaces
+}
+{
+\end{warningshaded}
+}
+
+% Admonition style "grayicon" has colored background, no frame, and an icon
+% Admon "question"
+\definecolor{grayicon_question_background}{rgb}{0.91,0.91,0.91}
+% \fboxsep sets the space between the text and the box
+\newenvironment{questionshaded}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_question_background}}
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
+
+\newenvironment{question_grayiconadmon}[1][Question]{
+\begin{questionshaded}
+\noindent
+\begin{wrapfigure}{l}{0.07\textwidth}
+\vspace{-13pt}
+\includegraphics[width=0.07\textwidth]{latex_figs/small_gray_question2}
+\end{wrapfigure} \textbf{#1}\par
+\nobreak\noindent\ignorespaces
+}
+{
+\end{questionshaded}
+}
+
+% Admonition style "grayicon" has colored background, no frame, and an icon
+% Admon "block"
+\definecolor{grayicon_block_background}{rgb}{0.91,0.91,0.91}
+% \fboxsep sets the space between the text and the box
+\newenvironment{blockshaded}
+{\def\FrameCommand{\fboxsep=3mm\colorbox{grayicon_block_background}}
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}{\endMakeFramed}
+
+\newenvironment{block_grayiconadmon}[1][Block]{
+\begin{blockshaded}
+\noindent
+ \textbf{#1}\par
+\nobreak\noindent\ignorespaces
+}
+{
+\end{blockshaded}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+\usepackage[totoc]{idxlayout}   % for index in the toc
+\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% matching end for #ifdef PREAMBLE
+% #endif
+
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
+
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+Équations différentielles ordinaires
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf Ahmed Ammar (\texttt{ahmed.ammar@fst.utm.tn})}
+\end{center}
+
+    \begin{center}
+% List of all institutions:
+\centerline{{\small Institut Préparatoire aux Études Scientifiques et Techniques, Université de Carthage.}}
+\end{center}
+    
+% ----------------- end author(s) -------------------------
+
+% --- begin date ---
+\begin{center}
+Nov 30, 2020
+\end{center}
+% --- end date ---
+
+\vspace{1cm}
+
+
+\tableofcontents
+
+
+\vspace{1cm} % after toc
+
+
+
+
+\section{Introduction}
+Dans les domaines scientifiques et industriels, il est courant aujourd'hui d'étudier la nature ou les dispositifs technologiques au moyen de modèles sur ordinateur. Avec de tels modèles, l'ordinateur agit comme un laboratoire virtuel où les expériences peuvent être effectuées de manière rapide, fiable, sûre et économique.
+
+Les équations différentielles constituent l'un des outils mathématiques les plus puissants pour comprendre et prédire le comportement des systèmes dynamiques de la nature, de l'ingénierie et de la société. Un système dynamique est un système avec un état, généralement exprimé par un ensemble de variables, évoluant dans le temps. Par exemple, un pendule oscillant, la propagation d'une maladie et les conditions météorologiques sont des exemples de systèmes dynamiques. Nous pouvons utiliser les lois fondamentales de la physique, ou l'intuition simple, pour exprimer des règles mathématiques qui régissent l'évolution du système dans le temps. Ces règles prennent la forme d'équations différentielles.
+
+
+\section{Exemple I : Radioactivité}
+\subsection{La découverte de la radioactivité}
+La radioactivité a été découverte en France, de 1896 à 1898, par Henri Becquerel, qui a mis en évidence l’existence d’un rayonnement invisible provenant de l’uranium (voir Figure~\ref{fig:Becquerel}), et par Pierre et Marie Curie qui ont montré la généralité de ce phénomène, lui ont donné son nom, et découvert deux éléments chimiques particulièrement radioactifs, le polonium et le radium. Dans l’histoire de cette découverte, et du développement de toutes ses conséquences, on retrouve toutes les grandes questions liées à la recherche, aux mécanismes de la découverte, aux remises en cause des acquis de la science et à l’exploitation scientifique, technologique et industrielle des connaissances nouvelles.
+
+
+\begin{figure}[!ht]  % fig:Becquerel
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/radioactivite.jpg}}
+  \caption{
+  Cliché développé par Becquerel le $1^{er}$ mars 1896 après être resté dans un tiroir. On distingue dans la tache inférieure, une croix de Malte à laquelle Becquerel fait allusion (« Si, entre la lamelle du sel d’uranium et la lame d’aluminium ou le papier noir, on interpose un écran formé d’une lame de cuivre … par exemple en forme de croix, on observe dans l’image la silhouette de cette croix, en plus clair… »). Les annotations sont de la main de Becquerel.[s:OpenEdition Journals, \href{{https://journals.openedition.org/bibnum/848}}{Henri Becquerel : découverte de la radioactivité}] \label{fig:Becquerel}
+  }
+\end{figure}
+%\clearpage % flush figures fig:Becquerel
+
+
+\subsection{Loi de désintégration radioactive}
+Considérons la désintégration radioactive des noyaux. Le nombre de noyaux, N, suit l'équation différentielle ordinaire:
+\begin{equation}
+\frac{dN(t)}{dt} = - \frac{N(t)}{\tau}
+\label{eq:desintegration_ode}
+\end{equation}
+où $\tau$ est la constante de temps de décroissance (on l'appelle aussi durée de vie moyenne). Cette équation peut être intégrée directement, avec la solution:
+\begin{equation}
+N(t) = N_0 e^{-t/\tau}
+\label{eq:desintegration_exact}
+\end{equation}
+mais nous voulons essayer de résoudre l'équation numériquement.
+
+L'approche la plus simple consiste à exprimer le nombre de noyaux à l'instant $t + \Delta t$ en termes de nombre à l'instant $t$:
+
+\begin{equation}
+N(t + \Delta t) = N(t) - \frac{N(t)}{\tau} \Delta t + \mathcal{O}(\Delta t^2)
+\label{eq:desintegration_euler}
+\end{equation}
+Si nous commençons par $N_0$ noyaux à l'instant $t = 0$, alors à $t = \Delta t$ nous aurons $N(\Delta t) \approx N_0 - (N_0/ \tau) \Delta t$; at $t = 2 \Delta t$ nous aurons $N(2\Delta t) \approx N(\Delta t) - [N(\Delta t)/ \tau] \Delta t$ etc.
+L'erreur de troncature est $\mathcal{O}(\Delta t^2)$. Par conséquent, si la taille du pas $\Delta t$ est petite, nous nous attendons à ce que notre solution numérique soit proche de la solution exacte. Cette méthode d’intégration d’une équation différentielle ordinaire est connue sous le nom de \textbf{méthode d’Euler}.
+
+
+
+\vspace{6mm}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{scripts/euler_schema.pdf}}
+
+\vspace{6mm}
+
+
+
+Voici un programme qui implémentera cette méthode d'intégration de l'équation différentielle pour la désintégration radioactive:
+
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: desintegration.py
+#%% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+#%% SOLUTION EXACTE
+def n_exact(t, noyaux0, tau):
+    return noyaux0*np.exp(-t/tau)
+#%% ENTRÉES
+noyaux0 = int(input("nombre initial de noyaux: "))
+tau = float(input('constante de temps de décroissance: '))
+dt = float(input('pas de temps: '))
+tmax = int(input('temps de fin de la simulation: '))
+nsteps = int(tmax/dt)
+noyaux = np.zeros(nsteps)
+t = np.zeros(nsteps)
+#%% VLEURS INITIALES
+t[0] = 0.0
+noyaux[0] =noyaux0
+#%% BOUCLE PRINCIPALE: MÉTHODE D'EULER
+for i in range(nsteps-1):
+    t[i+1] = t[i] + dt
+    noyaux[i+1] = noyaux[i] - noyaux[i]/tau*dt
+#%% TRAÇAGE DU GRAPHIQUE
+plt.figure(figsize=(8,5))
+plt.plot(t, noyaux, '-r', label='Solution: Euler')
+plt.plot(t, n_exact(t, noyaux0, tau), '--b', label='Solution exacte')
+plt.xlabel('temps')
+plt.ylabel('N(t)')
+plt.title('Désintégration radioactive')
+plt.grid()
+plt.legend()
+plt.tight_layout()
+plt.savefig("desintegration.png")
+plt.savefig("desintegration.pdf")
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+
+Le programme demande le nombre initial de noyaux, $N_0$, la constante de temps de décroissance $\tau$, le pas de temps $\Delta t$ et la durée totale de l'intégration $t_{max}$. Lorsque ce programme est exécuté avec les valeurs d'entrée sont; $N_0 = 100$, $\tau = 1$, $\Delta t = 0.04$ et $t_{max} = 5$, le programme produit le tracé présenté dans la Figure~\ref{figout:desintegration}.
+
+
+\begin{figure}[!ht]  % figout:desintegration
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/desintegration.pdf}}
+  \caption{
+  Résultat de l'exécution du programme \emph{desintegration.py} avec entrée $N_0 = 100$, $\tau = 1$, $\Delta t = 0.04$ et $t_{max} = 5$. \label{figout:desintegration}
+  }
+\end{figure}
+%\clearpage % flush figures figout:desintegration
+
+
+Voyons maintenant à quel point notre programme est proche de la solution exacte. Vraisemblablement, lorsque le pas $\Delta t$ est grand, l'erreur sera pire; aussi, les erreurs grandissent avec le temps. Pour voir cela, considérons une version modifiée de notre programme \emph{desintegration.py} qui trace la différence fractionnaire entre le résultat numérique et le résultat exact donné par Eq.~(\ref{eq:desintegration_exact}). Notre nouveau programme effectuera des évolutions numériques sur un certain nombre de \textbf{différentes valeurs du pas} afin que nous puissions voir comment l'erreur dépend du degré de raffinement de $\Delta t$.
+
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: desintegrationErr.py
+#IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+# ENTRÉES
+noyaux0 = int(input("nombre initial de noyaux: "))
+tau = float(input('constante de temps de décroissance: '))
+dtbas = float(input('pas de temps de résolution le plus bas: '))
+nres = int(input('nombre de raffinements de résolution: '))
+tmax = int(input('temps de fin de la simulation: '))
+# BOUCLE PRINCIPALE: CALCUL D'ERREURS
+for n in range(nres):
+    raffine = 10**n
+    dt = dtbas/raffine
+    nsteps = int(tmax/dt)
+    noyaux = noyaux0
+    err = np.zeros(nsteps)
+    t = np.zeros(nsteps)
+    # BOUCLE SECONDAIRE: MÉTHODE D'EULER
+    for i in range(nsteps-1):
+        t[i+1] = t[i] + dt
+        noyaux = noyaux - noyaux/tau*dt
+        exact = noyaux0 * np.exp(- t[i+1]/tau)
+        err[i+1] = abs((noyaux - exact)/exact)
+    # tracer l'erreur à cette résolution
+    plt.loglog(t[raffine::raffine], err[raffine::raffine],
+               '.-', label='dt = '+str(dt))
+    
+plt.legend(loc=4)
+plt.xlabel('temps')
+plt.ylabel('erreur fractionnaire')
+plt.title("Erreur d'intégration de la désintégration radioactive")
+plt.grid(linestyle='-', which='major')
+plt.grid(which='minor')
+plt.savefig("desintegrationErr.png")
+plt.savefig("desintegrationErr.pdf")
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+
+Ce programme produit les résultats montrés à la Figure~\ref{figout:desintegrationErr}.
+
+
+\begin{figure}[!ht]  % figout:desintegrationErr
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/desintegrationErr.pdf}}
+  \caption{
+  Résultat de l'exécution du programme \emph{desintegrationErr.py} avec entrée $N_0 = 100$, $\tau = 1$, $\Delta t = 0.1$, $N_{res}=4$ et $t_{max} = 10$. \label{figout:desintegrationErr}
+  }
+\end{figure}
+%\clearpage % flush figures figout:desintegrationErr
+
+
+Les erreurs se rapprochent de manière linéaire avec le temps (les lignes du tracé logarithmique ont une pente approximativement égale à l'unité) et chaque facteur de 10 dans le raffinement diminue l'erreur fractionnaire d'un facteur 10. Pour comprendre cela, notez que le terme que nous avons jeté dans l'expansion de Taylor de notre équation différentielle ordinaire était le terme $d^2 N / d t^2 $, donc chaque étape introduit une erreur de:
+\begin{equation}
+e_i \approx \frac{1}{2} \frac{d^2 N(t_i)}{d t^2} \Delta t^2 = \frac{N(t_i)}{2 \tau^2} \Delta t^2
+\label{eq:local_erreur}
+\end{equation}
+Ceci est connu sous le nom \textbf{d'erreur locale}. Si l'erreur locale d'un schéma d'intégration numérique est $\mathcal{O}(\Delta t^{p + 1})$ comme $t \rightarrow 0$, alors on dit que c'est l'ordre $p$. La méthode d’Euler est donc un schéma d’intégration de premier ordre. \textbf{L'erreur globale} est l'erreur accumulée lorsque l'intégration est effectuée pendant une certaine durée T. Le nombre d'étapes requis est $n = T / \Delta t$ et chaque étape $i~=~1...n$ accumule une erreur $e_i$, nous nous attendons donc à ce que l'erreur globale soit:
+\begin{equation}
+E_n \le \sum_{i=1}^n e_i \le T \frac{N_0}{2 \tau^2} \Delta t
+\label{eq:global_erreur}
+\end{equation}
+puisque $e_i \le \frac{N_0}{2 \tau^2} \Delta t^2$. Notez que pour un schéma d’intégration d'ordre $p$, l'erreur sera $\mathcal{O}(\Delta t^{p})$; de plus, l'erreur grandit avec le temps $T$. Pour la méthode d'Euler, l'erreur croît de manière approximativement linéaire avec $T$ et avec $\Delta t$, ce qui est ce que nous voyons sur la Figure~\ref{figout:desintegrationErr}.
+
+
+\begin{notice_grayiconadmon}[Note]
+La méthode d'Euler n'est pas une méthode recommandée pour résoudre des équations différentielles ordinaires. S'agissant simplement du premier ordre, une précision souhaitée n'est obtenue que pour de très petites valeurs de $\Delta t$, de nombreuses étapes d'intégration sont donc nécessaires pour faire évoluer le système pour une durée donnée $T$. Mais le coût en calcul de la méthode d’Euler n’est pas son seul inconvénient: elle n’est pas particulièrement stable non plus, comme nous le verrons plus loin dans ce chapitre..
+\end{notice_grayiconadmon} % title: Note
+
+
+
+
+\section{Mouvement d'un projectile}
+Un autre exemple d'équation différentielle ordinaire est celui du mouvement du projectile, pour lequel les équations du mouvement sont:
+\begin{align}
+\frac{dx}{dt} &=v_x, & \frac{dv_x}{dt} &=0, \\
+\frac{dy}{dt} &=v_y, & \frac{dv_y}{dt} &=-g,
+\end{align}
+où $g$ est l'accélération de pesanteur. Nous pouvons utiliser la méthode d'Euler pour écrire chaque dérivée sous une forme de différence finie convenant à l'intégration numérique:
+
+\begin{align}
+x_{i+1} &  =x_i + v_{x,i} \Delta t, &  v_{x,i+1} &= v_{x,i}, \\
+y_{i+1} &  =y_i + v_{y,i} \Delta t, &  v_{y,i+1} &= v_{y,i} - g \Delta t,
+\end{align}
+Les trajectoires d'un projectile lancé avec une vitesse $v_0~=~10~ \ m~s^{-1}$ à différents angles sont tracées par le programme \texttt{projectile.py} et sont tracées à la Fig.~\ref{fig:projectile}.
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: projectile.py
+#%% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+#%% CONSTANTES
+# accélération de la pesanteur(m/s^2)
+g = 9.8
+# angles de tire (deg)
+angles = [30, 35, 40, 45, 50, 55]
+# vitesse initiale (m/s())
+v0 = 20.0 
+N = 10000 # Nombre de pas de temps
+# pas de temps (s)
+dt =0.001
+#%% VLEURS INITIALES
+x = np.zeros(N)
+y = np.zeros(N)
+vx = np.zeros(N)
+vy = np.zeros(N)
+for theta in angles:
+    vx[0] = v0 * np.cos(theta*np.pi/180.0)
+    vy[0] = v0 * np.sin(theta*np.pi/180.0)
+    x[0], y[0]=0, 1
+    # MÉTHODE D'EULER
+    for i in range(N-1):
+        x[i+1] = x[i] + vx[i] * dt
+        y[i+1] = y[i] + vy[i] * dt
+        vx[i+1] = vx[i]
+        vy[i+1] = vy[i] - g * dt
+    plt.plot(x, y, lw =2, label=str(theta)+' deg')
+#%% GRAPHIQUE: TRAJECTOIRES
+plt.xlabel('x [m]')
+plt.ylabel('y [m]')
+plt.suptitle("Trajectoire d'un projectile", weight='bold')
+plt.title(r'Pas de temps: $\Delta_t$ = {:.3f} s'.format(dt))
+plt.grid()
+plt.legend()
+plt.axis([0, 45, 0, 15])
+# ENREGISTRER ET AFFICHER LA FIGURE
+plt.savefig("projectile.png")
+plt.savefig("projectile.pdf")
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+Nous voyons, comme prévu, que la plus grande plage est atteinte pour un angle de lancement de $45^\circ$.
+
+
+\begin{figure}[!ht]  % fig:projectile
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/projectile.pdf}}
+  \caption{
+  Résultats de l'exécution du programme \texttt{projectile.py}. On voit que la plus grande plage est atteinte avec un angle de lancement de $\theta = 45^\circ$. \label{fig:projectile}
+  }
+\end{figure}
+%\clearpage % flush figures fig:projectile
+
+
+Trouver la trajectoire d'un projectile compte tenu de ses conditions initiales, $v_{x,i}$ et $v_{x,i}$ ou de manière équivalente $v_0$ et $\theta$, est relativement simple. Cependant, supposons que nous voulons trouver l'angle de lancement $\theta$ requis pour atteindre une cible à une distance donnée avec une vitesse initiale $v_0$ donnée. Ceci est un exemple de problème de la \emph{valeur aux limites} à deux points.Une approche pour résoudre un tel problème est connue comme \emph{méthode de tir}.
+
+L'idée est simple: devinez la valeur de $\theta$, effectuez l'intégration, déterminez combien vous manquez votre note, puis affinez votre estimation de manière itérative jusqu’à ce que vous soyez suffisamment proche de la cible. Si $\Delta x(\theta)$ est la quantité que vous manquez la cible avec l'angle de lancement $\theta$ alors l'objectif est de résoudre l'équation:
+\begin{equation} \label{eq:theta}
+\Delta x(\theta) = 0
+\end{equation}
+pour $\theta$. Ce problème général s'appelle \textbf{la recherche de racine}. Nous allons utiliser ici une méthode assez simple pour résoudre une racine appelée \emph{méthode de bissection}. Supposons que nous savons que la racine de l'équation (\ref{eq:theta}) se situe quelque part dans l'intervalle $\theta_1 < \theta < \theta_2$ et $\Delta x(\theta_1)$ a le signe opposé de $\Delta x(\theta_2)$ (c'est-à-dire si $\Delta x(\theta_1) <0$ alors $\Delta x(\theta_2)> 0$, ou vice versa). On dit alors que $\theta_1$ et $\theta_2$ \emph{encadrent} la racine.
+
+Commençons par évaluer $\Delta x(\theta_1)$, $\Delta x(\theta_2)$ et $\Delta x(\theta_{deviner})$ avec  $\theta_{deviner}$ au milieu entre  $\theta_1$  et  $\theta_2$ , $\theta_{deviner} = \frac{1}{2} (\theta_1 + \theta_2)$. Si le signe de $\Delta x(\theta_{deviner})$ est identique au signe de $\Delta x(\theta_1)$, alors nous savons que la racine doit être comprise entre $\theta_{deviner}$ et $\theta_2$, nous assignons donc $\theta_1$ à $\theta_{deviner}$ et faisons une nouvelle hypothèse à mi-chemin entre les nouveaux $\theta_1$ et $\theta_2$. Sinon, si le signe de $\Delta x(\theta_{deviner})$ est identique au signe de $\Delta x(\theta_2)$, nous savons que la racine doit être comprise entre $\theta_1$ et $\theta_{deviner}$. Nous affectons donc $\theta_2$ à $\theta_{deviner}$ et faisons une nouvelle hypothèse à mi-chemin entre $\theta_1$ et le nouveau $\theta_2$. Nous continuons cette itération jusqu'à ce que nous soyons \emph{suffisamment proche}, c'est-à-dire $| \Delta x(\theta_{deviner}) | < \epsilon$ pour une petite valeur de $\epsilon$.
+
+Pour le problème à résoudre, la cible doit être située à une distance $x_{cible}$ et le point où le projectile touche le sol lorsqu’il est lancé à l'angle $\theta$ est $x_{sol}(\theta)$. Définir $\Delta x(\theta) = x_{sol}(\theta) - x_{cible}$ de telle sorte que $\Delta x(\theta) > 0$ si nous avons tiré trop loin et $\Delta x(\theta) < 0$ si nous avons tiré trop près. Ensuite, si $0 <x_{cible} <x_{max}$ où nous connaissons $x_{sol}(0^\circ) = 0$ et $x_{sol}(45^\circ) = x_{max}$, alors nous savons que $\theta_1 = 0^\circ$ et $\theta_2 = 45^\circ$ encadrent la racine. Le programme \texttt{tire.py} utilise la méthode de tir pour calculer la trajectoire d'un projectile lancé à partir de $x = 0$ avec une vitesse fixe et atterrissant au point $x = x_{sol}$. Le résultat de ce programme exécuté avec une vitesse initiale $v_0 = 10 \ m \ s^{-1}$ et un emplacement cible $x_{cible} = 8 \ m$ est présenté à la Fig.~\ref{fig:tire}.
+
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: tire.py
+#%% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+#%% CONSTANTES
+# accélération de la pesanteur (m/s^2)
+g = 9.8
+# vitesse initiale (m/s)
+v0 = 10.0 
+# plage cible (m)
+xcible = 8.0 
+# comment nous devons nous rapprocher (m)
+eps = 0.01 
+# pas de temps (s)
+dt = 0.001 
+# angle (degrés) que le projectile tombe trop court
+theta1 = 0.0 
+# angle (degrés) que le projectile tombe trop loin
+theta2 = 45.0
+# une valeur initiale> eps
+dx = 2*eps 
+#%% BOUCLE PRINCIPALE: MÉTHODE DE TIRE
+while abs(dx) > eps:
+    # devinez à la valeur de thêta
+    theta = (theta1+theta2)/2.0
+    x = [0.0]
+    y = [0.0]
+    vx = [v0*np.cos(theta*np.pi/180.0)]
+    vy = [v0*np.sin(theta*np.pi/180.0)]
+    # MÉTHODE D'EULER
+    i = 0
+    while y[i] >= 0.0:
+        # appliquer une différence finie approximative 
+        # aux équations du mouvement
+        x += [x[i]+vx[i]*dt]
+        y += [y[i]+vy[i]*dt]
+        vx += [vx[i]]
+        vy += [vy[i] - g*dt]
+        i = i+1
+    # nous avons touché le sol quelque part entre l'étape i-1 et i 
+    # interpoler pour trouver cet emplacement
+    xsol = x[i - 1]+y[i - 1]*(x[i] - x[i - 1])/(y[i] - y[i - 1])
+    # mettre à jour les limites encadrant la racine
+    dx = xsol - xcible
+    if dx < 0.0: # trop court: mettre à jour l'angle plus petit
+        theta1 = theta
+    else: # trop loin: mettre à jour un angle plus grand
+        theta2 = theta
+#%% GRAPHIQUE: TRAJECTOIRES
+plt.plot(x, y, lw =2)
+plt.plot([xcible], [0.0], 'o', ms=12)
+plt.annotate('Cible', xy=(xcible, 0), xycoords='data', xytext=(5,5),
+             textcoords='offset points')
+plt.title(r"trajectoire d'un projectile avec $\theta$ = %.2f deg"% theta)
+plt.xlabel('x [m]')
+plt.ylabel('y [m]')
+plt.ylim(ymin=0.0)
+plt.grid()
+# ENREGISTRER ET AFFICHER LA FIGURE
+plt.savefig("tire.png")
+plt.savefig("tire.pdf")
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+
+
+\begin{figure}[!ht]  % fig:tire
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/tire.pdf}}
+  \caption{
+  Résultats de l'exécution du programme tire.py avec une vitesse initiale $v_0 = 10 \ m \ s^{−1}$ et l'emplacement cible $x_{cible}$ = 8 m. L'angle requis pour atteindre la cible est $\theta = 25.84^\circ$. \label{fig:tire}
+  }
+\end{figure}
+%\clearpage % flush figures fig:tire
+
+
+\section{Convergence et de stabilité de la méthode d'Euler: Cas des systèmes linéaires}
+En mécanique classique, les équations du mouvement d'un système mécanique (systèmes de points matériels, système de solides) sont des équations différentielles du second ordre par rapport au temps. La connaissance des positions et des vitesses des points à l'instant $t=0$ suffit à déterminer le mouvement pour $t>0$.
+
+Ces équations sont souvent non linéaires car les forces elles-mêmes le sont (par exemple la force de gravitation) et car l'accélération est souvent une fonction non linéaire des degrés de liberté. Dans ce cas, il est fréquent que l'on ne connaisse pas de solution analytique exacte. On est alors amené à rechercher une solution approchée par une méthode numérique.
+
+Cette partie du cours explique le principe de ce type d'intégration numérique. On prendra l'exemple de l'oscillateur harmonique (dont la solution exacte est connue) auquel on appliquera la méthode numérique d'Euler. On abordera les notions importantes de \emph{convergence} et de \emph{stabilité}.
+
+On verra aussi des variantes de la méthode d'Euler, qui peuvent être utilisées pour résoudre des systèmes conservatifs à N corps, par exemple en dynamique moléculaire.
+
+De manière générale soit le système d'équations différentielles suivant:
+\label{eq:sysdiff1}
+\begin{align}
+\pmb{\dot{u}} &= f(\pmb{u})
+\end{align}
+Où $\pmb{u}$ peut être un vecteur d'état et $f(\pmb{u})$ peut être linéaire ou non linéaire.
+
+Soit $f(\pmb{u}) = \pmb{A} \cdot \pmb{u}$ avec $\pmb{A}$ une matrice. Donc on peut écrire l'équation (\ref{eq:sysdiff1}) comme suit:
+
+\label{eq:sysdiff2}
+\begin{align}
+\pmb{\dot{u}} &= \pmb{A} \cdot \pmb{u} \quad avec \ \pmb{u}(t=0)=\pmb{u}_0
+\end{align}
+La solution analytique exacte d'un tel système est de la forme:
+
+\label{eq:solexact1}
+\begin{align}
+\pmb{u}(t) &= e^{\pmb{A}t} \cdot \pmb{u}_0
+\end{align}
+
+On se propose d'appliquer différentes méthodes d'Euler au système (\ref{eq:sysdiff2}).
+
+\subsection{La méthode d'Euler explicite (progressive)}
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/fd_forward.pdf}}
+  \caption{
+  Illustration d'une approximation par différence progressive de la dérivée.
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+\begin{align}
+\frac{\pmb{u}_{k+1}-\pmb{u}_k}{\Delta t} &\approx \pmb{\dot{u}}_k = f(\pmb{u}_k)
+\end{align}
+
+\begin{align}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t  f(\pmb{u}_k)
+\end{align}
+
+Si $\pmb{\dot{u}} = \pmb{A} \cdot \pmb{u}$ alors;
+\begin{align}
+\label{eq:euler_exp}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_k = (\pmb{I} + \Delta t  \pmb{A}) \cdot \pmb{u}_k
+\end{align}
+
+Où $\pmb{I}$ est la matrice identité.
+
+\subsection{La méthode d'Euler implicite (rétrograde)}
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/fd_backward.pdf}}
+  \caption{
+  Illustration d'une approximation par différence rétrograde de la dérivée.
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+\begin{align}
+\frac{\pmb{u}_{k+1}-\pmb{u}_k}{\Delta t} &\approx \pmb{\dot{u}}_{k+1} = f(\pmb{u}_{k+1})
+\end{align}
+
+\begin{align}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t  f(\pmb{u}_{k+1})
+\end{align}
+
+Si $\pmb{\dot{u}} = \pmb{A} \cdot \pmb{u}$ alors;
+\begin{align}
+\pmb{u}_{k+1}  &= \pmb{u}_k + \Delta t \pmb{A} \cdot \pmb{u}_{k+1}
+\end{align}
+\begin{align}
+(\pmb{I} - \Delta t  \pmb{A}) \cdot \pmb{u}_{k+1}  &= \pmb{u}_k
+\end{align}
+
+\begin{align}
+\label{eq:euler_imp}
+\pmb{u}_{k+1}  &=(\pmb{I} - \Delta t  \pmb{A})^{-1}  \cdot \pmb{u}_k
+\end{align}
+
+
+Où $\pmb{I}$ est la matrice identité.
+\subsection{Exemple: Oscillateur libre amorti [masse, ressort, amortisseur]}
+Un bloc de masse $m$ est lié à l'extrémité libre d'un ressort de raideur $k$ , de longueur au repos $l$, de masse négligeable et d'élasticité parfaite, l'autre extrémité du ressort étant fixe. Le système est supposé dans l'espace (on néglige la force de pesanteur). Le seul mouvement possible pour le bloc est une translation suivant $x$; on assimilera le bloc à un point matériel $M$.
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.7\linewidth]{imgs/oscillator.pdf}}
+  \caption{
+  Schéma d'un système dynamique oscillant amorti unidimensionnel.
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+\paragraph{Bilan des forces.}
+\begin{itemize}
+\item La force de rappel $\overrightarrow{F_r} = - k \overrightarrow{x}$ où $k$ est un coefficient positif et $\overrightarrow{x}$ le vecteur position de $M$.
+
+\item Le système est amorti. L'amortissement de type visqueux est représenté par un amortisseur qui exerce la force dissipative (ou force d'amortissement visqueux) $\overrightarrow{F_a} = - b \overrightarrow{v}$ où $b$ est un coefficient positif et $\overrightarrow{v}$ le vecteur vitesse de $M$.
+\end{itemize}
+
+\noindent
+\paragraph{Équation de mouvement.}
+La deuxième loi de Newton pour le système peut être écrite avec l'accélération multipliée par la masse du côté gauche et la somme des forces du côté droit:
+\begin{align}
+  m \overrightarrow{a} &=  \overrightarrow{F_a} + \overrightarrow{F_r}
+\end{align}
+
+\begin{align}
+  m \ddot{x} &=  - b \dot{x} - kx
+\end{align}
+
+\begin{align}
+  m \ddot{x} + b \dot{x} + kx &= 0
+\end{align}
+On réécrit cette équation sous la forme canonique suivante :
+
+\begin{align}
+\label{eq:ordre2}
+\ddot{x} + 2 \zeta \omega_0 \dot{x} + \omega_0^2 x &= 0
+\end{align}
+avec $\omega_0 = \sqrt{\frac{k}{m}}$ désigne une \emph{pulsation caractéristique} et $\zeta = \frac{b}{2 \sqrt{km}}$ est une quantité positive sans dimension, appelée \emph{taux d’amortissement}.
+
+C'est une équation différentielle linéaire d'ordre 2 à coefficients constants.
+
+On peut trouver numériquement la solution de l'équation (\ref{eq:ordre2}) à l'aide des méthodes d'Euler à partir du système d'équations différentielles ordinaires suivant:
+\begin{align}
+\dot{x} &= v\\
+\dot{v} &= - 2 \zeta \omega_0 v - \omega_0^2 x\\
+\end{align}
+
+\label{eq:linalg}
+\begin{align}
+\frac{d}{dt}
+\left(\begin{array}{c}
+x\\
+v
+\end{array}\right)
+&=
+\left(\begin{array}{cc}
+0 & 1\\
+- \omega_0^2 & - 2 \zeta \omega_0
+\end{array}\right) \cdot
+\left(\begin{array}{c}
+x\\
+v
+\end{array}\right)
+\end{align}
+L'équation (\ref{eq:linalg}) est de la forme: $\dot{\pmb{u}} = \pmb{A} \cdot \pmb{u}$ avec:
+$$ \pmb{A}= \left(\begin{array}{cc}0&1\\- \omega_0^2 & - 2 \zeta \omega_0 \end{array}\right)$$ et $$\pmb{u} = \left(\begin{array}{c} x\\ v \end{array}\right)$$
+
+Supposons que nous voulions résoudre le problème avec: $\omega_0 = 2 \pi$, $\zeta = 0.25$, $\pmb{u_0}= \left(\begin{array}{c} x(t=0)\\ v(t=0) \end{array}\right)= \left(\begin{array}{c} 2\\ 0 \end{array}\right)$, $\Delta t = 0.01$ pour $t \in [0, 10]$. Ce sera une solution sinusoïdale amortie.
+
+\paragraph{Solution avec la méthode d'Euler explicite.}
+Nous implémentons l'expression explicite d'Euler montrée dans (\ref{eq:euler_exp}) dans le code python suivant:
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: OscillateurEulerExp.py
+#% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.axes3d import Axes3D
+# SYSTÈME: OSCILLATEUR LIBRE AMORTI
+w = 2*np.pi # fréquence propre
+a = 0.25    # rapport d'amotissement
+A = np.array([[0, 1], [-w**2, -2*a*w]])
+dt = 0.01 # pas du temps
+Tf = 10 # temps finale de la simulation
+nsteps = int(Tf/dt)
+# CONDITION INITIAL: à t = 0; x = 2, v = 0
+u0 = np.array([2,0])
+#%% ITÉRATION: EULER ExPLICITE
+Texp = np.zeros(nsteps)
+Uexp = np.zeros((2, nsteps))
+Texp[0] = 0.0
+Uexp[:,0] = u0
+for k in range(nsteps-1):
+    Texp[k+1] = Texp[k] + dt
+    Uexp[:,k+1] = np.dot((np.eye(2) + dt * A), Uexp[:,k])
+
+plt.figure(figsize=(10,5))
+# PLOT POSITION vs TEMPS
+plt.suptitle("Simulation d'un oscillateur libre amorti avec un pas d'intégration "+ r"$ \Delta t= %.2f$"%dt,
+             fontweight = "bold")
+plt.subplot(1,2,1)
+plt.plot(Texp,Uexp[0,:], linewidth=2, color ='k')
+plt.xlabel("Temps")
+plt.ylabel("Position")
+plt.title("Trajectoire de la mass M (Euler explicite)")
+# DIAGRAMME DE PHASE 2D
+plt.subplot(1,2,2)
+plt.plot(Uexp[0,:],Uexp[1,:], linewidth=2, color ='k')
+plt.xlabel("Position")
+plt.ylabel("Vitesse")
+plt.title("Trajectoire de phase (Euler explicite)")
+plt.savefig("EulerExp1D.png"); plt.savefig("EulerExp1D.pdf")
+# DIAGRAMME DE PHASE 3D
+plt.figure()
+ax = plt.axes(projection="3d")
+ax.plot(Texp, Uexp[0,:],Uexp[1,:], linewidth=2, color ='k')
+ax.set_xlabel("Temps")
+ax.set_ylabel("Position")
+ax.set_zlabel("Vitesse")
+ax.set_title("Trajectoire de phase (Euler explicite)")
+plt.savefig("EulerExp3D.png"); plt.savefig("EulerExp3D.pdf")
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+
+
+\begin{figure}[!ht]  % fig:EulerExp_3
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/EulerExp_3.png}}
+  \caption{
+  Simulation d'un système oscillant avec différents pas de temps; $\Delta t = 0.01$ et $\Delta t = 0.1$ et pour $\zeta = 0.25$. \label{fig:EulerExp_3}
+  }
+\end{figure}
+%\clearpage % flush figures fig:EulerExp_3
+
+
+La figure~\ref{fig:EulerExp_3} est générée par le code \texttt{OscillateurEulerExp.py}, montrant la divergence et l'instabilité de la méthode Euler explicite. En effet, le pas d'intégration $\Delta t$ agit considérablement sur la qualité de la simulation et donne un résultat inacceptable physiquement.
+
+
+\begin{figure}[!ht]  % fig:EulerExpGen
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/EulerExpGen.pdf}}
+  \caption{
+  Simulation d'un système oscillant avec différentes valeurs de $\zeta$ et pour $\Delta t = 0.01$. \label{fig:EulerExpGen}
+  }
+\end{figure}
+%\clearpage % flush figures fig:EulerExpGen
+
+
+Dans le cas d'intégration avec la méthode d'Euler explicite, la figure~\ref{fig:EulerExpGen} montre que nous avons un problème d’augmentation d’amplitude dans le cas d’un oscillateur non amorti (courbe bleue pour $\zeta = 0$). Plus le temps de simulation est long, plus l'amplitude augmente, ce qui n'est pas ce que nous attendons de l'évolution du système dans le temps. En d’autres termes, l’amplitude devrait être constante dans le temps pour un système oscillant non amorti.
+
+\paragraph{Solution avec la méthode d'Euler implicite.}
+Nous implémentons l'expression implicite d'Euler montrée dans (\ref{eq:euler_imp}) dans le code python suivant:
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: OscillateurEulerImp.py
+#% IMPORTATION
+import numpy as np
+from numpy.linalg import inv
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.axes3d import Axes3D
+# SYSTÈME: OSCILLATEUR LIBRE AMORTI
+w = 2*np.pi # fréquence propre
+a = 0.25    # rapport d'amotissement
+A = np.array([[0, 1], [-w**2, -2*a*w]])
+dt = 0.1 # pas du temps
+Tf = 10 # temps finale de la simulation
+nsteps = int(Tf/dt)
+# CONDITION INITIAL: à t = 0; x = 2, v = 0
+u0 = np.array([2,0])
+#%% ITÉRATION: EULER IMPLICITE
+Timp = np.zeros(nsteps)
+Uimp = np.zeros((2, nsteps))
+Timp[0] = 0.0
+Uimp[:,0] = u0
+for k in range(nsteps-1):
+    Timp[k+1] = Timp[k] + dt
+    Uimp[:,k+1] = np.dot(inv(np.eye(2) - dt * A), Uimp[:,k])
+
+plt.figure(figsize=(10,5))
+# PLOT POSITION vs TEMPS
+plt.suptitle("Simulation d'un oscillateur libre amorti avec un pas d'intégration "+ r"$ \Delta t= %.2f$"%dt,
+             fontweight = "bold")
+plt.subplot(1,2,1)
+plt.plot(Timp,Uimp[0,:], linewidth=2, color ='k')
+plt.xlabel("Temps")
+plt.ylabel("Position")
+plt.title("Trajectoire de la mass M (Euler implicite)")
+# DIAGRAMME DE PHASE 2D
+plt.subplot(1,2,2)
+plt.plot(Uimp[0,:],Uimp[1,:], linewidth=2, color ='k')
+plt.xlabel("Position")
+plt.ylabel("Vitesse")
+plt.title("Trajectoire de phase (Euler implicite)")
+plt.savefig("Eulerimp1D_2.png"); plt.savefig("Eulerimp1D_2.pdf")
+# DIAGRAMME DE PHASE 3D
+plt.figure()
+ax = plt.axes(projection="3d")
+ax.plot(Timp, Uimp[0,:],Uimp[1,:], linewidth=2, color ='k')
+ax.set_xlabel("Temps")
+ax.set_ylabel("Position")
+ax.set_zlabel("Vitesse")
+ax.set_title("Trajectoire de phase (Euler implicite)")
+plt.savefig("Eulerimp3D_2.png"); plt.savefig("Eulerimp3D_2.pdf")
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+
+
+\begin{figure}[!ht]  % fig:Eulerimp_3
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/Eulerimp_3.png}}
+  \caption{
+  Simulation d'un système oscillant avec différents pas de temps; $\Delta t = 0.01$ et $\Delta t = 0.1$ et pour $\zeta = 0.25$. \label{fig:Eulerimp_3}
+  }
+\end{figure}
+%\clearpage % flush figures fig:Eulerimp_3
+
+
+La figure~\ref{fig:Eulerimp_3} est générée par le code \texttt{OscillateurEulerImp.py}, montrant que la méthode d'Euler implicite est plus stable que la méthode Euler explicite. Nous remarquons toujours qu' il y a un effet du changement du pas d'intégration $\Delta t$ sur la qualité de la simulation mais le résultat du calcul est désormais acceptable physiquement.
+
+
+\begin{figure}[!ht]  % fig:EulerExpGen2
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/EulerExpGen2.pdf}}
+  \caption{
+  Simulation d'un système oscillant avec différentes valeurs de $\zeta$ et pour $\Delta t = 0.01$. \label{fig:EulerExpGen2}
+  }
+\end{figure}
+%\clearpage % flush figures fig:EulerExpGen2
+
+
+Même problème avec l'amplitude pour le cas d'intégration avec la méthode implicite d'Euler, la figure~\ref{fig:EulerExpGen2} montre que nous avons un problème de diminution d'amplitude dans le cas d'un oscillateur non amorti (courbe bleue pour $\zeta = 0$). Comme indiqué ci-dessus, l'amplitude devrait être constante dans le temps pour un système oscillant non amorti.
+
+\subsection{Conclusion}
+La conclusion ici est que la méthode Euler implicite est plus stable que celle explicite. Les deux méthodes posent un problème fondamental avec ses amplitudes croissantes et décroissantes, pour le cas d'oscillateur libre non amorti, et qu’un très petit $\Delta t$ est nécessaire pour obtenir des résultats satisfaisants. Plus la simulation est longue, plus $\Delta t$ doit être petit. Il est certainement temps de rechercher des méthodes numériques plus stables et plus efficaces tels que les méthodes de \href{{https://fr.wikipedia.org/wiki/M%C3%A9thodes_de_Runge-Kutta}}{Runge-Kutta}.
+
+% !split
+\section{La méthode de Runge-Kutta d'ordre 4}
+Les méthodes de Runge-Kutta (ou RK), l'ordre 2 ou 4, sont très couramment utilisées pour la résolution d'équations différentielles ordinaires (EDO). Ce sont des méthodes à pas unique, directement dérivées de la méthode d'Euler, qui est une méthode RK1.
+
+Elles ont l'avantage d'être simples à programmer et assez stables pour les fonctions courantes de la physique. Sur le plan de l'analyse numérique, elles ont surtout l'immense avantage de ne pas nécessiter autre chose que la connaissance des valeurs initiales.
+
+\subsection{Algorithme de Runge-Kutta d'ordre 4}
+On part de la formule d'Euler sous sa forme scalaire, qui donne : $y_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + h$.
+
+La méthode RK du deuxième ordre produit deux coefficients $k_1$ et $k_2$, qui permettent d'écrire :
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+y_{n+1} &= y_n + k_2 + O(h^3)
+\end{align*}
+Cette méthode exige donc deux évaluations de $f$. L'erreur de consistance est en $O(h^3)$ et l'erreur globale de convergence est d'ordre $O(h^2)$. Pour obtenir plus de précision, mais en doublant le temps de calcul puisqu'on procède à 4 évaluations de $f$, voici la méthode RK4 :
+\begin{align*}
+k_1 &= h*f(x_n, y_n) \\
+k_2 &= h*f(x_n + h/2, y_n + k_1/2 ) \\
+k_3 &= h*f(x_n + h/2, y_n + k_2/2 ) \\
+k4 &= h*f(x_n + h, y_n + k_3)\\
+y_{n+1} &= y_n + k_1/6 + k_2/3 + k_3/3 + k_4/6 + O(h^5)
+\end{align*}
+
+\subsection{Exemple: Système dynamique différentiel de Lorenz (attracteur de Lorenz)}
+L'attracteur de Lorenz, connu aussi sous le nom de \emph{"papillon de Lorenz"}, est sans doute le plus connu des systèmes dynamiques non linéaires, essentiellement pour son aspect esthétique!
+
+Le problème avec la prédiction météorologique est l'interdépendance de tous les paramètres de l'atmosphère. Pour prendre un exemple, lorsque vous avez une zone de dépression, il y a un déplacement d'une masse d'air voisine. C'est ici une réaction thermodynamique, l'atmosphère s'organise pour que son enthalpie soit minimum alors qu'en même temps, le sol continue à chauffer l'air créant de nouveau un déséquilibre. De même, l'ensoleillement n'étant pas constant à la surface de la Terre (dépendant de la situation géographique et des saisons), nous avons donc formation de diverses cellules de convections qui se retrouvent interdépendantes. Une perturbation sur l'une de ces cellules peut être retrouvée sous la forme d'une autre perturbation sur une autre cellule de convection. C'est ici l'idée qui s'est dégagée de la remarque de Lorenz: \emph{"Le battement d'ailes d'un papillon au Brésil peut-il provoquer une tornade au Texas?"}
+
+
+
+\vspace{6mm}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{imgs/convection.jpg}}
+
+\vspace{6mm}
+
+
+Lorsque Lorenz a découvert cette théorie en 1963, il étudiait la météorologie au MIT. Comme nous l'avons dit, il fut l'un des premiers a avoir pu utiliser un ordinateur! Bien sûr, ce n'était pas du tout les mêmes machines que nous utilisons aujourd'hui! Ces derniers occupaient une salle entière, chauffaient comme un diable et avaient une capacité de calcul inférieure aux premiers smartphones commercialisés. Il fallait donc être très patient lorsque vous vouliez faire une modélisation et chaque erreur faisait perdre du temps à vos collègues (car à cette époque, il n'y avait que quelques ordinateurs au MIT) et gaspillait énormément d'énergie.
+
+Le système différentiel résulte d'une simplification assez drastique de l'ensemble des équations différentielles en jeu. C'est un système paramétrique dont voici l'expression :
+
+\begin{align*}
+\dfrac{dx}{dt} &=\sigma\left[ y(t)-x(t) \right]\\
+\dfrac{dy}{dt} &=\rho \ x(t) - y(t) - x(t) \ z(t)\\
+\dfrac{dz}{dt} &=x(t) \ y(t) - \beta \ z(t)
+\end{align*}
+$\sigma$, $\beta$ et $\rho$ sont trois paramètres strictement positifs, fixés.
+\begin{itemize}
+\item $\sigma$ dépend des propriétés du fluide (c'est la constante de Prandtl , qui caractérise la viscosité et la conductivité thermique du fluide),
+
+\item $\beta$ varie avec la géométrie de la cellule de convection,
+
+\item $\rho$ varie en fonction du gradient de température dans la cellule.
+\end{itemize}
+
+\noindent
+Les variables dynamiques x, y et z représentent l'état du système à chaque instant:
+\begin{itemize}
+\item x caractérise le taux de convection,
+
+\item y et z le gradient de température, respectivement horizontal et vertical.
+\end{itemize}
+
+\noindent
+A vrai dire, la signification réelle des paramètres et des variables importe peu pour l'étude de la dynamique du système de Lorenz. Il faut simplement savoir que l'on fixe généralement $\sigma = 10$ et $\beta= 8/3$ (les paramètres physiques et géométriques) et que l'on étudie le comportement en fonction de la variation de $\rho$ et des conditions initiales.
+
+Le tracé de la trajectoire dans l'espace de phase est obtenu avec le programme \texttt{AttracteurLorenzRK4.py}, qui est écrit selon la méthode RK4 et avec les valeurs de paramètres $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales pour [x0,y0,z0] sont [1,1,20].
+
+\begin{pro}{cbg_gray}{bar_gray}\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+## NOM DU PROGRAMME: AttracteurLorenzRK4.py
+#% IMPORTATION
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+#Initial values
+sigma = 10
+beta = 8.0/3.0
+rho = 28.0
+#Compute the time-derivative of a Lorenz system.
+def xt(x, y, z, t):
+    return (sigma*(y - x))
+def yt(x, y, z, t):
+    return (rho*x - y - x*z)
+def zt(x, y, z, t):
+    return (-1*(beta*z) + x*y)
+# définition de la fonction RK4
+def RungeKutta4(xt,yt,zt,n = 3500, tf = 30):
+    x = np.zeros(n)
+    y = np.zeros(n)
+    z = np.zeros(n)
+    t = np.zeros(n)
+    x[0],y[0], z[0], t[0] = 1.0, 1.0, 20, 0
+    dt = tf/float(n)
+    # calculer la solution approximative RK4.
+    for k in range (n-1):
+        t[k+1] = t[k] + dt
+        k1 = xt(x[k], y[k], z[k], t[k])
+        l1 = yt(x[k], y[k], z[k], t[k])
+        m1 = zt(x[k], y[k], z[k], t[k])
+        
+        k2 = xt((x[k] + 0.5*k1*dt), (y[k] + 0.5*l1*dt), \
+                (z[k] + 0.5*m1*dt), (t[k] + dt/2))
+        l2 = yt((x[k] + 0.5*k1*dt), (y[k] + 0.5*l1*dt), \
+                (z[k] + 0.5*m1*dt), (t[k] + dt/2))
+        m2 = zt((x[k] + 0.5*k1*dt), (y[k] + 0.5*l1*dt), \
+                (z[k] + 0.5*m1*dt), (t[k] + dt/2))
+
+        k3 = xt((x[k] + 0.5*k2*dt), (y[k] + 0.5*l2*dt), \
+                (z[k] + 0.5*m2*dt), (t[k] + dt/2))
+        l3 = yt((x[k] + 0.5*k2*dt), (y[k] + 0.5*l2*dt), \
+                (z[k] + 0.5*m2*dt), (t[k] + dt/2))
+        m3 = zt((x[k] + 0.5*k2*dt), (y[k] + 0.5*l2*dt), \
+                (z[k] + 0.5*m2*dt), (t[k] + dt/2))
+
+        k4 = xt((x[k] + k3*dt), (y[k] + l3*dt), (z[k] + m3*dt), (t[k] + dt))
+        l4 = yt((x[k] + k3*dt), (y[k] + l3*dt), (z[k] + m3*dt), (t[k] + dt))
+        m4 = zt((x[k] + k3*dt), (y[k] + l3*dt), (z[k] + m3*dt), (t[k] + dt))
+
+        x[k+1] = x[k] + (dt*(k1 + 2*k2 + 2*k3 + k4) / 6)
+        y[k+1] = y[k] + (dt*(l1 + 2*l2 + 2*l3 + l4) / 6)
+        z[k+1] = z[k] + (dt*(m1 + 2*m2 + 2*m3 + m4) / 6)
+    return x, y, z, t
+
+x, y, z, t = RungeKutta4(xt,yt,zt)
+
+plt.figure (figsize = (8,5))
+plt.plot ( t, x, linewidth = 1, color = 'b' ) 
+plt.plot ( t, y, linewidth = 1, color = 'r' )
+plt.plot ( t, z, linewidth = 1, color = 'g' )
+plt.xlabel ( 'Temps' )
+plt.ylabel ( 'x(t), y(t), z(t)' )
+plt.title ('Évolution des coordonnées x, y et z en fonction du temps' )
+plt.legend(['x(t)','y(t)','z(t)'], loc = 2)
+plt.savefig ('lorenz_ode_components.png'); plt.savefig ('lorenz_ode_components.pdf' )
+plt.show ( )
+# FIGURE 3d: ATTRACTEUR DE LORENZ
+fig = plt.figure()
+ax = plt.axes(projection = '3d' )
+ax.plot ( x, y, z, linewidth = 0.5, color = 'k' )
+ax.set_xlabel ('x(t)')
+ax.set_ylabel ('y(t)')
+ax.set_zlabel ('z(t)')
+ax.set_title ('Attracteur de Lorenz pour ' + r"$\rho = %.2f$"%rho)
+plt.tight_layout()
+plt.savefig ('lorenz_ode_3d.png'); plt.savefig ('lorenz_ode_3d.pdf')
+plt.show()
+\end{minted}
+\end{pro}
+\noindent
+
+ Voilà ce que cela donne avec le programme \texttt{AttracteurLorenzRK4.py}:
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.6\linewidth]{scripts/lorenz_ode_components.pdf}}
+  \caption{
+  Évolution des coordonnées x, y et z en fonction du temps. $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/lorenz_ode_3d.pdf}}
+  \caption{
+  Attracteur de Lorenz pour $\sigma = 10$, $\beta= 8/3$ et $\rho = 28$. Les conditions initiales sont pour [x0,y0,z0] sont [1,1,20].
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+Lorsque nous modélisons ce système dans l'espace des phases, nous avons apparition d'une structure fractale que nous appelons "Attracteur de Lorenz". C'est cette construction mathématique qui a probablement donné l'idée du papillon à Lorenz pour illustrer sa mécanique Chaotique lors de sa conférence de 1963!
+
+Nous remarquons que notre système va devenir chaotique lorsque $\rho$ va dépasser une valeur critique $\rho_c = 19.44$
+
+
+\begin{figure}[!ht]  % 
+  \centerline{\includegraphics[width=0.7\linewidth]{scripts/lorenz_ode_r.png}}
+  \caption{
+  Formation d'un deuxième attracteur lorsque $\rho$ dépasse la valeur critique $\rho_c = 19.44$.
+  }
+\end{figure}
+%\clearpage % flush figures 
+
+
+Lorsque notre système n'est pas chaotique, nous avons la formation d'un seul attracteur, cependant, lorsque $\rho$ dépasse la valeur $\rho_c$, notre papillon déploie ses ailes pour nous inviter dans le monde du Chaos! Nous pouvons alors voir la présence d'un deuxième attracteur venant perturber la trajectoire de notre système qui rester à naviguer entre les deux puits de gravité de ces deux attracteurs. On qualifie également cette figure "d'attracteur étrange" car les trajectoires ne se coupent pas et semblent évoluer au hasard.
+
+% ------------------- end of main content ---------------
+
+% #ifdef PREAMBLE
+\end{document}
+% #endif
+

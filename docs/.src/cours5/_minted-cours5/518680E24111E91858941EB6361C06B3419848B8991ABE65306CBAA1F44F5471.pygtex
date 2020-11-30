@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} NOM DU PROGRAMME: desintegrationErr.py}
+\PYG{c+c1}{\PYGZsh{}IMPORTATION}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{c+c1}{\PYGZsh{} ENTRÉES}
+\PYG{n}{noyaux0} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}nombre initial de noyaux: \PYGZdq{}}\PYG{p}{))}
+\PYG{n}{tau} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}constante de temps de décroissance: \PYGZsq{}}\PYG{p}{))}
+\PYG{n}{dtbas} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}pas de temps de résolution le plus bas: \PYGZsq{}}\PYG{p}{))}
+\PYG{n}{nres} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}nombre de raffinements de résolution: \PYGZsq{}}\PYG{p}{))}
+\PYG{n}{tmax} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}temps de fin de la simulation: \PYGZsq{}}\PYG{p}{))}
+\PYG{c+c1}{\PYGZsh{} BOUCLE PRINCIPALE: CALCUL D\PYGZsq{}ERREURS}
+\PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{nres}\PYG{p}{):}
+    \PYG{n}{raffine} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{o}{**}\PYG{n}{n}
+    \PYG{n}{dt} \PYG{o}{=} \PYG{n}{dtbas}\PYG{o}{/}\PYG{n}{raffine}
+    \PYG{n}{nsteps} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{tmax}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{)}
+    \PYG{n}{noyaux} \PYG{o}{=} \PYG{n}{noyaux0}
+    \PYG{n}{err} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{nsteps}\PYG{p}{)}
+    \PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{nsteps}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} BOUCLE SECONDAIRE: MÉTHODE D\PYGZsq{}EULER}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{nsteps}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}
+        \PYG{n}{noyaux} \PYG{o}{=} \PYG{n}{noyaux} \PYG{o}{\PYGZhy{}} \PYG{n}{noyaux}\PYG{o}{/}\PYG{n}{tau}\PYG{o}{*}\PYG{n}{dt}
+        \PYG{n}{exact} \PYG{o}{=} \PYG{n}{noyaux0} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}} \PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{/}\PYG{n}{tau}\PYG{p}{)}
+        \PYG{n}{err}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{abs}\PYG{p}{((}\PYG{n}{noyaux} \PYG{o}{\PYGZhy{}} \PYG{n}{exact}\PYG{p}{)}\PYG{o}{/}\PYG{n}{exact}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} tracer l\PYGZsq{}erreur à cette résolution}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{loglog}\PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{raffine}\PYG{p}{::}\PYG{n}{raffine}\PYG{p}{],} \PYG{n}{err}\PYG{p}{[}\PYG{n}{raffine}\PYG{p}{::}\PYG{n}{raffine}\PYG{p}{],}
+               \PYG{l+s+s1}{\PYGZsq{}.\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}dt = \PYGZsq{}}\PYG{o}{+}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{dt}\PYG{p}{))}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{loc}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}temps\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}erreur fractionnaire\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Erreur d\PYGZsq{}intégration de la désintégration radioactive\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{linestyle}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{which}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}major\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{which}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}minor\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}desintegrationErr.png\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}desintegrationErr.pdf\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

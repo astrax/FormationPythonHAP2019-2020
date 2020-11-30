@@ -1,0 +1,51 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} NOM DU PROGRAMME: OscillateurEulerExp.py}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{} IMPORTATION}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{mpl\PYGZus{}toolkits.mplot3d.axes3d} \PYG{k+kn}{import} \PYG{n}{Axes3D}
+\PYG{c+c1}{\PYGZsh{} SYSTÈME: OSCILLATEUR LIBRE AMORTI}
+\PYG{n}{w} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{c+c1}{\PYGZsh{} fréquence propre}
+\PYG{n}{a} \PYG{o}{=} \PYG{l+m+mf}{0.25}    \PYG{c+c1}{\PYGZsh{} rapport d\PYGZsq{}amotissement}
+\PYG{n}{A} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{o}{*}\PYG{n}{w}\PYG{p}{]])}
+\PYG{n}{dt} \PYG{o}{=} \PYG{l+m+mf}{0.01} \PYG{c+c1}{\PYGZsh{} pas du temps}
+\PYG{n}{Tf} \PYG{o}{=} \PYG{l+m+mi}{10} \PYG{c+c1}{\PYGZsh{} temps finale de la simulation}
+\PYG{n}{nsteps} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{Tf}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} CONDITION INITIAL: à t = 0; x = 2, v = 0}
+\PYG{n}{u0} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{])}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} ITÉRATION: EULER ExPLICITE}
+\PYG{n}{Texp} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{nsteps}\PYG{p}{)}
+\PYG{n}{Uexp} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{nsteps}\PYG{p}{))}
+\PYG{n}{Texp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.0}
+\PYG{n}{Uexp}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u0}
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{nsteps}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+    \PYG{n}{Texp}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Texp}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}
+    \PYG{n}{Uexp}\PYG{p}{[:,}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{((}\PYG{n}{np}\PYG{o}{.}\PYG{n}{eye}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{+} \PYG{n}{dt} \PYG{o}{*} \PYG{n}{A}\PYG{p}{),} \PYG{n}{Uexp}\PYG{p}{[:,}\PYG{n}{k}\PYG{p}{])}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+\PYG{c+c1}{\PYGZsh{} PLOT POSITION vs TEMPS}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{suptitle}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Simulation d\PYGZsq{}un oscillateur libre amorti avec un pas d\PYGZsq{}intégration \PYGZdq{}}\PYG{o}{+} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{} \PYGZbs{}Delta t= }\PYG{l+s+si}{\PYGZpc{}.2f}\PYG{l+s+s2}{\PYGZdl{}\PYGZdq{}}\PYG{o}{\PYGZpc{}}\PYG{n}{dt}\PYG{p}{,}
+             \PYG{n}{fontweight} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}bold\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplot}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Texp}\PYG{p}{,}\PYG{n}{Uexp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,:],} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Temps\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Position\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Trajectoire de la mass M (Euler explicite)\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} DIAGRAMME DE PHASE 2D}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplot}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Uexp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,:],}\PYG{n}{Uexp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,:],} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Position\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Vitesse\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Trajectoire de phase (Euler explicite)\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}EulerExp1D.png\PYGZdq{}}\PYG{p}{);} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}EulerExp1D.pdf\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} DIAGRAMME DE PHASE 3D}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{axes}\PYG{p}{(}\PYG{n}{projection}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}3d\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Texp}\PYG{p}{,} \PYG{n}{Uexp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,:],}\PYG{n}{Uexp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,:],} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Temps\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Position\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}zlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Vitesse\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Trajectoire de phase (Euler explicite)\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}EulerExp3D.png\PYGZdq{}}\PYG{p}{);} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}EulerExp3D.pdf\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

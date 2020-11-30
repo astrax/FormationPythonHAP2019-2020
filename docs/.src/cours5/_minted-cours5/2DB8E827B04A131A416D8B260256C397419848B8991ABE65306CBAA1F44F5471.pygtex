@@ -1,0 +1,64 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} NOM DU PROGRAMME: tire.py}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} IMPORTATION}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} CONSTANTES}
+\PYG{c+c1}{\PYGZsh{} accélération de la pesanteur (m/s\PYGZca{}2)}
+\PYG{n}{g} \PYG{o}{=} \PYG{l+m+mf}{9.8}
+\PYG{c+c1}{\PYGZsh{} vitesse initiale (m/s)}
+\PYG{n}{v0} \PYG{o}{=} \PYG{l+m+mf}{10.0}
+\PYG{c+c1}{\PYGZsh{} plage cible (m)}
+\PYG{n}{xcible} \PYG{o}{=} \PYG{l+m+mf}{8.0}
+\PYG{c+c1}{\PYGZsh{} comment nous devons nous rapprocher (m)}
+\PYG{n}{eps} \PYG{o}{=} \PYG{l+m+mf}{0.01}
+\PYG{c+c1}{\PYGZsh{} pas de temps (s)}
+\PYG{n}{dt} \PYG{o}{=} \PYG{l+m+mf}{0.001}
+\PYG{c+c1}{\PYGZsh{} angle (degrés) que le projectile tombe trop court}
+\PYG{n}{theta1} \PYG{o}{=} \PYG{l+m+mf}{0.0}
+\PYG{c+c1}{\PYGZsh{} angle (degrés) que le projectile tombe trop loin}
+\PYG{n}{theta2} \PYG{o}{=} \PYG{l+m+mf}{45.0}
+\PYG{c+c1}{\PYGZsh{} une valeur initiale\PYGZgt{} eps}
+\PYG{n}{dx} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{eps}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} BOUCLE PRINCIPALE: MÉTHODE DE TIRE}
+\PYG{k}{while} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{dx}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{:}
+    \PYG{c+c1}{\PYGZsh{} devinez à la valeur de thêta}
+    \PYG{n}{theta} \PYG{o}{=} \PYG{p}{(}\PYG{n}{theta1}\PYG{o}{+}\PYG{n}{theta2}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mf}{2.0}
+    \PYG{n}{x} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.0}\PYG{p}{]}
+    \PYG{n}{y} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.0}\PYG{p}{]}
+    \PYG{n}{vx} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v0}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{theta}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mf}{180.0}\PYG{p}{)]}
+    \PYG{n}{vy} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v0}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{theta}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mf}{180.0}\PYG{p}{)]}
+    \PYG{c+c1}{\PYGZsh{} MÉTHODE D\PYGZsq{}EULER}
+    \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{k}{while} \PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mf}{0.0}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{} appliquer une différence finie approximative}
+        \PYG{c+c1}{\PYGZsh{} aux équations du mouvement}
+        \PYG{n}{x} \PYG{o}{+=} \PYG{p}{[}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{+}\PYG{n}{vx}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{]}
+        \PYG{n}{y} \PYG{o}{+=} \PYG{p}{[}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{+}\PYG{n}{vy}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{]}
+        \PYG{n}{vx} \PYG{o}{+=} \PYG{p}{[}\PYG{n}{vx}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}
+        \PYG{n}{vy} \PYG{o}{+=} \PYG{p}{[}\PYG{n}{vy}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{g}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{]}
+        \PYG{n}{i} \PYG{o}{=} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}
+    \PYG{c+c1}{\PYGZsh{} nous avons touché le sol quelque part entre l\PYGZsq{}étape i\PYGZhy{}1 et i}
+    \PYG{c+c1}{\PYGZsh{} interpoler pour trouver cet emplacement}
+    \PYG{n}{xsol} \PYG{o}{=} \PYG{n}{x}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{x}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{y}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{])}
+    \PYG{c+c1}{\PYGZsh{} mettre à jour les limites encadrant la racine}
+    \PYG{n}{dx} \PYG{o}{=} \PYG{n}{xsol} \PYG{o}{\PYGZhy{}} \PYG{n}{xcible}
+    \PYG{k}{if} \PYG{n}{dx} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.0}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} trop court: mettre à jour l\PYGZsq{}angle plus petit}
+        \PYG{n}{theta1} \PYG{o}{=} \PYG{n}{theta}
+    \PYG{k}{else}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} trop loin: mettre à jour un angle plus grand}
+        \PYG{n}{theta2} \PYG{o}{=} \PYG{n}{theta}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{}\PYGZpc{} GRAPHIQUE: TRAJECTOIRES}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{lw} \PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{([}\PYG{n}{xcible}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mf}{0.0}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}o\PYGZsq{}}\PYG{p}{,} \PYG{n}{ms}\PYG{o}{=}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{annotate}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Cible\PYGZsq{}}\PYG{p}{,} \PYG{n}{xy}\PYG{o}{=}\PYG{p}{(}\PYG{n}{xcible}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),} \PYG{n}{xycoords}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}data\PYGZsq{}}\PYG{p}{,} \PYG{n}{xytext}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{),}
+             \PYG{n}{textcoords}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}offset points\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}trajectoire d\PYGZsq{}un projectile avec \PYGZdl{}\PYGZbs{}theta\PYGZdl{} = }\PYG{l+s+si}{\PYGZpc{}.2f}\PYG{l+s+s2}{ deg\PYGZdq{}}\PYG{o}{\PYGZpc{}} \PYG{n}{theta}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}x [m]\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}y [m]\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylim}\PYG{p}{(}\PYG{n}{ymin}\PYG{o}{=}\PYG{l+m+mf}{0.0}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{} ENREGISTRER ET AFFICHER LA FIGURE}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}tire.png\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}tire.pdf\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

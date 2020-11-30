@@ -1,0 +1,79 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} NOM DU PROGRAMME: AttracteurLorenzRK4.py}
+\PYG{c+c1}{\PYGZsh{}\PYGZpc{} IMPORTATION}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{mpl\PYGZus{}toolkits.mplot3d} \PYG{k+kn}{import} \PYG{n}{Axes3D}
+\PYG{c+c1}{\PYGZsh{}Initial values}
+\PYG{n}{sigma} \PYG{o}{=} \PYG{l+m+mi}{10}
+\PYG{n}{beta} \PYG{o}{=} \PYG{l+m+mf}{8.0}\PYG{o}{/}\PYG{l+m+mf}{3.0}
+\PYG{n}{rho} \PYG{o}{=} \PYG{l+m+mf}{28.0}
+\PYG{c+c1}{\PYGZsh{}Compute the time\PYGZhy{}derivative of a Lorenz system.}
+\PYG{k}{def} \PYG{n+nf}{xt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{t}\PYG{p}{):}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{sigma}\PYG{o}{*}\PYG{p}{(}\PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{x}\PYG{p}{))}
+\PYG{k}{def} \PYG{n+nf}{yt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{t}\PYG{p}{):}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{rho}\PYG{o}{*}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{x}\PYG{o}{*}\PYG{n}{z}\PYG{p}{)}
+\PYG{k}{def} \PYG{n+nf}{zt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{t}\PYG{p}{):}
+    \PYG{k}{return} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{p}{(}\PYG{n}{beta}\PYG{o}{*}\PYG{n}{z}\PYG{p}{)} \PYG{o}{+} \PYG{n}{x}\PYG{o}{*}\PYG{n}{y}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} définition de la fonction RK4}
+\PYG{k}{def} \PYG{n+nf}{RungeKutta4}\PYG{p}{(}\PYG{n}{xt}\PYG{p}{,}\PYG{n}{yt}\PYG{p}{,}\PYG{n}{zt}\PYG{p}{,}\PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{3500}\PYG{p}{,} \PYG{n}{tf} \PYG{o}{=} \PYG{l+m+mi}{30}\PYG{p}{):}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+    \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+    \PYG{n}{z} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+    \PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+    \PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{z}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{t}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mi}{0}
+    \PYG{n}{dt} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{/}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} calculer la solution approximative RK4.}
+    \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range} \PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}
+        \PYG{n}{k1} \PYG{o}{=} \PYG{n}{xt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{])}
+        \PYG{n}{l1} \PYG{o}{=} \PYG{n}{yt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{])}
+        \PYG{n}{m1} \PYG{o}{=} \PYG{n}{zt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{])}
+
+        \PYG{n}{k2} \PYG{o}{=} \PYG{n}{xt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{k1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{l1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYGZbs{}
+                \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{m1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+        \PYG{n}{l2} \PYG{o}{=} \PYG{n}{yt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{k1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{l1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYGZbs{}
+                \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{m1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+        \PYG{n}{m2} \PYG{o}{=} \PYG{n}{zt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{k1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{l1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYGZbs{}
+                \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{m1}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+
+        \PYG{n}{k3} \PYG{o}{=} \PYG{n}{xt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{k2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{l2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYGZbs{}
+                \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{m2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+        \PYG{n}{l3} \PYG{o}{=} \PYG{n}{yt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{k2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{l2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYGZbs{}
+                \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{m2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+        \PYG{n}{m3} \PYG{o}{=} \PYG{n}{zt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{k2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{l2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYGZbs{}
+                \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{m2}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}
+
+        \PYG{n}{k4} \PYG{o}{=} \PYG{n}{xt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{k3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{l3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{m3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{p}{))}
+        \PYG{n}{l4} \PYG{o}{=} \PYG{n}{yt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{k3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{l3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{m3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{p}{))}
+        \PYG{n}{m4} \PYG{o}{=} \PYG{n}{zt}\PYG{p}{((}\PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{k3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{l3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{m3}\PYG{o}{*}\PYG{n}{dt}\PYG{p}{),} \PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dt}\PYG{p}{))}
+
+        \PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{x}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{p}{(}\PYG{n}{dt}\PYG{o}{*}\PYG{p}{(}\PYG{n}{k1} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{k2} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{k3} \PYG{o}{+} \PYG{n}{k4}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{6}\PYG{p}{)}
+        \PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{y}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{p}{(}\PYG{n}{dt}\PYG{o}{*}\PYG{p}{(}\PYG{n}{l1} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{l2} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{l3} \PYG{o}{+} \PYG{n}{l4}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{6}\PYG{p}{)}
+        \PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{z}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{p}{(}\PYG{n}{dt}\PYG{o}{*}\PYG{p}{(}\PYG{n}{m1} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{m2} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{m3} \PYG{o}{+} \PYG{n}{m4}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{6}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{t}
+
+\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{t} \PYG{o}{=} \PYG{n}{RungeKutta4}\PYG{p}{(}\PYG{n}{xt}\PYG{p}{,}\PYG{n}{yt}\PYG{p}{,}\PYG{n}{zt}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure} \PYG{p}{(}\PYG{n}{figsize} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot} \PYG{p}{(} \PYG{n}{t}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}b\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot} \PYG{p}{(} \PYG{n}{t}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot} \PYG{p}{(} \PYG{n}{t}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}g\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel} \PYG{p}{(} \PYG{l+s+s1}{\PYGZsq{}Temps\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel} \PYG{p}{(} \PYG{l+s+s1}{\PYGZsq{}x(t), y(t), z(t)\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Évolution des coordonnées x, y et z en fonction du temps\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{([}\PYG{l+s+s1}{\PYGZsq{}x(t)\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}y(t)\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}z(t)\PYGZsq{}}\PYG{p}{],} \PYG{n}{loc} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}lorenz\PYGZus{}ode\PYGZus{}components.png\PYGZsq{}}\PYG{p}{);} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}lorenz\PYGZus{}ode\PYGZus{}components.pdf\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show} \PYG{p}{(} \PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} FIGURE 3d: ATTRACTEUR DE LORENZ}
+\PYG{n}{fig} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{axes}\PYG{p}{(}\PYG{n}{projection} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}3d\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot} \PYG{p}{(} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{linewidth} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlabel} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}x(t)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylabel} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}y(t)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}zlabel} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}z(t)\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}title} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Attracteur de Lorenz pour \PYGZsq{}} \PYG{o}{+} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZbs{}rho = }\PYG{l+s+si}{\PYGZpc{}.2f}\PYG{l+s+s2}{\PYGZdl{}\PYGZdq{}}\PYG{o}{\PYGZpc{}}\PYG{n}{rho}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}lorenz\PYGZus{}ode\PYGZus{}3d.png\PYGZsq{}}\PYG{p}{);} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}lorenz\PYGZus{}ode\PYGZus{}3d.pdf\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

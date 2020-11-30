@@ -1,0 +1,525 @@
+translating doconce text in cours5.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+y_n
+x_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+a\Delta t = 0.01\zeta = 0\Delta t\Delta ty_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + hk_1k_2fO(h^3)O(h^2
+
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in DocOnce syntax)
+\label{eq:desintegration_ode}
+\label{eq:desintegration_exact}
+\label{eq:desintegration_euler}
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format pdflatex
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.pdf for format pdflatex
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.pdf for format pdflatex
+figure file imgs/oscillator:
+    can use imgs/oscillator.pdf for format pdflatex
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.pdf for format pdflatex
+figure file imgs/convection:
+    can use imgs/convection.jpg for format pdflatex
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.pdf for format pdflatex
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.pdf for format pdflatex
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format pdflatex
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format pdflatex
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.pdf for format pdflatex
+
+...doconce translation: insertion of verbatim and latex blocks 23.4 s (accumulated time: 23.9)
+
+
+...doconce format used 24.9 s to translate the document (897 lines)
+
+output in cours5.tex
+translating doconce text in cours5.do.txt to html
+open file with encoding utf-8
+
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in DocOnce syntax)
+\label{eq:desintegration_ode}
+\label{eq:desintegration_exact}
+\label{eq:desintegration_euler}
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format html
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format html
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format html
+figure file imgs/convection:
+    can use imgs/convection.jpg for format html
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format html
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format html
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format html
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format html
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format html
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format html
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format html
+output in cours5-bs.html
+translating doconce text in cours5.do.txt to ipynb
+
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in DocOnce syntax)
+\label{eq:desintegration_ode}
+\label{eq:desintegration_exact}
+\label{eq:desintegration_euler}
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format ipynb
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format ipynb
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format ipynb
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format ipynb
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format ipynb
+figure file imgs/convection:
+    can use imgs/convection.jpg for format ipynb
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format ipynb
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format ipynb
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format ipynb
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format ipynb
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format ipynb
+collected all required additional files in ipynb-cours5-src.tar.gz which must be distributed with the notebook
+output in cours5.ipynb
+translating doconce text in cours5.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+y_n
+x_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+a\Delta t = 0.01\zeta = 0\Delta t\Delta ty_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + hk_1k_2fO(h^3)O(h^2
+
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in DocOnce syntax)
+\label{eq:desintegration_ode}
+\label{eq:desintegration_exact}
+\label{eq:desintegration_euler}
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format pdflatex
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.pdf for format pdflatex
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.pdf for format pdflatex
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.pdf for format pdflatex
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.pdf for format pdflatex
+figure file imgs/oscillator:
+    can use imgs/oscillator.pdf for format pdflatex
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.pdf for format pdflatex
+figure file imgs/convection:
+    can use imgs/convection.jpg for format pdflatex
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format pdflatex
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.pdf for format pdflatex
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format pdflatex
+
+...doconce translation: insertion of verbatim and latex blocks 18.3 s (accumulated time: 18.7)
+
+
+...doconce format used 19.7 s to translate the document (897 lines)
+
+output in cours5.tex
+translating doconce text in cours5.do.txt to html
+open file with encoding utf-8
+
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in DocOnce syntax)
+\label{eq:desintegration_ode}
+\label{eq:desintegration_exact}
+\label{eq:desintegration_euler}
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format html
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format html
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format html
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format html
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format html
+figure file imgs/convection:
+    can use imgs/convection.jpg for format html
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format html
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format html
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format html
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format html
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format html
+output in cours5-bs.html
+translating doconce text in cours5.do.txt to ipynb
+
+*** warning: found \label{...} with backslash
+    (label{...} has no backslash in DocOnce syntax)
+\label{eq:desintegration_ode}
+\label{eq:desintegration_exact}
+\label{eq:desintegration_euler}
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format ipynb
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format ipynb
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format ipynb
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format ipynb
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format ipynb
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format ipynb
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format ipynb
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format ipynb
+figure file imgs/convection:
+    can use imgs/convection.jpg for format ipynb
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format ipynb
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format ipynb
+collected all required additional files in ipynb-cours5-src.tar.gz which must be distributed with the notebook
+output in cours5.ipynb
+translating doconce text in cours5.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+y_n
+x_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+a\Delta t = 0.01\zeta = 0\Delta t\Delta ty_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + hk_1k_2fO(h^3)O(h^2
+copy complete file scripts/desintegration.py (format: pypro)
+copy complete file scripts/desintegrationErr.py (format: pypro)
+copy complete file scripts/projectile.py (format: pypro)
+copy complete file scripts/tire.py (format: pypro)
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/projectile:
+    can use scripts/projectile.pdf for format pdflatex
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.pdf for format pdflatex
+figure file scripts/tire:
+    can use scripts/tire.pdf for format pdflatex
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format pdflatex
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.pdf for format pdflatex
+figure file imgs/radioactivite:
+    can use imgs/radioactivite.jpg for format pdflatex
+figure file scripts/desintegration:
+    can use scripts/desintegration.pdf for format pdflatex
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.pdf for format pdflatex
+figure file imgs/oscillator:
+    can use imgs/oscillator.pdf for format pdflatex
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format pdflatex
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format pdflatex
+figure file imgs/convection:
+    can use imgs/convection.jpg for format pdflatex
+figure file scripts/desintegrationErr:
+    can use scripts/desintegrationErr.pdf for format pdflatex
+figure file scripts/euler_schema:
+    can use scripts/euler_schema.pdf for format pdflatex
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.pdf for format pdflatex
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.pdf for format pdflatex
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.pdf for format pdflatex
+*** made directory latex_figs for admon figures
+output in cours5.tex
+translating doconce text in cours5.do.txt to html
+open file with encoding utf-8
+copy complete file scripts/desintegration.py (format: pypro)
+copy complete file scripts/desintegrationErr.py (format: pypro)
+copy complete file scripts/projectile.py (format: pypro)
+copy complete file scripts/tire.py (format: pypro)
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file imgs/radioactivite:
+    can use imgs/radioactivite.jpg for format html
+figure file scripts/projectile:
+    can use scripts/projectile.png for format html
+figure file scripts/desintegrationErr:
+    can use scripts/desintegrationErr.png for format html
+figure file scripts/euler_schema:
+    can use scripts/euler_schema.png for format html
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format html
+figure file imgs/convection:
+    can use imgs/convection.jpg for format html
+figure file scripts/tire:
+    can use scripts/tire.png for format html
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format html
+figure file scripts/desintegration:
+    can use scripts/desintegration.png for format html
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format html
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format html
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format html
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format html
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format html
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format html
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format html
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format html
+*** warning: inline math in HTML must have space around <:
+    \Delta x(\theta_1) <0  ->  \Delta x(\theta_1) < 0
+*** warning: inline math in HTML must have space around <:
+    0 <x_{cible} <x_{max}  ->  0 < x_{cible} < x_{max}
+output in cours5-bs.html
+translating doconce text in cours5.do.txt to ipynb
+copy complete file scripts/desintegration.py (format: pypro)
+copy complete file scripts/desintegrationErr.py (format: pypro)
+copy complete file scripts/projectile.py (format: pypro)
+copy complete file scripts/tire.py (format: pypro)
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file imgs/convection:
+    can use imgs/convection.jpg for format ipynb
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format ipynb
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format ipynb
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format ipynb
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format ipynb
+figure file imgs/radioactivite:
+    can use imgs/radioactivite.jpg for format ipynb
+figure file scripts/desintegrationErr:
+    can use scripts/desintegrationErr.png for format ipynb
+figure file scripts/euler_schema:
+    can use scripts/euler_schema.png for format ipynb
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format ipynb
+figure file scripts/projectile:
+    can use scripts/projectile.png for format ipynb
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format ipynb
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format ipynb
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format ipynb
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format ipynb
+figure file scripts/tire:
+    can use scripts/tire.png for format ipynb
+figure file scripts/desintegration:
+    can use scripts/desintegration.png for format ipynb
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format ipynb
+collected all required additional files in ipynb-cours5-src.tar.gz which must be distributed with the notebook
+output in cours5.ipynb
+translating doconce text in cours5.do.txt to pdflatex
+open file with encoding utf-8
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+y_n
+x_n
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+a\Delta t = 0.01\zeta = 0\Delta t\Delta ty_{n+1} = y_n + h*f(x_n, y_n), et x_{n+1} = x_n + hk_1k_2fO(h^3)O(h^2
+copy complete file scripts/desintegration.py (format: pypro)
+copy complete file scripts/desintegrationErr.py (format: pypro)
+copy complete file scripts/projectile.py (format: pypro)
+copy complete file scripts/tire.py (format: pypro)
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/euler_schema:
+    can use scripts/euler_schema.pdf for format pdflatex
+figure file scripts/desintegration:
+    can use scripts/desintegration.pdf for format pdflatex
+figure file scripts/tire:
+    can use scripts/tire.pdf for format pdflatex
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.pdf for format pdflatex
+figure file scripts/desintegrationErr:
+    can use scripts/desintegrationErr.pdf for format pdflatex
+figure file imgs/oscillator:
+    can use imgs/oscillator.pdf for format pdflatex
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format pdflatex
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.pdf for format pdflatex
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format pdflatex
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.pdf for format pdflatex
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format pdflatex
+figure file imgs/convection:
+    can use imgs/convection.jpg for format pdflatex
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.pdf for format pdflatex
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.pdf for format pdflatex
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.pdf for format pdflatex
+figure file imgs/radioactivite:
+    can use imgs/radioactivite.jpg for format pdflatex
+figure file scripts/projectile:
+    can use scripts/projectile.pdf for format pdflatex
+output in cours5.tex
+translating doconce text in cours5.do.txt to html
+open file with encoding utf-8
+copy complete file scripts/desintegration.py (format: pypro)
+copy complete file scripts/desintegrationErr.py (format: pypro)
+copy complete file scripts/projectile.py (format: pypro)
+copy complete file scripts/tire.py (format: pypro)
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/projectile:
+    can use scripts/projectile.png for format html
+figure file scripts/desintegrationErr:
+    can use scripts/desintegrationErr.png for format html
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format html
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format html
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format html
+figure file scripts/tire:
+    can use scripts/tire.png for format html
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format html
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format html
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format html
+figure file scripts/desintegration:
+    can use scripts/desintegration.png for format html
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format html
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format html
+figure file imgs/radioactivite:
+    can use imgs/radioactivite.jpg for format html
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format html
+figure file imgs/convection:
+    can use imgs/convection.jpg for format html
+figure file scripts/euler_schema:
+    can use scripts/euler_schema.png for format html
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format html
+*** warning: inline math in HTML must have space around <:
+    \Delta x(\theta_1) <0  ->  \Delta x(\theta_1) < 0
+*** warning: inline math in HTML must have space around <:
+    0 <x_{cible} <x_{max}  ->  0 < x_{cible} < x_{max}
+output in cours5-bs.html
+translating doconce text in cours5.do.txt to ipynb
+copy complete file scripts/desintegration.py (format: pypro)
+copy complete file scripts/desintegrationErr.py (format: pypro)
+copy complete file scripts/projectile.py (format: pypro)
+copy complete file scripts/tire.py (format: pypro)
+copy complete file scripts/OscillateurEulerExp.py (format: pypro)
+copy complete file scripts/OscillateurEulerImp.py (format: pypro)
+copy complete file scripts/AttracteurLorenzRK4.py (format: pypro)
+figure file scripts/EulerExp_3:
+    can use scripts/EulerExp_3.png for format ipynb
+figure file scripts/projectile:
+    can use scripts/projectile.png for format ipynb
+figure file scripts/EulerExpGen2:
+    can use scripts/EulerExpGen2.png for format ipynb
+figure file imgs/radioactivite:
+    can use imgs/radioactivite.jpg for format ipynb
+figure file imgs/fd_forward:
+    can use imgs/fd_forward.png for format ipynb
+figure file scripts/EulerExpGen:
+    can use scripts/EulerExpGen.png for format ipynb
+figure file scripts/euler_schema:
+    can use scripts/euler_schema.png for format ipynb
+figure file imgs/fd_backward:
+    can use imgs/fd_backward.png for format ipynb
+figure file imgs/oscillator:
+    can use imgs/oscillator.png for format ipynb
+figure file scripts/desintegration:
+    can use scripts/desintegration.png for format ipynb
+figure file scripts/desintegrationErr:
+    can use scripts/desintegrationErr.png for format ipynb
+figure file scripts/tire:
+    can use scripts/tire.png for format ipynb
+figure file scripts/Eulerimp_3:
+    can use scripts/Eulerimp_3.png for format ipynb
+figure file scripts/lorenz_ode_3d:
+    can use scripts/lorenz_ode_3d.png for format ipynb
+figure file scripts/lorenz_ode_components:
+    can use scripts/lorenz_ode_components.png for format ipynb
+figure file scripts/lorenz_ode_r:
+    can use scripts/lorenz_ode_r.png for format ipynb
+figure file imgs/convection:
+    can use imgs/convection.jpg for format ipynb
+collected all required additional files in ipynb-cours5-src.tar.gz which must be distributed with the notebook
+output in cours5.ipynb

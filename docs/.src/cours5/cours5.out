@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Exemple I : Radioactivit\351}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{La d\351couverte de la radioactivit\351}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Loi de d\351sint\351gration radioactive}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Mouvement d'un projectile}{}% 5
+\BOOKMARK [1][-]{section.4}{Convergence et de stabilit\351 de la m\351thode d'Euler: Cas des syst\350mes lin\351aires}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{La m\351thode d'Euler explicite \(progressive\)}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{La m\351thode d'Euler implicite \(r\351trograde\)}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Exemple: Oscillateur libre amorti [masse, ressort, amortisseur]}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.4}{Conclusion}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{La m\351thode de Runge-Kutta d'ordre 4}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Algorithme de Runge-Kutta d'ordre 4}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Exemple: Syst\350me dynamique diff\351rentiel de Lorenz \(attracteur de Lorenz\)}{section.5}% 13
